@@ -1,0 +1,2 @@
+# SplitPay
+Full java project
