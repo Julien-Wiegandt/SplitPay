@@ -1,6 +1,6 @@
 package ui.main;
 
-import core.User;
+import core.UserFaçade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,8 +10,7 @@ import javafx.stage.Stage;
 
 public class SplitPay extends Application {
     public static Stage window;
-    public static User user;
-
+    public static UserFaçade user = new UserFaçade();
 
     @Override
     public void start(Stage stage) throws Exception{
