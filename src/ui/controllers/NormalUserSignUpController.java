@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import ui.main.Paths;
+import ui.main.RegexPattern;
 import ui.main.SplitPay;
 
 import java.io.IOException;
@@ -23,11 +24,22 @@ public class NormalUserSignUpController {
     @FXML
     private CheckBox isCompany;
     @FXML
-    private RadioButton isPhoneChecked, isEmailChecked;
+    private RadioButton phoneValidation, emailValidation;
 
-    //public void normalUserSignUp(ActionEvent actionEvent) {
-    //    SplitPay.user.signUp(email.getText(), phone.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
-    //}
+    public void normalUserSignUp(ActionEvent actionEvent) {
+        Boolean error = false;
+        if(!RegexPattern.emailPattern.matcher(email.getText()).find()){ email.setStyle("-fx-text-box-border: red"); error = true;}
+        if(!RegexPattern.phonePattern.matcher(phone.getText()).find()){ phone.setStyle("-fx-text-box-border: red"); error = true;}
+        if(!RegexPattern.textPattern.matcher(firstName.getText()).find()){ firstName.setStyle("-fx-text-box-border: red"); error = true;}
+        if(!RegexPattern.textPattern.matcher(lastName.getText()).find()){ lastName.setStyle("-fx-text-box-border: red"); error = true;}
+        if(phoneValidation.isSelected() && emailValidation.isSelected()){
+            phoneValidation.setStyle("-fx-text-fill: red");
+            emailValidation.setStyle("-fx-text-fill: red");
+            error = true;
+        }
+
+        //SplitPay.user.signUp(email.getText(), phone.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
+    }
 
     public void changeSignUpView(ActionEvent actionEvent) {
     }
