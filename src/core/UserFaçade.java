@@ -37,7 +37,7 @@ public class UserFaçade {
      * @return
      */
     public User login(String credential, String password) {
-        // TODO implement here
+        this.daoFactory.getDao().login(credential, password);
         return null;
     }
 

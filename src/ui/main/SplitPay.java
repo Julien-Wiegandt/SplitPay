@@ -10,11 +10,12 @@ import javafx.stage.Stage;
 
 public class SplitPay extends Application {
     public static Stage window;
-    public static UserFaçade user = new UserFaçade();
+    public static UserFaçade user;
 
     @Override
     public void start(Stage stage) throws Exception{
         window = stage;
+        user = new UserFaçade();
 
         //Main app
         Image logo = new Image(getClass().getResourceAsStream("../ressources/SplitPayV2XL.png"));

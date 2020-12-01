@@ -40,4 +40,9 @@ public abstract class DaoFactory {
         return null;
     }
 
+    /**
+     * @return
+     */
+    public UserDaoImpl getDao(){ return this.dao;}
+
 }

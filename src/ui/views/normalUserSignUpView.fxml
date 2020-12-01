@@ -25,8 +25,8 @@
             <PasswordField fx:id="password1" layoutX="85.0" layoutY="235.0" promptText="password" />
             <TextField fx:id="nickname" layoutX="85.0" layoutY="196.0" promptText="nickname" />
             <CheckBox fx:id="isCompany" layoutX="99.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeSignUpView" text="You are a company" />
-            <RadioButton fx:id="isPhoneChecked" layoutX="132.0" layoutY="307.0" mnemonicParsing="false" onAction="#verificationByPhoneChecked" text="phone" />
-            <RadioButton fx:id="isEmailChecked" layoutX="202.0" layoutY="307.0" mnemonicParsing="false" onAction="#verificationByEmailChecked" text="email" />
+            <RadioButton fx:id="phoneValidation" layoutX="132.0" layoutY="307.0" mnemonicParsing="false" onAction="#verificationByPhoneChecked" text="phone" />
+            <RadioButton fx:id="emailValidation" layoutX="202.0" layoutY="307.0" mnemonicParsing="false" onAction="#verificationByEmailChecked" text="email" />
             <Label layoutX="37.0" layoutY="307.0" text="verification by :" />
             <TextField fx:id="lastName" layoutX="85.0" layoutY="158.0" promptText="last name" />
             </children></Pane>
