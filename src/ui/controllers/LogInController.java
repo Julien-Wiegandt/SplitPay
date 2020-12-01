@@ -29,8 +29,8 @@ public class LogInController {
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
-    public void goToResetPasswordView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(Paths.resetPasswordView));
+    public void goToForgottenPasswordView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(Paths.forgottenPasswordView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 }

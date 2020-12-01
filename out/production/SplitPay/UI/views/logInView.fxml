@@ -24,7 +24,7 @@
       <Pane prefHeight="51.0" prefWidth="320.0">
          <children>
             <Button layoutX="53.0" layoutY="11.0" mnemonicParsing="false" onAction="#goToNormalUserSignUpView" text="Sign in" />
-            <Button layoutX="181.0" layoutY="11.0" mnemonicParsing="false" onAction="#goToResetPasswordView" text="Reset password" />
+            <Button layoutX="172.0" layoutY="11.0" mnemonicParsing="false" onAction="#goToForgottenPasswordView" text="Forgotten password?" />
          </children></Pane>
    </children>
 </VBox>
