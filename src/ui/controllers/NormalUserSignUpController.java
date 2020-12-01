@@ -25,9 +25,9 @@ public class NormalUserSignUpController {
     @FXML
     private RadioButton isPhoneChecked, isEmailChecked;
 
-    public void normalUserSignUp(ActionEvent actionEvent) {
-        SplitPay.user.signUp(email.getText(), phone.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
-    }
+    //public void normalUserSignUp(ActionEvent actionEvent) {
+    //    SplitPay.user.signUp(email.getText(), phone.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
+    //}
 
     public void changeSignUpView(ActionEvent actionEvent) {
     }
