@@ -1,12 +1,14 @@
 package core;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
+import persist.DaoFactory;
+import persist.models.User;
+
+import java.util.*;
 
 /**
- *
+ * 
  */
-public class UserFaçade implements Observable {
+public class UserFaçade {
 
     /**
      * Default constructor
@@ -15,50 +17,54 @@ public class UserFaçade implements Observable {
     }
 
     /**
-     *
+     * 
      */
-    //private UserDaoImpl dao;
+    private static UserFaçade UserFaçade;
 
     /**
-     * @param email
-     * @param password
+     * 
+     */
+    private DaoFactory daoFactory;
+
+    /**
+     * 
+     */
+    private User user;
+
+    /**
+     * @param credential 
+     * @param password 
      * @return
      */
-    private UserFaçade emailLogin(String email, String password) {
+    public User login(String credential, String password) {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param phone
-     * @param password
+     * @param credential 
+     * @param password 
      * @return
      */
-    private UserFaçade phoneLogin(String phone, String password) {
+    public User signup(String credential, String password) {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param credential
-     * @param password
      * @return
      */
-    public void login(String credential, String password) {
+    public static UserFaçade getUserFaçade() {
         // TODO implement here
+        return null;
     }
 
-    @Override
-    public void addListener(InvalidationListener invalidationListener) {
-
+    /**
+     * @return
+     */
+    private UserFaçade UserFaçade() {
+        // TODO implement here
+        return null;
     }
 
-    @Override
-    public void removeListener(InvalidationListener invalidationListener) {
-
-    }
-
-    public void signUp(String email, String phone, String firstName, String lastName, String nickname, String password) {
-
-    }
 }
