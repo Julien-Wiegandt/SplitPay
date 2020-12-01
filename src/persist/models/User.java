@@ -10,7 +10,14 @@ public class User {
     /**
      * Default constructor
      */
-    public User() {
+    public User(String id, String email, String phone, String password, String nickname, Float balance, String validationCode) {
+        this.id=id;
+        this.email=email;
+        this.phone=phone;
+        this.password=password;
+        this.nickname=nickname;
+        this.balance=balance;
+        this.validationCode=validationCode;
     }
 
     /**
@@ -41,11 +48,23 @@ public class User {
     /**
      * 
      */
-    private Double balance;
+    private Float balance;
 
     /**
      * 
      */
     private String validationCode;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", password='" + password + '\'' +
+                ", balance=" + balance +
+                ", validationCode='" + validationCode + '\'' +
+                '}';
+    }
 }

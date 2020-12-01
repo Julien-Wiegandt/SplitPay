@@ -1,6 +1,8 @@
 package core;
 
 import persist.DaoFactory;
+import persist.MySqlDaoFactory;
+import persist.UserDaoImpl;
 import persist.models.User;
 
 import java.util.*;
@@ -11,25 +13,25 @@ import java.util.*;
 public class UserFaçade {
 
     /**
-     * Default constructor
+     *
      */
-    public UserFaçade() {
-    }
+    private static UserFaçade userFaçade;
+
 
     /**
      * 
      */
-    private static UserFaçade UserFaçade;
-
-    /**
-     * 
-     */
-    private DaoFactory daoFactory;
+    private static DaoFactory daoFactory = new MySqlDaoFactory();
 
     /**
      * 
      */
     private User user;
+
+    /**
+     *
+     */
+    private UserDaoImpl userDao;
 
     /**
      * @param credential 
@@ -38,6 +40,7 @@ public class UserFaçade {
      */
     public User login(String credential, String password) {
         // TODO implement here
+        userDao.emailLogin(credential,password);
         return null;
     }
 
@@ -56,15 +59,19 @@ public class UserFaçade {
      */
     public static UserFaçade getUserFaçade() {
         // TODO implement here
-        return null;
+        if(userFaçade==null){
+            userFaçade=new UserFaçade();
+        }
+
+        return userFaçade;
     }
 
     /**
      * @return
      */
-    private UserFaçade UserFaçade() {
+    private UserFaçade() {
         // TODO implement here
-        return null;
+        userDao=daoFactory.createUserDao();
     }
 
 }

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class SplitPay extends Application {
     public static Stage window;
-    public static UserFaçade user = new UserFaçade();
+    public static UserFaçade user = UserFaçade.getUserFaçade();
 
     @Override
     public void start(Stage stage) throws Exception{
@@ -31,6 +31,7 @@ public class SplitPay extends Application {
     }
 
     public static void main(String[] args) {
+        user.login("test@test.com","splitpay");
         launch(args);
     }
 }

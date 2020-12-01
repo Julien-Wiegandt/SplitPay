@@ -16,14 +16,6 @@ public class UserDaoImpl implements DAO<User> {
     }
 
     /**
-     * @return
-     */
-    public UserDaoImpl getConnection() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
      * @param phone 
      * @param password 
      * @return

@@ -1,6 +1,8 @@
 package persist;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -11,17 +13,7 @@ public abstract class DaoFactory {
     /**
      * 
      */
-    private Connection connection;
-
-    /**
-     * 
-     */
-    private static DaoFactory DaoFactory;
-
-    /**
-     * 
-     */
-    private UserDaoImpl dao;
+    protected static Connection connection;
 
     /**
      * @return
@@ -31,7 +23,7 @@ public abstract class DaoFactory {
     /**
      * @return
      */
-    public abstract DaoFactory getConnection();
+    public abstract Connection getConnection();
 
     /**
      * @return
