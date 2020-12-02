@@ -29,7 +29,7 @@ public class LogInController {
      * respected, else the wrong fields will be highlighted in red.
      * @param actionEvent
      */
-    public void logIn(ActionEvent actionEvent) {
+    public void logIn(ActionEvent actionEvent) throws Exception {
         if(RegexPattern.emailPattern.matcher(credential.getText()).find()
                 || RegexPattern.phonePattern.matcher(credential.getText()).find()){
             SplitPay.user.login(credential.getText(), password.getText());

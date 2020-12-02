@@ -38,9 +38,9 @@ public class UserFaçade {
      * @param password 
      * @return
      */
-    public User login(String credential, String password) {
+    public User login(String credential, String password) throws Exception {
         // TODO implement here
-        userDao.emailLogin(credential,password);
+        userDao.emailLogIn(credential,password);
         return null;
     }
 

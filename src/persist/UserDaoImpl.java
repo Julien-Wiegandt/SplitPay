@@ -2,12 +2,13 @@ package persist;
 
 import persist.models.User;
 
+import java.sql.SQLException;
 import java.util.*;
 
 /**
  * 
  */
-public class UserDaoImpl implements DAO<User> {
+public abstract class UserDaoImpl implements DAO<User> {
 
     /**
      * Default constructor
@@ -17,54 +18,37 @@ public class UserDaoImpl implements DAO<User> {
 
     /**
      * @param phone 
-     * @param password 
-     * @return
+     * @param password
      */
-    public User emailLogin(String phone, String password) {
-        // TODO implement here
-        return null;
-    }
+    public abstract User emailLogIn(String phone, String password) throws Exception ;
 
     /**
      * @param email 
-     * @param password 
-     * @return
+     * @param password
      */
-    public User phoneLogin(String email, String password) {
-        // TODO implement here
-        return null;
-    }
+    public abstract User phoneLogIn(String email, String password) throws Exception ;
 
     /**
      * @param credential 
      * @return
      */
-    public User findUser(String credential) {
-        // TODO implement here
-        return null;
-    }
+    public abstract User findUser(String credential) ;
 
     /**
-     * @param email 
-     * @return
+     * @param email
+
      */
-    public User findUserByEmail(String email) {
-        // TODO implement here
-        return null;
-    }
+    public abstract User findUserByEmail(String email) throws SQLException;
 
     /**
      * @param phone 
-     * @return
+
      */
-    public User findUserByPhone(String phone) {
-        // TODO implement here
-        return null;
-    }
+    public abstract User findUserByPhone(String phone) ;
 
     /**
      * @param id 
-     * @return
+
      */
     public boolean generateValidationCode(int id) {
         // TODO implement here
@@ -73,49 +57,34 @@ public class UserDaoImpl implements DAO<User> {
 
     /**
      * @param id 
-     * @return
+
      */
-    public User setValidationCode(int id) {
-        // TODO implement here
-        return null;
-    }
+    public abstract User setValidationCode(int id);
 
     /**
      * @param credential 
      * @param password 
-     * @return
+
      */
-    public void login(String credential, String password) {
-        // TODO implement here
-//        return null;
-    }
+    public abstract void login(String credential, String password) ;
+
+    /**
+     * @param object
+
+     */
+    public abstract User create(User object) ;
 
     /**
      * @param object
      * @return
      */
-    public User create(User object) {
-        // TODO implement here
-        return null;
-    }
+    public abstract boolean delete(User object);
 
     /**
      * @param object
      * @return
      */
-    public boolean delete(User object) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @param object
-     * @return
-     */
-    public boolean update(User object) {
-        // TODO implement here
-        return false;
-    }
+    public abstract boolean update(User object);
 
 //    /**
 //     * @param object
@@ -148,24 +117,16 @@ public class UserDaoImpl implements DAO<User> {
      * @param id
      * @return
      */
-    public User findById(int id) {
-        // TODO implement here
-        return null;
-    }
+    public abstract User findById(int id) ;
 
     /**
      *
      */
-    public void error() {
-        // TODO implement here
-    }
+    public abstract  void error() ;
 
     /**
      * @return
      */
-    public Collection<User> findAll() {
-        // TODO implement here
-        return null;
-    }
+    public abstract Collection<User> findAll();
 
 }
