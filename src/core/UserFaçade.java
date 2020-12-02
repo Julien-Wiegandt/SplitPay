@@ -34,13 +34,22 @@ public class UserFaçade {
     private UserDaoImpl userDao;
 
     /**
-     * @param credential 
-     * @param password 
+     * @param credential
+     * @param password
      * @return
      */
-    public User login(String credential, String password) throws Exception {
-        // TODO implement here
-        userDao.emailLogIn(credential,password);
+    public User emailLogIn(String credential, String password) {
+        //userDao.emailLogIn(credential,password);
+        return null;
+    }
+
+    /**
+     * @param credential
+     * @param password
+     * @return
+     */
+    public User phoneLogIn(String credential, String password) {
+        //userDao.emailLogIn(credential,password);
         return null;
     }
 
@@ -49,7 +58,7 @@ public class UserFaçade {
      * @param password 
      * @return
      */
-    public User signup(String credential, String password) {
+    public User signUp(String credential, String password) {
         // TODO implement here
         return null;
     }
