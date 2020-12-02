@@ -8,4 +8,5 @@ public class RegexPattern {
     public static Pattern textPattern = Pattern.compile("^[a-zA-Z]+$");
     public static Pattern passwordPattern = Pattern.compile("^[a-zA-Z0-9@#$%^&-+=():;.,?/!§%*µ£#{}@]+$");
     public static Pattern nicknamePattern = Pattern.compile("^[a-zA-Z0-9@#$%^&-+=():;.,?/!§%*µ£#{}@]+$");
+    public static Pattern siretPattern = Pattern.compile("^[a-zA-Z0-9]{14}$");
 }

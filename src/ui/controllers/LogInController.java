@@ -30,17 +30,18 @@ public class LogInController {
      * @param actionEvent
      */
     public void logIn(ActionEvent actionEvent) {
+        this.allStyleSetDefault();
         //If the email and password match with their regex -> login with email
         if(RegexPattern.emailPattern.matcher(credential.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()) {
-            SplitPay.user.emailLogin(credential.getText(), password.getText());
+            //SplitPay.user.emailLogIn(credential.getText(), password.getText());
         }//If the phone and password match with their regex -> login with phone
         else if(RegexPattern.phonePattern.matcher(credential.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()){
-            SplitPay.user.phoneLogin(credential.getText(), password.getText());
+            //SplitPay.user.phoneLogIn(credential.getText(), password.getText());
         }//Else show in red where the regex are not respected
         else{
-            if(!RegexPattern.emailPattern.matcher(credential.getText()).find() || !RegexPattern.phonePattern.matcher(credential.getText()).find()){ credential.setStyle("-fx-text-box-border: red");}
+            if(!RegexPattern.emailPattern.matcher(credential.getText()).find() && !RegexPattern.phonePattern.matcher(credential.getText()).find()){ credential.setStyle("-fx-text-box-border: red");}
             if(!RegexPattern.passwordPattern.matcher(password.getText()).find()){ password.setStyle("-fx-text-box-border: red");}
         }
     }
@@ -63,6 +64,11 @@ public class LogInController {
     public void goToForgottenPasswordView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(Paths.forgottenPasswordView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
+    }
+
+    private void allStyleSetDefault(){
+        credential.setStyle("-fx-text-box-border: black");
+        password.setStyle("-fx-text-box-border: black");
     }
 
 }
