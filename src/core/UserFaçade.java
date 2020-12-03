@@ -38,9 +38,8 @@ public class UserFaçade {
      * @param password
      * @return
      */
-    public User emailLogIn(String credential, String password) {
-        //userDao.emailLogIn(credential,password);
-        return null;
+    public void emailLogIn(String credential, String password) throws Exception {
+        user = userDao.emailLogIn(credential,password);
     }
 
     /**
@@ -48,9 +47,8 @@ public class UserFaçade {
      * @param password
      * @return
      */
-    public User phoneLogIn(String credential, String password) {
-        //userDao.emailLogIn(credential,password);
-        return null;
+    public void phoneLogIn(String credential, String password) throws Exception {
+        user = userDao.phoneLogIn(credential,password);
     }
 
     /**

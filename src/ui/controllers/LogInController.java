@@ -34,11 +34,21 @@ public class LogInController {
         //If the email and password match with their regex -> login with email
         if(RegexPattern.emailPattern.matcher(credential.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()) {
-            //SplitPay.user.emailLogIn(credential.getText(), password.getText());
+            try {
+                SplitPay.user.emailLogIn(credential.getText(), password.getText());
+            } catch (Exception e) {
+                password.setText("");
+                password.setStyle("-fx-text-box-border: red");
+            }
         }//If the phone and password match with their regex -> login with phone
         else if(RegexPattern.phonePattern.matcher(credential.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()){
-            //SplitPay.user.phoneLogIn(credential.getText(), password.getText());
+            try {
+                SplitPay.user.phoneLogIn(credential.getText(), password.getText());
+            } catch (Exception e) {
+                password.setText("");
+                password.setStyle("-fx-text-box-border: red");
+            }
         }//Else show in red where the regex are not respected
         else{
             if(!RegexPattern.emailPattern.matcher(credential.getText()).find() && !RegexPattern.phonePattern.matcher(credential.getText()).find()){ credential.setStyle("-fx-text-box-border: red");}
