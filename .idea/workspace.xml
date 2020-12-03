@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/development" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1l3zy9effpRsqufwRCWHcXtyPC2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils/jdk" />
+      <recent name="$PROJECT_DIR$/src/utils/ui" />
+      <recent name="$PROJECT_DIR$/src/utils/persist" />
+      <recent name="$PROJECT_DIR$/src/core" />
+      <recent name="$PROJECT_DIR$/src/persist/models" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="SplitPay" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui.main.SplitPay" />
+      <module name="SplitPay" />
+      <option name="VM_PARAMETERS" value="--module-path src/utils/ui/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="" />
+      <created>1606840815181</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606840815181</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/development" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/development" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/db_connection_persist" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="db_connection_persist" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="development" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added generated blank code for persist and core layer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added generated blank code for persist and core layer" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="208" y="43" key="#Project_Structure" timestamp="1606843817688">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="208" y="43" key="#Project_Structure/0.23.1440.877@0.23.1440.877" timestamp="1606843817688" />
+    <state x="1805" y="72" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606954950416">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state x="1805" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954950416" />
+    <state x="274" y="143" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1606842825150" />
+    <state x="597" y="205" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1606842684846">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="597" y="205" key="#com.intellij.ide.macro.MacrosDialog/0.23.1440.877@0.23.1440.877" timestamp="1606842684846" />
+    <state x="2213" y="177" key="#com.intellij.ide.util.MemberChooser" timestamp="1606858233391">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state x="2213" y="177" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606858233391" />
+    <state x="547" y="278" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1606842642600">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="547" y="278" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1440.877@0.23.1440.877" timestamp="1606842642600" />
+    <state x="2067" y="97" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1606936941373">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state x="2067" y="97" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606936941373" />
+    <state width="1878" height="224" key="GridCell.Tab.0.bottom" timestamp="1606954936687">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="224" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954936687" />
+    <state width="1878" height="376" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197746" />
+    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606843846658" />
+    <state width="1878" height="224" key="GridCell.Tab.0.center" timestamp="1606954936684">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="224" key="GridCell.Tab.0.center/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954936684" />
+    <state width="1878" height="376" key="GridCell.Tab.0.center/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197742" />
+    <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606843846657" />
+    <state width="1878" height="224" key="GridCell.Tab.0.left" timestamp="1606954936683">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="224" key="GridCell.Tab.0.left/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954936683" />
+    <state width="1878" height="376" key="GridCell.Tab.0.left/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197739" />
+    <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606843846657" />
+    <state width="1878" height="224" key="GridCell.Tab.0.right" timestamp="1606954936685">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="224" key="GridCell.Tab.0.right/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954936685" />
+    <state width="1878" height="376" key="GridCell.Tab.0.right/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197745" />
+    <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606843846658" />
+    <state width="1878" height="376" key="GridCell.Tab.1.bottom" timestamp="1606953483424">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="376" key="GridCell.Tab.1.bottom/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606953483424" />
+    <state width="1878" height="376" key="GridCell.Tab.1.center" timestamp="1606953483423">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="376" key="GridCell.Tab.1.center/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606953483423" />
+    <state width="1878" height="376" key="GridCell.Tab.1.left" timestamp="1606953483422">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="376" key="GridCell.Tab.1.left/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606953483422" />
+    <state width="1878" height="376" key="GridCell.Tab.1.right" timestamp="1606953483424">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="376" key="GridCell.Tab.1.right/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606953483424" />
+    <state x="1717" y="-39" key="SettingsEditor" timestamp="1606955113736">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state x="1717" y="-39" key="SettingsEditor/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606955007336" />
+    <state x="208" y="31" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1606842323605" />
+    <state x="1717" y="-17" key="SettingsEditor/0.23.1440.877/1440.-53.1920.1057@1440.-53.1920.1057" timestamp="1606857018082" />
+    <state x="1717" y="-39" key="SettingsEditor/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606955113736" />
+    <state x="208" y="53" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1606843225725" />
+    <state x="2130" y="383" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1606954895906">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state x="2130" y="383" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954895906" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SplitPay$SplitPay.ic" NAME="SplitPay Coverage Results" MODIFIED="1606932207340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
