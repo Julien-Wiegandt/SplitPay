@@ -1,5 +1,7 @@
 package persist;
 
+import persist.models.NormalUser;
+import persist.models.StoreOwner;
 import persist.models.User;
 
 import java.sql.SQLException;
@@ -32,7 +34,7 @@ public abstract class UserDaoImpl implements DAO<User> {
      * @param credential 
      * @return
      */
-    public abstract User findUser(String credential) ;
+    public abstract User findUser(String credential) throws SQLException;
 
     /**
      * @param email
@@ -61,18 +63,17 @@ public abstract class UserDaoImpl implements DAO<User> {
      */
     public abstract User setValidationCode(int id);
 
-    /**
-     * @param credential 
-     * @param password 
 
-     */
-    public abstract void login(String credential, String password) ;
 
     /**
      * @param object
 
      */
-    public abstract User create(User object) ;
+    public abstract User createNormalUser(NormalUser object) ;
+
+
+    public abstract User createStoreOwner(StoreOwner object) ;
+
 
     /**
      * @param object

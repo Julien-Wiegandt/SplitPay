@@ -3,7 +3,10 @@ package persist;
 import persist.exception.EmailLoginDAOException;
 import persist.exception.PasswordLoginDAOException;
 import persist.exception.PhoneLoginDAOException;
+import persist.models.NormalUser;
+import persist.models.StoreOwner;
 import persist.models.User;
+import ui.main.RegexPattern;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,76 +34,63 @@ public class MySqlUserDao extends UserDaoImpl {
         return null;
     }
 
-    @Override
-    public void login(String credential, String password) {
 
-    }
 
     public User emailLogIn(String email, String password) throws Exception {
         User user = this.findUserByEmail(email);
 
-        if (email.equalsIgnoreCase(user.getEmail())){
-            if (password.equals(user.getPassword())) {
-                System.out.println("Login success !");
-                return user;
 
-            }else{ throw new PasswordLoginDAOException("Login failed: Wrong Password input !");}
-
-        }else{ throw new EmailLoginDAOException("Login failed: Wrong Email input !"); }
-
-
+        if (password.equals(user.getPassword())) {
+            System.out.println("Login success !");
+            return user;
+        }else{
+            throw new PasswordLoginDAOException("Login failed: Wrong Password input !");
+        }
     }
 
+    //prendre en compte héritage
     public User phoneLogIn(String phone, String password) throws Exception {
         User user = this.findUserByPhone(phone);
 
-        if (phone.equalsIgnoreCase(user.getEmail())){
-            if (password.equals(user.getPassword())) {
-                System.out.println("Login success !");
-                return user;
+        if (password.equals(user.getPassword())) {
+            System.out.println("Login success !");
+            return user;
 
-            }else{ throw new PasswordLoginDAOException("Login failed: Wrong Password input !");}
-
-        }else{ throw new PhoneLoginDAOException("Login failed: Wrong phone input !"); }
-
+        }else{ throw new PasswordLoginDAOException("Login failed: Wrong Password input !");}
     }
 
     @Override
-    public User findUser(String credential) {
-        return null;
+    public User findUser(String credential) throws SQLException {
+        User user = null;
+        if(RegexPattern.emailPattern.matcher(credential).find()){
+            user = findUserByEmail(credential);
+        }else{
+            user = findUserByPhone(credential);
+        }
+        return user;
     }
 
     @Override
     public User findUserByEmail(String email) throws SQLException {
-        Statement stmt = null;
-        User user = null;
-        try {
-            stmt = MySqlDaoFactory.connection.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM User WHERE email='" + email + "'");
-
-            while (rs.next()) {
-                String dbId = rs.getString("id");
-                String dbPhone = rs.getString("phone");
-                String dbNickname = rs.getString("nickname");
-                Float dbBalance = rs.getFloat("balance");
-                String dbValidationCode = rs.getString("validationCode");
-                String dbEmail = rs.getString("email");
-                String dbPassword = rs.getString("password");
-                user = new User(dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, dbValidationCode);
-                System.out.println(user);
-            }
-        }catch(SQLException throwables){
-            throwables.printStackTrace();
+        User user = findNormalUserByEmail(email);
+        if(user == null) {
+            user = findStoreOwnerByEmail(email);
         }
         return user;
+
     }
 
     @Override
     public User findUserByPhone(String phone) {
+        User user = findNormalUserByPhone(phone);
+        if(user == null){
+            user = findStoreOwnerByPhone(phone);
+        }
+        return user;
+    }
+
+
+    public User findNormalUserByEmail(String email) throws SQLException {
         Statement stmt = null;
         User user = null;
         try {
@@ -109,7 +99,37 @@ public class MySqlUserDao extends UserDaoImpl {
             throwables.printStackTrace();
         }
         try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM User WHERE phone='" + phone + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM NormalUser WHERE email='" + email + "'");
+
+            while (rs.next()) {
+                String dbId = rs.getString("id");
+                String dbFirstName = rs.getString("firstName");
+                String dbLastName = rs.getString("LastName");
+                String dbPhone = rs.getString("phone");
+                String dbNickname = rs.getString("nickname");
+                Float dbBalance = rs.getFloat("balance");
+                String dbValidationCode = rs.getString("validationCode");
+                String dbEmail = rs.getString("email");
+                String dbPassword = rs.getString("password");
+                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, dbValidationCode);
+                System.out.println(user);
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return user;
+    }
+
+    public User findStoreOwnerByEmail(String email) throws SQLException {
+        Statement stmt = null;
+        User user = null;
+        try {
+            stmt = MySqlDaoFactory.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM StoreOwner WHERE email='" + email + "'");
 
             while (rs.next()) {
                 String dbId = rs.getString("id");
@@ -118,8 +138,10 @@ public class MySqlUserDao extends UserDaoImpl {
                 Float dbBalance = rs.getFloat("balance");
                 String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
+                String dbSiret = rs.getString("siret");
                 String dbPassword = rs.getString("password");
-                user = new User(dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, dbValidationCode);
+
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbValidationCode);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -127,6 +149,69 @@ public class MySqlUserDao extends UserDaoImpl {
         }
         return user;
     }
+
+
+    public User findNormalUserByPhone(String phone) {
+        Statement stmt = null;
+        User user = null;
+        try {
+            stmt = MySqlDaoFactory.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM NormalUser WHERE phone='" + phone + "'");
+
+            while (rs.next()) {
+                String dbId = rs.getString("id");
+                String dbFirstName = rs.getString("firstName");
+                String dbLastName= rs.getString("lastName");
+                String dbPhone = rs.getString("phone");
+                String dbNickname = rs.getString("nickname");
+                Float dbBalance = rs.getFloat("balance");
+                String dbValidationCode = rs.getString("validationCode");
+                String dbEmail = rs.getString("email");
+                String dbPassword = rs.getString("password");
+                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, dbValidationCode);
+                System.out.println(user);
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return user;
+    }
+
+
+    public User findStoreOwnerByPhone(String phone) {
+        Statement stmt = null;
+        User user = null;
+        try {
+            stmt = MySqlDaoFactory.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM StoreOwner WHERE phone='" + phone + "'");
+
+            while (rs.next()) {
+                String dbId = rs.getString("id");
+                String dbSiret = rs.getString("siret");
+                String dbPhone = rs.getString("phone");
+                String dbNickname = rs.getString("nickname");
+                Float dbBalance = rs.getFloat("balance");
+                String dbValidationCode = rs.getString("validationCode");
+                String dbEmail = rs.getString("email");
+                String dbPassword = rs.getString("password");
+                user = new StoreOwner( dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbValidationCode);
+                System.out.println(user);
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return user;
+    }
+
+
 
     @Override
     public User setValidationCode(int id) {
@@ -134,8 +219,22 @@ public class MySqlUserDao extends UserDaoImpl {
     }
 
 
-    @Override
-    public User create(User user) {
+
+
+
+    public User create(User user){
+        if( user instanceof NormalUser){
+            createNormalUser(((NormalUser)user));
+        }else{
+            createStoreOwner(((StoreOwner) user));
+        }
+
+        return user;
+    }
+
+
+
+    public User createNormalUser(NormalUser user) {
         Statement stmt = null;
         try {
             stmt = MySqlDaoFactory.connection.createStatement();
@@ -143,7 +242,8 @@ public class MySqlUserDao extends UserDaoImpl {
             throwables.printStackTrace();
         }
         try {
-            Integer rs = stmt.executeUpdate("INSERT INTO User VALUES ('"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"')");
+            Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES ('"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"'+ '"+user.getValidationCode()+"')");
+            MySqlDaoFactory.connection.commit();
             return user;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -151,8 +251,9 @@ public class MySqlUserDao extends UserDaoImpl {
         return null;
     }
 
-    @Override
-    public boolean delete(User user) {
+
+
+    public User createStoreOwner(StoreOwner user) {
         Statement stmt = null;
         try {
             stmt = MySqlDaoFactory.connection.createStatement();
@@ -160,7 +261,31 @@ public class MySqlUserDao extends UserDaoImpl {
             throwables.printStackTrace();
         }
         try {
-            PreparedStatement preparedStmt = MySqlDaoFactory.connection.prepareStatement("DELETE User WHERE id='"+user.getId()+"'");
+            Integer rs = stmt.executeUpdate("INSERT INTO StoreOwner VALUES ('"+user.getEmail()+"', '"+user.getNickname()+"', '"+user.getPassword()+"', '"+user.getBalance()+"', '"+user.getCompanyName()+"','"+user.getAddress()+"','"+user.getSiret()+"','"+user.getAddress()+"')");
+            MySqlDaoFactory.connection.commit();
+            return user;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+
+    @Override
+    public boolean delete(User user) {
+        Statement stmt = null;
+        PreparedStatement preparedStmt = null;
+        try {
+            stmt = MySqlDaoFactory.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            if(user instanceof NormalUser) {
+                preparedStmt = MySqlDaoFactory.connection.prepareStatement("DELETE NormalUser WHERE id='" + user.getId() + "'");
+            }else{
+                preparedStmt = MySqlDaoFactory.connection.prepareStatement("DELETE StoreOwner WHERE id='" + user.getId() + "'");
+            }
             preparedStmt.execute();
             return true;
         } catch (SQLException throwables) {
@@ -168,6 +293,7 @@ public class MySqlUserDao extends UserDaoImpl {
         }
         return false;
     }
+
 
     @Override
     public boolean update(User user) {
@@ -178,9 +304,17 @@ public class MySqlUserDao extends UserDaoImpl {
             throwables.printStackTrace();
         }
         try {
-            Integer rs = stmt.executeUpdate("UPDATE User SET email='"+user.getEmail()+"', phone='"+user.getPhone()+"'," +
-                    " password='"+user.getPassword()+"', nickname='"+user.getNickname() +"', balance='"+user.getBalance()+"'" +
-                    "WHERE id='"+user.getId()+"'");
+            if(user instanceof NormalUser) {
+                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"','"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
+                        "WHERE id='" + user.getId() + "'");
+            }else{
+                Integer rs = stmt.executeUpdate("UPDATE StoreOwner SET email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "','"+((StoreOwner)user).getCompanyName()+"','"+((StoreOwner)user).getAddress()+"', balance='" + user.getBalance() + "'" +
+                        "WHERE id='" + user.getId() + "'");
+
+            }
+            MySqlDaoFactory.connection.commit();
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -190,6 +324,20 @@ public class MySqlUserDao extends UserDaoImpl {
 
     @Override
     public User findById(int id) {
+        return null;
+    }
+
+    public User findUserById(int id) throws SQLException {
+
+
+        User user = findNormalUserById(id);
+        if(user == null) {
+            user = findStoreOwnerById(id);
+        }
+        return user;
+    }
+
+    public User findNormalUserById(int id) {
         Statement stmt = null;
         User user = null;
         try {
@@ -198,17 +346,19 @@ public class MySqlUserDao extends UserDaoImpl {
             throwables.printStackTrace();
         }
         try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM User WHERE phone='" + id + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM NormalUser WHERE id='" + id + "'");
 
             while (rs.next()) {
                 String dbId = rs.getString("id");
+                String dbFirstName = rs.getString("firstName");
+                String dbLastName = rs.getString("LastName");
                 String dbPhone = rs.getString("phone");
                 String dbNickname = rs.getString("nickname");
                 Float dbBalance = rs.getFloat("balance");
                 String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
-                user = new User(dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, dbValidationCode);
+                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, dbValidationCode);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -217,11 +367,42 @@ public class MySqlUserDao extends UserDaoImpl {
         return user;
     }
 
+    public User findStoreOwnerById(int id) {
+        Statement stmt = null;
+        User user = null;
+        try {
+            stmt = MySqlDaoFactory.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM StoreOwner WHERE id='" + id + "'");
+
+            while (rs.next()) {
+                String dbId = rs.getString("id");
+                String dbSiret = rs.getString("siret");
+                String dbPhone = rs.getString("phone");
+                String dbNickname = rs.getString("nickname");
+                Float dbBalance = rs.getFloat("balance");
+                String dbValidationCode = rs.getString("validationCode");
+                String dbEmail = rs.getString("email");
+                String dbPassword = rs.getString("password");
+                user = new StoreOwner( dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbValidationCode);
+                System.out.println(user);
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return user;
+    }
+
+    //prendre en compte héritage
     @Override
     public void error() {
 
     }
 
+    //prendre en compte héritage
     @Override
     public Collection<User> findAll() {
         return null;

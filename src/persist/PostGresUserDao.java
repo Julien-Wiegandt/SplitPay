@@ -1,5 +1,7 @@
 package persist;
 
+import persist.models.NormalUser;
+import persist.models.StoreOwner;
 import persist.models.User;
 
 import java.util.*;
@@ -47,9 +49,20 @@ public class PostGresUserDao extends UserDaoImpl {
     }
 
     @Override
-    public void login(String credential, String password) {
-
+    public User createNormalUser(NormalUser object) {
+        return null;
     }
+
+    @Override
+    public User createStoreOwner(StoreOwner object) {
+        return null;
+    }
+
+
+    public User createStoreOwner(User object) {
+        return null;
+    }
+
 
     @Override
     public User create(User object) {

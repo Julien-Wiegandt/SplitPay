@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.normalUserSignUpController">
+    <children>
+        <Pane prefHeight="67.0" prefWidth="320.0">
+            <children>
+                <Label layoutX="118.0" layoutY="14.0" text="Sign Up">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane prefHeight="395.0" prefWidth="320.0">
+            <children>
+                <TextField fx:id="email" layoutX="86.0" layoutY="44.0" promptText="email" />
+                <PasswordField fx:id="password2" layoutX="85.0" layoutY="274.0" promptText="password" />
+                <Button layoutX="127.0" layoutY="342.0" mnemonicParsing="false" onAction="#signUp" prefHeight="35.0" prefWidth="65.0" text="Sign Up" />
+                <TextField fx:id="phone" layoutX="86.0" layoutY="80.0" promptText="phone" />
+                <TextField fx:id="firstName" layoutX="86.0" layoutY="119.0" promptText="first name" />
+                <PasswordField fx:id="password1" layoutX="85.0" layoutY="235.0" promptText="password" />
+                <TextField fx:id="nickname" layoutX="85.0" layoutY="196.0" promptText="nickname" />
+                <CheckBox fx:id="isCompany" layoutX="99.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToStoreOwnerSignUpView" text="You are a company" />
+                <RadioButton fx:id="phoneValidation" layoutX="132.0" layoutY="307.0" mnemonicParsing="false" onAction="#verificationByPhoneChecked" text="phone" />
+                <RadioButton fx:id="emailValidation" layoutX="202.0" layoutY="307.0" mnemonicParsing="false" onAction="#verificationByEmailChecked" text="email" />
+                <Label layoutX="37.0" layoutY="307.0" text="verification by :" />
+                <TextField fx:id="lastName" layoutX="85.0" layoutY="158.0" promptText="last name" />
+            </children></Pane>
+        <Pane prefHeight="51.0" prefWidth="320.0">
+            <children>
+                <Button layoutX="189.0" layoutY="11.0" mnemonicParsing="false" onAction="#goToLogInView" text="Log in" />
+                <Label layoutX="42.0" layoutY="15.0" text="Already have an account ?" />
+            </children></Pane>
+    </children>
+</VBox>
