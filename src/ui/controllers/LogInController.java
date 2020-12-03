@@ -36,6 +36,8 @@ public class LogInController {
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()) {
             try {
                 UserFaçade.getUserFaçade().emailLogIn(credential.getText(), password.getText());
+                Parent root = FXMLLoader.load(getClass().getResource(Paths.homeView));
+                SplitPay.window.setScene(new Scene(root, 320, 500));
             } catch (Exception e) {
                 password.setText("");
                 password.setStyle("-fx-text-box-border: red");
@@ -45,6 +47,8 @@ public class LogInController {
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()){
             try {
                 UserFaçade.getUserFaçade().phoneLogIn(credential.getText(), password.getText());
+                Parent root = FXMLLoader.load(getClass().getResource(Paths.homeView));
+                SplitPay.window.setScene(new Scene(root, 320, 500));
             } catch (Exception e) {
                 password.setText("");
                 password.setStyle("-fx-text-box-border: red");

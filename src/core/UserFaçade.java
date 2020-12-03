@@ -51,15 +51,23 @@ public class UserFaçade {
         user = userDao.phoneLogIn(credential,password);
     }
 
-    /**
-     * @param credential 
-     * @param password 
-     * @return
-     */
-    public User signUp(String credential, String password) {
-        // TODO implement here
-        return null;
+    public void storeOwnerPhoneSignUp(String credential, String companyName, String nickname, String siret, String password){
+        //user = userDao.storeOwnerPhoneSignUp(credential, companyName, nickname, siret, password);
     }
+
+    public void storeOwnerEmailSignUp(String credential, String companyName, String nickname, String siret, String password){
+        //user = userDao.storeOwnerEmailSignUp(credential, companyName, nickname, siret, password);
+    }
+
+    public void normalUserEmailSignUp(String credential, String firstName, String lastName, String nickname, String password){
+        //user = userDao.normalUserEmailSignUp(credential, firstName, lastName, nickname, password);
+    }
+
+    public void normalUserPhoneSignUp(String credential, String firstName, String lastName, String nickname, String password){
+        //user = userDao.normalUserPhoneSignUp(credential, firstName, lastName, nickname, password);
+    }
+
+
 
     /**
      * @return
@@ -81,4 +89,7 @@ public class UserFaçade {
         userDao=daoFactory.createUserDao();
     }
 
+    public User getUser() {
+        return user;
+    }
 }

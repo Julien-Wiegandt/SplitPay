@@ -54,7 +54,7 @@ public class MySqlUserDao extends UserDaoImpl {
     public User phoneLogIn(String phone, String password) throws Exception {
         User user = this.findUserByPhone(phone);
 
-        if (phone.equalsIgnoreCase(user.getEmail())){
+        if (phone.equalsIgnoreCase(user.getPhone())){
             if (password.equals(user.getPassword())) {
                 System.out.println("Login success !");
                 return user;

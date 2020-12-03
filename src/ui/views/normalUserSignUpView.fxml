@@ -17,18 +17,14 @@
         </Pane>
         <Pane prefHeight="395.0" prefWidth="320.0">
             <children>
-                <TextField fx:id="email" layoutX="86.0" layoutY="44.0" promptText="email" />
-                <PasswordField fx:id="password2" layoutX="85.0" layoutY="274.0" promptText="password" />
-                <Button layoutX="127.0" layoutY="342.0" mnemonicParsing="false" onAction="#signUp" prefHeight="35.0" prefWidth="65.0" text="Sign Up" />
-                <TextField fx:id="phone" layoutX="86.0" layoutY="80.0" promptText="phone" />
-                <TextField fx:id="firstName" layoutX="86.0" layoutY="119.0" promptText="first name" />
-                <PasswordField fx:id="password1" layoutX="85.0" layoutY="235.0" promptText="password" />
-                <TextField fx:id="nickname" layoutX="85.0" layoutY="196.0" promptText="nickname" />
-                <CheckBox fx:id="isCompany" layoutX="99.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToStoreOwnerSignUpView" text="You are a company" />
-                <RadioButton fx:id="phoneValidation" layoutX="132.0" layoutY="307.0" mnemonicParsing="false" onAction="#verificationByPhoneChecked" text="phone" />
-                <RadioButton fx:id="emailValidation" layoutX="202.0" layoutY="307.0" mnemonicParsing="false" onAction="#verificationByEmailChecked" text="email" />
-                <Label layoutX="37.0" layoutY="307.0" text="verification by :" />
-                <TextField fx:id="lastName" layoutX="85.0" layoutY="158.0" promptText="last name" />
+                <TextField fx:id="credential" layoutX="85.0" layoutY="59.0" promptText="email or phone" />
+                <PasswordField fx:id="password2" layoutX="85.0" layoutY="281.0" promptText="password" />
+                <Button layoutX="128.0" layoutY="322.0" mnemonicParsing="false" onAction="#signUp" prefHeight="35.0" prefWidth="65.0" text="Sign Up" />
+                <TextField fx:id="firstName" layoutX="85.0" layoutY="102.0" promptText="first name" />
+                <PasswordField fx:id="password1" layoutX="86.0" layoutY="236.0" promptText="password" />
+                <TextField fx:id="nickname" layoutX="85.0" layoutY="190.0" promptText="nickname" />
+                <CheckBox fx:id="isCompany" layoutX="98.0" layoutY="19.0" mnemonicParsing="false" onAction="#goToStoreOwnerSignUpView" text="You are a company" />
+                <TextField fx:id="lastName" layoutX="85.0" layoutY="145.0" promptText="last name" />
             </children></Pane>
         <Pane prefHeight="51.0" prefWidth="320.0">
             <children>
