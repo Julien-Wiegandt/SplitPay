@@ -1,5 +1,6 @@
 package ui.controllers;
 
+import core.UserFaçade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,14 +33,14 @@ public class StoreOwnerSignUpController {
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))){
-            //SplitPay.user.storeOwnerEmailSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
+            UserFaçade.getUserFaçade().storeOwnerEmailSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
         }else if(RegexPattern.phonePattern.matcher(credential.getText()).find()
                 && RegexPattern.textPattern.matcher(companyName.getText()).find()
                 && RegexPattern.siretPattern.matcher(siret.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))) {
-            //SplitPay.user.storeOwnerPhoneSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
+            UserFaçade.getUserFaçade().storeOwnerPhoneSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
         }else {
             if (!RegexPattern.emailPattern.matcher(credential.getText()).find() && !RegexPattern.phonePattern.matcher(credential.getText()).find()) {
                 credential.setStyle("-fx-text-box-border: red");

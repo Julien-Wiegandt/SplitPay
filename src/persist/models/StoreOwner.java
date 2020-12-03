@@ -5,7 +5,6 @@ public class StoreOwner extends User {
     /**
      * Default constructor
      *
-     * @param id
      * @param email
      * @param phone
      * @param password
@@ -17,9 +16,11 @@ public class StoreOwner extends User {
     private String companyName;
     private String address;
 
-    public StoreOwner(String id, String email, String phone, String siret, String password, String nickname, Float balance, String validationCode) {
+    public StoreOwner(String id, String email, String phone, String siret, String password, String nickname, Float balance, String validationCode, String companyName, String address) {
         super(id, email, phone, password, nickname, balance, validationCode);
         this.siret = siret;
+        this.companyName = companyName;
+        this.address = address;
     }
 
     public String getSiret(){
@@ -33,6 +34,7 @@ public class StoreOwner extends User {
     public String getAddress(){
         return this.getAddress();
     }
+
     public String toString() {
         return "User{" +
                 "id='" + this.getId() + '\'' +

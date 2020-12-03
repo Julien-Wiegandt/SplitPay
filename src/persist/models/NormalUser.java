@@ -5,7 +5,6 @@ public class NormalUser extends User {
     /**
      * Default constructor
      *
-     * @param id
      * @param email
      * @param phone
      * @param password
@@ -17,7 +16,6 @@ public class NormalUser extends User {
     private String LastName;
 
     public NormalUser(String firstName, String LastName, String id, String email, String phone, String password, String nickname, Float balance, String validationCode) {
-
         super(id, email, phone, password, nickname, balance, validationCode);
         this.firstName = firstName;
         this.LastName = LastName;

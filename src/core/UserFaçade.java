@@ -3,6 +3,8 @@ package core;
 import persist.DaoFactory;
 import persist.MySqlDaoFactory;
 import persist.UserDaoImpl;
+import persist.models.NormalUser;
+import persist.models.StoreOwner;
 import persist.models.User;
 
 import java.util.*;
@@ -52,22 +54,20 @@ public class UserFaçade {
     }
 
     public void storeOwnerPhoneSignUp(String credential, String companyName, String nickname, String siret, String password){
-        //user = userDao.storeOwnerPhoneSignUp(credential, companyName, nickname, siret, password);
+        user = userDao.createStoreOwner(new StoreOwner(null, null, credential, siret, password, nickname, 0f, null, companyName, null));
     }
 
     public void storeOwnerEmailSignUp(String credential, String companyName, String nickname, String siret, String password){
-        //user = userDao.storeOwnerEmailSignUp(credential, companyName, nickname, siret, password);
+        user = userDao.createStoreOwner(new StoreOwner(null, credential, null, siret, password, nickname, 0f, null, companyName, null));
     }
 
     public void normalUserEmailSignUp(String credential, String firstName, String lastName, String nickname, String password){
-        //user = userDao.normalUserEmailSignUp(credential, firstName, lastName, nickname, password);
+        user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, credential, null, password, nickname, 0f, null));
     }
 
     public void normalUserPhoneSignUp(String credential, String firstName, String lastName, String nickname, String password){
-        //user = userDao.normalUserPhoneSignUp(credential, firstName, lastName, nickname, password);
+        user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, null, credential, password, nickname, 0f, null));
     }
-
-
 
     /**
      * @return

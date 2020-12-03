@@ -33,14 +33,14 @@ public class NormalUserSignUpController {
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))){
-            //UserFaçade.normalUserEmailSignUp(credential.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
+            UserFaçade.getUserFaçade().normalUserEmailSignUp(credential.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
         }else if(RegexPattern.phonePattern.matcher(credential.getText()).find()
                 && RegexPattern.textPattern.matcher(firstName.getText()).find()
                 && RegexPattern.textPattern.matcher(lastName.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))) {
-            //UserFaçade.normalUserPhoneSignUp(credential.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
+            UserFaçade.getUserFaçade().normalUserPhoneSignUp(credential.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
         } else {
             if (!RegexPattern.emailPattern.matcher(credential.getText()).find() && !RegexPattern.phonePattern.matcher(credential.getText()).find()) {
                 credential.setStyle("-fx-text-box-border: red");

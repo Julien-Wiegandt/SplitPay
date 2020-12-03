@@ -140,8 +140,10 @@ public class MySqlUserDao extends UserDaoImpl {
                 String dbEmail = rs.getString("email");
                 String dbSiret = rs.getString("siret");
                 String dbPassword = rs.getString("password");
+                String dbCompanyName = rs.getString("companyName");
+                String dbAddress = rs.getString("address");
 
-                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbValidationCode);
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbValidationCode, dbCompanyName, dbAddress);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -202,7 +204,10 @@ public class MySqlUserDao extends UserDaoImpl {
                 String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
-                user = new StoreOwner( dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbValidationCode);
+                String dbCompanyName = rs.getString("companyName");
+                String dbAddress = rs.getString("address");
+
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbValidationCode, dbCompanyName, dbAddress);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -242,8 +247,9 @@ public class MySqlUserDao extends UserDaoImpl {
             throwables.printStackTrace();
         }
         try {
-            Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES ('"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"'+ '"+user.getValidationCode()+"')");
-            MySqlDaoFactory.connection.commit();
+            System.out.println("INSERT INTO NormalUser VALUES (NULL, '"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"', '"+user.getValidationCode()+"')");
+            Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES (NULL, '"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"', '"+user.getValidationCode()+"')");
+//            MySqlDaoFactory.connection.commit();
             return user;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -261,8 +267,8 @@ public class MySqlUserDao extends UserDaoImpl {
             throwables.printStackTrace();
         }
         try {
-            Integer rs = stmt.executeUpdate("INSERT INTO StoreOwner VALUES ('"+user.getEmail()+"', '"+user.getNickname()+"', '"+user.getPassword()+"', '"+user.getBalance()+"', '"+user.getCompanyName()+"','"+user.getAddress()+"','"+user.getSiret()+"','"+user.getAddress()+"')");
-            MySqlDaoFactory.connection.commit();
+            Integer rs = stmt.executeUpdate("INSERT INTO StoreOwner VALUES (NULL, '"+user.getEmail()+"', '"+user.getNickname()+"', '"+user.getPassword()+"', '"+user.getBalance()+"', '"+user.getCompanyName()+"','"+user.getAddress()+"','"+user.getSiret()+"','"+user.getAddress()+"')");
+//            MySqlDaoFactory.connection.commit();
             return user;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -387,7 +393,10 @@ public class MySqlUserDao extends UserDaoImpl {
                 String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
-                user = new StoreOwner( dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbValidationCode);
+                String dbCompanyName = rs.getString("companyName");
+                String dbAddress = rs.getString("address");
+
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbValidationCode, dbCompanyName, dbAddress);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
