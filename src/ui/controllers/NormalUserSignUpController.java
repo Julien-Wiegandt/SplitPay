@@ -15,7 +15,7 @@ import ui.main.SplitPay;
 
 import java.io.IOException;
 
-public class normalUserSignUpController {
+public class NormalUserSignUpController {
 
     @FXML
     private TextField email, phone, firstName, lastName, nickname;

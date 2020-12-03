@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class SplitPay extends Application {
     public static Stage window;
-    public static UserFaçade user = UserFaçade.getUserFaçade();
+    private UserFaçade user = UserFaçade.getUserFaçade();
 
 
     @Override

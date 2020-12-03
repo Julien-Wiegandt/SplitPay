@@ -1,6 +1,8 @@
 package ui.controllers;
 
 import java.util.regex.*;
+
+import core.UserFaçade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +23,6 @@ public class LogInController {
     private TextField credential;
     @FXML
     private PasswordField password;
-    @FXML
-    private Label credentialError, passwordError;
 
     /**
      * This method log in the user in the SplitPay application if the regex patterns are
@@ -35,7 +35,7 @@ public class LogInController {
         if(RegexPattern.emailPattern.matcher(credential.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()) {
             try {
-                SplitPay.user.emailLogIn(credential.getText(), password.getText());
+                UserFaçade.getUserFaçade().emailLogIn(credential.getText(), password.getText());
             } catch (Exception e) {
                 password.setText("");
                 password.setStyle("-fx-text-box-border: red");
@@ -44,7 +44,7 @@ public class LogInController {
         else if(RegexPattern.phonePattern.matcher(credential.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()){
             try {
-                SplitPay.user.phoneLogIn(credential.getText(), password.getText());
+                UserFaçade.getUserFaçade().phoneLogIn(credential.getText(), password.getText());
             } catch (Exception e) {
                 password.setText("");
                 password.setStyle("-fx-text-box-border: red");

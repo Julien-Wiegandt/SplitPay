@@ -15,7 +15,7 @@ import ui.main.SplitPay;
 
 import java.io.IOException;
 
-public class storeOwnerSignUpController {
+public class StoreOwnerSignUpController {
 
     @FXML
     private TextField email, phone, nickname, companyName, siret;
