@@ -267,8 +267,10 @@ public class MySqlUserDao extends UserDaoImpl {
             throwables.printStackTrace();
         }
         try {
-            Integer rs = stmt.executeUpdate("INSERT INTO StoreOwner VALUES (NULL, '"+user.getEmail()+"', '"+user.getNickname()+"', '"+user.getPassword()+"', '"+user.getBalance()+"', '"+user.getCompanyName()+"','"+user.getAddress()+"','"+user.getSiret()+"','"+user.getAddress()+"')");
-//            MySqlDaoFactory.connection.commit();
+            Integer rs = stmt.executeUpdate("INSERT INTO StoreOwner VALUES (NULL, '"+user.getEmail()+"','"+user.getPhone()+"', '"+user.getNickname()+"', '"+user.getPassword()+"', '"+user.getBalance()+"', '"+user.getCompanyName()+"','"+user.getAddress()+"','"+user.getSiret()+"', '"+user.getValidationCode()+"')");
+            System.out.println("good job");
+
+            //            MySqlDaoFactory.connection.commit();
             return user;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

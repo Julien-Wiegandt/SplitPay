@@ -32,7 +32,7 @@ public class StoreOwner extends User {
     }
 
     public String getAddress(){
-        return this.getAddress();
+        return this.address;
     }
 
     public String toString() {
