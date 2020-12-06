@@ -27,12 +27,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/persist/models/NormalUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/persist/models/StoreOwner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/java/authenticationTests/loginTests/NormalUserLoginTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/java/authenticationTests/loginTests/StoreOwnerLoginTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SplitPay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SplitPay.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/MySqlUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persist/MySqlUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/PostGresUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persist/PostGresUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persist/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/controllers/normalUserSignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SplitPay/ui/controllers/normalUserSignUpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/controllers/storeOwnerSignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SplitPay/ui/controllers/storeOwnerSignUpController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +59,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
@@ -74,7 +79,7 @@
       <recent name="$PROJECT_DIR$/src/persist/models" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.StoreOwnerLoginTests.correctStoreOwnerPhoneLogin">
     <configuration name="SplitPay" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ui.main.SplitPay" />
       <module name="SplitPay" />
@@ -83,6 +88,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in SplitPay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SplitPay" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StoreOwnerLoginTests.correctStoreOwnerPhoneLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SplitPay" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="authenticationTests.loginTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="authenticationTests.loginTests" />
+      <option name="MAIN_CLASS_NAME" value="authenticationTests.loginTests.StoreOwnerLoginTests" />
+      <option name="METHOD_NAME" value="correctStoreOwnerPhoneLogin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.StoreOwnerLoginTests.correctStoreOwnerPhoneLogin" />
+        <item itemvalue="JUnit.All in SplitPay" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -159,9 +194,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added generated blank code for persist and core layer" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="208" y="43" key="#Project_Structure" timestamp="1606843817688">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="1717" y="-51" key="#Project_Structure" timestamp="1607290686202">
+      <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
+    <state x="1717" y="-51" key="#Project_Structure/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607290686202" />
     <state x="208" y="43" key="#Project_Structure/0.23.1440.877@0.23.1440.877" timestamp="1606843817688" />
     <state x="1805" y="72" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606954950416">
       <screen x="1440" y="-76" width="1920" height="1080" />
@@ -186,31 +222,31 @@
       <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
     <state x="2067" y="97" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606936941373" />
-    <state width="1398" height="74" key="GridCell.Tab.0.bottom" timestamp="1606984335921">
-      <screen x="0" y="25" width="1440" height="793" />
+    <state width="1878" height="338" key="GridCell.Tab.0.bottom" timestamp="1607293272212">
+      <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
-    <state width="1878" height="224" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954936687" />
+    <state width="1878" height="338" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607293272212" />
     <state width="1878" height="376" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197746" />
     <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606843846658" />
     <state width="1398" height="74" key="GridCell.Tab.0.bottom/0.25.1440.793@0.25.1440.793" timestamp="1606984335921" />
-    <state width="1398" height="74" key="GridCell.Tab.0.center" timestamp="1606984335921">
-      <screen x="0" y="25" width="1440" height="793" />
+    <state width="1878" height="338" key="GridCell.Tab.0.center" timestamp="1607293272211">
+      <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
-    <state width="1878" height="224" key="GridCell.Tab.0.center/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954936684" />
+    <state width="1878" height="338" key="GridCell.Tab.0.center/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607293272211" />
     <state width="1878" height="376" key="GridCell.Tab.0.center/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197742" />
     <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606843846657" />
     <state width="1398" height="74" key="GridCell.Tab.0.center/0.25.1440.793@0.25.1440.793" timestamp="1606984335921" />
-    <state width="1398" height="74" key="GridCell.Tab.0.left" timestamp="1606984335920">
-      <screen x="0" y="25" width="1440" height="793" />
+    <state width="1878" height="338" key="GridCell.Tab.0.left" timestamp="1607293272210">
+      <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
-    <state width="1878" height="224" key="GridCell.Tab.0.left/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954936683" />
+    <state width="1878" height="338" key="GridCell.Tab.0.left/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607293272210" />
     <state width="1878" height="376" key="GridCell.Tab.0.left/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197739" />
     <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606843846657" />
     <state width="1398" height="74" key="GridCell.Tab.0.left/0.25.1440.793@0.25.1440.793" timestamp="1606984335920" />
-    <state width="1398" height="74" key="GridCell.Tab.0.right" timestamp="1606984335921">
-      <screen x="0" y="25" width="1440" height="793" />
+    <state width="1878" height="338" key="GridCell.Tab.0.right" timestamp="1607293272211">
+      <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
-    <state width="1878" height="224" key="GridCell.Tab.0.right/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954936685" />
+    <state width="1878" height="338" key="GridCell.Tab.0.right/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607293272211" />
     <state width="1878" height="376" key="GridCell.Tab.0.right/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197745" />
     <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606843846658" />
     <state width="1398" height="74" key="GridCell.Tab.0.right/0.25.1440.793@0.25.1440.793" timestamp="1606984335921" />
@@ -230,14 +266,18 @@
       <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
     <state width="1878" height="376" key="GridCell.Tab.1.right/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606953483424" />
-    <state x="1717" y="-39" key="SettingsEditor" timestamp="1606955113736">
+    <state x="1717" y="-39" key="SettingsEditor" timestamp="1607290480490">
       <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
-    <state x="1717" y="-39" key="SettingsEditor/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606955007336" />
+    <state x="1717" y="-39" key="SettingsEditor/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607290480490" />
     <state x="208" y="31" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1606842323605" />
     <state x="1717" y="-17" key="SettingsEditor/0.23.1440.877/1440.-53.1920.1057@1440.-53.1920.1057" timestamp="1606857018082" />
     <state x="1717" y="-39" key="SettingsEditor/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606955113736" />
     <state x="208" y="53" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1606843225725" />
+    <state x="2123" y="363" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1607290676492">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state x="2123" y="363" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607290676492" />
     <state x="521" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606981908797">
       <screen x="0" y="25" width="1440" height="793" />
     </state>
