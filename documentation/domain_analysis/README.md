@@ -1,5 +1,5 @@
-#Domain analysis
+# Domain analysis
 
-###Class diagram
+### Class diagram
 
 ![diagram](class_diagram.svg)
