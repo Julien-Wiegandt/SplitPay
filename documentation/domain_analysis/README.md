@@ -2,4 +2,4 @@
 
 ###Class diagram
 
-![diagram](./domain_analysis.svg)
+![diagram](class_diagram.svg)

@@ -1,5 +1,5 @@
-#Use case : get transactions
+# Use case : get transactions
 
-###Class & package diagram
+### Class & package diagram
 
 ![diagram](./get_transactions.svg)
