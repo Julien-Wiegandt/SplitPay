@@ -1,0 +1,94 @@
+@startuml login_1.0
+
+package authController <<Folder>> {
+  class NormalUserSignUpController {
+    +signUp()
+  }
+
+  class StoreOwnerSignUpController {
+    +signUp()
+  }
+
+  class LoginController {
+    +login() : void
+    +logout() : void
+  }
+}
+
+package auth <<Folder>> {
+  class UserFaçade {
+    +getInstance() : UserFaçade
+    +storeOwnerEmailLogin(String email, String password) : StoreOwner
+    +storeOwnerPhoneLogin(String phone, String password) : StoreOwner
+    +normalUserEmailLogin(String email, String password) : NormalUser
+    +normalUserPhoneLogin(String phone, String password) : NormalUser
+    +storeOwnerEmailSignUp(String credential, String companyName, String nickname, String siret, String password) : StoreOwner
+    +storeOwnerPhoneSignUp(String credential, String companyName, String nickname, String siret, String password) : StoreOwner
+    +normalUserEmailSignUp(String credential, String firstName, String lastName, String nickname, String password) : NormalUser
+    +normalUserPhoneSignUp(String credential, String firstName, String lastName, String nickname, String password) : NormalUser
+    +logout() : void
+  }
+
+  class Session {
+    -loggedNormalUser : NormalUser
+    -loggedStoreOwner : StoreOwner
+    +getInstance() : Session
+    +getLoggedInNormalUser() : NormalUser
+    +getLoggedInStoreOwner() : StoreOwner
+    +logout() : void
+  }
+
+  UserFaçade -> Session
+
+}
+
+package dao <<Folder>> {
+
+  class DAOFactory {
+    #{static}connection : Connection
+    +createUserDao() : UserDaoImpl
+    +{static}getConnection() : Connection
+  }
+
+  package mysql <<Folder>> {
+    class MySqlDAOFactory {}
+    class MySqlUserDAO {}
+
+    MySqlDAOFactory .down.> MySqlUserDAO : creates
+  }
+
+  package postgres <<Folder>> {
+    class MyPostGresDAOFactory {}
+    class MyPostGresUserDAO {}
+
+    MyPostGresDAOFactory .down.> MyPostGresUserDAO : creates
+  }
+
+
+  class UserDAOImpl {
+    +getConnection() : Connection
+    +emailLogin(String email, String password)
+    +phoneLogin(String phone, String password)
+    +createStoreOwner(StoreOwner user) : StoreOwner
+    +createNormalUser(NormalUser user) : NormalUser
+    -findUserByEmail(String email) : User
+    -findUserByPhone(String phone) : User
+    -findUser(String credential) : User
+
+
+  }
+
+  DAOFactory <|-- MySqlDAOFactory
+  DAOFactory <|-- MyPostGresDAOFactory
+  UserDAOImpl <|-- MyPostGresUserDAO
+  UserDAOImpl <|-- MySqlUserDAO
+
+}
+
+UserFaçade -down-> DAOFactory
+UserFaçade -down-> UserDAOImpl
+LoginController .down.> UserFaçade
+StoreOwnerSignUpController .down.> UserFaçade
+NormalUserSignUpController .down.> UserFaçade
+
+@enduml
