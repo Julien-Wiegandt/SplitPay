@@ -1,0 +1,57 @@
+@startuml make_payment
+
+package paymentController <<Folder>> {
+  class moneyInputController {
+    +sendMoney()
+  }
+  class splitController {
+    +paySplit()
+  }
+}
+
+package transaction <<Folder>> {
+  class TransactionFaçade {
+    +getInstance() : TransactionFaçade
+    +sendMoney(int sender, int receiver, Float amount)
+    +paySplit(int sender, int receiver, Float amount)
+  }
+}
+
+package dao <<Folder>> {
+  class DAOFactory {
+    #{static}connection : Connection
+    +createTransactionDao() : TransactionDao
+    +{static}getConnection() : Connection
+  }
+
+  package mysql <<Folder>> {
+    class MySqlDAOFactory {}
+    class MySqlTransactionDAO {}
+    MySqlDAOFactory .down.> MySqlTransactionDAO : creates
+  }
+  
+  package postgres <<Folder>> {
+    class MyPostGresDAOFactory {}
+    class MyPostGresTransactionDAO {}
+    MyPostGresDAOFactory .down.> MyPostGresTransactionDAO : creates
+  }
+  class TransactionDAO {
+    +getConnection() : Connection
+    +createUserToUserTransaction(int sender, int receiver, Float amount)
+    +createSplitTransaction(int sender, int receiver, Float amount)
+  }
+
+  DAOFactory <|-- MySqlDAOFactory
+  DAOFactory <|-- MyPostGresDAOFactory    
+  TransactionDAO <|-- MyPostGresTransactionDAO
+  TransactionDAO <|-- MySqlTransactionDAO
+
+}
+
+moneyInputController .down.> TransactionFaçade
+splitController .down.> TransactionFaçade
+
+TransactionFaçade -down-> DAOFactory
+TransactionFaçade --> TransactionDAO
+
+@enduml
