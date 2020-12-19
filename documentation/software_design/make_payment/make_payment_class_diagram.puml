@@ -1,6 +1,6 @@
 @startuml make_payment
 
-package paymentController <<Folder>> {
+package controller <<Folder>> {
   class moneyInputController {
     +sendMoney()
   }
@@ -9,7 +9,7 @@ package paymentController <<Folder>> {
   }
 }
 
-package transaction <<Folder>> {
+package facade <<Folder>> {
   class TransactionFaçade {
     +getInstance() : TransactionFaçade
     +sendMoney(int sender, int receiver, Float amount)
