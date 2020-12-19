@@ -2,4 +2,4 @@
 
 ### Class & package diagram
 
-![diagram](./get_transactions.svg)
+![diagram](get_transactions_class_diagram.svg)
