@@ -1,0 +1,28 @@
+@startuml
+
+autonumber
+
+[-> MoneyInputController : sendMoney()
+
+MoneyInputController -> TransactionFacade: sendMoney(int,int,Float)
+
+alt sufficient balance
+
+    TransactionFacade -> DAOFactory: createTransactionDAO()
+    DAOFactory -> TransactionDAO : creates
+
+    activate TransactionDAO
+
+    TransactionDAO -> DAOFactory : TransactionDAO
+    DAOFactory -> TransactionFacade : TransactionDAO
+    TransactionFacade -> TransactionDAO : createUserToUserTransaction(int,int,Float)
+
+    deactivate TransactionDAO
+
+else insufficient balance
+
+    TransactionFacade -> MoneyInputController : insufficient balance error
+
+end
+
+@enduml

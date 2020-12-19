@@ -10,8 +10,8 @@ package controller <<Folder>> {
 }
 
 package facade <<Folder>> {
-  class TransactionFaçade {
-    +getInstance() : TransactionFaçade
+  class TransactionFacade {
+    +getInstance() : TransactionFacade
     +sendMoney(int sender, int receiver, Float amount)
     +paySplit(int sender, int receiver, Float amount)
   }
@@ -48,10 +48,10 @@ package dao <<Folder>> {
 
 }
 
-moneyInputController .down.> TransactionFaçade
-splitController .down.> TransactionFaçade
+moneyInputController .down.> TransactionFacade
+splitController .down.> TransactionFacade
 
-TransactionFaçade -down-> DAOFactory
-TransactionFaçade --> TransactionDAO
+TransactionFacade -down-> DAOFactory
+TransactionFacade --> TransactionDAO
 
 @enduml

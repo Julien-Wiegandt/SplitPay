@@ -29,7 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/make_payment/make_payment_sequence_diagram.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/make_payment/send_money_sequence_diagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/make_payment/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/make_payment/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/software_design/make_payment/make_payment_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/make_payment/make_payment_class_diagram.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,11 +84,11 @@
       <recent name="$PROJECT_DIR$/documentation/software_design/get_transactions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/documentation/software_design/make_payment" />
       <recent name="$PROJECT_DIR$/documentation/software_design/authentication" />
       <recent name="$PROJECT_DIR$/src/utils/jdk" />
       <recent name="$PROJECT_DIR$/src/utils/ui" />
       <recent name="$PROJECT_DIR$/src/utils/persist" />
-      <recent name="$PROJECT_DIR$/src/core" />
     </key>
   </component>
   <component name="RunManager" selected="Application.SplitPay (1)">
@@ -257,9 +259,10 @@
       <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
     <state x="2067" y="97" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606936941373" />
-    <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608364959676">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="524" y="245" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608409176626">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="524" y="245" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1608409176626" />
     <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1608364959676" />
     <state width="1878" height="344" key="GridCell.Tab.0.bottom" timestamp="1608364528026">
       <screen x="0" y="0" width="1920" height="1080" />
