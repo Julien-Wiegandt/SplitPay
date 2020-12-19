@@ -6,7 +6,7 @@
 
 #### There are two scenarios to make a transaction:
 
-#####First scenario : A user sends money to a friend
+##### Scenario 1 : User send money to his friend
 
 The following sequence diagram describes what happens when a user
 sends money to a friend
@@ -14,4 +14,15 @@ sends money to a friend
 ![diagram](./send_money_sequence_diagram.svg)
 
 
-Second scenario : A user pays his share of a split
+##### Scenario 2 : User pays his share of a split
+
+The following sequence diagram describes what happens when everyone is ready
+in a split and when the owner validates the payment.
+
+For every participant of the split, a payment is made to the receiver 
+of the split according to the corresponding amount of the participant.
+
+The SplitFacade uses the services provided by the TransactionFacade, 
+to whom it delegates these operations
+
+![diagram](./pay_split_sequence_diagram.svg)

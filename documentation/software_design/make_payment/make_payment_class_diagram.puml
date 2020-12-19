@@ -15,7 +15,15 @@ package facade <<Folder>> {
     +sendMoney(int sender, int receiver, Float amount)
     +paySplit(int sender, int receiver, Float amount)
   }
+
+  class SplitFacade {
+      +getInstance() : SplitFacade
+      +paySplit(int id)
+    }
+
+  SplitFacade ..> TransactionFacade : uses >
 }
+
 
 package dao <<Folder>> {
   class DAOFactory {
@@ -27,31 +35,36 @@ package dao <<Folder>> {
   package mysql <<Folder>> {
     class MySqlDAOFactory {}
     class MySqlTransactionDAO {}
+    class MySqlSplitDAO {}
     MySqlDAOFactory .down.> MySqlTransactionDAO : creates
+    MySqlDAOFactory .down.> MySqlSplitDAO : creates
   }
-  
-  package postgres <<Folder>> {
-    class MyPostGresDAOFactory {}
-    class MyPostGresTransactionDAO {}
-    MyPostGresDAOFactory .down.> MyPostGresTransactionDAO : creates
-  }
+
   class TransactionDAO {
     +getConnection() : Connection
     +createUserToUserTransaction(int sender, int receiver, Float amount)
     +createSplitTransaction(int sender, int receiver, Float amount)
   }
 
+  class SplitDAO {
+      +getConnection() : Connection
+      +paySplit(int id) : void
+    }
+
   DAOFactory <|-- MySqlDAOFactory
-  DAOFactory <|-- MyPostGresDAOFactory    
-  TransactionDAO <|-- MyPostGresTransactionDAO
   TransactionDAO <|-- MySqlTransactionDAO
+  SplitDAO <|-- MySqlSplitDAO
+
 
 }
 
 moneyInputController .down.> TransactionFacade
-splitController .down.> TransactionFacade
+splitController .down.> SplitFacade
 
 TransactionFacade -down-> DAOFactory
 TransactionFacade --> TransactionDAO
+
+SplitFacade -down-> DAOFactory
+SplitFacade --> SplitDAO
 
 @enduml

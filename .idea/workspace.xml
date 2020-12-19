@@ -29,7 +29,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/make_payment/send_money_sequence_diagram.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/make_payment/pay_split_sequence_diagram.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/software_design/make_payment/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/make_payment/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/software_design/make_payment/make_payment_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/make_payment/make_payment_class_diagram.puml" afterDir="false" />

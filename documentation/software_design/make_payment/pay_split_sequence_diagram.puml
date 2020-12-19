@@ -1,0 +1,30 @@
+@startuml
+
+autonumber
+
+[-> SplitController : paySplit()
+
+SplitController -> SplitFacade: paySplit(int)
+
+SplitFacade -> DAOFactory: createSplitDAO()
+DAOFactory -> SplitDAO : creates
+
+activate SplitDAO
+
+SplitDAO -> DAOFactory : SplitDAO
+DAOFactory -> SplitFacade : SplitDAO
+SplitFacade -> SplitDAO : paySplit(int)
+SplitDAO -> SplitFacade  : Split
+
+loop for participant in participants
+
+SplitFacade -> TransactionFacade : paySplit(int,int,Float)
+
+end
+
+
+
+deactivate SplitDAO
+
+
+@enduml
