@@ -1,0 +1,60 @@
+@startuml get_transactions
+
+package transactionController <<Folder>> {
+
+
+  class TransactionController {
+    +getTransactions()
+    +filterTransactions()
+  }
+}
+
+package transaction <<Folder>> {
+  class TransactionFaçade {
+    +getInstance() : AuthFaçade
+  }
+
+}
+
+package dao <<Folder>> {
+
+  class DAOFactory {
+    #{static}connection : Connection
+    +createTransactionDao() : TransactionDao
+    +{static}getConnection() : Connection
+  }
+
+  package mysql <<Folder>> {
+    class MySqlDAOFactory {}
+    class MySqlTransactionDAO {}
+
+    MySqlDAOFactory .down.> MySqlTransactionDAO : creates
+  }
+
+  package postgres <<Folder>> {
+    class MyPostGresDAOFactory {}
+    class MyPostGresTransactionDAO {}
+
+    MyPostGresDAOFactory .down.> MyPostGresTransactionDAO : creates
+  }
+
+
+  class TransactionDAO {
+    +getConnection() : Connection
+    +findAllTransactions(int userId)
+  }
+
+  DAOFactory <|-- MySqlDAOFactory
+  DAOFactory <|-- MyPostGresDAOFactory
+  TransactionDAO <|-- MyPostGresTransactionDAO
+  TransactionDAO <|-- MySqlTransactionDAO
+
+}
+
+TransactionController .down.> TransactionFaçade
+
+TransactionFaçade -down-> DAOFactory
+
+TransactionFaçade --> TransactionDAO
+
+@enduml
