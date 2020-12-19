@@ -1,7 +1,6 @@
-@startuml get_transactions
+@startuml get_transactions_class_diagram
 
-package transactionController <<Folder>> {
-
+package controller <<Folder>> {
 
   class TransactionController {
     +getTransactions()
@@ -9,9 +8,10 @@ package transactionController <<Folder>> {
   }
 }
 
-package transaction <<Folder>> {
-  class TransactionFaçade {
-    +getInstance() : AuthFaçade
+package facade <<Folder>> {
+  class TransactionFacade {
+    +getInstance() : AuthFacade
+    +getTransactions() : Transaction[]
   }
 
 }
@@ -41,7 +41,7 @@ package dao <<Folder>> {
 
   class TransactionDAO {
     +getConnection() : Connection
-    +findAllTransactions(int userId)
+    +findAllTransactions(int userId) : Transaction[]
   }
 
   DAOFactory <|-- MySqlDAOFactory
@@ -51,10 +51,10 @@ package dao <<Folder>> {
 
 }
 
-TransactionController .down.> TransactionFaçade
+TransactionController .down.> TransactionFacade
 
-TransactionFaçade -down-> DAOFactory
+TransactionFacade -down-> DAOFactory
 
-TransactionFaçade --> TransactionDAO
+TransactionFacade --> TransactionDAO
 
 @enduml
