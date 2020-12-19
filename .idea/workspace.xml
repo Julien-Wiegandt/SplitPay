@@ -28,9 +28,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/documentation/domain_analysis/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/domain_analysis/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,15 +72,15 @@
     <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/documentation/software_design/get_transactions" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/utils/jdk" />
       <recent name="$PROJECT_DIR$/src/utils/ui" />
       <recent name="$PROJECT_DIR$/src/utils/persist" />
       <recent name="$PROJECT_DIR$/src/core" />
       <recent name="$PROJECT_DIR$/src/persist/models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/documentation/software_design/get_transactions" />
     </key>
   </component>
   <component name="RunManager" selected="Application.SplitPay (1)">
