@@ -22,193 +22,16 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/authenticationTests/loginTests/NormalUserLoginTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/authenticationTests/loginTests/StoreOwnerLoginTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SplitPay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SplitPay.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/domain_analysis/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/domain_analysis/domain_analysis.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SplitPay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SplitPay.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/core/UserFaçade.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/DAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/DaoFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/MySqlDaoFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/MySqlUserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/PostGresDaoFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/PostGresUserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/UserDaoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/exception/EmailLoginDAOException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/exception/PasswordLoginDAOException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/exception/PhoneLoginDAOException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/models/NormalUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/models/StoreOwner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/persist/models/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/controllers/ForgottenPasswordController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/controllers/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/controllers/LogInController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/controllers/normalUserSignUpController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/controllers/storeOwnerSignUpController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/main/Paths.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/main/RegexPattern.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/main/SplitPay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/ressources/SplitPayV2XL.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/ressources/SplitPayXL.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/views/forgottenPasswordView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/views/homeView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/views/logInView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/views/normalUserSignUpView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/ui/views/storeOwnerSignUpView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/persist/mysql-connector-java-8.0.22.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.base/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.base/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.base/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.controls/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.controls/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.controls/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.fxml/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.fxml/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.fxml/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.graphics/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.graphics/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.graphics/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.graphics/jpeg_fx.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/applecoreaudio.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/glib.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/gstreamer.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/libffi.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.swing/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.swing/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.swing/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/icu_web.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/libxml2.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/libxslt.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/webkit.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/javafx-swt.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/javafx.base.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/javafx.controls.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/javafx.fxml.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/javafx.graphics.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/javafx.media.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/javafx.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/javafx.swing.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/javafx.web.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libdecora_sse.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libfxplugins.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libglass.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libglib-lite.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libgstreamer-lite.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libjavafx_font.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libjavafx_iio.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libjfxmedia.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libjfxmedia_avf.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libjfxwebkit.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libprism_common.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libprism_es2.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/libprism_sw.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SplitPay/utils/ui/javafx-sdk-11.0.2/lib/src.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/UserFaçade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/DAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/DaoFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/MySqlDaoFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/MySqlUserDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/PostGresDaoFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/PostGresUserDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/UserDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/exception/EmailLoginDAOException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/exception/PasswordLoginDAOException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/exception/PhoneLoginDAOException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/models/NormalUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/models/StoreOwner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persist/models/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/controllers/ForgottenPasswordController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/controllers/HomeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/controllers/LogInController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/controllers/NormalUserSignUpController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/controllers/StoreOwnerSignUpController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/main/Paths.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/main/RegexPattern.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/main/SplitPay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/ressources/SplitPayV2XL.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/ressources/SplitPayXL.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/views/forgottenPasswordView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/views/homeView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/views/logInView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/views/normalUserSignUpView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/views/storeOwnerSignUpView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/persist/mysql-connector-java-8.0.22.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.base/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.base/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.base/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.controls/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.controls/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.controls/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.fxml/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.fxml/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.fxml/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.graphics/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.graphics/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.graphics/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.graphics/jpeg_fx.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/applecoreaudio.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/glib.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/gstreamer.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.media/libffi.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.swing/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.swing/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.swing/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/icu_web.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/libxml2.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/libxslt.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/legal/javafx.web/webkit.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/javafx-swt.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/javafx.base.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/javafx.controls.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/javafx.fxml.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/javafx.graphics.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/javafx.media.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/javafx.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/javafx.swing.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/javafx.web.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libdecora_sse.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libfxplugins.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libglass.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libglib-lite.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libgstreamer-lite.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libjavafx_font.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libjavafx_iio.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libjfxmedia.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libjfxmedia_avf.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libjfxwebkit.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libprism_common.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libprism_es2.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/libprism_sw.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ui/javafx-sdk-11.0.2/lib/src.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/java/authenticationTests/loginTests/NormalUserLoginTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/java/authenticationTests/loginTests/StoreOwnerLoginTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/java/authenticationTests/signUpTests/NormalUserSignUpTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/java/authenticationTests/signUpTests/StoreOwnerSignUpTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,7 +160,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -402,6 +225,10 @@
     <state x="1805" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954950416" />
     <state x="365" y="148" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1608277360206" />
     <state x="274" y="143" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1606842825150" />
+    <state x="674" y="349" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608364517725">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="674" y="349" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1608364517725" />
     <state x="597" y="205" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1606842684846">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -424,35 +251,39 @@
       <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
     <state x="2067" y="97" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606936941373" />
-    <state width="1878" height="344" key="GridCell.Tab.0.bottom" timestamp="1608278460009">
+    <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608364959676">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1608364959676" />
+    <state width="1878" height="344" key="GridCell.Tab.0.bottom" timestamp="1608364528026">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="338" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607293272212" />
-    <state width="1878" height="344" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608278460009" />
+    <state width="1878" height="344" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608364528026" />
     <state width="1878" height="376" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197746" />
     <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606843846658" />
     <state width="1398" height="74" key="GridCell.Tab.0.bottom/0.25.1440.793@0.25.1440.793" timestamp="1606984335921" />
-    <state width="1878" height="344" key="GridCell.Tab.0.center" timestamp="1608278460008">
+    <state width="1878" height="344" key="GridCell.Tab.0.center" timestamp="1608364528025">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="338" key="GridCell.Tab.0.center/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607293272211" />
-    <state width="1878" height="344" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608278460008" />
+    <state width="1878" height="344" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608364528025" />
     <state width="1878" height="376" key="GridCell.Tab.0.center/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197742" />
     <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606843846657" />
     <state width="1398" height="74" key="GridCell.Tab.0.center/0.25.1440.793@0.25.1440.793" timestamp="1606984335921" />
-    <state width="1878" height="344" key="GridCell.Tab.0.left" timestamp="1608278460007">
+    <state width="1878" height="344" key="GridCell.Tab.0.left" timestamp="1608364528025">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="338" key="GridCell.Tab.0.left/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607293272210" />
-    <state width="1878" height="344" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608278460007" />
+    <state width="1878" height="344" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608364528025" />
     <state width="1878" height="376" key="GridCell.Tab.0.left/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197739" />
     <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606843846657" />
     <state width="1398" height="74" key="GridCell.Tab.0.left/0.25.1440.793@0.25.1440.793" timestamp="1606984335920" />
-    <state width="1878" height="344" key="GridCell.Tab.0.right" timestamp="1608278460009">
+    <state width="1878" height="344" key="GridCell.Tab.0.right" timestamp="1608364528026">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="338" key="GridCell.Tab.0.right/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1607293272211" />
-    <state width="1878" height="344" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608278460009" />
+    <state width="1878" height="344" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608364528026" />
     <state width="1878" height="376" key="GridCell.Tab.0.right/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606932197745" />
     <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606843846658" />
     <state width="1398" height="74" key="GridCell.Tab.0.right/0.25.1440.793@0.25.1440.793" timestamp="1606984335921" />
