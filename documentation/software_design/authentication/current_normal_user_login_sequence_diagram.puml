@@ -1,0 +1,67 @@
+@startuml current_normal_user_login_sequence_diagram
+actor User
+Participant LoginView
+Participant LoginController
+Participant UserFacade
+Participant Session
+Participant UserDao
+Participant Connection
+Participant Statement
+Database DB
+
+
+User -> LoginView : Login attempt
+LoginView -> LoginController : logIn()
+
+alt credentials match phone pattern
+    LoginController -> UserFacade : phoneLogin(String, String)
+    UserFacade -> UserDao : phoneLogin(String, String)
+    UserDao -> UserDao : findUserByPhone(String)
+    UserDao -> UserDao : findNormalUserByPhone(String)
+       group DB Query
+            UserDao -> Connection : createStatement()
+            Connection -> Statement : creates
+            Statement -> UserDao : Statement
+            UserDao -> Statement : executeQuery()
+            Statement -> DB : SQL query
+            UserDao <- DB : result
+       end
+        UserDao -> UserDao : verifyPassword(String,String)
+        alt right password
+            UserDao -> UserFacade : User
+            UserFacade -> Session : setLoggedInNormalUser(NormalUser)
+        else wrong password
+            UserDao -> UserFacade : wrong password exception
+            UserFacade -> LoginController : authentication failed exception
+        end
+
+
+
+else credentials match email pattern
+         LoginController -> UserFacade : emailLogin(String, String)
+         UserFacade -> UserDao : emailLogin(String, String)
+         UserDao -> UserDao : findUserByEmail(String)
+         UserDao -> UserDao : findNormalUserByEmail(String)
+            group DB Query
+                 UserDao -> Connection : createStatement()
+                 Connection -> Statement : creates
+                 Statement -> UserDao : Statement
+                 UserDao -> Statement : executeQuery()
+                 Statement -> DB : SQL query
+                 UserDao <- DB : result
+            end
+             UserDao -> UserDao : verifyPassword(String,String)
+             alt right password
+                 UserDao -> UserFacade : User
+                 UserFacade -> Session : setLoggedInNormalUser(NormalUser)
+             else wrong password
+                 UserDao -> UserFacade : wrong password exception
+                 UserFacade -> LoginController : authentication failed exception
+             end
+else invalid credentials
+     UserFacade -> LoginView : error message
+end
+
+
+@enduml
+

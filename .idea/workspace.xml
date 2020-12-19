@@ -29,9 +29,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_balance/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_balance/manage_balance_class_diagram.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_balance/manage_balance_class_diagram.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/authentication/current_login_initialisation_sequence_diagram.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/authentication/current_login_sequence_diagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/authentication/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/authentication/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,9 +232,10 @@
     <state x="1805" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606954950416" />
     <state x="365" y="148" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1608277360206" />
     <state x="274" y="143" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1606842825150" />
-    <state x="674" y="349" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608364517725">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="2114" y="273" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608396574958">
+      <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
+    <state x="2114" y="273" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1608396574958" />
     <state x="674" y="349" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1608364517725" />
     <state x="597" y="205" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1606842684846">
       <screen x="0" y="23" width="1440" height="877" />
@@ -318,6 +320,10 @@
     <state x="1717" y="-17" key="SettingsEditor/0.23.1440.877/1440.-53.1920.1057@1440.-53.1920.1057" timestamp="1606857018082" />
     <state x="1717" y="-39" key="SettingsEditor/0.23.1440.877/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1606955113736" />
     <state x="208" y="53" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1606843225725" />
+    <state width="566" height="445" key="SwitcherDM" timestamp="1608399666597">
+      <screen x="1440" y="-76" width="1920" height="1080" />
+    </state>
+    <state width="566" height="445" key="SwitcherDM/0.0.1440.900/1440.-76.1920.1080@1440.-76.1920.1080" timestamp="1608399666597" />
     <state x="2123" y="363" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1607290676492">
       <screen x="1440" y="-76" width="1920" height="1080" />
     </state>
