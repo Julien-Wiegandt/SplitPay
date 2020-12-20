@@ -1,18 +1,18 @@
 @startuml manage_balance
 
-package transactionController <<Folder>> {
+package controller <<Folder>> {
   
   class RefillMoneyInputController{
     +refillBalance()
   }
-  class pullOutMoneyInputController{
+  class PullOutMoneyInputController{
     +pullOutMoney()
   }
 }
 
-package transaction <<Folder>> {
-  class TransactionFaçade {
-    +getInstance() : TransactionFaçade
+package facade <<Folder>> {
+  class TransactionFacade {
+    +getInstance() : TransactionFacade
     +refillBalance(CreditCard creditcard, Float amount)
     +pullOutMoneyFromAccount(BankAccount account, Float amount)
   }
@@ -55,10 +55,10 @@ package dao <<Folder>> {
 
 }
 
-RefillMoneyInputController .down.> TransactionFaçade
-pullOutMoneyInputController .down.> TransactionFaçade
+RefillMoneyInputController .down.> TransactionFacade
+PullOutMoneyInputController .down.> TransactionFacade
 
-TransactionFaçade -down-> DAOFactory
-TransactionFaçade -down-> TransactionDAO
+TransactionFacade -down-> DAOFactory
+TransactionFacade -down-> TransactionDAO
 
 @enduml

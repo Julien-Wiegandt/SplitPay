@@ -1,0 +1,33 @@
+@startuml
+
+autonumber
+
+
+[-> PullOutMoneyInputController : pullOutMoney()
+
+PullOutMoneyInputController -> TransactionFacade: pullOutMoney(BankAccount,Float)
+
+TransactionFacade -> UserFacade : getBalance()
+UserFacade -> TransactionFacade : Float
+
+alt insufficient balance
+
+TransactionFacade -> PullOutMoneyInputController : insufficient amount error
+
+else sufficient balance
+
+TransactionFacade -> DAOFactory: createTransactionDAO()
+DAOFactory -> TransactionDAO : creates
+
+activate TransactionDAO
+
+TransactionDAO -> DAOFactory : TransactionDAO
+DAOFactory -> TransactionFacade : TransactionDAO
+TransactionFacade -> TransactionDAO : createUserToBankAccountTransaction(BankAccount,Float)
+
+deactivate TransactionDAO
+
+end
+
+
+@enduml
