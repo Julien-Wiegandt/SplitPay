@@ -1,0 +1,158 @@
+@startuml domain_analysis
+
+entity BankAccount {
+  - label : String
+  - bic : String
+  - iban : String
+  - ownerFirstName : String
+  - ownerLastName : String
+}
+
+entity Split {
+  - label : String
+  - splitcode : String
+  - goalAmount : Float
+  - splitMode : String
+  - expired : Boolean
+}
+
+entity ItemSplit {
+    - label : String
+    - splitcode : String
+    - goalAmount : Float
+    - splitMode : String
+    - expired : Boolean
+    - items : Collection<Item>
+}
+
+entity Bill {
+  - label : String
+  - content : String
+}
+
+note right of Bill
+content format : "pizza:4.99/cold drink:2.00/ticket:14.99"
+endnote
+
+
+entity Notification {
+  - label : String
+  - message : String
+}
+
+entity SplitNotification {
+    - label : String
+    - message : String
+}
+
+entity Group {
+  - label : String
+}
+
+entity CreditCard {
+  - number : String
+  - ownerName : String
+  - date : String
+  - cvv : String
+}
+
+entity NormalUser {
+    - email : String
+    - phone : String
+    - nickname : String
+    - password : String
+    - balance : Float
+    - firstName: String
+    - lastName: String
+}
+
+entity StoreOwner {
+    - email : String
+    - phone : String
+    - nickname : String
+    - password : String
+    - balance : Float
+    - companyName : String
+    - address : String
+}
+
+package transaction <<Folder>> {
+
+    entity SplitTransaction{
+        - amount : Float
+        - dateCreated : Date
+        - sender_fk : NormalUser
+        - receiver_fk : StoreOwner
+    }
+
+    entity UserToUserTransaction {
+        - amount : Float
+        - dateCreated : Date
+        - sender_fk : NormalUser
+        - receiver_fk : NormalUser
+        }
+
+
+    entity UserToBankAccount {
+        - amount : Float
+        - dateCreated : Date
+        - sender_fk : NormalUser
+        - receiver_fk : BankAccount
+    }
+
+    entity BankAccountToUserTransaction{
+        - amount : Float
+        - dateCreated : Date
+        - sender_fk : BankAccount
+        - receiver_fk : User
+    }
+
+    entity UserToStoreOwnerTransaction {
+        - amount : Float
+        - dateCreated : Date
+        - sender_fk : User
+        - receiver_fk : StoreOwner
+    }
+
+    entity StoreOwnerToBankAccount {
+        - amount : Float
+        - dateCreated : Date
+        - sender_fk : StoreOwner
+        - receiver_fk : BankAccount
+    }
+}
+
+entity GroupUserRelation{
+
+}
+
+entity Friends {
+    - adder_normal_user_fk : NormalUser
+    - added_normal_user_fk : NormalUser
+}
+
+GroupUserRelation --> Group
+GroupUserRelation --> NormalUser
+
+NormalUser <-- BankAccount
+StoreOwner <-- BankAccount
+
+NormalUser <-- Split
+StoreOwner <-- ItemSplit
+
+
+NormalUser <-up- Notification
+NormalUser <--  SplitNotification
+NormalUser <-up- CreditCard
+
+Friends -> NormalUser
+Friends -> NormalUser
+
+ItemSplit -->  Bill
+SplitNotification -->  ItemSplit
+
+
+Group -->  NormalUser
+StoreOwner  <-- Bill
+
+@enduml
