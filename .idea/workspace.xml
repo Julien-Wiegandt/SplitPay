@@ -29,11 +29,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SplitPay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SplitPay.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,13 +67,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/documentation/software_design/manage_friends" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/documentation/software_design/manage_personnal_account" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -81,18 +82,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_personnal_account" />
       <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_friends" />
       <recent name="$PROJECT_DIR$/documentation/software_design/manage_balance" />
       <recent name="$PROJECT_DIR$/documentation/software_design/make_payment" />
       <recent name="$PROJECT_DIR$/documentation/software_design/authentication" />
-      <recent name="$PROJECT_DIR$/documentation/software_design/get_transactions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_personnal_account" />
       <recent name="$PROJECT_DIR$/documentation/software_design/make_payment" />
       <recent name="$PROJECT_DIR$/documentation/software_design/authentication" />
       <recent name="$PROJECT_DIR$/src/utils/jdk" />
       <recent name="$PROJECT_DIR$/src/utils/ui" />
-      <recent name="$PROJECT_DIR$/src/utils/persist" />
     </key>
   </component>
   <component name="RunManager" selected="Application.SplitPay (1)">
@@ -220,6 +221,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added generated blank code for persist and core layer" />
     <option name="LAST_COMMIT_MESSAGE" value="Added generated blank code for persist and core layer" />
   </component>
