@@ -1,0 +1,23 @@
+@startuml
+autonumber
+
+--> AddFriendController : addFriend(ActionEvent)
+AddFriendController -> NormalUserFacade : addFriendByPhone(String)
+activate UserDAO
+NormalUserFacade -> UserDAO : findUserByPhone(String)
+
+alt success
+UserDAO -> NormalUserFacade : NormalUser
+NormalUserFacade -> UserDAO : addFriend(NormalUser)
+    alt success
+    UserDAO --> AddFriendController : done
+    else exception
+    UserDAO --> AddFriendController : unique key exception
+    end
+else exception
+UserDAO --> AddFriendController : user not found exception
+end
+
+deactivate UserDAO
+
+@enduml

@@ -1,0 +1,104 @@
+@startuml
+
+package controller{
+    class ManageFriendsController{
+        -friendsList: ListView
+        -allStyleSetDefault(): void
+        +goToAddFriendView(actionEvent:ActionEvent): void
+        +goToHomeView(actionEvent:ActionEvent): void
+        +deleteSelectedFriend(actionEvent:ActionEvent): void
+        +initialize(): void
+    }
+    class AddFriendController{
+        -credential: TextField
+        -allStyleSetDefault(): void
+        +goToHomeView(actionEvent:ActionEvent): void
+        +addFriend(actionEvent:ActionEvent): void
+    }
+}
+
+abstract class Application
+package main{
+    class SplitPay{
+        {static} +window: Stage
+        +start(stage:Stage): void
+        {static} +main(String[]:args): void
+    }
+}
+
+package core{
+    package facade{
+        abstract class UserFacade{
+        }
+        class NormalUserFacade{
+            +addFriendByPhone(phone:String): void
+            +addFriendByEmail(email:String): void
+            +deleteFriendByPhone(user:NormalUser): void
+        }
+    }
+    package model{
+            class User{
+                -id: String
+                -email: String
+                -phone: String
+                -nickname: String
+                -password: String
+                -balance: Double
+            }
+            class NormalUser{
+                -firstName: String
+                -lastName: String
+            }
+        }
+}
+
+package persist{
+    abstract class DAOFactory{
+        #connection: Connection
+        {static} +getConnection(): Connection
+        +createUserDAO(): UserDAO
+        -DAOFactory(): DAOFactory
+    }
+    package dao{
+        package mysql{
+            class MySqlUserDAO{
+                -MySqlUserDAO(): MySqlUserDAO
+            }
+            class MySqlDAOFactory{
+                +createUserDAO(): MySqlUserDAO
+            }
+        }
+        interface UserDAO{
+            +getConnection(): UserDAO
+            +findUserByEmail(email:String): User
+            +findUserByPhone(phone:String): User
+            +getFriends(): Collection<User>
+            +addFriend(user:User): void
+        }
+        package postgres{
+            class PostGresUserDAO{
+                -PostGresUserDAO(): PostGresUserDAO
+            }
+            class PostGresDAOFactory{
+                +createUserDAO(): PostGresUserDAO
+            }
+        }
+    }
+}
+
+ManageFriendsController .up.> SplitPay : use
+AddFriendController .up.> SplitPay : use
+ManageFriendsController ..> NormalUserFacade : use
+AddFriendController .right.> NormalUserFacade : use
+User <|-- NormalUser
+UserDAO <|.. MySqlUserDAO
+UserDAO <|.. PostGresUserDAO
+DAOFactory <|-down- MySqlDAOFactory
+DAOFactory <|-down- PostGresDAOFactory
+MySqlDAOFactory .down.> MySqlUserDAO : creates
+PostGresDAOFactory .down.> PostGresUserDAO : creates
+UserFacade -up> "1" DAOFactory
+UserFacade -up> "1" UserDAO
+UserFacade <|-- NormalUserFacade
+Application <|-- SplitPay
+@enduml
