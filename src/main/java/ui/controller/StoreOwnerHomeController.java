@@ -4,14 +4,13 @@ import core.facade.UserFacade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HomeController {
+public class StoreOwnerHomeController {
 
     @FXML
     private Label tempLabel;
 
     @FXML
     private void initialize() {
-        tempLabel.setText("Hello "+UserFacade.getUserFacade().getUser().getNickname());
+        tempLabel.setText("Hello store owner"+ UserFacade.getUserFacade().getLoggedStoreOwner().getNickname());
     }
-
 }

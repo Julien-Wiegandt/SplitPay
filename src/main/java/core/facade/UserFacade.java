@@ -1,5 +1,6 @@
 package core.facade;
 
+import core.auth.Session;
 import persist.DAOFactory;
 import persist.dao.UserDAO;
 import core.models.NormalUser;
@@ -19,7 +20,6 @@ public class UserFacade {
      */
     private static UserFacade userFaçade;
 
-
     /**
      *
      */
@@ -36,12 +36,18 @@ public class UserFacade {
     private UserDAO userDao;
 
     /**
+     *
+     */
+    private Session session;
+
+    /**
      * @param credential
      * @param password
      * @return
      */
-    public void emailLogIn(String credential, String password) throws Exception {
+    public void emailLogIn(String credential, String password) throws Exception{
         user = userDao.emailLogIn(credential,password);
+        session.setLoggedUser(user);
     }
 
     /**
@@ -69,6 +75,14 @@ public class UserFacade {
         user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, null, credential, password, nickname, 0f, null));
     }
 
+    public NormalUser getLoggedNormalUser(){
+        return session.getLoggedNormalUser();
+    }
+
+    public StoreOwner getLoggedStoreOwner(){
+        return session.getLoggedStoreOwner();
+    }
+
     /**
      * @return
      */
@@ -87,6 +101,7 @@ public class UserFacade {
     private UserFacade() {
         // TODO implement here
         userDao=daoFactory.createUserDao();
+        session = new Session();
     }
 
     public User getUser() {

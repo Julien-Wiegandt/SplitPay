@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HomeController">
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.NormalUserHomeController">
     <children>
         <Pane prefHeight="67.0" prefWidth="320.0">
             <children>
@@ -17,7 +17,7 @@
         </Pane>
         <Pane prefHeight="395.0" prefWidth="320.0">
          <children>
-            <Label fx:id="tempLabel" layoutX="129.0" layoutY="146.0" text="Hello " textAlignment="CENTER" />
+            <Label fx:id="tempLabel" layoutX="129.0" layoutY="146.0" text="Hello Normal User" textAlignment="CENTER" />
          </children></Pane>
         <Pane prefHeight="51.0" prefWidth="320.0" />
     </children>
