@@ -14,8 +14,13 @@ activate TransactionDAO
 
 TransactionDAO -> DAOFactory : TransactionDAO
 DAOFactory -> TransactionFacade : TransactionDAO
-TransactionFacade -> TransactionDAO : findAllTransactions()
+TransactionFacade -> TransactionDAO : findAllTransactions(int)
+
+alt success
 TransactionDAO -> TransactionController : Transaction[]
+else internal error
+TransactionDAO -> TransactionController : internal error
+end
 
 deactivate TransactionDAO
 
