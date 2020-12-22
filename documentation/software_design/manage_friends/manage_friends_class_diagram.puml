@@ -90,6 +90,7 @@ ManageFriendsController .up.> SplitPay : use
 AddFriendController .up.> SplitPay : use
 ManageFriendsController ..> NormalUserFacade : use
 AddFriendController .right.> NormalUserFacade : use
+UserFacade ..> User : creates
 User <|-- NormalUser
 UserDAO <|.. MySqlUserDAO
 UserDAO <|.. PostGresUserDAO

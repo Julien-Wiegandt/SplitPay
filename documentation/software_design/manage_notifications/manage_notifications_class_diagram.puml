@@ -1,0 +1,87 @@
+@startuml
+
+package ui{
+    package controller{
+        class NotificationController{
+            -notificationList: ListView
+            -allStyleSetDefault(): void
+            +goToHomeView(actionEvent:ActionEvent): void
+            +goToSplitView(actionEvent:ActionEvent): void
+            +deleteSelectedNotification(actionEvent:ActionEvent): void
+            +initialize(): void
+        }
+    }
+}
+
+abstract class Application
+package main{
+    class SplitPay{
+        {static} +window: Stage
+        +start(stage:Stage): void
+        {static} +main(String[]:args): void
+    }
+}
+
+package core{
+    package model{
+        class Notification{
+            -id: String
+            -userId: String
+            -label: String
+            -message: String
+        }
+    }
+    package facade{
+        class NotificationFacade{
+            addNotification(userId:String, label:String, message:String): void
+            deleteNotification(id: String): void
+        }
+    }
+}
+
+package persist{
+    abstract class DAOFactory{
+        #connection: Connection
+        {static} +getConnection(): Connection
+        +createUserDAO(): UserDAO
+        -DAOFactory(): DAOFactory
+    }
+    package dao{
+        package mysql{
+            class MySqlUserDAO{
+                -MySqlUserDAO(): MySqlUserDAO
+            }
+            class MySqlDAOFactory{
+                +createUserDAO(): MySqlUserDAO
+            }
+        }
+        interface NotificationDAO{
+            +getConnection(): UserDAO
+            +deleteNotificationById(id: String): void
+            +addNotification(notification: Notification): Notification
+            +getAllCurrentUserNotifications(): Collection<Notification>
+        }
+        package postgres{
+            class PostGresUserDAO{
+                -PostGresUserDAO(): PostGresUserDAO
+            }
+            class PostGresDAOFactory{
+                +createUserDAO(): PostGresUserDAO
+            }
+        }
+    }
+}
+
+NotificationController ..> NotificationFacade : use
+NotificationController ..> SplitPay : use
+NotificationFacade ..> Notification : creates
+NotificationDAO <|.. MySqlUserDAO
+NotificationDAO <|.. PostGresUserDAO
+DAOFactory <|-down- MySqlDAOFactory
+DAOFactory <|-down- PostGresDAOFactory
+MySqlDAOFactory .down.> MySqlUserDAO : creates
+PostGresDAOFactory .down.> PostGresUserDAO : creates
+NotificationFacade -up> "1" DAOFactory
+NotificationFacade -up> "1" NotificationDAO
+Application <|-- SplitPay
+@enduml

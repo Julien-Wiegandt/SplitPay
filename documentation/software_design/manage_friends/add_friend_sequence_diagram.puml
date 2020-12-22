@@ -1,7 +1,7 @@
 @startuml
 autonumber
 
---> AddFriendController : addFriend(ActionEvent)
+-> AddFriendController : addFriend(ActionEvent)
 AddFriendController -> NormalUserFacade : addFriendByPhone(String)
 activate UserDAO
 NormalUserFacade -> UserDAO : findUserByPhone(String)

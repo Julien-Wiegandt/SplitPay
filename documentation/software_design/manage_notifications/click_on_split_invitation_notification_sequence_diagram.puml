@@ -1,0 +1,14 @@
+@startuml
+autonumber
+
+-> NotificationController : goToSplitView(ActionEvent)
+NotificationController -> NotificationFacade : deleteNotification(String)
+activate NotificationDAO
+NotificationFacade -> NotificationDAO : deleteNotificationById(String)
+NotificationDAO --> NotificationController : done
+deactivate NotificationDAO
+NotificationController -> SplitController : displaySplit(String)
+SplitController --> NotificationController : done
+NotificationController -> SplitPay : window.setScene(new Scene(Parent, int, int))
+
+@enduml

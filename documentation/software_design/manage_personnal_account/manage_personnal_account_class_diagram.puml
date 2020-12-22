@@ -3,45 +3,45 @@
 package controller{
     class ManagePersonnalAccountController{
         -allStyleSetDefault(): void
-        +goToHomeView(in actionEvent:ActionEvent): void
-        +goToChangeEmailView(in actionEvent:ActionEvent): void
-        +goToChangePhoneView(in actionEvent:ActionEvent): void
-        +goToChangePasswordView(in actionEvent:ActionEvent): void
-        +goToChooseValidationMethodView(in actionEvent:ActionEvent): void
+        +goToHomeView(actionEvent:ActionEvent): void
+        +goToChangeEmailView(actionEvent:ActionEvent): void
+        +goToChangePhoneView(actionEvent:ActionEvent): void
+        +goToChangePasswordView(actionEvent:ActionEvent): void
+        +goToChooseValidationMethodView(actionEvent:ActionEvent): void
         +initialize(): void
     }
     class ChangeEmailController{
         -email1: TextField
         -email2: TextField
-        +goToManagePersonnalAccountView(in actionEvent:ActionEvent): void
-        +goToValidationView(in actionEvent:ActionEvent): void
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
+        +goToValidationView(actionEvent:ActionEvent): void
     }
     class ChangePasswordController{
         -password1: TextField
         -password2: TextField
-        +goToManagePersonnalAccountView(in actionEvent:ActionEvent): void
-        +goToChooseValidationMethodView(in actionEvent:ActionEvent): void
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
+        +goToChooseValidationMethodView(actionEvent:ActionEvent): void
     }
     class ChangePhoneController{
         -phone1: TextField
         -phone2: TextField
-        +goToManagePersonnalAccountView(in actionEvent:ActionEvent): void
-        +goToValidationView(in actionEvent:ActionEvent): void
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
+        +goToValidationView(actionEvent:ActionEvent): void
     }
     class ValidationController{
         {static} ~tempUser: User
         -validationCode: TextField
-        +confirmChanges(in actionEvent:ActionEvent): void
+        +confirmChanges(actionEvent:ActionEvent): void
         -generateValidationCode(): void
         -sendValidationCode(): void
         -updateUser(UserTemp): void
-        +goToManagePersonnalAccountView(in actionEvent:ActionEvent): void
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
     }
     class ChooseValidationMethodController{
         -phone: RadioButton
         -email: RadioButton
-        +goToManagePersonnalAccountView(in actionEvent:ActionEvent): void
-        +goToValidationView(in actionEvent:ActionEvent): void
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
+        +goToValidationView(actionEvent:ActionEvent): void
         -getVerifiedPhone(): String
         -getVerifiedEmail(): String
     }
@@ -149,8 +149,8 @@ ChooseValidationMethodController ..> UserFacade : use
 User <|-- NormalUser
 User <|-- StoreOwner
 
-NormalUserFacade --> NormalUser
-StoreOwnerFacade --> StoreOwner
+NormalUserFacade ..> NormalUser : creates
+StoreOwnerFacade ..> StoreOwner : creates
 UserFacade <|-- NormalUserFacade
 UserFacade <|-- StoreOwnerFacade
 
