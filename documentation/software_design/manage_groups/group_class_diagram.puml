@@ -1,0 +1,99 @@
+@startuml make_payment
+
+
+package view <<Folder>> {
+class AddGroupView {
+
+  }
+  class GroupView {
+  }
+  class EditGroupView {}
+}
+package controller <<Folder>> {
+
+
+  class AddGroupController {
+  label: TextField
+
+  }
+  class GroupController {
+  listCard: ListView
+
+    }
+   class EditGroupController {
+   }
+
+}
+
+package facade <<Folder>> {
+  class GroupFacade {
+    +getInstance() : GroupFacade
+    +addGroup(label:String): void
+    +deleteGroup( label:String): void
+    +addFriendToGroup( label : String, friend : User): void
+    +deleteFriendFromGroup(label: String, friend: User): void
+  }
+
+  class NormalUserFacade {
+      +getInstance() : UserFacade
+         }
+
+  GroupFacade ..> NormalUserFacade : uses >
+}
+
+
+package dao <<Folder>> {
+  class DAOFactory {
+    #{static}connection : Connection
+    +createGroupDao() : GroupDao
+    +{static}getConnection() : Connection
+  }
+
+  package mysql <<Folder>> {
+    class MySqlDAOFactory {}
+
+    MySqlDAOFactory .> MySqlGroupDAO : creates
+  }
+
+  class GroupDAO {
+    +getConnection() : Connection
+    +addGroup(label:String): void
+    +deleteGroup(label:String): void
+    +addFriendToGroup(label :String, friend:User): void
+    +deleteFriendFromGroup(label: String, friend:String): void
+
+  }
+
+
+
+  DAOFactory <|-- MySqlDAOFactory
+  GroupDAO <|-- MySqlGroupDAO
+
+
+}
+
+package model <<Folder>> {
+
+class Group {
+    -label: String
+
+  }
+
+}
+AddGroupController .down.> GroupFacade
+GroupController .down.> GroupFacade
+GroupView .down. GroupController
+AddGroupView .down. AddGroupController
+EditGroupView .down. EditGroupController
+EditGroupController .down.> GroupFacade
+
+
+GroupFacade -down-> GroupDAO
+
+
+
+
+
+GroupFacade .down.> DAOFactory
+
+@enduml
