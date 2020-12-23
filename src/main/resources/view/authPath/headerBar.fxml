@@ -7,9 +7,9 @@
 
 <AnchorPane prefHeight="60.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HeaderBarController">
    <children>
-      <Button fx:id="homeButton" onAction="#goToHomeView" mnemonicParsing="false" text="SplitPay" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <Button fx:id="homeButton" mnemonicParsing="false" onAction="#goToHomeView" text="SplitPay" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
       <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Log out" textAlignment="RIGHT" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="535.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-      <Label id="nickName" alignment="CENTER" contentDisplay="CENTER" text="User " AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="261.0" AnchorPane.topAnchor="5.0">
+      <Label fx:id="nickName" alignment="CENTER" contentDisplay="CENTER" layoutX="163.0" prefHeight="26.0" prefWidth="292.0" text="User " AnchorPane.leftAnchor="165.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
