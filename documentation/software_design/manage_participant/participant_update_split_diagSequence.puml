@@ -1,0 +1,46 @@
+@startuml
+
+autonumber
+
+
+actor Participant
+Participant SplitView
+Participant SplitController
+Participant SplitClientFacade
+Participant ObservableSplitClient
+Participant AdaptableSplitClient
+
+
+Participant -> SplitView : update attempt
+alt select item
+  SplitView -> SplitController: addItem()
+else new amount
+  SplitView -> SplitController: changeAmount()
+end
+
+alt balance sufficient
+  SplitController -> SplitClientFacade: updateSplit()
+  SplitClientFacade -> ObservableSplitClient: sendToServer()
+  ObservableSplitClient -> AdaptableSplitClient: sendToServer()
+  AdaptableSplitClient -> AdaptableSplitClient: handleMessageFromServer()
+  AdaptableSplitClient -> ObservableSplitClient: handleMessageFromServer()
+  ObservableSplitClient -> ObservableSplitClient: notifyAllObservers()
+  ObservableSplitClient -> SplitClientFacade: update()
+  SplitClientFacade -> SplitClientFacade: handleMessageFromServer()
+
+  alt update success
+    SplitClientFacade -> SplitController: Update Success
+  else item unavailable
+    SplitClientFacade -> SplitController: Item Unavailable Exception
+  else Split expired
+    SplitClientFacade -> SplitController: Split Expired Exception
+  end
+
+else balance insufficient
+  SplitController --> SplitController : Insufficient Balance Exception
+end
+
+
+@enduml
+
+l

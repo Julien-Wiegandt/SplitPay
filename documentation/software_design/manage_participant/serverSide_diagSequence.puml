@@ -1,0 +1,20 @@
+@startuml
+
+autonumber
+participant ConnectionToClient
+participant AdaptableSplitServer
+participant ObservableSplitServerFacade
+participant SplitServerFacade
+
+ConnectionToClient -> AdaptableSplitServer: receiveMessageFromClient(Object, ConnectionToClient)
+AdaptableSplitServer -> AdaptableSplitServer: handleMessageFromClient(Object, ConnectionToClient)
+AdaptableSplitServer -> ObservableSplitServerFacade: handleMessageFromClient(Object, ConnectionToClient)
+ObservableSplitServerFacade -> ObservableSplitServerFacade: setChanged()
+ObservableSplitServerFacade -> ObservableSplitServerFacade: notifyAllObservers(OriginatorMessage)
+ObservableSplitServerFacade -> SplitServerFacade: update(OriginatorMessage)
+SplitServerFacade -> SplitServerFacade: handleMessageFromClient(Object, ConnectionToClient)
+ObservableSplitServerFacade <- SplitServerFacade: sendToAllClient()
+ObservableSplitServerFacade -> AdaptableSplitServer: sendToAllClient()
+AdaptableSplitServer -> ConnectionToClient: sendToClient()
+@enduml
+

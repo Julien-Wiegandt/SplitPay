@@ -1,0 +1,194 @@
+@startuml
+
+package UI <<Folder>>{
+  class SplitForm{
+    }
+  class CodeJoinView{
+  }
+  class SplitParticipantView{
+
+  }
+
+  class CreationSplitView{
+    }
+  class SplitCreatedView{
+    }
+
+  class ManageParticipantController{
+    +goToHomeView(actionEvent: ActionEvent): void
+    +goToCodeJoinView(actionEvent: ActionEvent): void
+    +goToSplitParticipantView(actionEvent: ActionEvent): void
+    +addItem(actionEvent: ActionEvent): void
+    -allStyleSetDefault(): void
+    }
+
+  class CreationSplitController{
+    +goToHomeView(actionEvent: ActionEvent): void
+    +goToSplitParticipationView(actionEvent: ActionEvent): void
+    -allStyleSetDefault(): void
+    }
+
+  class CreationSplitStoreOwnerController{
+
+    +goToCreationSplitController(actionEvent: ActionEvent): void
+    +CreatedSplitStoreOwnerController()
+    -allStyleSetDefault(): void
+
+    }
+
+  class CreatedSplitStoreOwnerController{
+    +goToHomeView(actionEvent: ActionEvent): void
+    -allStyleSetDefault(): void
+
+    }
+
+  class Application{
+    }
+
+  class SplitPay{
+    +main(args: String[]): void
+    }
+  SplitForm *-- CreationSplitView
+  CodeJoinView -- ManageParticipantController
+  SplitParticipantView -- ManageParticipantController
+
+  CreationSplitView -- CreationSplitController
+  CreationSplitView -- CreationSplitStoreOwnerController
+  SplitCreatedView -- CreatedSplitStoreOwnerController
+
+  ManageParticipantController ..> SplitPay
+  CreationSplitController ..> SplitPay
+  CreationSplitStoreOwnerController ..> SplitPay
+  CreatedSplitStoreOwnerController ..> SplitPay
+  SplitPay --|> Application
+
+  CreationSplitController ..> core.SplitClientFacade
+  CreationSplitStoreOwnerController ..> core.SplitClientFacade
+  CreatedSplitStoreOwnerController ..> core.SplitClientFacade
+
+
+
+}
+
+package model <<Folder>>{
+
+  class Participant{
+    -amount: Double
+    -iSReady: Boolean
+    -idUser: int
+    -idSplit: int
+
+    +isReady(): void
+    +changeReady(statut: Boolean): void
+    +changeAmount(newAmount: Double): void
+    +pickItem(item: Item): void
+    +cancel()
+    }
+
+  class Split{
+    -label: String
+    -splitCode: String
+    -goal_amount: Double
+    -mode: String
+    -expired: Boolean
+    -Participants: Collection<Participant>
+
+    +notifyUser(user: User, notification: Notification): void
+    +isEveryoneReady(): Boolean
+    +isReadyForPayment(): Boolean
+    +validatePayment(): void
+    +notifyAll(notification: Notification): void
+    }
+  }
+
+package core <<Folder>>{
+  class SplitClientFacade{
+    -splitClientFacade: SplitClientFacade
+
+    +{static}getClientFacade(): SplitClientFacade
+    +createSplit(label: String, goal_amount: Double, expired: Boolean, Participants: Collection<Participant>): vpod
+    -splitFacade()
+    +update()
+    +handleMessageFromServer(message: Object)
+    +changeAmount(split: Split, amount: Double)
+    }
+
+  interface Obsever{
+    }
+
+  class Observable{
+    }
+
+  class ObservableSplitClientFacade{
+    +handleMessageFromUser()
+    +handleMessageFromServer()
+    }
+
+  class AdaptableSplitClient{
+    +sendToserver()
+    +openConnection()
+    +closeConnection()
+    +handleMessageFromServer()
+    }
+
+  class AbstractClient{
+    }
+
+  SplitClientFacade ..|> Observer
+  Observer -- Observable
+  SplitClientFacade --> "1" ObservableSplitClientFacade
+  Observable <|-- ObservableSplitClientFacade
+   ObservableSplitClientFacade -- AdaptableSplitClient
+  AdaptableSplitClient --|> AbstractClient
+
+  }
+
+package Server <<Folder>>{
+  interface Observer{
+    }
+
+  class Observable{
+    }
+
+  class SplitServerFacade{
+    +joinSplit(splitCode: String, user: User)
+    +getUserSplits(user: User)
+    +handleMessagerFromClient()
+    }
+
+  class ObservableSplitServerFacade{
+    +handleMessageFromClient()
+    }
+
+  class Split{
+    }
+
+  class Participant{
+    }
+
+  class AdaptableSplitServer{
+    +listen()
+    +stopListening()
+    +close()
+    +handleMessageFromClient()
+    +sendToAllClient()
+    }
+
+  class AbstractServer{
+    }
+
+  class ConnectionToClient{
+    +sendToClient()
+    }
+
+  Observer -- Observable
+  SplitServerFacade ..|> Observer
+  SplitServerFacade --> "0..*" Split
+  Split --> "0..1" Participant
+  ObservableSplitClientFacade --|> Observable
+  ObservableSplitClientFacade -- AdaptableSplitServer
+  AdaptableSplitServer --|> AbstractServer
+
+  AbstractServer "1" -- "*" ConnectionToClient
+  }
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+
+autonumber
+
+
+actor Participant
+Participant ParticipantView
+Participant ManageParticipantController
+Participant SplitClientFacade
+Participant ObservableSplitClient
+Participant AdaptableSplitClient
+
+
+Participant -> ParticipantView : Participation attempt
+ParticipantView -> ManageParticipantController: goToCodeJoinView(actionEvent: ActionEvent):void
+ManageParticipantController -> SplitClientFacade: joinSplit(splitCode: view)
+SplitClientFacade -> ObservableSplitClient: sendToServer()
+ObservableSplitClient -> AdaptableSplitClient: sendToServer()
+AdaptableSplitClient -> AdaptableSplitClient: handleMessageFromServer()
+AdaptableSplitClient -> ObservableSplitClient: handleMessageFromServer()
+ObservableSplitClient -> ObservableSplitClient: notifyAllObservers()
+ObservableSplitClient -> SplitClientFacade: update()
+SplitClientFacade -> SplitClientFacade: handleMessageFromServer()
+alt participation success
+SplitClientFacade -> ManageParticipantController: Participation Success
+
+else Invalid SplitCode
+SplitClientFacade -> ManageParticipantController: wrong SplitCode Exception
+else Split expired
+SplitClientFacade -> ManageParticipantController: Split expired Exception
+
+end
+@enduml

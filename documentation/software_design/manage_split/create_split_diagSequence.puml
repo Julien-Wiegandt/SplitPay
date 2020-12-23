@@ -1,0 +1,31 @@
+@startuml
+
+autonumber
+
+
+actor SplitOwner
+Participant ParticipantView
+Participant CreationSplitController
+Participant SplitClientFacade
+Participant ObservableSplitClient
+Participant AdaptableSplitClient
+
+
+SplitOwner -> ParticipantView : Split creation attempt
+ParticipantView -> CreationSplitController: createSplit()
+CreationSplitController -> SplitClientFacade: createSplit()
+SplitClientFacade -> ObservableSplitClient: sendToServer()
+ObservableSplitClient -> AdaptableSplitClient: sendToServer()
+AdaptableSplitClient -> AdaptableSplitClient: handleMessageFromServer()
+AdaptableSplitClient -> ObservableSplitClient: handleMessageFromServer()
+ObservableSplitClient -> ObservableSplitClient: notifyAllObservers()
+ObservableSplitClient -> SplitClientFacade: update()
+SplitClientFacade -> SplitClientFacade: handleMessageFromServer()
+alt creation success
+SplitClientFacade -> CreationSplitController: success message
+
+else error creation split
+SplitClientFacade -> CreationSplitController: error message
+
+end
+@enduml
