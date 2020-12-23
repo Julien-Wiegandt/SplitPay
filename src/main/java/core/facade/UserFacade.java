@@ -84,6 +84,10 @@ public class UserFacade {
         return session.getLoggedStoreOwner();
     }
 
+    public boolean isStoreOwner() {return session.isStoreOwner();}
+    public boolean isNormalUser() {return session.isNormalUser();}
+
+
     /**
      * @return
      */

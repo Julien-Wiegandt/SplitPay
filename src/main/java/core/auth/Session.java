@@ -53,6 +53,20 @@ public class Session {
     }
 
     /**
+     * Returns true if the logged in user is a NormalUser
+     */
+    public boolean isNormalUser(){
+        return getLoggedNormalUser()!=null;
+    }
+
+    /**
+     * Returns true if the logged in user is a StoreOwner
+     */
+    public boolean isStoreOwner(){
+        return getLoggedStoreOwner()!=null;
+    }
+
+    /**
      * Clear any logged in user
      */
     public void logOut(){
