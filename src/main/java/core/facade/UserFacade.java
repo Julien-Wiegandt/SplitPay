@@ -57,6 +57,7 @@ public class UserFacade {
      */
     public void phoneLogIn(String credential, String password) throws Exception {
         user = userDao.phoneLogIn(credential,password);
+        session.setLoggedUser(user);
     }
 
     public void storeOwnerPhoneSignUp(String credential, String companyName, String nickname, String siret, String password){
