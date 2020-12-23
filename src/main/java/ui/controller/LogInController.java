@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import ui.path.AuthPath;
+import ui.path.UserNavigationPath;
 import util.RegexPattern;
 import main.SplitPay;
 
@@ -33,19 +34,7 @@ public class LogInController {
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()) {
             try {
                 UserFacade.getUserFacade().emailLogIn(credential.getText(), password.getText());
-                Parent root;
-
-                if(UserFacade.getUserFacade().getLoggedNormalUser()!=null){
-                    // Logged in as a NormalUser
-                    root = FXMLLoader.load(getClass().getResource(AuthPath.normalUserHomeView));
-
-                }
-                else{
-                    // Logged in as a StoreOwner
-                    root = FXMLLoader.load(getClass().getResource(AuthPath.storeOwnerHomeView));
-
-                }
-
+                Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
                 SplitPay.window.setScene(new Scene(root));
             } catch (Exception e) {
                 password.setText("");
@@ -60,12 +49,12 @@ public class LogInController {
 
                 if(UserFacade.getUserFacade().getLoggedNormalUser()!=null){
                     // Logged in as a NormalUser
-                    root = FXMLLoader.load(getClass().getResource(AuthPath.normalUserHomeView));
+                    root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
 
                 }
                 else{
                     // Logged in as a StoreOwner
-                    root = FXMLLoader.load(getClass().getResource(AuthPath.storeOwnerHomeView));
+                    root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
 
                 }
 

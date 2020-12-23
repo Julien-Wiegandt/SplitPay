@@ -66,6 +66,13 @@ public class Session {
         return getLoggedStoreOwner()!=null;
     }
 
+    /** pre : a user must be logged in
+     * Returns the logged in user
+     */
+    public User getLoggedUser(){
+        return isNormalUser() ? getLoggedNormalUser() : getLoggedStoreOwner();
+    }
+
     /**
      * Clear any logged in user
      */
