@@ -7,11 +7,11 @@ import javafx.scene.control.Label;
 public class NormalUserHomeController {
 
     @FXML
-    private Label tempLabel;
+    private Label balance;
 
     @FXML
     private void initialize() {
-        tempLabel.setText("Hello normal user "+UserFacade.getUserFacade().getLoggedNormalUser().getNickname());
+        balance.setText("User "+UserFacade.getUserFacade().getLoggedNormalUser().getBalance());
     }
 
 }

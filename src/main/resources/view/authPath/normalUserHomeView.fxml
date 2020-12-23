@@ -10,35 +10,15 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="138.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="General" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="194.0" text="My transactions" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="165.0" text="My splits" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="165.0" text="Notifications" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="149.0" text="Social" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="169.0" text="Friends" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="173.0" text="Groups" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="149.0" text="My information" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="240.0" text="Personal information" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="175.0" text="Credit cards" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="174.0" text="Bank accounts" />
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </VBox>
-   </left>
    <center>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="350.0" prefWidth="287.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="340.0" prefWidth="469.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" prefHeight="31.0" prefWidth="546.0" text="Balance">
                <font>
                   <Font size="26.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="532.0" text="52.00€">
+            <Label id="balance" alignment="CENTER" prefHeight="17.0" prefWidth="532.0">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -60,16 +40,9 @@
       </VBox>
    </center>
    <top>
-      <AnchorPane prefHeight="60.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="SlitPay" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
-            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Log out" textAlignment="RIGHT" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="535.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" text="User :" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="261.0" AnchorPane.topAnchor="5.0">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
+      <fx:include fx:id="normalUserHeaderBar" source="normalUserHeaderBar.fxml"/>
    </top>
+   <left>
+      <fx:include fx:id="normalUserMenu" source="normalUserMenu.fxml" />
+   </left>
 </BorderPane>
