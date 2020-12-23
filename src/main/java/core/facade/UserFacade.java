@@ -94,6 +94,10 @@ public class UserFacade {
         return session.getLoggedUser();
     }
 
+    public void logout(){
+        session.logOut();
+    }
+
 
     /**
      * @return

@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import main.SplitPay;
+import ui.path.AuthPath;
 import ui.path.UserNavigationPath;
 import ui.path.StoreOwnerNavigationPath;
 import javafx.scene.control.Label;
@@ -26,6 +27,17 @@ public class HeaderBarController {
      */
     public void goToHomeView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * This method logs the current user out and redirects him to the login page
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void logout(ActionEvent actionEvent) throws IOException {
+        UserFacade.getUserFacade().logout();
+        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.logInView));
         SplitPay.window.setScene(new Scene(root));
     }
 
