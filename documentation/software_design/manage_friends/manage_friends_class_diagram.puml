@@ -28,7 +28,7 @@ package main{
 
 package core{
     package facade{
-        abstract class UserFacade{
+        class UserFacade{
         }
         class NormalUserFacade{
             +addFriendByPhone(phone:String): void

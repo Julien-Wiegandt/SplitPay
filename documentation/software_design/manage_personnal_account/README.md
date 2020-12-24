@@ -2,7 +2,7 @@
 
 ### Class & package diagram
 
-![diagram](./manage_personnal_account_class_diagram.svg)
+![diagram](./manage_personnal_account_class_diagram.png)
 
 #### There are four scenarios for personnal account management:
 
@@ -11,7 +11,7 @@
 The following sequence diagram describes what happens when a user
 changes his current password
 
-![diagram](./change_password_sequence_diagram.svg)
+![diagram](./change_password_sequence_diagram.png)
 
 
 ##### Scenario 2 : Change Email
