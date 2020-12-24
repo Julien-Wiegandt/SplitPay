@@ -21,12 +21,14 @@ endnote
 entity Notification {
   - label : String
   - message : String
+  - dateCreated : Timestamp
 }
 
 entity SplitNotification {
     - label : String
     - message : String
     - splitCode : String
+    - dateCreated : Timestamp
 }
 
 entity FriendGroup {
@@ -115,11 +117,17 @@ entity Friends {
     - added_normal_user_fk : NormalUser
 }
 
+entity Relation_StoreOwner_BankAccount {}
+entity Relation_NormalUser_BankAccount {}
+
+Relation_StoreOwner_BankAccount --> StoreOwner
+Relation_StoreOwner_BankAccount --> BankAccount
+
+Relation_NormalUser_BankAccount --> NormalUser
+Relation_NormalUser_BankAccount --> BankAccount
+
 Relation_FriendGroup_User --> FriendGroup
 Relation_FriendGroup_User --> NormalUser
-
-NormalUser <-- BankAccount
-StoreOwner <-- BankAccount
 
 NormalUser <-up- Notification
 NormalUser <--  SplitNotification
