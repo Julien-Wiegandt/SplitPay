@@ -113,10 +113,10 @@ package core <<Folder>>{
     +changeAmount(split: Split, amount: Double)
     }
 
-  interface Obsever{
+  interface Observer{
     }
 
-  class Observable{
+  abstract class Observable{
     }
 
   class ObservableSplitClientFacade{
@@ -131,7 +131,7 @@ package core <<Folder>>{
     +handleMessageFromServer()
     }
 
-  class AbstractClient{
+  abstract class AbstractClient{
     }
 
   SplitClientFacade ..|> Observer
@@ -147,7 +147,7 @@ package Server <<Folder>>{
   interface Observer{
     }
 
-  class Observable{
+  abstract class Observable{
     }
 
   class SplitServerFacade{
@@ -174,7 +174,7 @@ package Server <<Folder>>{
     +sendToAllClient()
     }
 
-  class AbstractServer{
+  abstract class AbstractServer{
     }
 
   class ConnectionToClient{
