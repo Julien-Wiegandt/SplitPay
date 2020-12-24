@@ -25,19 +25,8 @@ public class MySqlUserDAO extends UserDAO {
         super();
     }
 
-    /**
-     * @return
-     */
-    private MySqlUserDAO MySqlUserDao() {
-        // TODO implement here
-        return null;
-    }
-
-
-
     public User emailLogIn(String email, String password) throws Exception {
         User user = this.findUserByEmail(email);
-
 
         if (password.equals(user.getPassword())) {
             System.out.println("Login success !");
@@ -93,7 +82,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -123,7 +112,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -156,7 +145,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -187,7 +176,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -216,16 +205,6 @@ public class MySqlUserDAO extends UserDAO {
     }
 
 
-
-    @Override
-    public User setValidationCode(int id) {
-        return null;
-    }
-
-
-
-
-
     public User create(User user){
         if( user instanceof NormalUser){
             createNormalUser(((NormalUser)user));
@@ -241,14 +220,14 @@ public class MySqlUserDAO extends UserDAO {
     public User createNormalUser(NormalUser user) {
         Statement stmt = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
             System.out.println("INSERT INTO NormalUser VALUES (NULL, '"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"', '"+user.getValidationCode()+"')");
             Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES (NULL, '"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"', '"+user.getValidationCode()+"')");
-//            MySqlDaoFactory.connection.commit();
+//            ConnectionMySql.connection.commit();
             return user;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -261,7 +240,7 @@ public class MySqlUserDAO extends UserDAO {
     public User createStoreOwner(StoreOwner user) {
         Statement stmt = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -269,7 +248,7 @@ public class MySqlUserDAO extends UserDAO {
             Integer rs = stmt.executeUpdate("INSERT INTO StoreOwner VALUES (NULL, '"+user.getEmail()+"','"+user.getPhone()+"', '"+user.getNickname()+"', '"+user.getPassword()+"', '"+user.getBalance()+"', '"+user.getCompanyName()+"','"+user.getAddress()+"','"+user.getSiret()+"', '"+user.getValidationCode()+"')");
             System.out.println("good job");
 
-            //            MySqlDaoFactory.connection.commit();
+            //            ConnectionMySql.connection.commit();
             return user;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -283,15 +262,15 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         PreparedStatement preparedStmt = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
             if(user instanceof NormalUser) {
-                preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE NormalUser WHERE id='" + user.getId() + "'");
+                preparedStmt = ConnectionMySql.connection.prepareStatement("DELETE NormalUser WHERE id='" + user.getId() + "'");
             }else{
-                preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE StoreOwner WHERE id='" + user.getId() + "'");
+                preparedStmt = ConnectionMySql.connection.prepareStatement("DELETE StoreOwner WHERE id='" + user.getId() + "'");
             }
             preparedStmt.execute();
             return true;
@@ -306,7 +285,7 @@ public class MySqlUserDAO extends UserDAO {
     public boolean update(User user) {
         Statement stmt = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -321,7 +300,7 @@ public class MySqlUserDAO extends UserDAO {
                         "WHERE id='" + user.getId() + "'");
 
             }
-            MySqlDAOFactory.connection.commit();
+            ConnectionMySql.connection.commit();
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -348,7 +327,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -378,7 +357,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

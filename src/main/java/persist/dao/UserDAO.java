@@ -13,12 +13,6 @@ import java.util.*;
 public abstract class UserDAO{
 
     /**
-     * Default constructor
-     */
-    public UserDAO() {
-    }
-
-    /**
      * @param phone
      * @param password
      */
@@ -47,22 +41,6 @@ public abstract class UserDAO{
 
      */
     public abstract User findUserByPhone(String phone) ;
-
-    /**
-     * @param id
-
-     */
-    public boolean generateValidationCode(int id) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @param id
-
-     */
-    public abstract User setValidationCode(int id);
-
 
 
     /**
