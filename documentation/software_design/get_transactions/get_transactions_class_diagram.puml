@@ -18,7 +18,7 @@ package facade <<Folder>> {
 
 package dao <<Folder>> {
 
-  class DAOFactory {
+  abstract class DAOFactory {
     #{static}connection : Connection
     +createTransactionDao() : TransactionDao
     +{static}getConnection() : Connection
@@ -39,15 +39,15 @@ package dao <<Folder>> {
   }
 
 
-  class TransactionDAO {
+  interface TransactionDAO {
     +getConnection() : Connection
     +findAllTransactions(int userId) : Transaction[]
   }
 
   DAOFactory <|-- MySqlDAOFactory
   DAOFactory <|-- MyPostGresDAOFactory
-  TransactionDAO <|-- MyPostGresTransactionDAO
-  TransactionDAO <|-- MySqlTransactionDAO
+  TransactionDAO <|.. MyPostGresTransactionDAO
+  TransactionDAO <|.. MySqlTransactionDAO
 
 }
 

@@ -1,5 +1,6 @@
 package core.facade;
 
+import core.auth.Session;
 import persist.DAOFactory;
 import persist.dao.UserDAO;
 import core.models.NormalUser;
@@ -19,7 +20,6 @@ public class UserFacade {
      */
     private static UserFacade userFaçade;
 
-
     /**
      *
      */
@@ -36,12 +36,18 @@ public class UserFacade {
     private UserDAO userDao;
 
     /**
+     *
+     */
+    private Session session;
+
+    /**
      * @param credential
      * @param password
      * @return
      */
-    public void emailLogIn(String credential, String password) throws Exception {
+    public void emailLogIn(String credential, String password) throws Exception{
         user = userDao.emailLogIn(credential,password);
+        session.setLoggedUser(user);
     }
 
     /**
@@ -51,6 +57,7 @@ public class UserFacade {
      */
     public void phoneLogIn(String credential, String password) throws Exception {
         user = userDao.phoneLogIn(credential,password);
+        session.setLoggedUser(user);
     }
 
     public void storeOwnerPhoneSignUp(String credential, String companyName, String nickname, String siret, String password){
@@ -68,6 +75,29 @@ public class UserFacade {
     public void normalUserPhoneSignUp(String credential, String firstName, String lastName, String nickname, String password){
         user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, null, credential, password, nickname, 0f, null));
     }
+
+    public NormalUser getLoggedNormalUser(){
+        return session.getLoggedNormalUser();
+    }
+
+    public StoreOwner getLoggedStoreOwner(){
+        return session.getLoggedStoreOwner();
+    }
+
+    public boolean isStoreOwner() {return session.isStoreOwner();}
+    public boolean isNormalUser() {return session.isNormalUser();}
+
+    /** pre : a user must be logged in
+     * Returns the logged in user
+     */
+    public User getLoggedUser(){
+        return session.getLoggedUser();
+    }
+
+    public void logout(){
+        session.logOut();
+    }
+
 
     /**
      * @return
@@ -87,6 +117,7 @@ public class UserFacade {
     private UserFacade() {
         // TODO implement here
         userDao=daoFactory.createUserDao();
+        session = new Session();
     }
 
     public User getUser() {

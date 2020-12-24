@@ -29,20 +29,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/click_on_split_invitation_notification_sequence_diagram.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/click_on_split_invitation_notification_sequence_diagram.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/click_on_split_invitation_notification_sequence_diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.svg" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.svg" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.svg" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/click_on_split_invitation_notification_sequence_diagram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.svg" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +86,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/documentation/software_design/manage_notifications" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/documentation/software_design/manage_friends" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -152,9 +156,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SplitPay (1)" />
         <item itemvalue="JUnit.StoreOwnerLoginTests.correctStoreOwnerPhoneLogin" />
         <item itemvalue="JUnit.All in SplitPay" />
-        <item itemvalue="Application.SplitPay (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -168,6 +172,9 @@
       <updated>1606840815181</updated>
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
