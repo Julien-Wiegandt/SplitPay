@@ -26,8 +26,6 @@ SplitClientFacade -> ManageParticipantController: Participation Success
 
 else Invalid SplitCode
 SplitClientFacade -> ManageParticipantController: wrong SplitCode Exception
-else Split expired
-SplitClientFacade -> ManageParticipantController: Split expired Exception
 
 end
 @enduml
