@@ -8,23 +8,6 @@ entity BankAccount {
   - ownerLastName : String
 }
 
-entity Split {
-  - label : String
-  - splitcode : String
-  - goalAmount : Float
-  - splitMode : String
-  - expired : Boolean
-}
-
-entity ItemSplit {
-    - label : String
-    - splitcode : String
-    - goalAmount : Float
-    - splitMode : String
-    - expired : Boolean
-    - items : Collection<Item>
-}
-
 entity Bill {
   - label : String
   - content : String
@@ -38,20 +21,23 @@ endnote
 entity Notification {
   - label : String
   - message : String
+  - dateCreated : Timestamp
 }
 
 entity SplitNotification {
     - label : String
     - message : String
+    - splitCode : String
+    - dateCreated : Timestamp
 }
 
-entity Group {
+entity FriendGroup {
   - label : String
 }
 
 entity CreditCard {
   - number : String
-  - ownerName : String
+  - cardName : String
   - date : String
   - cvv : String
 }
@@ -122,7 +108,7 @@ package transaction <<Folder>> {
     }
 }
 
-entity GroupUserRelation{
+entity Relation_FriendGroup_User{
 
 }
 
@@ -131,15 +117,17 @@ entity Friends {
     - added_normal_user_fk : NormalUser
 }
 
-GroupUserRelation --> Group
-GroupUserRelation --> NormalUser
+entity Relation_StoreOwner_BankAccount {}
+entity Relation_NormalUser_BankAccount {}
 
-NormalUser <-- BankAccount
-StoreOwner <-- BankAccount
+Relation_StoreOwner_BankAccount --> StoreOwner
+Relation_StoreOwner_BankAccount --> BankAccount
 
-NormalUser <-- Split
-StoreOwner <-- ItemSplit
+Relation_NormalUser_BankAccount --> NormalUser
+Relation_NormalUser_BankAccount --> BankAccount
 
+Relation_FriendGroup_User --> FriendGroup
+Relation_FriendGroup_User --> NormalUser
 
 NormalUser <-up- Notification
 NormalUser <--  SplitNotification
@@ -148,11 +136,8 @@ NormalUser <-up- CreditCard
 Friends -> NormalUser
 Friends -> NormalUser
 
-ItemSplit -->  Bill
-SplitNotification -->  ItemSplit
 
-
-Group -->  NormalUser
+FriendGroup -->  NormalUser
 StoreOwner  <-- Bill
 
 @enduml
