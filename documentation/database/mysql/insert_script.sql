@@ -27,5 +27,5 @@ INSERT INTO `Notification` (`label`, `message`, `normal_user_fk`, `dateCreated`)
 VALUES ('Welcome', 'Hi welcome to our app', '1', '2020-12-24 17:19:43');
 
 INSERT INTO `StoreOwner` (`email`, `phone`, `nickname`, `password`, `balance`, `companyName`, `address`, `siret`)
-VALUES ('delarte34@hotmail.com', '0723414142', 'delarte34080', 'delarte34', '743.67', 'Del arte restaurant', '145 Rue Alphonse Beau de Rochas, 34170 Castelnau', '362 521 879 00034');
+VALUES ('delarte34@hotmail.com', '0767342312', 'delarte34080', 'delarte34', '743.67', 'Del arte restaurant', '145 Rue Alphonse Beau de Rochas, 34170 Castelnau', '362 521 879 00034');
 
