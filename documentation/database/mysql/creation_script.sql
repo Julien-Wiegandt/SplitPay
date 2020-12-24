@@ -82,6 +82,9 @@ CREATE TABLE `FriendGroup` (
     ON DELETE CASCADE ON UPDATE RESTRICT
 );
 
+INSERT INTO `FriendGroup` (`label`, `normal_user_fk`)
+VALUES  ('SplitTeam', '1');
+
 CREATE TABLE `Relation_FriendGroup_User` (
  `friend_group_fk` int NOT NULL,
  `normal_user_fk` int NOT NULL,
@@ -97,6 +100,11 @@ CREATE TABLE `Relation_FriendGroup_User` (
     ON DELETE CASCADE ON UPDATE RESTRICT
 );
 
+INSERT INTO `Relation_FriendGroup_User` (`friend_group_fk`, `normal_user_fk`)
+VALUES  ('1', '2'),
+        ('1', '3'),
+        ('1', '4');
+
 CREATE TABLE `Notification` (
  `notification_pk` int NOT NULL AUTO_INCREMENT,
  `label` varchar(255) NOT NULL,
@@ -110,6 +118,9 @@ CREATE TABLE `Notification` (
     REFERENCES `NormalUser` (`normal_user_pk`)
     ON DELETE RESTRICT ON UPDATE RESTRICT
 );
+
+INSERT INTO `Notification` (`label`, `message`, `normal_user_fk`, `dateCreated`)
+VALUES ('Welcome', 'Hi welcome to our app', '1', '2020-12-24 17:19:43');
 
 CREATE TABLE `SplitNotification` (
  `split_notification_pk` int NOT NULL AUTO_INCREMENT,
@@ -135,8 +146,12 @@ CREATE TABLE `StoreOwner` (
  `balance` float NOT NULL,
  `companyName` varchar(255) NOT NULL,
  `address` varchar(255) NOT NULL,
+ `siret` varchar(255) NOT NULL,
  PRIMARY KEY (`store_owner_pk`)
 );
+
+INSERT INTO `StoreOwner` (`email`, `phone`, `nickname`, `password`, `balance`, `companyName`, `address`, `siret`)
+VALUES ('delarte34@hotmail.com', '0723414142', 'delarte34080', 'delarte34', '743.67', 'Del arte restaurant', '145 Rue Alphonse Beau de Rochas, 34170 Castelnau', '362 521 879 00034');
 
 CREATE TABLE `Bill` (
  `bill_pk` int NOT NULL AUTO_INCREMENT,
