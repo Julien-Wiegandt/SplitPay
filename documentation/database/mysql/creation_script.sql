@@ -1,3 +1,16 @@
+DROP TABLE IF EXISTS CreditCard;
+DROP TABLE IF EXISTS Notification;
+DROP TABLE IF EXISTS SplitNotification;
+DROP TABLE IF EXISTS Relation_FriendGroup_User;
+DROP TABLE IF EXISTS FriendGroup;
+DROP TABLE IF EXISTS Friends;
+DROP TABLE IF EXISTS Bill;
+DROP TABLE IF EXISTS Relation_NormalUser_BankAccount;
+DROP TABLE IF EXISTS Relation_StoreOwner_BankAccount;
+DROP TABLE IF EXISTS BankAccount;
+DROP TABLE IF EXISTS StoreOwner;
+DROP TABLE IF EXISTS NormalUser;
+
 CREATE TABLE `NormalUser` (
  `normal_user_pk` int NOT NULL AUTO_INCREMENT,
  `email` varchar(255) NOT NULL,
@@ -8,7 +21,7 @@ CREATE TABLE `NormalUser` (
  `firstName` varchar(255) NOT NULL,
  `lastName` varchar(255) NOT NULL,
  PRIMARY KEY (`normal_user_pk`)
-)
+);
 
 INSERT INTO `NormalUser` (`email`, `phone`, `nickname`, `password`, `balance`, `firstName`, `lastName`)
 VALUES  ('test@test.com', '0767865931', 'testUser', 'splitpay', '17.53', 'John', 'Doe'),
@@ -17,24 +30,25 @@ VALUES  ('test@test.com', '0767865931', 'testUser', 'splitpay', '17.53', 'John',
         ('selena@orange.fr', '0711223355', 'SelenaG', 'splitpay', '0.67', 'Selena', 'Gui');
 
 CREATE TABLE `CreditCard` (
- `credit_card_pk` int NOT NULL,
+ `credit_card_pk` int NOT NULL AUTO_INCREMENT,
  `number` varchar(255) NOT NULL,
  `cardName` varchar(255) NOT NULL,
  `date` date NOT NULL,
  `cvv` varchar(255) NOT NULL,
  `normal_user_fk` int NOT NULL,
+ PRIMARY KEY (`credit_card_pk`),
  KEY `normal_user_fk` (`normal_user_fk`),
  CONSTRAINT `FK_NormalUser_CreditCard`
     FOREIGN KEY (`normal_user_fk`)
     REFERENCES `NormalUser` (`normal_user_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);
 
 INSERT INTO `CreditCard` (`number`, `cardName`, `date`, `cvv`, `normal_user_fk`)
 VALUES  ('2342394023948237', 'First card', '2021-11-19', '276', '1'),
         ('7247984029732378', 'Orange card', '2022-12-23', '276', '1'),
         ('9302932472974283', 'Visa', '2022-12-23', '276', '2'),
-        ('8723829242380098', 'mastercard', '2022-12-23', '276', '3')
+        ('8723829242380098', 'mastercard', '2022-12-23', '276', '3');
 
 CREATE TABLE `Friends` (
  `added_normal_user_fk` int NOT NULL,
@@ -49,12 +63,12 @@ CREATE TABLE `Friends` (
     FOREIGN KEY (`adder_normal_user_fk`)
     REFERENCES `NormalUser` (`normal_user_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);
 
 INSERT INTO `Friends` (`added_normal_user_fk`, `adder_normal_user_fk`)
 VALUES  ('2', '1'),
         ('3', '1'),
-        ('4', '1'),
+        ('4', '1');
 
 CREATE TABLE `FriendGroup` (
  `friend_group_pk` int NOT NULL AUTO_INCREMENT,
@@ -66,7 +80,7 @@ CREATE TABLE `FriendGroup` (
     FOREIGN KEY (`normal_user_fk`)
     REFERENCES `NormalUser` (`normal_user_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);
 
 CREATE TABLE `Relation_FriendGroup_User` (
  `friend_group_fk` int NOT NULL,
@@ -81,7 +95,7 @@ CREATE TABLE `Relation_FriendGroup_User` (
     FOREIGN KEY (`normal_user_fk`)
     REFERENCES `NormalUser` (`normal_user_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);
 
 CREATE TABLE `Notification` (
  `notification_pk` int NOT NULL AUTO_INCREMENT,
@@ -95,7 +109,7 @@ CREATE TABLE `Notification` (
     FOREIGN KEY (`normal_user_fk`)
     REFERENCES `NormalUser` (`normal_user_pk`)
     ON DELETE RESTRICT ON UPDATE RESTRICT
-)
+);
 
 CREATE TABLE `SplitNotification` (
  `split_notification_pk` int NOT NULL AUTO_INCREMENT,
@@ -110,7 +124,7 @@ CREATE TABLE `SplitNotification` (
     FOREIGN KEY (`normal_user_fk`)
     REFERENCES `NormalUser` (`normal_user_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);
 
 CREATE TABLE `StoreOwner` (
  `store_owner_pk` int NOT NULL AUTO_INCREMENT,
@@ -122,7 +136,7 @@ CREATE TABLE `StoreOwner` (
  `companyName` varchar(255) NOT NULL,
  `address` varchar(255) NOT NULL,
  PRIMARY KEY (`store_owner_pk`)
-)
+);
 
 CREATE TABLE `Bill` (
  `bill_pk` int NOT NULL AUTO_INCREMENT,
@@ -135,7 +149,7 @@ CREATE TABLE `Bill` (
     FOREIGN KEY (`store_owner_fk`)
     REFERENCES `StoreOwner` (`store_owner_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);
 
 CREATE TABLE `BankAccount` (
  `bank_account_pk` int NOT NULL AUTO_INCREMENT,
@@ -145,7 +159,7 @@ CREATE TABLE `BankAccount` (
  `ownerFirstName` varchar(255) NOT NULL,
  `ownerLastName` varchar(255) NOT NULL,
  PRIMARY KEY (`bank_account_pk`)
-)
+);
 
 CREATE TABLE `Relation_NormalUser_BankAccount` (
  `normal_user_fk` int NOT NULL,
@@ -160,7 +174,7 @@ CREATE TABLE `Relation_NormalUser_BankAccount` (
     FOREIGN KEY (`normal_user_fk`)
     REFERENCES `NormalUser` (`normal_user_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);
 
 CREATE TABLE `Relation_StoreOwner_BankAccount` (
  `store_owner_fk` int NOT NULL,
@@ -175,4 +189,4 @@ CREATE TABLE `Relation_StoreOwner_BankAccount` (
     FOREIGN KEY (`store_owner_fk`)
     REFERENCES `StoreOwner` (`store_owner_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);
