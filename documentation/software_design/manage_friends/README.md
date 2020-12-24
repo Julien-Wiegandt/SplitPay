@@ -2,7 +2,7 @@
 
 ### Class & package diagram
 
-![diagram](./manage_friends_class_diagram.svg)
+![diagram](./manage_friends_class_diagram.png)
 
 #### There are two scenarios for friends management:
 
@@ -11,7 +11,7 @@
 The following sequence diagram describes what happens when a user
 add a friend
 
-![diagram](./add_friend_sequence_diagram.svg)
+![diagram](./add_friend_sequence_diagram.png)
 
 
 ##### Scenario 2 : Delete a friend

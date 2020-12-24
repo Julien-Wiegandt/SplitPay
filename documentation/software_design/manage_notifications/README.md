@@ -2,7 +2,7 @@
 
 ### Class & package diagram
 
-![diagram](./manage_notifications_class_diagram.svg)
+![diagram](./manage_notifications_class_diagram.png)
 
 #### There are three scenarios for notifications management:
 
@@ -11,7 +11,7 @@
 The following sequence diagram describes what happens when a user
 click on a Split invitation notification.
 
-![diagram](./click_on_split_invitation_notification_sequence_diagram.svg)
+![diagram](./click_on_split_invitation_notification_sequence_diagram.png)
 
 
 ##### Scenario 2 : Delete a notification
