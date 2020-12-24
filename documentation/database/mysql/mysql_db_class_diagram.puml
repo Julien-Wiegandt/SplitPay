@@ -8,23 +8,6 @@ entity BankAccount {
   - ownerLastName : String
 }
 
-entity Split {
-  - label : String
-  - splitcode : String
-  - goalAmount : Float
-  - splitMode : String
-  - expired : Boolean
-}
-
-entity ItemSplit {
-    - label : String
-    - splitcode : String
-    - goalAmount : Float
-    - splitMode : String
-    - expired : Boolean
-    - items : Collection<Item>
-}
-
 entity Bill {
   - label : String
   - content : String
@@ -137,19 +120,12 @@ GroupUserRelation --> NormalUser
 NormalUser <-- BankAccount
 StoreOwner <-- BankAccount
 
-NormalUser <-- Split
-StoreOwner <-- ItemSplit
-
-
 NormalUser <-up- Notification
 NormalUser <--  SplitNotification
 NormalUser <-up- CreditCard
 
 Friends -> NormalUser
 Friends -> NormalUser
-
-ItemSplit -->  Bill
-SplitNotification -->  ItemSplit
 
 
 Group -->  NormalUser
