@@ -44,7 +44,7 @@ package auth <<Folder>> {
 
 package dao <<Folder>> {
 
-  class DAOFactory {
+  abstract class DAOFactory {
     #{static}connection : Connection
     +createUserDao() : UserDaoImpl
     +{static}getConnection() : Connection
@@ -65,28 +65,28 @@ package dao <<Folder>> {
   }
 
 
-  class UserDAOImpl {
+  interface UserDAO {
     +getConnection() : Connection
     +emailLogin(String email, String password)
     +phoneLogin(String phone, String password)
     +createStoreOwner(StoreOwner user) : StoreOwner
     +createNormalUser(NormalUser user) : NormalUser
-    -findUserByEmail(String email) : User
-    -findUserByPhone(String phone) : User
-    -findUser(String credential) : User
+    +findUserByEmail(String email) : User
+    +findUserByPhone(String phone) : User
+    +findUser(String credential) : User
 
 
   }
 
   DAOFactory <|-- MySqlDAOFactory
   DAOFactory <|-- MyPostGresDAOFactory
-  UserDAOImpl <|-- MyPostGresUserDAO
-  UserDAOImpl <|-- MySqlUserDAO
+  UserDAO <|.. MyPostGresUserDAO
+  UserDAO <|.. MySqlUserDAO
 
 }
 
 UserFaçade -down-> DAOFactory
-UserFaçade -down-> UserDAOImpl
+UserFaçade -down-> UserDAO
 LoginController .down.> UserFaçade
 StoreOwnerSignUpController .down.> UserFaçade
 NormalUserSignUpController .down.> UserFaçade
