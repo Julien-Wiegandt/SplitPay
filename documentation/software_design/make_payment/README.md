@@ -2,7 +2,7 @@
 
 ### Class & package diagram
 
-![diagram](./make_payment_class_diagram.svg)
+![diagram](./make_payment_class_diagram.png)
 
 #### There are two scenarios to make a transaction:
 
@@ -11,7 +11,7 @@
 The following sequence diagram describes what happens when a user
 sends money to a friend
 
-![diagram](./send_money_sequence_diagram.svg)
+![diagram](./send_money_sequence_diagram.png)
 
 
 ##### Scenario 2 : User pays his share of a split
@@ -25,4 +25,4 @@ of the split according to the corresponding amount of the participant.
 The SplitFacade uses the services provided by the TransactionFacade, 
 to whom it delegates these operations
 
-![diagram](./pay_split_sequence_diagram.svg)
+![diagram](./pay_split_sequence_diagram.png)
