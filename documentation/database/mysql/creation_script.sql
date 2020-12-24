@@ -10,6 +10,32 @@ CREATE TABLE `NormalUser` (
  PRIMARY KEY (`normal_user_pk`)
 )
 
+INSERT INTO `NormalUser` (`email`, `phone`, `nickname`, `password`, `balance`, `firstName`, `lastName`)
+VALUES  ('test@test.com', '0767865931', 'testUser', 'splitpay', '17.53', 'John', 'Doe'),
+        ('bertha@hotmail.com', '0611223344', 'BerthaS', 'splitpay', '0', 'Bertha', 'Smith'),
+        ('jaden@gmail.com', '0711223344', 'JadenT', 'splitpay', '53.21', 'Jaden', 'Tune'),
+        ('selena@orange.fr', '0711223355', 'SelenaG', 'splitpay', '0.67', 'Selena', 'Gui');
+
+CREATE TABLE `CreditCard` (
+ `credit_card_pk` int NOT NULL,
+ `number` varchar(255) NOT NULL,
+ `cardName` varchar(255) NOT NULL,
+ `date` date NOT NULL,
+ `cvv` varchar(255) NOT NULL,
+ `normal_user_fk` int NOT NULL,
+ KEY `normal_user_fk` (`normal_user_fk`),
+ CONSTRAINT `FK_NormalUser_CreditCard`
+    FOREIGN KEY (`normal_user_fk`)
+    REFERENCES `NormalUser` (`normal_user_pk`)
+    ON DELETE CASCADE ON UPDATE RESTRICT
+)
+
+INSERT INTO `CreditCard` (`number`, `cardName`, `date`, `cvv`, `normal_user_fk`)
+VALUES  ('2342394023948237', 'First card', '2021-11-19', '276', '1'),
+        ('7247984029732378', 'Orange card', '2022-12-23', '276', '1'),
+        ('9302932472974283', 'Visa', '2022-12-23', '276', '2'),
+        ('8723829242380098', 'mastercard', '2022-12-23', '276', '3')
+
 CREATE TABLE `Friends` (
  `added_normal_user_fk` int NOT NULL,
  `adder_normal_user_fk` int NOT NULL,
@@ -25,29 +51,20 @@ CREATE TABLE `Friends` (
     ON DELETE CASCADE ON UPDATE RESTRICT
 )
 
-CREATE TABLE `CreditCard` (
- `credit_card_pk` int NOT NULL,
- `number` varchar(255) NOT NULL,
- `ownerName` varchar(255) NOT NULL,
- `date` date NOT NULL,
- `cvv` varchar(255) NOT NULL,
- `normal_user_fk` int NOT NULL,
- KEY `normal_user_fk` (`normal_user_fk`),
- CONSTRAINT `FK_NormalUser_CreditCard`
-    FOREIGN KEY (`normal_user_fk`)
-    REFERENCES `NormalUser` (`normal_user_pk`)
-    ON DELETE CASCADE ON UPDATE RESTRICT
-)
+INSERT INTO `Friends` (`added_normal_user_fk`, `adder_normal_user_fk`)
+VALUES  ('2', '1'),
+        ('3', '1'),
+        ('4', '1'),
 
 CREATE TABLE `FriendGroup` (
  `friend_group_pk` int NOT NULL AUTO_INCREMENT,
- `label` varchar(255) NOT NULL,
+ `label` varchar(50) NOT NULL,
  `normal_user_fk` int NOT NULL,
  PRIMARY KEY (`friend_group_pk`),
  KEY `normal_user_fk` (`normal_user_fk`),
  CONSTRAINT `FK_NormalUser_FriendGroup`
     FOREIGN KEY (`normal_user_fk`)
-    REFERENCES `FriendGroup` (`friend_group_pk`)
+    REFERENCES `NormalUser` (`normal_user_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
 )
 

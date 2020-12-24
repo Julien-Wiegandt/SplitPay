@@ -37,7 +37,7 @@ entity FriendGroup {
 
 entity CreditCard {
   - number : String
-  - ownerName : String
+  - cardName : String
   - date : String
   - cvv : String
 }
