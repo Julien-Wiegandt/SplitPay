@@ -29,7 +29,7 @@ entity SplitNotification {
     - splitCode : String
 }
 
-entity Group {
+entity FriendGroup {
   - label : String
 }
 
@@ -106,7 +106,7 @@ package transaction <<Folder>> {
     }
 }
 
-entity GroupUserRelation{
+entity FriendGroupUserRelation{
 
 }
 
@@ -115,8 +115,8 @@ entity Friends {
     - added_normal_user_fk : NormalUser
 }
 
-GroupUserRelation --> Group
-GroupUserRelation --> NormalUser
+FriendGroupUserRelation --> FriendGroup
+FriendGroupUserRelation --> NormalUser
 
 NormalUser <-- BankAccount
 StoreOwner <-- BankAccount
@@ -129,7 +129,7 @@ Friends -> NormalUser
 Friends -> NormalUser
 
 
-Group -->  NormalUser
+FriendGroup -->  NormalUser
 StoreOwner  <-- Bill
 
 @enduml
