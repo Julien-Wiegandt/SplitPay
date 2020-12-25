@@ -123,4 +123,14 @@ public class UserFacade {
     public User getUser() {
         return user;
     }
+
+    /**
+     * Returns the user having this phone number
+     * else throws exception
+     */
+    public User findUserByPhone(String phone){
+        return userDao.findUserByPhone(phone);
+    }
+
+
 }

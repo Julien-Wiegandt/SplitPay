@@ -25,6 +25,13 @@ public class MySqlDAOFactory extends DAOFactory {
     /**
      * @return
      */
+    public MySqlFriendDAO createFriendDao() {
+        return new MySqlFriendDAO();
+    }
+
+    /**
+     * @return
+     */
     public Connection getConnection() {
         if(connection==null){
             try {

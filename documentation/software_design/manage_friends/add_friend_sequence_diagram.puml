@@ -2,20 +2,24 @@
 autonumber
 
 -> AddFriendController : addFriend(ActionEvent)
-AddFriendController -> NormalUserFacade : addFriendByPhone(String)
-activate UserDAO
-NormalUserFacade -> UserDAO : findUserByPhone(String)
+AddFriendController -> FriendFacade : addFriendByPhone(String)
+FriendFacade -> UserFacade : findUserByPhone(String)
+UserFacade -> UserDAO : findUserByPhone(String)
+
 
 alt success
-UserDAO -> NormalUserFacade : NormalUser
-NormalUserFacade -> UserDAO : addFriend(NormalUser)
+UserDAO -> UserFacade : NormalUser
+UserFacade -> FriendFacade : NormalUser
+
+FriendFacade -> FriendDAO : addFriend(NormalUser,NormalUser)
+
     alt success
-    UserDAO --> AddFriendController : done
+    FriendDAO --> AddFriendController : done
     else exception
-    UserDAO --> AddFriendController : unique key exception
+    FriendDAO --> AddFriendController : unique key exception
     end
 else exception
-UserDAO --> AddFriendController : user not found exception
+FriendDAO --> AddFriendController : user not found exception
 end
 
 deactivate UserDAO

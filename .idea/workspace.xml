@@ -29,24 +29,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/click_on_split_invitation_notification_sequence_diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/.idea/documentation.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/facade/FriendFacade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/persist/dao/FriendDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlFriendDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/click_on_split_invitation_notification_sequence_diagram.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/change_password_sequence_diagram.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_personnal_account/manage_personnal_account_class_diagram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/SplitPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/SplitPay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/DAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlDAOFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +54,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="UML Sequence" />
         <option value="UML Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,6 +67,13 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1l3zy9effpRsqufwRCWHcXtyPC2" />
   <component name="ProjectLevelVcsManager">
@@ -86,7 +91,8 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/documentation/software_design/manage_friends" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -239,6 +245,36 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added generated blank code for persist and core layer" />
     <option name="LAST_COMMIT_MESSAGE" value="Added generated blank code for persist and core layer" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1608913074845">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608913074845" />
+    <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1608895384076">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608895384076" />
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1608918785677">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1237" height="3" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608915487969" />
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608918785677" />
+    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1608918785677">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1237" height="3" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608915487969" />
+    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608918785677" />
+    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1608918785676">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1237" height="3" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608915487969" />
+    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608918785676" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1608918785677">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1237" height="3" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608915487969" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608918785677" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SplitPay$SplitPay.ic" NAME="SplitPay Coverage Results" MODIFIED="1606932207340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

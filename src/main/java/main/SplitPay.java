@@ -1,6 +1,9 @@
 package main;
 
+import core.facade.FriendFacade;
 import core.facade.UserFacade;
+import core.models.NormalUser;
+import core.models.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,7 +34,5 @@ public class SplitPay extends Application {
         window.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+    public static void main(String[] args) {launch(args);}
 }

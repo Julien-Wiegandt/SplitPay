@@ -130,4 +130,5 @@ public abstract class UserDAO{
      */
     public abstract Collection<User> findAll();
 
+
 }
