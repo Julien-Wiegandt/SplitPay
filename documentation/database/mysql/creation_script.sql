@@ -174,3 +174,59 @@ CREATE TABLE `Relation_StoreOwner_BankAccount` (
     REFERENCES `StoreOwner` (`store_owner_pk`)
     ON DELETE CASCADE ON UPDATE RESTRICT
 );
+
+CREATE TABLE `UserToUserTransaction` (
+    `amount` float NOT NULL,
+    `dateCreated` timestamp NOT NULL,
+    `sender_fk` int DEFAULT NULL,
+    `receiver_fk` int DEFAULT NULL,
+    KEY `sender_fk` (`sender_fk`),
+    KEY `receiver_fk` (`receiver_fk`),
+    CONSTRAINT `FK_NormalUser_UserToUserTransaction_receiver` FOREIGN KEY (`receiver_fk`) REFERENCES `NormalUser` (`normal_user_pk`) ON DELETE SET NULL ON UPDATE RESTRICT,
+    CONSTRAINT `FK_NormalUser_UserToUserTransaction_sender` FOREIGN KEY (`sender_fk`) REFERENCES `NormalUser` (`normal_user_pk`) ON DELETE SET NULL ON UPDATE RESTRICT
+)
+
+CREATE TABLE `UserToBankAccount` (
+    `amount` float NOT NULL,
+    `dateCreated` timestamp NOT NULL,
+    `sender_fk` int DEFAULT NULL,
+     `receiver_fk` int DEFAULT NULL,
+     KEY `sender_fk` (`sender_fk`),
+     KEY `receiver_fk` (`receiver_fk`),
+     CONSTRAINT `FK_BankAccount_UserToBankAccountTransaction` FOREIGN KEY (`sender_fk`) REFERENCES `NormalUser` (`normal_user_pk`) ON DELETE SET NULL ON UPDATE RESTRICT,
+     CONSTRAINT `FK_NormalUser_UserToBankAccountTransaction` FOREIGN KEY (`receiver_fk`) REFERENCES `BankAccount` (`bank_account_pk`) ON DELETE SET NULL ON UPDATE RESTRICT
+)
+
+CREATE TABLE `BankAccountToUserTransaction` (
+    `amount` int NOT NULL,
+    `dateCreated` timestamp NOT NULL,
+    `sender_fk` int DEFAULT NULL,
+    `receiver_fk` int DEFAULT NULL,
+    KEY `sender_fk` (`sender_fk`),
+    KEY `receiver_fk` (`receiver_fk`),
+    CONSTRAINT `FK_BankAccount_BankAccountToUserTransaction` FOREIGN KEY (`sender_fk`) REFERENCES `BankAccount` (`bank_account_pk`) ON DELETE SET NULL ON UPDATE RESTRICT,
+    CONSTRAINT `FK_NormalUser_BankAccountToUserTransaction` FOREIGN KEY (`receiver_fk`) REFERENCES `NormalUser` (`normal_user_pk`) ON DELETE SET NULL ON UPDATE RESTRICT
+)
+
+CREATE TABLE `StoreOwnerToBankAccount` (
+   `amount` int NOT NULL,
+   `dateCreated` timestamp NOT NULL,
+   `sender_fk` int DEFAULT NULL,
+   `receiver_fk` int DEFAULT NULL,
+   KEY `sender_fk` (`sender_fk`),
+   KEY `receiver_fk` (`receiver_fk`),
+   CONSTRAINT `FK_BankAccount_StoreOwnerToBankAccount` FOREIGN KEY (`receiver_fk`) REFERENCES `BankAccount` (`bank_account_pk`) ON DELETE SET NULL ON UPDATE RESTRICT,
+   CONSTRAINT `FK_StoreOwner_StoreOwnerToBankAccount` FOREIGN KEY (`sender_fk`) REFERENCES `StoreOwner` (`store_owner_pk`) ON DELETE SET NULL ON UPDATE RESTRICT
+)
+
+CREATE TABLE `SplitTransaction` (
+    `amount` int NOT NULL,
+    `participants` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `dateCreated` timestamp NOT NULL,
+    `sender_fk` int DEFAULT NULL,
+    `receiver_fk` int DEFAULT NULL,
+    KEY `sender_fk` (`sender_fk`),
+    KEY `receiver_fk` (`receiver_fk`),
+    CONSTRAINT `FK_NormalUser_SplitTransaction` FOREIGN KEY (`sender_fk`) REFERENCES `NormalUser` (`normal_user_pk`) ON DELETE SET NULL ON UPDATE RESTRICT,
+    CONSTRAINT `FK_StoreOwner_SplitTransaction` FOREIGN KEY (`receiver_fk`) REFERENCES `StoreOwner` (`store_owner_pk`) ON DELETE SET NULL ON UPDATE RESTRICT
+)

@@ -66,10 +66,15 @@ package transaction <<Folder>> {
 
     entity SplitTransaction{
         - amount : Float
+        - participants : String
         - dateCreated : Date
         - sender_fk : NormalUser
         - receiver_fk : StoreOwner
     }
+
+    note right of SplitTransaction
+    participants format : "name1/name2/..."
+    endnote
 
     entity UserToUserTransaction {
         - amount : Float
@@ -91,13 +96,6 @@ package transaction <<Folder>> {
         - dateCreated : Date
         - sender_fk : BankAccount
         - receiver_fk : User
-    }
-
-    entity UserToStoreOwnerTransaction {
-        - amount : Float
-        - dateCreated : Date
-        - sender_fk : User
-        - receiver_fk : StoreOwner
     }
 
     entity StoreOwnerToBankAccount {
