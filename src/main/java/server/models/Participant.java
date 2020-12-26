@@ -33,6 +33,7 @@ public class Participant {
     private int id;
     private double amount;
     private boolean isReady;
+    private String nickname;
 
     public int getId() {
         return id;
@@ -42,13 +43,14 @@ public class Participant {
         this.id = id;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
-    private String nickname;
+    public String getNickname(){ return nickname; }
+
 }

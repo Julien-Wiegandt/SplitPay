@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Split {
 
-    public Split(String splitCode, int ownerId, String ownerNickName, Double goalAmount, String label, String splitMode){
+    public Split(String splitCode, int ownerId, String ownerNickName, double goalAmount, String label, String splitMode){
         this.splitCode=splitCode;
         this.label=label;
         this.ownerId=ownerId;
@@ -20,7 +20,7 @@ public class Split {
     private String label;
     private String splitCode;
     private boolean expired = false;
-    private Double goalAmount;
+    private double goalAmount;
     private String splitMode;
     private int ownerId;
     private HashMap<Integer,Participant> participants = new HashMap<>();
@@ -76,7 +76,7 @@ public class Split {
      *
      * @exception ParticipantNotFoundException if participant not found
      */
-    public void changeAmount(int id, Double amount) throws ParticipantNotFoundException {
+    public void changeAmount(int id, double amount) throws ParticipantNotFoundException {
         if(participants.get(id)==null){
             throw new ParticipantNotFoundException("Participant not found, can't update amount");
         } else {
@@ -108,11 +108,11 @@ public class Split {
         this.expired = expired;
     }
 
-    public Double getGoalAmount() {
+    public double getGoalAmount() {
         return goalAmount;
     }
 
-    public void setGoalAmount(Double goalAmount) {
+    public void setGoalAmount(double goalAmount) {
         this.goalAmount = goalAmount;
     }
 
@@ -140,6 +140,8 @@ public class Split {
         this.participants = participants;
     }
 
+    public int getNumberOfParticipant(){return participants.size();}
+
     @Override
     public String toString() {
         return "Split{" +
@@ -158,7 +160,7 @@ public class Split {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Split split = (Split) o;
-        return expired == split.expired && ownerId == split.ownerId && label.equals(split.label) && splitCode.equals(split.splitCode) && goalAmount.equals(split.goalAmount) && splitMode.equals(split.splitMode);
+        return expired == split.expired && ownerId == split.ownerId && label.equals(split.label) && splitCode.equals(split.splitCode) && goalAmount==split.goalAmount && splitMode.equals(split.splitMode);
     }
 
 }

@@ -12,10 +12,17 @@ public class SplitServerFacade {
     private HashMap<String, Split> splits = new HashMap<>();
     private static SplitServerFacade instance = null;
 
+    /**
+     * Private constructor for Singleton pattern
+     */
     private SplitServerFacade(){
 
     }
 
+    /**
+     * Thread-safe double lock Singleton pattern constructor
+     * @return
+     */
     public static SplitServerFacade getInstance() {
         if (instance == null) {
             synchronized(SplitServerFacade.class) {
@@ -35,7 +42,7 @@ public class SplitServerFacade {
      * @param label
      * @param splitMode
      */
-    public String createSplit(int ownerId, String ownerNickName, Double goalAmount, String label, String splitMode) {
+    public String createSplit(int ownerId, String ownerNickName, double goalAmount, String label, String splitMode) {
         String splitCode = SplitUtilities.generateSplitCode();
         Split split = new Split(splitCode, ownerId,ownerNickName,goalAmount,label,splitMode);
         splits.put(split.getSplitCode(),split);
@@ -54,6 +61,12 @@ public class SplitServerFacade {
         getSplitByCode(splitCode).addParticipant(participantId,participantNickname);
     }
 
+    /**
+     * Returns split identified by the splitcode
+     * @param splitCode
+     * @return
+     * @throws SplitNotFoundException
+     */
     public Split getSplitByCode(String splitCode) throws SplitNotFoundException {
         Split split = splits.get(splitCode);
         if(split==null){
@@ -63,7 +76,36 @@ public class SplitServerFacade {
         }
     }
 
+    /**
+     * Returns matching participant in a split if matching input
+     * @param splitCode
+     * @param participantId
+     * @return
+     * @throws SplitNotFoundException
+     */
     public Participant getSplitParticipant(String splitCode, int participantId) throws SplitNotFoundException {
         return getSplitByCode(splitCode).getParticipantById(participantId);
+    }
+
+    /**
+     * Returns the number of participant in a split
+     * @param splitCode
+     * @return
+     * @throws SplitNotFoundException
+     */
+    public int getNumberOfSplitParticipant(String splitCode) throws SplitNotFoundException {
+        return getSplitByCode(splitCode).getNumberOfParticipant();
+    }
+
+    /**
+     * Changes split participant amount
+     * @param splitCode
+     * @param participantId
+     * @param newAmount
+     * @throws SplitNotFoundException
+     * TODO : Check if goal amount will not be exceeded
+     */
+    public void changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException {
+        getSplitByCode(splitCode).getParticipantById(participantId).setAmount(newAmount);
     }
 }

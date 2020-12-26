@@ -6,6 +6,7 @@ import server.models.Participant;
 import server.models.Split;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Assert;
 import server.utils.SplitUtilities;
 
 import java.lang.reflect.Field;
@@ -62,4 +63,6 @@ public class BasicSplitTests {
             throw new Exception("Didn't get the expected participant");
         }
     }
+
+
 }
