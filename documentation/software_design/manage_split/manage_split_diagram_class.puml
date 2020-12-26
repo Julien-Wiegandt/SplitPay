@@ -88,7 +88,7 @@ package model <<Folder>>{
   class Split{
     -label: String
     -splitCode: String
-    -goal_amount: Double
+    -goalAmount: Double
     -mode: String
     -expired: Boolean
     -Participants: Collection<Participant>
@@ -106,7 +106,7 @@ package core <<Folder>>{
     -splitClientFacade: SplitClientFacade
 
     +{static}getClientFacade(): SplitClientFacade
-    +createSplit(label: String, goal_amount: Double, expired: Boolean, Participants: Collection<Participant>): vpod
+    +createSplit(label: String, goalAmount: Double, expired: Boolean, Participants: Collection<Participant>): viod
     -splitFacade()
     +update()
     +handleMessageFromServer(message: Object)
@@ -151,9 +151,12 @@ package Server <<Folder>>{
     }
 
   class SplitServerFacade{
-    +joinSplit(splitCode: String, user: User)
+    +joinSplit(String splitCode, int participantId, String participantNickname)
     +getUserSplits(user: User)
     +handleMessagerFromClient()
+    +createSplit(int ownerId, Double goalAmount, String label, String splitMode, String ownerNickname)
+    +getSplitByCode(String code) : Split
+    +getSplitParticipant(String splitCode, int participantId)
     }
 
   class ObservableSplitServerFacade{
@@ -185,8 +188,8 @@ package Server <<Folder>>{
   SplitServerFacade ..|> Observer
   SplitServerFacade --> "0..*" Split
   Split --> "0..1" Participant
-  ObservableSplitClientFacade --|> Observable
-  ObservableSplitClientFacade -- AdaptableSplitServer
+  ObservableSplitServerFacade --|> Observable
+  ObservableSplitServerFacade -- AdaptableSplitServer
   AdaptableSplitServer --|> AbstractServer
 
   AbstractServer "1" -- "*" ConnectionToClient

@@ -1,0 +1,35 @@
+@startuml
+
+class Split {
+    - id : int
+    - label : String
+    - splitCode : String
+    - goalAmount : Double
+    - splitMode : String
+    - expired : Boolean
+    - isEveryoneReady() : Boolean
+    - isGoalAmountReached() : Boolean
+    - isReadyForPayment() : Boolean
+    - getParticipantById(int id) : Participant
+    - ownerId : int
+    + validatePayment() : void
+    + changeAmount(int participant, Double amount) : void
+    + changeReadyStatus(int participant) : void
+    + removeParticipant(int participant) : void
+    + addParticipant(int participant) : void
+}
+
+class Participant {
+    - id : int
+    - amount : Double
+    - nickname : String
+    - isReady : Boolean
+    + isReady() : Boolean
+    + changeReadyStatus() : void
+    + changeAmount(Double newAmount) : void
+    + cancel() : void
+}
+
+Split --> "0..n participants" Participant
+
+@enduml
