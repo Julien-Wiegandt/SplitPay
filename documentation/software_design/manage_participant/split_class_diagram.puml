@@ -17,6 +17,7 @@ class Split {
     + changeReadyStatus(int participant) : void
     + removeParticipant(int participant) : void
     + addParticipant(int participant) : void
+    + getNumberOfParticipant() : int
 }
 
 class Participant {

@@ -72,33 +72,36 @@ package UI <<Folder>>{
 
 package model <<Folder>>{
 
-  class Participant{
-    -amount: Double
-    -iSReady: Boolean
-    -idUser: int
-    -idSplit: int
+  class Split {
+      - id : int
+      - label : String
+      - splitCode : String
+      - goalAmount : Double
+      - splitMode : String
+      - expired : Boolean
+      - isEveryoneReady() : Boolean
+      - isGoalAmountReached() : Boolean
+      - isReadyForPayment() : Boolean
+      - getParticipantById(int id) : Participant
+      - ownerId : int
+      + validatePayment() : void
+      + changeAmount(int participant, Double amount) : void
+      + changeReadyStatus(int participant) : void
+      + removeParticipant(int participant) : void
+      + addParticipant(int participant) : void
+      + getNumberOfParticipant() : int
+  }
 
-    +isReady(): void
-    +changeReady(statut: Boolean): void
-    +changeAmount(newAmount: Double): void
-    +pickItem(item: Item): void
-    +cancel()
-    }
-
-  class Split{
-    -label: String
-    -splitCode: String
-    -goalAmount: Double
-    -mode: String
-    -expired: Boolean
-    -Participants: Collection<Participant>
-
-    +notifyUser(user: User, notification: Notification): void
-    +isEveryoneReady(): Boolean
-    +isReadyForPayment(): Boolean
-    +validatePayment(): void
-    +notifyAll(notification: Notification): void
-    }
+  class Participant {
+      - id : int
+      - amount : Double
+      - nickname : String
+      - isReady : Boolean
+      + isReady() : Boolean
+      + changeReadyStatus() : void
+      + changeAmount(Double newAmount) : void
+      + cancel() : void
+  }
   }
 
 package core <<Folder>>{
@@ -157,16 +160,12 @@ package Server <<Folder>>{
     +createSplit(int ownerId, Double goalAmount, String label, String splitMode, String ownerNickname)
     +getSplitByCode(String code) : Split
     +getSplitParticipant(String splitCode, int participantId)
+    +getNumberOfSplitParticipant(String splitCode)
+    +changeParticipantAmount(String splitCode,int participantId, Double newAmount)
     }
 
   class ObservableSplitServerFacade{
     +handleMessageFromClient()
-    }
-
-  class Split{
-    }
-
-  class Participant{
     }
 
   class AdaptableSplitServer{
@@ -187,7 +186,7 @@ package Server <<Folder>>{
   Observer -- Observable
   SplitServerFacade ..|> Observer
   SplitServerFacade --> "0..*" Split
-  Split --> "0..1" Participant
+  Split --> "0..n" Participant
   ObservableSplitServerFacade --|> Observable
   ObservableSplitServerFacade -- AdaptableSplitServer
   AdaptableSplitServer --|> AbstractServer
