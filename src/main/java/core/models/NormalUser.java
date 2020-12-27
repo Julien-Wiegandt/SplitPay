@@ -20,6 +20,9 @@ public class NormalUser extends User {
         this.firstName = firstName;
         this.LastName = LastName;
     }
+    public NormalUser() {
+        super();
+    }
 
     public String getFirstName(){
         return this.firstName;

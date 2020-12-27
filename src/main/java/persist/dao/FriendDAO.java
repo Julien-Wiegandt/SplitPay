@@ -8,9 +8,7 @@ import java.util.ArrayList;
 public abstract class FriendDAO {
 
 
-    //public abstract FriendDAO getConnection();
-
-    //public abstract ArrayList<User> getFriends();
+    public abstract ArrayList<NormalUser> getFriends(String id);
 
     /**
      * @param user

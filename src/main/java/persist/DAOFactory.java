@@ -2,6 +2,7 @@ package persist;
 
 import persist.dao.UserDAO;
 import persist.dao.mysql.MySqlFriendDAO;
+import persist.dao.mysql.MySqlNotificationDAO;
 
 import java.sql.Connection;
 
@@ -33,4 +34,6 @@ public abstract class DAOFactory {
 
 
     public abstract MySqlFriendDAO createFriendDao();
+
+    public abstract MySqlNotificationDAO createNotificationDao();
 }

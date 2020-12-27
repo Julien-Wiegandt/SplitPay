@@ -8,6 +8,8 @@ public class User {
     /**
      * Default constructor
      */
+    public User() {
+    }
     public User(String id, String email, String phone, String password, String nickname, Float balance, String validationCode) {
         this.id=id;
         this.email=email;
@@ -35,6 +37,35 @@ public class User {
     public String getPassword(){return this.password;}
     public Float getBalance(){return this.balance;}
     public String getValidationCode(){ return this.validationCode;}
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setBalance(Float balance) {
+        this.balance = balance;
+    }
+
+    public void setValidationCode(String validationCode) {
+        this.validationCode = validationCode;
+    }
+
     @Override
     public String toString() {
         return "User{" +

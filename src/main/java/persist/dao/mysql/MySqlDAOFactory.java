@@ -32,6 +32,13 @@ public class MySqlDAOFactory extends DAOFactory {
     /**
      * @return
      */
+    public MySqlNotificationDAO createNotificationDao() {
+        return new MySqlNotificationDAO();
+    }
+
+    /**
+     * @return
+     */
     public Connection getConnection() {
         if(connection==null){
             try {

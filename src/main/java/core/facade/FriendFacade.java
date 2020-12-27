@@ -9,6 +9,8 @@ import persist.dao.UserDAO;
 import persist.dao.mysql.MySqlDAOFactory;
 import persist.dao.mysql.MySqlFriendDAO;
 
+import java.util.ArrayList;
+
 public class FriendFacade{
 
     private static DAOFactory daoFactory = new MySqlDAOFactory();
@@ -76,4 +78,8 @@ public class FriendFacade{
 
     }
 
+    public ArrayList<NormalUser> getFriends(){
+        String id = UserFacade.getUserFacade().getLoggedUser().getId();
+        return  getFriendDao().getFriends(id);
+    }
 }

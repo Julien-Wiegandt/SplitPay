@@ -29,22 +29,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/.idea/documentation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/documentation/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/facade/FriendFacade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/persist/dao/FriendDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlFriendDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/facade/NotificationFacade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/models/Notification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/persist/dao/NotificationDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlNotificationDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/add_friend_sequence_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_friends/manage_friends_class_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/FriendFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/FriendFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/NormalUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/NormalUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/SplitPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/SplitPay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/persist/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/DAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/FriendDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/FriendDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlDAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlFriendDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlFriendDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,34 +247,38 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added generated blank code for persist and core layer" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1608913074845">
+    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1609004924931">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608913074845" />
+    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609004924931" />
     <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1608895384076">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608895384076" />
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1608918785677">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1237" height="223" key="GridCell.Tab.0.bottom" timestamp="1609022012806">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="3" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608915487969" />
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608918785677" />
-    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1608918785677">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608926272092" />
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609007352855" />
+    <state width="1237" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609022012806" />
+    <state width="1237" height="223" key="GridCell.Tab.0.center" timestamp="1609022012806">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="3" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608915487969" />
-    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608918785677" />
-    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1608918785676">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608926272092" />
+    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609007352855" />
+    <state width="1237" height="223" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609022012806" />
+    <state width="1237" height="223" key="GridCell.Tab.0.left" timestamp="1609022012806">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="3" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608915487969" />
-    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608918785676" />
-    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1608918785677">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608926272092" />
+    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609007352855" />
+    <state width="1237" height="223" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609022012806" />
+    <state width="1237" height="223" key="GridCell.Tab.0.right" timestamp="1609022012806">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="3" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608915487969" />
-    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608918785677" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608926272092" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609007352855" />
+    <state width="1237" height="223" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609022012806" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SplitPay$SplitPay.ic" NAME="SplitPay Coverage Results" MODIFIED="1606932207340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
