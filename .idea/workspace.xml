@@ -29,33 +29,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/software_design/manage_participant/split_class_diagram.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/splitManagement.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/src/main/java/SplitTesting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/src/main/java/core/facade/SplitServerFacade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/src/main/java/exception/split/ParticipantNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/src/main/java/exception/split/SplitNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/src/main/java/main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/src/main/java/models/Participant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/src/main/java/models/Split.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/src/main/java/utils/SplitUtilities.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/splitManagement/src/test/java/splitParticipationTests/splitParticipationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/exception/ParticipantNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/exception/SplitNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/facade/SplitServerFacade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/models/Participant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/models/Split.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/utils/SplitUtilities.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/splitParticipationTests/AdvancedSplitTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/splitParticipationTests/BasicSplitTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/exception/GoalAmountExceededException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/exception/ParticipantAlreadyInException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/SplitPay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SplitPay.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_split/manage_split_diagram_class.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split/manage_split_diagram_class.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/participant_join_split_diagSequence.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/participant_join_split_diagSequence.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/participant_join_split_sequence_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/participant_join_split_sequence_diagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/participant_update_split_diagSequence.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/participant_update_split_diagSequence.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/participant_update_split_sequence_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/participant_update_split_sequence_diagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/serverSide_diagSequence.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/serverSide_diagSequence.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/server_side_sequence_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/server_side_sequence_diagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/split_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/split_class_diagram.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/ParticipantNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/ParticipantNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/SplitNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/SplitNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/facade/SplitServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/facade/SplitServerFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/models/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/models/Participant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/models/Split.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/models/Split.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/splitParticipationTests/AdvancedSplitTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/splitParticipationTests/AdvancedSplitTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,20 +123,7 @@
       <recent name="server.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BasicSplitTests">
-    <configuration name="SplitPay (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.SplitPay" />
-      <module name="SplitPay" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.AdvancedSplitTests">
     <configuration name="SplitPay" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ui.main.SplitPay" />
       <module name="SplitPay" />
@@ -153,18 +132,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BasicSplitTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdvancedSplitTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SplitPay" />
       <extension name="coverage">
         <pattern>
@@ -173,14 +154,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="splitParticipationTests" />
-      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.BasicSplitTests" />
+      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="splitParticipationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="splitManagement" />
+    <configuration name="AdvancedSplitTests.changeState_False_false" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SplitPay" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="splitParticipationTests.*" />
@@ -188,30 +169,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="splitParticipationTests" />
-      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.splitParticipationTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="splitParticipationTests.getParticipantByWrongId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="splitManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="splitParticipationTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="splitParticipationTests" />
-      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.splitParticipationTests" />
-      <option name="METHOD_NAME" value="getParticipantByWrongId" />
+      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
+      <option name="METHOD_NAME" value="changeState_False_false" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="splitParticipationTests.getSplitByCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="splitManagement" />
+    <configuration name="AdvancedSplitTests.changeState_Ready_true" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SplitPay" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="splitParticipationTests.*" />
@@ -219,8 +185,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="splitParticipationTests" />
-      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.splitParticipationTests" />
-      <option name="METHOD_NAME" value="getSplitByCode" />
+      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
+      <option name="METHOD_NAME" value="changeState_Ready_true" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdvancedSplitTests.isEveryOneReady_EveryOneIsReady_true" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SplitPay" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="splitParticipationTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="splitParticipationTests" />
+      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
+      <option name="METHOD_NAME" value="isEveryOneReady_EveryOneIsReady_true" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdvancedSplitTests.isEveryOneReady_everyOneIsNotReady_false" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SplitPay" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="splitParticipationTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="splitParticipationTests" />
+      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
+      <option name="METHOD_NAME" value="isEveryOneReady_everyOneIsNotReady_false" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -228,11 +226,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BasicSplitTests" />
-        <item itemvalue="Application.SplitPay (1)" />
-        <item itemvalue="JUnit.splitParticipationTests.getParticipantByWrongId" />
-        <item itemvalue="JUnit.splitParticipationTests" />
-        <item itemvalue="JUnit.splitParticipationTests.getSplitByCode" />
+        <item itemvalue="JUnit.AdvancedSplitTests" />
+        <item itemvalue="JUnit.AdvancedSplitTests.isEveryOneReady_EveryOneIsReady_true" />
+        <item itemvalue="JUnit.AdvancedSplitTests.isEveryOneReady_everyOneIsNotReady_false" />
+        <item itemvalue="JUnit.AdvancedSplitTests.changeState_False_false" />
+        <item itemvalue="JUnit.AdvancedSplitTests.changeState_Ready_true" />
       </list>
     </recent_temporary>
   </component>
@@ -247,7 +245,8 @@
       <workItem from="1608895051051" duration="499000" />
       <workItem from="1608895566010" duration="11572000" />
       <workItem from="1608920589508" duration="14145000" />
-      <workItem from="1608976080661" duration="433000" />
+      <workItem from="1608976080661" duration="13997000" />
+      <workItem from="1609058018467" duration="213000" />
     </task>
     <servers />
   </component>

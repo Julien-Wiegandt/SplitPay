@@ -12,6 +12,7 @@ class Split {
     - isReadyForPayment() : Boolean
     - getParticipantById(int id) : Participant
     - ownerId : int
+    - currentAmount : Double
     + validatePayment() : void
     + changeAmount(int participant, Double amount) : void
     + changeReadyStatus(int participant) : void

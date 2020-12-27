@@ -53,4 +53,14 @@ public class Participant {
 
     public String getNickname(){ return nickname; }
 
+    public boolean isReady() {
+        return isReady;
+    }
+
+    /**
+     * switch ready status
+     */
+    public void switchReadyStatus() {
+        isReady = !isReady;
+    }
 }

@@ -1,5 +1,8 @@
 package server.facade;
 
+import server.exception.GoalAmountExceededException;
+import server.exception.ParticipantAlreadyInException;
+import server.exception.ParticipantNotFoundException;
 import server.exception.SplitNotFoundException;
 import server.models.Participant;
 import server.models.Split;
@@ -51,13 +54,13 @@ public class SplitServerFacade {
 
     /**
      * If not already a participant, makes a user join a split with his id and nickname else throws an exception
-     * TODO: Create a custom exception and check if user already in or not before adding as participant
      * @param splitCode
      * @param participantId
      * @param participantNickname
-     * @exception Exception
+     * @exception SplitNotFoundException
+     * @exception ParticipantAlreadyInException
      */
-    public void join(String splitCode, int participantId, String participantNickname) throws Exception{
+    public void join(String splitCode, int participantId, String participantNickname) throws SplitNotFoundException, ParticipantAlreadyInException {
         getSplitByCode(splitCode).addParticipant(participantId,participantNickname);
     }
 
@@ -83,7 +86,7 @@ public class SplitServerFacade {
      * @return
      * @throws SplitNotFoundException
      */
-    public Participant getSplitParticipant(String splitCode, int participantId) throws SplitNotFoundException {
+    public Participant getSplitParticipant(String splitCode, int participantId) throws SplitNotFoundException, ParticipantNotFoundException {
         return getSplitByCode(splitCode).getParticipantById(participantId);
     }
 
@@ -105,7 +108,37 @@ public class SplitServerFacade {
      * @throws SplitNotFoundException
      * TODO : Check if goal amount will not be exceeded
      */
-    public void changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException {
-        getSplitByCode(splitCode).getParticipantById(participantId).setAmount(newAmount);
+    public void changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
+        getSplitByCode(splitCode).changeParticipantAmount(participantId,newAmount);
     }
+
+    /**
+     * Removes participant from split if is found
+     * @param splitCode
+     * @param participantId
+     * @throws SplitNotFoundException
+     * @throws ParticipantNotFoundException
+     */
+    public void removeSplitParticipant(String splitCode, int participantId) throws SplitNotFoundException, ParticipantNotFoundException {
+        getSplitByCode(splitCode).removeParticipant(participantId);
+    }
+
+    /**
+     * Checks if the goal amount is reached
+     * @param splitcode
+     * @return
+     * @throws SplitNotFoundException
+     */
+    public boolean isSplitGoalAmountReached(String splitcode) throws SplitNotFoundException {
+        return getSplitByCode(splitcode).isGoalAmountReached();
+    }
+
+    /**
+     * Switches ready status state
+     */
+    public void switchSplitParticipantReadyStatus(String splitCode, int participantId) throws SplitNotFoundException, ParticipantNotFoundException {
+        getSplitByCode(splitCode).switchParticipateReadyStatus(participantId);
+    }
+
+
 }

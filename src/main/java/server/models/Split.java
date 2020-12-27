@@ -1,8 +1,12 @@
 package server.models;
 
+import server.exception.GoalAmountExceededException;
+import server.exception.ParticipantAlreadyInException;
 import server.exception.ParticipantNotFoundException;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Split {
 
@@ -23,40 +27,51 @@ public class Split {
     private double goalAmount;
     private String splitMode;
     private int ownerId;
+    private double currentAmount = 0;
+
     private HashMap<Integer,Participant> participants = new HashMap<>();
 
-    /**
-     * True if every participants are ready
-     * @return
-     */
-    private boolean isEveryOneReady(){
-        return false;
+    public double getCurrentAmount() {
+        return currentAmount;
+    }
+
+    public void setCurrentAmount(double currentAmount) {
+        this.currentAmount = currentAmount;
     }
 
     /**
-     * True if
+     * True if the goal amount is reached
      * @return
      */
-    private boolean isGoalAmountReached(){
-        return false;
+    public boolean isGoalAmountReached(){
+        return goalAmount==currentAmount;
     }
 
     /**
      * Add user to the participants list if not already in
-     * TODO : check if user is in
      * @param id
      */
-    public void addParticipant(int id, String nickname){
-        this.participants.put(id,new Participant(id,nickname));
+    public void addParticipant(int id, String nickname) throws ParticipantAlreadyInException {
+        Participant participant = participants.get(id);
+        if (participant == null){
+            this.participants.put(id,new Participant(id,nickname));
+        } else {
+            throw new ParticipantAlreadyInException("Participant already in, can't add twice");
+        }
     }
 
     /**
      * Removes user from the participants list if is in
-     * TODO: update the amount of the split
      * @param id
      */
-    public void removeParticipant(int id){
-        this.participants.remove(id);
+    public void removeParticipant(int id) throws ParticipantNotFoundException {
+        Participant participant = getParticipantById(id);
+        if (participant!=null){
+            setCurrentAmount(currentAmount - participant.getAmount());
+            this.participants.remove(id);
+        } else {
+            throw new ParticipantNotFoundException("Couldn't remove participant, not found");
+        }
     }
 
     /**
@@ -65,22 +80,35 @@ public class Split {
      * @param id
      * @return
      */
-    public Participant getParticipantById(int id){
-        return participants.get(id);
+    public Participant getParticipantById(int id) throws ParticipantNotFoundException {
+        if(participants.get(id)==null){
+            throw new ParticipantNotFoundException("Participant not found, can't update amount");
+        } else {
+            return participants.get(id);
+        }
     }
 
     /**
      * Updates participant amount, if user not in the split throws ParticipantNotFoundException
-     * @param id
-     * @param amount
-     *
+     * @param participantId
+     * @param newAmount
+     * TODO : use getParticipantById
      * @exception ParticipantNotFoundException if participant not found
      */
-    public void changeAmount(int id, double amount) throws ParticipantNotFoundException {
-        if(participants.get(id)==null){
+    public void changeParticipantAmount(int participantId, double newAmount) throws ParticipantNotFoundException, GoalAmountExceededException {
+        if(participants.get(participantId)==null){
             throw new ParticipantNotFoundException("Participant not found, can't update amount");
         } else {
-            participants.get(id).setAmount(amount);
+            Participant participant = participants.get(participantId);
+            double oldAmount = participant.getAmount();
+            double newCurrentAmount = currentAmount-oldAmount+newAmount;
+            if(newCurrentAmount<=goalAmount){
+                participant.setAmount(newAmount);
+                setCurrentAmount(currentAmount-oldAmount+newAmount);
+            } else {
+                throw new GoalAmountExceededException("Can't change amount, new amount exceeds the limit");
+            }
+
         }
     }
 
@@ -161,6 +189,34 @@ public class Split {
         if (o == null || getClass() != o.getClass()) return false;
         Split split = (Split) o;
         return expired == split.expired && ownerId == split.ownerId && label.equals(split.label) && splitCode.equals(split.splitCode) && goalAmount==split.goalAmount && splitMode.equals(split.splitMode);
+    }
+
+    /**
+     * True if every participants are ready
+     * @return
+     */
+    public boolean isEveryOneReady() {
+        boolean isEveryOneReady = true;
+        Iterator iterator = participants.entrySet().iterator();
+
+        while (iterator.hasNext() && isEveryOneReady){
+            Map.Entry<Integer,Participant> participant = (Map.Entry) iterator.next();
+            if(!participant.getValue().isReady()){
+                isEveryOneReady=false;
+            }
+        }
+
+        return isEveryOneReady;
+
+    }
+
+    /**
+     * Switches participant ready status if exists in split
+     * @param participantId
+     */
+    public void switchParticipateReadyStatus(int participantId) throws ParticipantNotFoundException {
+        Participant participant = getParticipantById(participantId);
+        participant.switchReadyStatus();
     }
 
 }

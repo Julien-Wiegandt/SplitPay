@@ -22,7 +22,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="splitManagement" target="8" />
-      <module name="SplitPay" target="7" />
+      <module name="SplitPay" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
