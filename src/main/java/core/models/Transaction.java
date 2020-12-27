@@ -1,8 +1,9 @@
 package core.models;
 
+import java.util.Comparator;
 import java.util.Date;
 
-public abstract class Transaction {
+public abstract class Transaction implements Comparable<Transaction> {
 
     public Float getAmount() {
         return amount;
@@ -38,4 +39,7 @@ public abstract class Transaction {
 
     protected Date dateCreated;
 
+    public int compareTo(Transaction t1){
+        return this.getDateCreated().compareTo(t1.getDateCreated());
+    }
 }

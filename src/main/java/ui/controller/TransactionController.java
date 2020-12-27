@@ -18,7 +18,6 @@ public class TransactionController {
     private Label transactionType, transactionDate, transactionAmount, splitParticipants, otherTransactionActor;
 
     void setTransaction(Transaction transaction){
-        System.out.println(transaction.toString());
         if(transaction.getName().equals("UserToUserTransaction")){
             UserToUserTransaction t = (UserToUserTransaction) transaction;
             if(t.getSender_fk() == Integer.valueOf(UserFacade.getUserFacade().getLoggedUser().getId())) {

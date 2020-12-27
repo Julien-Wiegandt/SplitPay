@@ -1,6 +1,7 @@
 package core.facade;
 
 import core.auth.Session;
+import javafx.scene.control.IndexedCell;
 import persist.DAOFactory;
 import persist.dao.UserDAO;
 import core.models.NormalUser;
@@ -8,6 +9,7 @@ import core.models.StoreOwner;
 import core.models.User;
 import persist.dao.mysql.MySqlDAOFactory;
 
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -123,4 +125,29 @@ public class UserFacade {
     public User getUser() {
         return user;
     }
+
+    public Collection getFriends(int userId) {
+        return userDao.getFriends(userId);
+    }
+
+    public Boolean isEnoughtMoneyInBalance(Float money){
+        return money <= getUser().getBalance();
+    }
+
+    public void updateUserBalanceById(int userId, Float amount){
+        if(userId == Integer.valueOf(user.getId())){
+            user.setBalance(user.getBalance()+amount);
+            userDao.update(user);
+        }else{
+            try {
+                User u = userDao.findUserById(userId);
+                u.setBalance(u.getBalance()+amount);
+                userDao.update(u);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+
 }

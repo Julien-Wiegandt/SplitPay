@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -34,6 +35,26 @@ public class MySqlUserDAO extends UserDAO {
     }
 
 
+    public Collection getFriends(int userid) {
+        Statement stmt = null;
+        ArrayList<NormalUser> friends = new ArrayList<NormalUser>();
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Friends WHERE adder_normal_user_fk=" + userid + ";");
+
+            while (rs.next()) {
+                int added_normal_user_fk = rs.getInt("added_normal_user_fk");
+                friends.add(findNormalUserById(added_normal_user_fk));
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return friends;
+    }
 
     public User emailLogIn(String email, String password) throws Exception {
         User user = this.findUserByEmail(email);
@@ -302,16 +323,16 @@ public class MySqlUserDAO extends UserDAO {
         }
         try {
             if(user instanceof NormalUser) {
-                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"','"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
-                        "WHERE id='" + user.getId() + "'");
+                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance=" + user.getBalance() +
+                        "WHERE normal_user_pk=" + user.getId() + "");
             }else{
                 Integer rs = stmt.executeUpdate("UPDATE StoreOwner SET email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "','"+((StoreOwner)user).getCompanyName()+"','"+((StoreOwner)user).getAddress()+"', balance='" + user.getBalance() + "'" +
-                        "WHERE id='" + user.getId() + "'");
+                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "','"+((StoreOwner)user).getCompanyName()+"','"+((StoreOwner)user).getAddress()+"', balance=" + user.getBalance() +
+                        "WHERE store_owner_pk=" + user.getId() + "");
 
             }
-            ConnectionMySql.connection.commit();
+            //ConnectionMySql.connection.commit();
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -334,16 +355,16 @@ public class MySqlUserDAO extends UserDAO {
         return user;
     }
 
-    public User findNormalUserById(int id) {
+    public NormalUser findNormalUserById(int id) {
         Statement stmt = null;
-        User user = null;
+        NormalUser user = null;
         try {
             stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM NormalUser WHERE id='" + id + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM NormalUser WHERE normal_user_pk='" + id + "'");
 
             while (rs.next()) {
                 String dbId = rs.getString("normal_user_pk");
@@ -352,11 +373,9 @@ public class MySqlUserDAO extends UserDAO {
                 String dbPhone = rs.getString("phone");
                 String dbNickname = rs.getString("nickname");
                 Float dbBalance = rs.getFloat("balance");
-                //String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
                 user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, null);
-                System.out.println(user);
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();
@@ -364,16 +383,16 @@ public class MySqlUserDAO extends UserDAO {
         return user;
     }
 
-    public User findStoreOwnerById(int id) {
+    public StoreOwner findStoreOwnerById(int id) {
         Statement stmt = null;
-        User user = null;
+        StoreOwner user = null;
         try {
             stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM StoreOwner WHERE id='" + id + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM StoreOwner WHERE store_owner_pk='" + id + "'");
 
             while (rs.next()) {
                 String dbId = rs.getString("store_owner_pk");
@@ -388,7 +407,6 @@ public class MySqlUserDAO extends UserDAO {
                 String dbAddress = rs.getString("address");
 
                 user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, null, dbCompanyName, dbAddress);
-                System.out.println(user);
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();

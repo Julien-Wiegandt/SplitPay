@@ -12,6 +12,8 @@ import java.util.*;
  */
 public abstract class UserDAO{
 
+    public abstract Collection getFriends(int userid);
+
     /**
      * @param phone
      * @param password
@@ -108,4 +110,5 @@ public abstract class UserDAO{
      */
     public abstract Collection<User> findAll();
 
+    public abstract User findUserById(int userId) throws SQLException;
 }

@@ -29,23 +29,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseAmountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseFriendController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseAmountView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseFriendView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/TransactionFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/TransactionFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/BankAccountToUserTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/BankAccountToUserTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/SplitTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/SplitTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/StoreOwnerToBankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/StoreOwnerToBankAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/NormalUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/NormalUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/UserToBankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/UserToBankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/UserToStoreOwnerTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/UserToStoreOwnerTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/UserToUserTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/UserToUserTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/TransactionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlTransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlTransactionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/MyTransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/MyTransactionsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/path/UserNavigationPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/path/UserNavigationPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/logInView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/logInView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/path/NormalUserNavigationPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/path/NormalUserNavigationPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/RegexPattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/RegexPattern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/homeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/homeView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/myTransactionsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/myTransactionsView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/transactionView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/transactionView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +150,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in SplitPay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SplitPay" />
       <option name="PACKAGE_NAME" value="" />
@@ -195,7 +208,10 @@
       <workItem from="1609075950127" duration="6077000" />
       <workItem from="1609082091134" duration="43000" />
       <workItem from="1609082150934" duration="6566000" />
-      <workItem from="1609088740667" duration="1221000" />
+      <workItem from="1609088740667" duration="3363000" />
+      <workItem from="1609093303260" duration="694000" />
+      <workItem from="1609094005776" duration="4177000" />
+      <workItem from="1609098194562" duration="9131000" />
     </task>
     <servers />
   </component>

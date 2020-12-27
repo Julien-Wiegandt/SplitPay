@@ -21,6 +21,7 @@ import ui.path.UserNavigationPath;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class MyTransactionsController {
@@ -37,7 +38,10 @@ public class MyTransactionsController {
 
     @FXML
     private void initialize() {
-        Collection transactions = TransactionFacade.getTransactionFacade().getTransactions();
+        Collection<Transaction> res = TransactionFacade.getTransactionFacade().getTransactions();
+        ArrayList<Transaction> transactions = new ArrayList<Transaction>(res);
+        Collections.sort(transactions, Collections.<Transaction>reverseOrder());
+
         ObservableList<Transaction> items = FXCollections.observableArrayList ();
 
         Iterator<Transaction> iterator = transactions.iterator();
@@ -46,5 +50,4 @@ public class MyTransactionsController {
         }
         listView.setItems(items);
     }
-
 }

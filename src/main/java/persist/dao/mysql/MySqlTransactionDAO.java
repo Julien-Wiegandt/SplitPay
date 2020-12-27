@@ -7,6 +7,7 @@ import persist.dao.TransactionDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -117,6 +118,8 @@ public class MySqlTransactionDAO implements TransactionDAO {
             throwables.printStackTrace();
         }
         try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String mysqlDateString = formatter.format(dateCreated);
             stmt.executeUpdate("INSERT INTO BankAccountToUserTransaction VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -131,6 +134,8 @@ public class MySqlTransactionDAO implements TransactionDAO {
             throwables.printStackTrace();
         }
         try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String mysqlDateString = formatter.format(dateCreated);
             stmt.executeUpdate("INSERT INTO StoreOwnerToBankAccount VALUES ("+amount+", '"+participants+"', '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -145,6 +150,8 @@ public class MySqlTransactionDAO implements TransactionDAO {
             throwables.printStackTrace();
         }
         try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String mysqlDateString = formatter.format(dateCreated);
             stmt.executeUpdate("INSERT INTO StoreOwnerToBankAccount VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -159,6 +166,8 @@ public class MySqlTransactionDAO implements TransactionDAO {
             throwables.printStackTrace();
         }
         try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String mysqlDateString = formatter.format(dateCreated);
             stmt.executeUpdate("INSERT INTO UserToBankAccount VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -173,6 +182,8 @@ public class MySqlTransactionDAO implements TransactionDAO {
             throwables.printStackTrace();
         }
         try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String mysqlDateString = formatter.format(dateCreated);
             stmt.executeUpdate("INSERT INTO UserToStoreOwnerTransaction VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -187,7 +198,9 @@ public class MySqlTransactionDAO implements TransactionDAO {
             throwables.printStackTrace();
         }
         try {
-            stmt.executeUpdate("INSERT INTO UserToUserTransaction VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String mysqlDateString = formatter.format(dateCreated);
+            stmt.executeUpdate("INSERT INTO UserToUserTransaction VALUES ("+amount+", '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
