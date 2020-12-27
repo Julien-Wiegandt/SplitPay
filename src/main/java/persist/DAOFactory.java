@@ -1,5 +1,6 @@
 package persist;
 
+import persist.dao.CreditCardDAO;
 import persist.dao.UserDAO;
 
 import java.sql.Connection;
@@ -20,6 +21,10 @@ public abstract class DAOFactory {
      * @return
      */
     public abstract Connection getConnection();
+
+
+
+    public abstract CreditCardDAO createCreditCardDao();
 
     /**
      * @return

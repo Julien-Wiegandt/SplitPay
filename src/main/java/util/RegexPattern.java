@@ -9,4 +9,9 @@ public class RegexPattern {
     public static Pattern passwordPattern = Pattern.compile("^[a-zA-Z0-9@#$%^&-+=():;.,?/!§%*µ£#{}@]+$");
     public static Pattern nicknamePattern = Pattern.compile("^[a-zA-Z0-9@#$%^&-+=():;.,?/!§%*µ£#{}@]+$");
     public static Pattern siretPattern = Pattern.compile("^[a-zA-Z0-9]{14}$");
+
+    public static Pattern numberPattern = Pattern.compile("\\d{16}");
+    public static Pattern nameOwnerPattern = Pattern.compile("[A-Z][a-z]*");
+    public static Pattern datePattern = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
+    public static Pattern cvvPattern = Pattern.compile("\\d{3}");
 }

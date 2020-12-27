@@ -36,7 +36,7 @@ public class MySqlUserDAO extends UserDAO {
 
 
     public User emailLogIn(String email, String password) throws Exception {
-        User user = this.findUserByEmail(email);
+        User user = this.findUserByEmail(email);// doit lancer des exception
 
 
         if (password.equals(user.getPassword())) {

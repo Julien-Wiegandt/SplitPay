@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.AddCreditCardController">
+   <children>
+      <VBox layoutX="243.0" layoutY="77.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <TextField fx:id="number" layoutX="85.0" layoutY="59.0" promptText="number" />
+            <TextField fx:id="nameOwner" layoutX="85.0" layoutY="281.0" promptText="Name" />
+            <TextField fx:id="date" layoutX="85.0" layoutY="102.0" promptText="date" />
+            <TextField fx:id="cvv" layoutX="85.0" layoutY="190.0" promptText="cvv" />
+         </children>
+      </VBox>
+      <Label layoutX="249.0" layoutY="38.0" text="Add Credit Card" />
+      <Button layoutX="266.0" layoutY="351.0" mnemonicParsing="false" onAction="#addCard" text="Validate" />
+      <Button layoutX="14.0" layoutY="365.0" mnemonicParsing="false" onAction="#goToCreditCardView" text="Retour" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" top="10.0" />
+   </padding>
+</AnchorPane>
