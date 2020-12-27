@@ -4,31 +4,46 @@ import java.util.Date;
 
 public class SplitTransaction extends Transaction{
 
-    public SplitTransaction(Float amount, Date dateCreated, NormalUser sender_fk, StoreOwner receiver_fk) {
+    public SplitTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk, String participants) {
         this.amount = amount;
         this.dateCreated = dateCreated;
         this.sender_fk = sender_fk;
         this.receiver_fk = receiver_fk;
+        this.participants = participants;
     }
 
-    public NormalUser getSender_fk() {
+    public int getSender_fk() {
         return sender_fk;
     }
 
-    public void setSender_fk(NormalUser sender_fk) {
+    public void setSender_fk(int sender_fk) {
         this.sender_fk = sender_fk;
     }
 
-    public StoreOwner getReceiver_fk() {
+    public int getReceiver_fk() {
         return receiver_fk;
     }
 
-    public void setReceiver_fk(StoreOwner receiver_fk) {
+    public void setReceiver_fk(int receiver_fk) {
         this.receiver_fk = receiver_fk;
     }
 
-    private NormalUser sender_fk;
+    public String getParticipants() {
+        return participants;
+    }
 
-    private StoreOwner receiver_fk;
+    public void setParticipants(String participants) {
+        this.participants = participants;
+    }
+
+    public String toString(){
+        return "To SplitPay: -" + this.getAmount() + "€ on " + this.getDateCreated().toString();
+    }
+
+    private int sender_fk;
+
+    private int receiver_fk;
+
+    private String participants;
 
 }

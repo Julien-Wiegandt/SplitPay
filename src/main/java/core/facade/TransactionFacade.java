@@ -1,8 +1,12 @@
 package core.facade;
 
+import core.auth.Session;
+import core.models.Transaction;
 import persist.DAOFactory;
 import persist.dao.TransactionDAO;
 import persist.dao.mysql.MySqlDAOFactory;
+
+import java.util.Collection;
 
 /**
  *
@@ -40,5 +44,9 @@ public class TransactionFacade {
      */
     private TransactionFacade() {
         transactionDAO=daoFactory.createTransactionDAO();
+    }
+
+    public Collection<Transaction> getTransactions(){
+        return transactionDAO.findAllTransactions(Integer.parseInt(UserFacade.getUserFacade().getUser().getId()));
     }
 }

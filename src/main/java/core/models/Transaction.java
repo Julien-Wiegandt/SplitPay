@@ -12,6 +12,10 @@ public abstract class Transaction {
         this.amount = amount;
     }
 
+    public String toString(){
+        return this.getClass() + " " + this.getAmount() + " " + this.getDateCreated();
+    }
+
     protected Float amount;
 
     public Date getDateCreated() {

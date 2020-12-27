@@ -1,36 +1,44 @@
 package core.models;
 
+import core.facade.UserFacade;
+
 import java.util.Date;
 
 public class UserToUserTransaction extends Transaction{
 
-    public UserToUserTransaction(Float amount, Date dateCreated, NormalUser sender_fk, NormalUser receiver_fk) {
+    public UserToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
         this.amount = amount;
         this.dateCreated = dateCreated;
         this.sender_fk = sender_fk;
         this.receiver_fk = receiver_fk;
     }
 
-    public NormalUser getSender_fk() {
+    public int getSender_fk() {
         return sender_fk;
     }
 
-    public void setSender_fk(NormalUser sender_fk) {
+    public void setSender_fk(int sender_fk) {
         this.sender_fk = sender_fk;
     }
 
-
-
-    public NormalUser getReceiver_fk() {
+    public int getReceiver_fk() {
         return receiver_fk;
     }
 
-    public void setReceiver_fk(NormalUser receiver_fk) {
+    public void setReceiver_fk(int receiver_fk) {
         this.receiver_fk = receiver_fk;
     }
 
-    private NormalUser sender_fk;
+    public String toString(){
+        if(this.getAmount()<0){
+            return "To User " + this.getReceiver_fk() + ": -" + this.getAmount() + "€ on " + this.getDateCreated().toString();
+        }else{
+            return "From User " + this.getSender_fk() + ": +" + this.getAmount() + "€ on " + this.getDateCreated().toString();
+        }
+    }
 
-    private NormalUser receiver_fk;
+    private int sender_fk;
+
+    private int receiver_fk;
 
 }

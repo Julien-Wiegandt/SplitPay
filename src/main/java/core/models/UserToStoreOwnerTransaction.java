@@ -1,5 +1,7 @@
 package core.models;
 
+import core.facade.UserFacade;
+
 import java.util.Date;
 
 public class UserToStoreOwnerTransaction extends Transaction{
@@ -25,6 +27,14 @@ public class UserToStoreOwnerTransaction extends Transaction{
 
     public void setReceiver_fk(StoreOwner receiver_fk) {
         this.receiver_fk = receiver_fk;
+    }
+
+    public String toString(){
+        if(UserFacade.getUserFacade().isNormalUser()){
+            return "To StoreOwner " + this.getReceiver_fk() + ": -" + this.getAmount() + "€ on " + this.getDateCreated().toString();
+        }else{
+            return "From Customer " + this.getSender_fk() + ": +" + this.getAmount() + "€ on " + this.getDateCreated().toString();
+        }
     }
 
     private User sender_fk;
