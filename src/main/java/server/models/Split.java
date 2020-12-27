@@ -219,5 +219,13 @@ public class Split {
         participant.switchReadyStatus();
     }
 
+    /**
+     * True if a split is ready for payment (goal amount reached and every participant ready) else false
+     * @return
+     */
+    public boolean isReadyForPayment(){
+        return isGoalAmountReached() && isEveryOneReady();
+    }
+
 }
 

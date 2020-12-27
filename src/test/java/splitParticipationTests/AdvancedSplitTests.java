@@ -246,4 +246,37 @@ public class AdvancedSplitTests {
         Assert.assertEquals(2,returnedSplits.size());
     }
 
+    @Test
+    public void isReadyForPayment_GoalAmountReachedButNotReady_False() throws ParticipantAlreadyInException, SplitNotFoundException, GoalAmountExceededException, ParticipantNotFoundException {
+        SplitServerFacade facade = SplitServerFacade.getInstance();
+
+        Participant participant1 = new Participant(1,"participant1");
+        Participant owner = new Participant(0,"owner0");
+
+        String splitCode = facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        facade.join(splitCode,participant1.getId(),participant1.getNickname());
+        facade.changeParticipantAmount(splitCode,participant1.getId(),27.3);
+
+        Assert.assertEquals(false,facade.getSplitByCode(splitCode).isReadyForPayment());
+
+    }
+
+    @Test
+    public void isReadyForPayment_GoalAmountReachedEveryOneReady_True() throws ParticipantAlreadyInException, SplitNotFoundException, GoalAmountExceededException, ParticipantNotFoundException {
+        SplitServerFacade facade = SplitServerFacade.getInstance();
+
+        Participant participant1 = new Participant(1,"participant1");
+        Participant owner = new Participant(0,"owner0");
+
+        String splitCode = facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        facade.join(splitCode,participant1.getId(),participant1.getNickname());
+        facade.changeParticipantAmount(splitCode,participant1.getId(),27.3);
+        facade.switchSplitParticipantReadyStatus(splitCode,participant1.getId());
+        facade.switchSplitParticipantReadyStatus(splitCode,owner.getId());
+
+
+        Assert.assertEquals(true,facade.getSplitByCode(splitCode).isReadyForPayment());
+
+    }
+
 }

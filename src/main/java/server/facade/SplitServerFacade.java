@@ -8,7 +8,6 @@ import server.models.Participant;
 import server.models.Split;
 import util.SplitUtilities;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -161,6 +160,5 @@ public class SplitServerFacade {
     public void switchSplitParticipantReadyStatus(String splitCode, int participantId) throws SplitNotFoundException, ParticipantNotFoundException {
         getSplitByCode(splitCode).switchParticipateReadyStatus(participantId);
     }
-
 
 }
