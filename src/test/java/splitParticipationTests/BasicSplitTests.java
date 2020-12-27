@@ -6,8 +6,7 @@ import server.models.Participant;
 import server.models.Split;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
-import server.utils.SplitUtilities;
+import util.SplitUtilities;
 
 import java.lang.reflect.Field;
 
@@ -33,7 +32,7 @@ public class BasicSplitTests {
     @Test(expected = SplitNotFoundException.class)
     public void getSplitByWrongCode() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode=SplitUtilities.generateSplitCode();
+        String splitCode=SplitUtilities.generateCode();
         facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
         facade.getSplitByCode(splitCode);
     }

@@ -6,9 +6,12 @@ import server.exception.ParticipantNotFoundException;
 import server.exception.SplitNotFoundException;
 import server.models.Participant;
 import server.models.Split;
-import server.utils.SplitUtilities;
+import util.SplitUtilities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class SplitServerFacade {
 
@@ -46,7 +49,7 @@ public class SplitServerFacade {
      * @param splitMode
      */
     public String createSplit(int ownerId, String ownerNickName, double goalAmount, String label, String splitMode) {
-        String splitCode = SplitUtilities.generateSplitCode();
+        String splitCode = SplitUtilities.generateCode();
         Split split = new Split(splitCode, ownerId,ownerNickName,goalAmount,label,splitMode);
         splits.put(split.getSplitCode(),split);
         return splitCode;
@@ -88,6 +91,25 @@ public class SplitServerFacade {
      */
     public Participant getSplitParticipant(String splitCode, int participantId) throws SplitNotFoundException, ParticipantNotFoundException {
         return getSplitByCode(splitCode).getParticipantById(participantId);
+    }
+
+    /**
+     * Returns a hashmap of splits owned by the user
+     * @return
+     */
+    public HashMap<Integer,Split> getUserSplits(int id) {
+        HashMap<Integer,Split> userSplits = new HashMap<>();
+        Iterator iterator = splits.entrySet().iterator();
+
+        while (iterator.hasNext()){
+            Map.Entry<Integer,Split> split = (Map.Entry) iterator.next();
+            if(split.getValue().getOwnerId()==id){
+                userSplits.put(split.getKey(),split.getValue());
+            }
+        }
+
+        return userSplits;
+
     }
 
     /**

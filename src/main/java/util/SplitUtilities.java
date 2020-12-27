@@ -1,4 +1,4 @@
-package server.utils;
+package util;
 
 import java.util.Random;
 
@@ -6,7 +6,7 @@ public class SplitUtilities {
 
     private static final int splitCodeLength = 6;
 
-    public static String generateSplitCode() {
+    public static String generateCode() {
 
         int min = (int) Math.pow(10, splitCodeLength - 1);
         int max = (int) Math.pow(10, splitCodeLength); // bound is exclusive

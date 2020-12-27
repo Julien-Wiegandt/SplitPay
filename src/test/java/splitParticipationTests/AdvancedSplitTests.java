@@ -9,8 +9,11 @@ import server.exception.ParticipantNotFoundException;
 import server.exception.SplitNotFoundException;
 import server.facade.SplitServerFacade;
 import server.models.Participant;
+import server.models.Split;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AdvancedSplitTests {
     @Before
@@ -206,6 +209,41 @@ public class AdvancedSplitTests {
 
         Assert.assertEquals(0,facade.getSplitByCode(splitCode).getCurrentAmount(),0);
 
+    }
+
+    @Test
+    public void getUserSplits_NoSplits_EmptyHashMap() {
+        SplitServerFacade facade = SplitServerFacade.getInstance();
+
+        Participant participant2 = new Participant(2,"participant2");
+        Participant participant1 = new Participant(1,"participant1");
+        Participant owner = new Participant(0,"owner0");
+
+        facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        facade.createSplit(participant1.getId(), participant1.getNickname(),23,"new year bowling2","freesplit");
+        facade.createSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
+
+
+        HashMap<Integer,Split> returnedSplits = facade.getUserSplits(participant2.getId());
+
+        Assert.assertEquals(0,returnedSplits.size());
+    }
+
+    @Test
+    public void getUserSplits_TwoSplits_HashMapLength2() {
+        SplitServerFacade facade = SplitServerFacade.getInstance();
+
+        Participant participant2 = new Participant(2,"participant2");
+        Participant participant1 = new Participant(1,"participant1");
+        Participant owner = new Participant(0,"owner0");
+
+        facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        facade.createSplit(participant1.getId(), participant1.getNickname(),23,"new year bowling2","freesplit");
+        facade.createSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
+
+        HashMap<Integer,Split> returnedSplits = facade.getUserSplits(participant1.getId());
+
+        Assert.assertEquals(2,returnedSplits.size());
     }
 
 }

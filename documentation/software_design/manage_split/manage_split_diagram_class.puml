@@ -154,8 +154,9 @@ package Server <<Folder>>{
     }
 
   class SplitServerFacade{
-    +joinSplit(String splitCode, int participantId, String participantNickname)
-    +getUserSplits(user: User)
+    +join(String splitCode, int participantId, String participantNickname)
+    +getSplitParticipant(String splitCode, int participantId) : Participant
+    +getUserSplits(int userId) : Split[]
     +handleMessagerFromClient()
     +createSplit(int ownerId, Double goalAmount, String label, String splitMode, String ownerNickname)
     +getSplitByCode(String code) : Split
