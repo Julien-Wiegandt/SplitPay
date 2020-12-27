@@ -7,6 +7,7 @@ import java.util.Date;
 public class UserToStoreOwnerTransaction extends Transaction{
 
     public UserToStoreOwnerTransaction(Float amount, Date dateCreated, User sender_fk, StoreOwner receiver_fk) {
+        this.name = "UserToStoreOwnerTransaction";
         this.amount = amount;
         this.dateCreated = dateCreated;
         this.sender_fk = sender_fk;

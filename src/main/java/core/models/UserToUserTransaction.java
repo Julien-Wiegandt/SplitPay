@@ -7,6 +7,7 @@ import java.util.Date;
 public class UserToUserTransaction extends Transaction{
 
     public UserToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
+        this.name = "UserToUserTransaction";
         this.amount = amount;
         this.dateCreated = dateCreated;
         this.sender_fk = sender_fk;
@@ -30,7 +31,7 @@ public class UserToUserTransaction extends Transaction{
     }
 
     public String toString(){
-        if(this.getAmount()<0){
+        if(this.getSender_fk() == Integer.valueOf(UserFacade.getUserFacade().getLoggedUser().getId())){
             return "To User " + this.getReceiver_fk() + ": -" + this.getAmount() + "€ on " + this.getDateCreated().toString();
         }else{
             return "From User " + this.getSender_fk() + ": +" + this.getAmount() + "€ on " + this.getDateCreated().toString();

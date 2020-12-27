@@ -5,6 +5,7 @@ import java.util.Date;
 public class SplitTransaction extends Transaction{
 
     public SplitTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk, String participants) {
+        this.name = "SplitTransaction";
         this.amount = amount;
         this.dateCreated = dateCreated;
         this.sender_fk = sender_fk;

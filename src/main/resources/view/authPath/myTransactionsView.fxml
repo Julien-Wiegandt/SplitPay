@@ -3,11 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.TransactionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MyTransactionsController">
     <center>
         <VBox alignment="CENTER" fillWidth="false" prefHeight="340.0" prefWidth="469.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="listView" prefHeight="277.0" prefWidth="382.0" />
+            <ListView fx:id="listView" prefHeight="277.0" prefWidth="382.0" onMouseClicked="#goToTransactionView"/>
          </children></VBox>
     </center>
     <top>

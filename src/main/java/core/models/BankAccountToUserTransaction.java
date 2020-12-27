@@ -5,6 +5,7 @@ import java.util.Date;
 public class BankAccountToUserTransaction extends Transaction{
 
     public BankAccountToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
+        this.name = "BankAccountToUserTransaction";
         this.amount = amount;
         this.dateCreated = dateCreated;
         this.sender_fk = sender_fk;

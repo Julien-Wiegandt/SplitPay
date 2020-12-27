@@ -16,8 +16,6 @@ public abstract class Transaction {
         return this.getClass() + " " + this.getAmount() + " " + this.getDateCreated();
     }
 
-    protected Float amount;
-
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -25,6 +23,18 @@ public abstract class Transaction {
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    protected String name;
+
+    protected Float amount;
 
     protected Date dateCreated;
 

@@ -108,4 +108,88 @@ public class MySqlTransactionDAO implements TransactionDAO {
         }
         return transactions;
     }
+
+    public void createBankAccountToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
+        Statement stmt = null;
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            stmt.executeUpdate("INSERT INTO BankAccountToUserTransaction VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void createSplitTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk, String participants) {
+        Statement stmt = null;
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            stmt.executeUpdate("INSERT INTO StoreOwnerToBankAccount VALUES ("+amount+", '"+participants+"', '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void createStoreOwnerToBankAccount(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
+        Statement stmt = null;
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            stmt.executeUpdate("INSERT INTO StoreOwnerToBankAccount VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void createUserToBankAccount(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
+        Statement stmt = null;
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            stmt.executeUpdate("INSERT INTO UserToBankAccount VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void createUserToStoreOwnerTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
+        Statement stmt = null;
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            stmt.executeUpdate("INSERT INTO UserToStoreOwnerTransaction VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void createUserToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
+        Statement stmt = null;
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            stmt.executeUpdate("INSERT INTO UserToUserTransaction VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

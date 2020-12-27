@@ -17,8 +17,8 @@
       </Pane>
       <Pane prefHeight="395.0" prefWidth="320.0">
          <children>
-            <TextField fx:id="credential" layoutX="86.0" layoutY="78.0" promptText="email or phone" />
-            <PasswordField fx:id="password" layoutX="86.0" layoutY="142.0" promptText="password" />
+            <TextField fx:id="credential" layoutX="86.0" layoutY="78.0" promptText="email or phone" text="test@test.com" />
+            <PasswordField fx:id="password" layoutX="86.0" layoutY="142.0" promptText="password" text="splitpay" />
             <Button layoutX="128.0" layoutY="217.0" mnemonicParsing="false" onAction="#logIn" prefHeight="35.0" prefWidth="65.0" text="Log in" />
          </children></Pane>
       <Pane prefHeight="51.0" prefWidth="320.0">
