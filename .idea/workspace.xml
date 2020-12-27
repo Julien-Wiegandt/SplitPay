@@ -29,24 +29,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/exception/GoalAmountExceededException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/exception/ParticipantAlreadyInException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SplitPay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SplitPay.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/participant_join_split_diagSequence.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/participant_join_split_diagSequence.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/participant_join_split_sequence_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/participant_join_split_sequence_diagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/participant_update_split_diagSequence.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/participant_update_split_diagSequence.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/participant_update_split_sequence_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/participant_update_split_sequence_diagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/serverSide_diagSequence.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/serverSide_diagSequence.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/server_side_sequence_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/server_side_sequence_diagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_participant/split_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_split_participation/split_class_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/ParticipantNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/ParticipantNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/exception/SplitNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/exception/SplitNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/facade/SplitServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/facade/SplitServerFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/models/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/models/Participant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/models/Split.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/models/Split.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/splitParticipationTests/AdvancedSplitTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/splitParticipationTests/AdvancedSplitTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +106,7 @@
       <recent name="server.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdvancedSplitTests">
+  <component name="RunManager" selected="JUnit.AdvancedSplitTests.removeParticipant_isCurrentAmount0_True">
     <configuration name="SplitPay" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ui.main.SplitPay" />
       <module name="SplitPay" />
@@ -160,38 +143,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdvancedSplitTests.changeState_False_false" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SplitPay" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="splitParticipationTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="splitParticipationTests" />
-      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
-      <option name="METHOD_NAME" value="changeState_False_false" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdvancedSplitTests.changeState_Ready_true" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SplitPay" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="splitParticipationTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="splitParticipationTests" />
-      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
-      <option name="METHOD_NAME" value="changeState_Ready_true" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AdvancedSplitTests.isEveryOneReady_EveryOneIsReady_true" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SplitPay" />
       <extension name="coverage">
@@ -208,7 +159,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdvancedSplitTests.isEveryOneReady_everyOneIsNotReady_false" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdvancedSplitTests.removeParticipant_isCurrentAmount0_True" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SplitPay" />
       <extension name="coverage">
         <pattern>
@@ -218,7 +169,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="splitParticipationTests" />
       <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
-      <option name="METHOD_NAME" value="isEveryOneReady_everyOneIsNotReady_false" />
+      <option name="METHOD_NAME" value="removeParticipant_isCurrentAmount0_True" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdvancedSplitTests.removeParticipant_isCurrentAmount5_True" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SplitPay" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="splitParticipationTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="splitParticipationTests" />
+      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
+      <option name="METHOD_NAME" value="removeParticipant_isCurrentAmount5_True" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdvancedSplitTests.removeParticipant_isRemoved_True" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SplitPay" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="splitParticipationTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="splitParticipationTests" />
+      <option name="MAIN_CLASS_NAME" value="splitParticipationTests.AdvancedSplitTests" />
+      <option name="METHOD_NAME" value="removeParticipant_isRemoved_True" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -226,11 +209,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AdvancedSplitTests.removeParticipant_isCurrentAmount0_True" />
+        <item itemvalue="JUnit.AdvancedSplitTests.removeParticipant_isCurrentAmount5_True" />
+        <item itemvalue="JUnit.AdvancedSplitTests.removeParticipant_isRemoved_True" />
         <item itemvalue="JUnit.AdvancedSplitTests" />
         <item itemvalue="JUnit.AdvancedSplitTests.isEveryOneReady_EveryOneIsReady_true" />
-        <item itemvalue="JUnit.AdvancedSplitTests.isEveryOneReady_everyOneIsNotReady_false" />
-        <item itemvalue="JUnit.AdvancedSplitTests.changeState_False_false" />
-        <item itemvalue="JUnit.AdvancedSplitTests.changeState_Ready_true" />
       </list>
     </recent_temporary>
   </component>
@@ -246,7 +229,7 @@
       <workItem from="1608895566010" duration="11572000" />
       <workItem from="1608920589508" duration="14145000" />
       <workItem from="1608976080661" duration="13997000" />
-      <workItem from="1609058018467" duration="213000" />
+      <workItem from="1609058018467" duration="1031000" />
     </task>
     <servers />
   </component>

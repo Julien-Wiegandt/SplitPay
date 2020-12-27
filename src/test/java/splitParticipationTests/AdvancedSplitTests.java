@@ -135,7 +135,7 @@ public class AdvancedSplitTests {
     }
 
     @Test
-    public void isEveryOneReady_everyOneIsNotReady_false() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
+    public void isEveryOneReady_EveryOneIsNotReady_false() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
         String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant participant1 = new Participant(2,"participant1");
@@ -156,6 +156,55 @@ public class AdvancedSplitTests {
         facade.switchSplitParticipantReadyStatus(splitCode,1);
 
         Assert.assertEquals(true,facade.getSplitByCode(splitCode).isEveryOneReady());
+
+    }
+
+    @Test(expected = ParticipantNotFoundException.class)
+    public void removeParticipant_isRemoved_True() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
+        SplitServerFacade facade = SplitServerFacade.getInstance();
+        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        Participant participant1 = new Participant(2,"participant1");
+        facade.join(splitCode,participant1.getId(),participant1.getNickname());
+        facade.removeSplitParticipant(splitCode,participant1.getId());
+        facade.getSplitParticipant(splitCode,participant1.getId());
+    }
+
+    @Test
+    public void removeParticipant_isCurrentAmount5_True() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
+        SplitServerFacade facade = SplitServerFacade.getInstance();
+
+        Participant participant1 = new Participant(2,"participant1");
+        Participant owner = new Participant(1,"owner0");
+
+        String splitCode = facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+
+        facade.join(splitCode,participant1.getId(),participant1.getNickname());
+        facade.changeParticipantAmount(splitCode,participant1.getId(),5.34);
+        facade.changeParticipantAmount(splitCode,owner.getId(),5);
+
+        facade.removeSplitParticipant(splitCode,participant1.getId());
+
+        Assert.assertEquals(5,facade.getSplitByCode(splitCode).getCurrentAmount(),0);
+
+    }
+
+    @Test
+    public void removeParticipant_isCurrentAmount0_True() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
+        SplitServerFacade facade = SplitServerFacade.getInstance();
+
+        Participant participant1 = new Participant(2,"participant1");
+        Participant owner = new Participant(1,"owner0");
+
+        String splitCode = facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+
+        facade.join(splitCode,participant1.getId(),participant1.getNickname());
+        facade.changeParticipantAmount(splitCode,participant1.getId(),5.34);
+        facade.changeParticipantAmount(splitCode,owner.getId(),5);
+
+        facade.removeSplitParticipant(splitCode,participant1.getId());
+        facade.removeSplitParticipant(splitCode,owner.getId());
+
+        Assert.assertEquals(0,facade.getSplitByCode(splitCode).getCurrentAmount(),0);
 
     }
 
