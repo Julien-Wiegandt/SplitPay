@@ -1,7 +1,6 @@
 package ui.controller;
 
 import core.facade.UserFacade;
-import core.models.BankAccount;
 import core.models.CreditCard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,12 +17,29 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * Controller of the chooseCreditCardView called when the current user have to choose
+ * a CreditCard to refill his balance.
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2020-12-28
+ */
 public class ChooseCreditCardController {
 
+    /**
+     * Contains all the current user's CredCards.
+     */
     @FXML
     private ListView listView;
 
-    public void goToChooseRefillAmountView(MouseEvent mouseEvent) throws IOException {
+    /**
+     This method transfers the selected CreditCard in the ChooseRefillAmountController and load the chooseRefillAmountView.
+     * It is called by a button.
+     * @throws IOException
+     * @todo Handle the possible exceptions.
+     */
+    public void goToChooseRefillAmountView() throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.chooseRefillAmountView));
             Parent root = loader.load();
@@ -32,6 +48,11 @@ public class ChooseCreditCardController {
             SplitPay.window.setScene(new Scene(root));
         }
     }
+
+    /**
+     * This method fill the listView with all the current user's CreditCards.
+     * It is called at the view's load.
+     */
 
     @FXML
     private void initialize() {

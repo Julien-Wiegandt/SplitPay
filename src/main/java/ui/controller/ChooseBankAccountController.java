@@ -1,9 +1,7 @@
 package ui.controller;
 
-import core.facade.TransactionFacade;
 import core.facade.UserFacade;
 import core.models.BankAccount;
-import core.models.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,17 +14,32 @@ import main.SplitPay;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 
+/**
+ * Controller of the chooseBankAccountView called when the current user have to choose
+ * a BankAccount to recover his balance or a part of it.
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2020-12-28
+ */
 public class ChooseBankAccountController {
 
+    /**
+     * Contains all the current user's BankAccount.
+     */
     @FXML
     private ListView listView;
 
-    public void goToChooseRecoverAmountView(MouseEvent mouseEvent) throws IOException {
+    /**
+     * This method transfers the selected BankAccount in the ChooseRecoverAmountController and load the chooseRecoverAmountView.
+     * It is called by a button.
+     * @throws IOException
+     * @todo Handle the possible exceptions.
+     */
+    public void goToChooseRecoverAmountView() throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.chooseRecoverAmountView));
             Parent root = loader.load();
@@ -36,6 +49,10 @@ public class ChooseBankAccountController {
         }
     }
 
+    /**
+     * This method fill the listView with all the current user's BankAccount.
+     * It is called at the view's load.
+     */
     @FXML
     private void initialize() {
         Collection<BankAccount> bankAccounts = UserFacade.getUserFacade().getBankAccounts();

@@ -13,7 +13,6 @@ import main.SplitPay;
 import ui.path.UserNavigationPath;
 import util.RegexPattern;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.Date;
 

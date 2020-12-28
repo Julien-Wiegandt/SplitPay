@@ -30,35 +30,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/database/mysql/mysql_db_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/database/mysql/mysql_db_class_diagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/BankAccountFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/BankAccountFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/TransactionFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/TransactionFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/BankAccountToUserTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/CreditCardToUserTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/CreditCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/DAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/BankAccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/BankAccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/TransactionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlBankAccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlBankAccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlDAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlTransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlTransactionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseAmountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseAmountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseBankAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseBankAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseCreditCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseCreditCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRecoverAmountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRecoverAmountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRefillAmountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRefillAmountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ManageBalanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ManageBalanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/path/UserNavigationPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/path/UserNavigationPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseAmountView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseAmountView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseBankAccountView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseBankAccountView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseCreditCardView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseCreditCardView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseRecoverAmountView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseRecoverAmountView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseRefillAmountView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/chooseRefillAmountView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/homeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/homeView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/manageBalanceView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/manageBalanceView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseFriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseFriendController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +200,7 @@
       <workItem from="1609093303260" duration="694000" />
       <workItem from="1609094005776" duration="4177000" />
       <workItem from="1609098194562" duration="9969000" />
-      <workItem from="1609147104043" duration="7315000" />
+      <workItem from="1609147104043" duration="12075000" />
     </task>
     <servers />
   </component>
