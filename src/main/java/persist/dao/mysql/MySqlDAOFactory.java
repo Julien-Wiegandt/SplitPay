@@ -18,4 +18,6 @@ public class MySqlDAOFactory extends DAOFactory {
     }
 
     public MySqlTransactionDAO createTransactionDAO() { return new MySqlTransactionDAO(); }
+
+    public MySqlBankAccountDAO createBankAccountDAO() { return new MySqlBankAccountDAO(); }
 }

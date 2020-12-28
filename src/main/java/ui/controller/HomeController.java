@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import main.SplitPay;
 import ui.path.AuthPath;
 import ui.path.NormalUserNavigationPath;
+import ui.path.UserNavigationPath;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -42,6 +43,11 @@ public class HomeController {
 
     public void goToChooseFriendView(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.chooseFriendView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    public void goToManageBalanceView(javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.manageBalanceView));
         SplitPay.window.setScene(new Scene(root));
     }
 }

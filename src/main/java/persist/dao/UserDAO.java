@@ -1,8 +1,6 @@
 package persist.dao;
 
-import core.models.NormalUser;
-import core.models.StoreOwner;
-import core.models.User;
+import core.models.*;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -111,4 +109,8 @@ public abstract class UserDAO{
     public abstract Collection<User> findAll();
 
     public abstract User findUserById(int userId) throws SQLException;
+
+    public abstract Collection<CreditCard> getCreditCards();
+
+    public abstract Collection<BankAccount> getBankAccounts();
 }

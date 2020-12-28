@@ -2,7 +2,8 @@ package core.models;
 
 public class BankAccount {
 
-    public BankAccount(String label, String bic, String iban, String ownerFirstName, String ownerLastName) {
+    public BankAccount(String id, String label, String bic, String iban, String ownerFirstName, String ownerLastName) {
+        this.id = id;
         this.label = label;
         this.bic = bic;
         this.iban = iban;
@@ -59,4 +60,15 @@ public class BankAccount {
     }
 
     private String ownerLastName;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
+
 }

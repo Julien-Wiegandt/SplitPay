@@ -61,14 +61,14 @@ public class MySqlTransactionDAO implements TransactionDAO {
                     transactions.add(new UserToBankAccount(amount, dateCreated, sender_fk, receiver_fk));
                 }
 
-                rs = stmt.executeQuery("SELECT * FROM BankAccountToUserTransaction WHERE receiver_fk='"+ userId +"';");
+                rs = stmt.executeQuery("SELECT * FROM CreditCardToUserTransaction WHERE receiver_fk='"+ userId +"';");
                 while(rs.next()){
                     Float amount = rs.getFloat("amount");
                     Date dateCreated = rs.getDate("dateCreated");
                     int sender_fk = rs.getInt("sender_fk");
                     int receiver_fk = rs.getInt("receiver_fk");
 
-                    transactions.add(new BankAccountToUserTransaction(amount, dateCreated, sender_fk, receiver_fk));
+                    transactions.add(new CreditCardToUserTransaction(amount, dateCreated, sender_fk, receiver_fk));
                 }
 
             }else{ ;
@@ -83,15 +83,6 @@ public class MySqlTransactionDAO implements TransactionDAO {
                     transactions.add(new SplitTransaction(amount, dateCreated, sender_fk, receiver_fk, participants));
                 }
 
-                rs = stmt.executeQuery("SELECT * FROM BankAccountToUserTransaction WHERE receiver_fk='" + userId + "';");
-                while(rs.next()){
-                    Float amount = rs.getFloat("amount");
-                    Date dateCreated = rs.getDate("dateCreated");
-                    int sender_fk = rs.getInt("sender_fk");
-                    int receiver_fk = rs.getInt("receiver_fk");
-
-                    transactions.add(new BankAccountToUserTransaction(amount, dateCreated, sender_fk, receiver_fk));
-                }
 
                 rs = stmt.executeQuery("SELECT * FROM StoreOwnerToBankAccount WHERE sender_fk='" + userId + "';");
                 while(rs.next()){
@@ -110,7 +101,7 @@ public class MySqlTransactionDAO implements TransactionDAO {
         return transactions;
     }
 
-    public void createBankAccountToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
+    public void createCreditCardToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
         Statement stmt = null;
         try {
             stmt = ConnectionMySql.connection.createStatement();
@@ -120,7 +111,7 @@ public class MySqlTransactionDAO implements TransactionDAO {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String mysqlDateString = formatter.format(dateCreated);
-            stmt.executeUpdate("INSERT INTO BankAccountToUserTransaction VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+            stmt.executeUpdate("INSERT INTO CreditCardToUserTransaction VALUES ("+amount+", '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -136,7 +127,7 @@ public class MySqlTransactionDAO implements TransactionDAO {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String mysqlDateString = formatter.format(dateCreated);
-            stmt.executeUpdate("INSERT INTO StoreOwnerToBankAccount VALUES ("+amount+", '"+participants+"', '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+            stmt.executeUpdate("INSERT INTO StoreOwnerToBankAccount VALUES ("+amount+", '"+participants+"', '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -152,7 +143,7 @@ public class MySqlTransactionDAO implements TransactionDAO {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String mysqlDateString = formatter.format(dateCreated);
-            stmt.executeUpdate("INSERT INTO StoreOwnerToBankAccount VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+            stmt.executeUpdate("INSERT INTO StoreOwnerToBankAccount VALUES ("+amount+", '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -168,7 +159,7 @@ public class MySqlTransactionDAO implements TransactionDAO {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String mysqlDateString = formatter.format(dateCreated);
-            stmt.executeUpdate("INSERT INTO UserToBankAccount VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+            stmt.executeUpdate("INSERT INTO UserToBankAccount VALUES ("+amount+", '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -184,7 +175,7 @@ public class MySqlTransactionDAO implements TransactionDAO {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String mysqlDateString = formatter.format(dateCreated);
-            stmt.executeUpdate("INSERT INTO UserToStoreOwnerTransaction VALUES ("+amount+", '"+dateCreated+"', "+sender_fk+", "+receiver_fk+");");
+            stmt.executeUpdate("INSERT INTO UserToStoreOwnerTransaction VALUES ("+amount+", '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -2,10 +2,10 @@ package core.models;
 
 import java.util.Date;
 
-public class BankAccountToUserTransaction extends Transaction{
+public class CreditCardToUserTransaction extends Transaction{
 
-    public BankAccountToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
-        this.name = "BankAccountToUserTransaction";
+    public CreditCardToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
+        this.name = "CreditCardToUserTransaction";
         this.amount = amount;
         this.dateCreated = dateCreated;
         this.sender_fk = sender_fk;
@@ -29,7 +29,7 @@ public class BankAccountToUserTransaction extends Transaction{
     }
 
     public String toString(){
-        return "From BankAccount " + this.getSender_fk() + ": +" + this.getAmount() + "€ on " + this.getDateCreated().toString();
+        return "From CreditCard " + this.getSender_fk() + ": +" + this.getAmount() + "€ on " + this.getDateCreated().toString();
     }
 
     private int sender_fk;

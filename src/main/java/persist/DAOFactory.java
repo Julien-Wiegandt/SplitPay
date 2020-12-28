@@ -1,5 +1,6 @@
 package persist;
 
+import persist.dao.BankAccountDAO;
 import persist.dao.TransactionDAO;
 import persist.dao.UserDAO;
 
@@ -17,4 +18,5 @@ public abstract class DAOFactory {
      */
     public abstract TransactionDAO createTransactionDAO();
 
+    public abstract BankAccountDAO createBankAccountDAO();
 }

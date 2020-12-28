@@ -51,8 +51,8 @@ public class TransactionFacade {
         return transactionDAO.findAllTransactions(Integer.parseInt(UserFacade.getUserFacade().getUser().getId()));
     }
 
-    public void createBankAccountToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk){
-        transactionDAO.createBankAccountToUserTransaction(amount, dateCreated, sender_fk, receiver_fk);
+    public void createCreditCardToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk){
+        transactionDAO.createCreditCardToUserTransaction(amount, dateCreated, sender_fk, receiver_fk);
     }
 
     public void createSplitTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk, String participants){

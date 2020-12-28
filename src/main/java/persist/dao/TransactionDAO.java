@@ -8,7 +8,7 @@ import java.util.Date;
 public interface TransactionDAO {
     public Collection<Transaction> findAllTransactions(int userId);
 
-    public void createBankAccountToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
+    public void createCreditCardToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
 
     public void createSplitTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk, String participants);
 

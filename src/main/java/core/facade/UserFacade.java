@@ -1,12 +1,10 @@
 package core.facade;
 
 import core.auth.Session;
+import core.models.*;
 import javafx.scene.control.IndexedCell;
 import persist.DAOFactory;
 import persist.dao.UserDAO;
-import core.models.NormalUser;
-import core.models.StoreOwner;
-import core.models.User;
 import persist.dao.mysql.MySqlDAOFactory;
 
 import java.sql.SQLException;
@@ -105,7 +103,6 @@ public class UserFacade {
      * @return
      */
     public static UserFacade getUserFacade() {
-        // TODO implement here
         if(userFaçade==null){
             userFaçade=new UserFacade();
         }
@@ -117,7 +114,6 @@ public class UserFacade {
      * @return
      */
     private UserFacade() {
-        // TODO implement here
         userDao=daoFactory.createUserDao();
         session = new Session();
     }
@@ -149,5 +145,11 @@ public class UserFacade {
         }
     }
 
+    public Collection<CreditCard> getCreditCards() {
+        return userDao.getCreditCards();
+    }
 
+    public Collection<BankAccount> getBankAccounts() {
+        return userDao.getBankAccounts();
+    }
 }

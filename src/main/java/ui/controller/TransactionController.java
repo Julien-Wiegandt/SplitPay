@@ -43,7 +43,7 @@ public class TransactionController {
             splitParticipants.setText("Participants : "+t.getParticipants());
             otherTransactionActor.setText("To : "+String.valueOf(t.getReceiver_fk()));
         }else if(transaction.getName().equals("BankAccountToUserTransaction")){
-            BankAccountToUserTransaction t = (BankAccountToUserTransaction) transaction;
+            CreditCardToUserTransaction t = (CreditCardToUserTransaction) transaction;
             otherTransactionActor.setText("From : "+String.valueOf(t.getReceiver_fk()));
         }
         transactionType.setText(transaction.getName());

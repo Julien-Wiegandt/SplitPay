@@ -19,7 +19,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Manage balance">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToManageBalanceView" text="Manage balance">
                <VBox.margin>
                   <Insets bottom="30.0" />
                </VBox.margin>
