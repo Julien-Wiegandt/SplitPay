@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * Controller of the chooseFriendView called when the current user have to choose
+ * Controller of the chooseFriendView called when the current user has to choose
  * a friend to send him money.
  *
  * @author Julien Wiegandt

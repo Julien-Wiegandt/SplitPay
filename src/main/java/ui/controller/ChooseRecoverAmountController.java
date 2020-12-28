@@ -16,14 +16,37 @@ import util.RegexPattern;
 import java.io.IOException;
 import java.util.Date;
 
+/**
+ * Controller of the chooseRecoverAmountView called when the current user has to choose
+ * a amount of money to recover on his BankAccount.
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2020-12-28
+ */
 public class ChooseRecoverAmountController {
 
+    /**
+     * The BankAccount selected at the chooseBankAccountView, who gonna receive the money.
+     */
     private BankAccount bankAccount;
 
+    /**
+     * The amount of money that will be sent by the current user to the BankAccount.
+     */
     @FXML
     private TextField amountInput;
 
-    public void sendMoneyToBankAccount(ActionEvent actionEvent) throws IOException {
+    /**
+     * This method is used to send the input amount of money to the bankAccount and load the homeView.
+     * It is called by a button.
+     * If the amount don't respect the decimalPattern regex or
+     * if there is not enough money in the current user's balance,
+     * then the amountInput TextField border is highlighted in red.
+     * @throws IOException
+     * @todo Handle the possible exceptions.
+     */
+    public void sendMoneyToBankAccount() throws IOException {
         this.allStyleSetDefault();
         if(RegexPattern.decimalPattern.matcher(amountInput.getText()).find() && UserFacade.getUserFacade().isEnoughtMoneyInBalance(Float.valueOf(amountInput.getText()))){
             UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText())*(-1));
@@ -35,10 +58,18 @@ public class ChooseRecoverAmountController {
         }
     }
 
+    /**
+     * This method is used to set the selected BankAccount in the chooseBankAccountView, called by the ChooseBankAccountController
+     * when there is a selection.
+     * @param selectedItem The selected BankAccount.
+     */
     public void setBankAccount(BankAccount selectedItem) {
         this.bankAccount = selectedItem;
     }
 
+    /**
+     * This method is used to set all user's input error feedback styles to default.
+     */
     private void allStyleSetDefault(){
         amountInput.setStyle("-fx-text-box-border: black");
     }

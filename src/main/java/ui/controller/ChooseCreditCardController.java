@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * Controller of the chooseCreditCardView called when the current user have to choose
+ * Controller of the chooseCreditCardView called when the current user has to choose
  * a CreditCard to refill his balance.
  *
  * @author Julien Wiegandt

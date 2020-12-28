@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * Controller of the chooseAmountView called when the current user have to choose
+ * Controller of the chooseAmountView called when the current user has to choose
  * the amount of money to send to a friend.
  *
  * @author Julien Wiegandt
@@ -26,12 +26,12 @@ import java.util.Date;
 public class ChooseAmountController {
 
     /**
-     * The friend selected at the chooseFriendView, how gonna receive the money
+     * The friend selected at the chooseFriendView, who gonna receive the money.
      */
     private NormalUser friend;
 
     /**
-     * the amount of money that will be sent by the current user
+     * The amount of money that will be sent by the current user to the friend.
      */
     @FXML
     private TextField amountInput;
@@ -68,7 +68,7 @@ public class ChooseAmountController {
     }
 
     /**
-     * This method is used to set all user's input error feedback styles to default
+     * This method is used to set all user's input error feedback styles to default.
      */
     private void allStyleSetDefault(){
         amountInput.setStyle("-fx-text-box-border: black");

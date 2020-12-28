@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * Controller of the chooseBankAccountView called when the current user have to choose
+ * Controller of the chooseBankAccountView called when the current user has to choose
  * a BankAccount to recover his balance or a part of it.
  *
  * @author Julien Wiegandt

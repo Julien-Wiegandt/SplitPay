@@ -34,6 +34,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseBankAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseBankAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseCreditCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseCreditCardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseFriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseFriendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRecoverAmountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRecoverAmountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRefillAmountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRefillAmountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ForgottenPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ForgottenPasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/LogInController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +204,7 @@
       <workItem from="1609093303260" duration="694000" />
       <workItem from="1609094005776" duration="4177000" />
       <workItem from="1609098194562" duration="9969000" />
-      <workItem from="1609147104043" duration="12075000" />
+      <workItem from="1609147104043" duration="14548000" />
     </task>
     <servers />
   </component>
