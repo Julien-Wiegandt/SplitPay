@@ -1,5 +1,6 @@
 package splitParticipationTests;
 
+import server.exception.ParticipantNotFoundException;
 import server.facade.SplitServerFacade;
 import server.exception.SplitNotFoundException;
 import server.models.Participant;
@@ -51,7 +52,7 @@ public class BasicSplitTests {
         }
     }
 
-    @Test
+    @Test(expected = ParticipantNotFoundException.class)
     public void getParticipantByWrongId() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
         String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
