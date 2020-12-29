@@ -1,8 +1,9 @@
 package server.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Participant {
+public class Participant implements Serializable {
 
     public Participant(int id,String nickname){
         this.amount=0;

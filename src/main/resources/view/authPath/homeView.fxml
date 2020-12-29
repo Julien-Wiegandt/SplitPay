@@ -27,26 +27,8 @@
                   <Insets bottom="30.0" />
                </VBox.margin>
             </Button>
-            <VBox fx:id="joinSplitSection" alignment="CENTER" prefHeight="80.0" prefWidth="120.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="531.0" text="Enter split code">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <TextField promptText="Code">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Button mnemonicParsing="false" text="Join">
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <Button mnemonicParsing="false" text="Create split" />
+            <fx:include source="splitSection.fxml"/>
+
          </children>
       </VBox>
    </center>

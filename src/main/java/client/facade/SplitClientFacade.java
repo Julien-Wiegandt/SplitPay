@@ -4,6 +4,7 @@ import client.ObservableClient;
 import core.facade.UserFacade;
 import server.SplitOriginatorMessage;
 import server.facade.SplitServerFacade;
+import ui.controller.SplitController;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -51,6 +52,7 @@ public class SplitClientFacade implements Observer
      */
     Object clientUI;
     ObservableClient communicationService;
+    private SplitController splitController;
 
     // Variable that holds de name chosen by the user when created
 
@@ -99,32 +101,16 @@ public class SplitClientFacade implements Observer
     /**
      * Constructs an instance of the chat client.
      *
-     * @param host The server to connect to.
-     * @param port The port number to connect on.
-     * @param clientUI The interface type variable.
-     * TODO : Replace ChatIF by controller
+     * @paarm splitController
      */
 
     private static SplitClientFacade instance;
 
-    public static SplitClientFacade getInstance() throws IOException {
-        if (instance == null) {
-            synchronized(SplitServerFacade.class) {
-                if (instance == null) {
-                    instance = new SplitClientFacade("localhost",5555);
-                }
-            }
-        }
-        return instance;
-    }
-
-    private SplitClientFacade(String host, int port)
-            throws IOException
+    public SplitClientFacade(SplitController splitController)
     {
-        this.clientUI = clientUI;
-        communicationService = new ObservableClient(host, port);
+        this.splitController=splitController;
+        communicationService = new ObservableClient("localhost", 5555);
         communicationService.addObserver(this);
-        communicationService.openConnection();
     }
 
 
@@ -132,16 +118,21 @@ public class SplitClientFacade implements Observer
 
     /**
      * This method handles all data that comes in from the server.
-     *
+     * TODO : handle disconnection error
      * @param msg The message from the server.
      */
-    public void handleMessageFromServer(Object msg)
-    {
+    public void handleMessageFromServer(Object msg) {
         SplitOriginatorMessage msgReceived = (SplitOriginatorMessage) msg;
         System.out.println("Received message");
         switch ((String) msgReceived.getMessage()){
             case GET_SPLIT_REQUEST:
                 System.out.println(msgReceived.getSplits());
+                try {
+                    communicationService.closeConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                splitController.setSplits(msgReceived.getSplits());
                 break;
             case "exception":
                 System.out.println("exception");
@@ -190,6 +181,8 @@ public class SplitClientFacade implements Observer
      *
      */
     public void getSplits() throws IOException {
+        communicationService.openConnection();
+
         String id = UserFacade.getUserFacade().getLoggedUser().getId();
 
         HashMap<String,String> arguments = new HashMap<>();

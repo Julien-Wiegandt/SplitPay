@@ -4,11 +4,12 @@ import server.exception.GoalAmountExceededException;
 import server.exception.ParticipantAlreadyInException;
 import server.exception.ParticipantNotFoundException;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Split {
+public class Split implements Serializable {
 
     public Split(String splitCode, int ownerId, String ownerNickName, double goalAmount, String label, String splitMode){
         this.splitCode=splitCode;

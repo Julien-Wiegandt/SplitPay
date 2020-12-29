@@ -281,6 +281,9 @@ public class SplitServerFacade implements Observer {
         }
 
         SplitServerFacade facade = new SplitServerFacade(port);
+        facade.createSplit(1,"testUser",63.2,"bowling","freesplit");
+        facade.createSplit(1,"testUser",32.2,"Pizza","freesplit");
+
 
         try
         {
