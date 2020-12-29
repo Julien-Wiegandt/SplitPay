@@ -1,7 +1,9 @@
 package main;
 
+import core.facade.BankAccountFacade;
 import core.facade.CreditCardFacade;
 import core.facade.UserFacade;
+import core.models.BankAccount;
 import core.models.CreditCard;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +41,7 @@ public class SplitPay extends Application {
     }
 
     public static void main(String[] args) throws ParseException {
-        launch(args);
+        //launch(args);
         UserFacade user = UserFacade.getUserFacade();
         try {
             user.emailLogIn("test@test.com","splitpay");
@@ -47,24 +49,26 @@ public class SplitPay extends Application {
             e.printStackTrace();
         }
 
-        CreditCardFacade ccs =  CreditCardFacade.getInstance();
+        BankAccountFacade ccs =  BankAccountFacade.getInstance();
 
-        //ccs.createCreditCard("712", "Ayoub", new SimpleDateFormat("yyyy-MM-dd").parse("2020-12-31"), "708");
-        ArrayList<CreditCard> cars = new ArrayList<CreditCard>();
+        ccs.createBankAccount("PAPA carte", "222", "IBAN2233", "David", "Saint");
+        ArrayList<BankAccount> cars = new ArrayList<BankAccount>();
 
-        cars = ccs.getCards();
+        cars = ccs.getBankAccounts();
 
-        for(CreditCard c: cars){
+        for(BankAccount c: cars){
             System.out.println("new man : " + c.toString());
         }
 
-        ccs.deleteCreditCard("712", "Ayoub", new SimpleDateFormat("yyyy-MM-dd").parse("2020-12-31"), "708");
+        ccs.deleteBankAccount("IBAN2233");
 
-        cars = ccs.getCards();
+        cars = ccs.getBankAccounts();
 
-        for(CreditCard c: cars){
+        for(BankAccount c: cars){
             System.out.println("new man : " + c.toString());
         }
+
+
     }
 
 }

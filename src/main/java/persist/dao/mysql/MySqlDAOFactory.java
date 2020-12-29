@@ -2,6 +2,7 @@ package persist.dao.mysql;
 
 
 import persist.DAOFactory;
+import persist.dao.BankAccountDAO;
 import persist.dao.CreditCardDAO;
 
 import java.sql.Connection;
@@ -57,6 +58,11 @@ public class MySqlDAOFactory extends DAOFactory {
 
     public CreditCardDAO createCreditCardDao() {
         return new MySqlCreditCardDAO();
+    }
+
+
+    public BankAccountDAO createBankAccountDAO() {
+        return new MySqlBankAccountDAO();
     }
 
 }
