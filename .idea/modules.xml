@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SplitPay.iml" filepath="$PROJECT_DIR$/.idea/SplitPay.iml" />
-      <module fileurl="file://$PROJECT_DIR$/splitManagement/splitManagement.iml" filepath="$PROJECT_DIR$/splitManagement/splitManagement.iml" />
     </modules>
   </component>
 </project>

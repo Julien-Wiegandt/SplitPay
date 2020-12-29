@@ -1,5 +1,9 @@
 package server.facade;
 
+import server.ConnectionToClient;
+import server.ObservableOriginatorServer;
+import server.ObservableServer;
+import server.SplitOriginatorMessage;
 import server.exception.GoalAmountExceededException;
 import server.exception.ParticipantAlreadyInException;
 import server.exception.ParticipantNotFoundException;
@@ -8,20 +12,44 @@ import server.models.Participant;
 import server.models.Split;
 import util.SplitUtilities;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 
-public class SplitServerFacade {
+public class SplitServerFacade implements Observer {
+
+    // CLASS VARIABLES
+
+    /**
+     * The string sent to the observers when a client requests a split cretion.
+     */
+    public static final String CREATION_REQUEST= "#OS:Creation Request";
+
+    /**
+     * The string sent to the observers when a client has connected.
+     */
+    public static final String GET_SPLIT_REQUEST= "#OS:Get Split Request";
+
+    /**
+     * The string sent to the observers when a client has connected.
+     */
+    public static final String JOINED_SPLIT= "#OS:Joined Split";
 
     private HashMap<String, Split> splits = new HashMap<>();
     private static SplitServerFacade instance = null;
 
+    ObservableServer communicationService;
+
     /**
      * Private constructor for Singleton pattern
      */
-    private SplitServerFacade(){
+    private SplitServerFacade(int port)
+    {
+        communicationService = new ObservableOriginatorServer(port);
+        communicationService.addObserver(this);
+    }
 
+    public void listen() throws IOException{
+        communicationService.listen();
     }
 
     /**
@@ -32,7 +60,7 @@ public class SplitServerFacade {
         if (instance == null) {
             synchronized(SplitServerFacade.class) {
                 if (instance == null) {
-                    instance = new SplitServerFacade();
+                    instance = new SplitServerFacade(DEFAULT_PORT);
                 }
             }
         }
@@ -96,14 +124,14 @@ public class SplitServerFacade {
      * Returns a hashmap of splits owned by the user
      * @return
      */
-    public HashMap<Integer,Split> getUserSplits(int id) {
-        HashMap<Integer,Split> userSplits = new HashMap<>();
+    public HashMap<String,Split> getUserSplits(int id) {
+        HashMap<String,Split> userSplits = new HashMap<>();
         Iterator iterator = splits.entrySet().iterator();
 
         while (iterator.hasNext()){
-            Map.Entry<Integer,Split> split = (Map.Entry) iterator.next();
+            Map.Entry<String,Split> split = (Map.Entry) iterator.next();
             if(split.getValue().getOwnerId()==id){
-                userSplits.put(split.getKey(),split.getValue());
+                userSplits.put(split.getKey().toString(),split.getValue());
             }
         }
 
@@ -160,5 +188,110 @@ public class SplitServerFacade {
     public void switchSplitParticipantReadyStatus(String splitCode, int participantId) throws SplitNotFoundException, ParticipantNotFoundException {
         getSplitByCode(splitCode).switchParticipateReadyStatus(participantId);
     }
+
+    /**
+     * This method handles any messages received from the client.
+     *
+     * @param msg The message received from the client.
+     * @param client The connection from which the message originated.
+     *               TODO : handle try catches correctly
+     */
+    public void handleMessageFromClient(Object msg, ConnectionToClient client) {
+        SplitOriginatorMessage message = (SplitOriginatorMessage) msg;
+        switch (message.getMessage()){
+            case CREATION_REQUEST:
+                int ownerId = Integer.getInteger(((SplitOriginatorMessage) msg).getArgument("ownerId"));
+                String ownerNickname = ((SplitOriginatorMessage) msg).getArgument("ownerNickname");
+                Double goalAmount = Double.parseDouble(((SplitOriginatorMessage) msg).getArgument("goalAmount"));
+                String label = ((SplitOriginatorMessage) msg).getArgument("label");
+                String splitMode = ((SplitOriginatorMessage) msg).getArgument("splitMode");
+                String splitCode = createSplit(ownerId,ownerNickname,goalAmount,label,splitMode);
+                try {
+                    HashMap<Integer,Split> split = new HashMap<>();
+                    //split.put(splitCode,getSplitByCode(splitCode));
+                    getSplitByCode(splitCode);
+                    // TODO : reimplement after changing type to string
+                } catch (SplitNotFoundException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    client.sendToClient(new SplitOriginatorMessage(null, JOINED_SPLIT, null, null));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case GET_SPLIT_REQUEST:
+                int userId = Integer.parseInt(message.getArguments().get("userId"));
+                HashMap<String,Split> userSplits = getUserSplits(userId);
+                try {
+                    client.sendToClient(new SplitOriginatorMessage(null, GET_SPLIT_REQUEST,null, userSplits));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+    }
+
+    /**
+     * Receives signals from the server
+     * @param o
+     * @param arg
+     * TODO : implement cases
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        SplitOriginatorMessage msg= ((SplitOriginatorMessage)arg);
+        String message = msg.getMessage();
+
+        if (ObservableOriginatorServer.SERVER_STARTED.equals(message)) {
+            System.out.println("Server started");
+        } else if (ObservableOriginatorServer.SERVER_STOPPED.equals(message)) {
+            System.out.println("Server stopped");
+        } else if (ObservableOriginatorServer.CLIENT_CONNECTED.equals(message)) {
+            System.out.println("Client connected");
+        } else if (ObservableOriginatorServer.CLIENT_DISCONNECTED.equals(message)) {
+            System.out.println("Client disconnected");
+        } else if (ObservableOriginatorServer.CLIENT_EXCEPTION.equals(message)) {
+            System.out.println("Client exception");
+        } else if (ObservableOriginatorServer.SERVER_CLOSED.equals(message)) {
+            System.out.println("Server closed");
+        } else {
+            this.handleMessageFromClient(msg,msg.getOriginator());
+        }
+
+    }
+
+    /**
+     * The default port to listen on.
+     */
+    final public static int DEFAULT_PORT = 5555;
+
+    public static void main(String[] args)
+    {
+
+        int port = 0; //Port to listen on
+
+        try
+        {
+            port = Integer.parseInt(args[0]); //Get port from command line
+        }
+        catch(Throwable t)
+        {
+            port = DEFAULT_PORT; //Set port to 5555
+        }
+
+        SplitServerFacade facade = new SplitServerFacade(port);
+
+        try
+        {
+            facade.listen();
+            //Start listening for connections
+        }
+        catch (Exception ex)
+        {
+            System.out.println("ERROR - Could not listen for clients!");
+        }
+    }
+
 
 }

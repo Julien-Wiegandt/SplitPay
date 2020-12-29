@@ -224,7 +224,7 @@ public class AdvancedSplitTests {
         facade.createSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
 
 
-        HashMap<Integer,Split> returnedSplits = facade.getUserSplits(participant2.getId());
+        HashMap<String,Split> returnedSplits = facade.getUserSplits(participant2.getId());
 
         Assert.assertEquals(0,returnedSplits.size());
     }
@@ -241,7 +241,7 @@ public class AdvancedSplitTests {
         facade.createSplit(participant1.getId(), participant1.getNickname(),23,"new year bowling2","freesplit");
         facade.createSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
 
-        HashMap<Integer,Split> returnedSplits = facade.getUserSplits(participant1.getId());
+        HashMap<String,Split> returnedSplits = facade.getUserSplits(participant1.getId());
 
         Assert.assertEquals(2,returnedSplits.size());
     }

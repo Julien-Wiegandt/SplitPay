@@ -29,7 +29,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/facade/SplitServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/facade/SplitServerFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/mySplitsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/mySplitsView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/splitParticipationTests/AdvancedSplitTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/splitParticipationTests/AdvancedSplitTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,15 +120,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
