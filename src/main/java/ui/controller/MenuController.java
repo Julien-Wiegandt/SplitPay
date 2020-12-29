@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import main.SplitPay;
+import ui.path.AuthPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -75,4 +76,33 @@ public class MenuController {
         SplitPay.window.setScene(new Scene(root));
     }
 
+    /**
+     * This method redirects to the selectMethodView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToManageAccountView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.manageAccountView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * This method redirects to the friendView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToFriendView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.friendView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * This method redirects to the notificationView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToNotificationView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.notificationView));
+        SplitPay.window.setScene(new Scene(root));
+    }
 }

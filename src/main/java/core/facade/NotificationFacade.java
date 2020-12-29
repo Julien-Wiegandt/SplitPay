@@ -1,11 +1,15 @@
 package core.facade;
 
 import core.models.Notification;
+import core.models.User;
 import persist.DAOFactory;
 import persist.dao.NotificationDAO;
 import persist.dao.NotificationDAO;
 import persist.dao.mysql.MySqlDAOFactory;
 import persist.dao.mysql.MySqlNotificationDAO;
+
+import javax.jws.soap.SOAPBinding;
+import java.util.ArrayList;
 
 public class NotificationFacade {
     private static DAOFactory daoFactory = new MySqlDAOFactory();
@@ -78,6 +82,16 @@ public class NotificationFacade {
      */
     public void deleteNotification(String id) {
         getNotificationDao().deleteNotificationById(id);
+
+    };
+
+    /**
+     * Return all the notifications of a user
+     */
+    public ArrayList<Notification> getNotifications()
+    {
+        User user = UserFacade.getUserFacade().getLoggedUser();
+        return getNotificationDao().getNotifications(user.getId());
 
     };
 

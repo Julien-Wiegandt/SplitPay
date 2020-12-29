@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 
 public class SplitPay extends Application {
@@ -31,28 +32,28 @@ public class SplitPay extends Application {
         window.centerOnScreen();
 
         //LogIn
-        Parent logInRoot = FXMLLoader.load(getClass().getResource("../view/authPath/logInView.fxml"));
-        Scene logInView = new Scene(logInRoot, 320.0, 500.0);
+        Parent logInRoot = FXMLLoader.load(getClass().getResource("../view/authPath/homeView.fxml"));
+        Scene logInView = new Scene(logInRoot);
 
         window.setScene(logInView);
         window.show();
     }
 
     public static void main(String[] args) {
-        //launch(args);
+
         UserFacade user = UserFacade.getUserFacade();
         try {
             user.emailLogIn("test@test.com","splitpay");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        FriendFacade friends = FriendFacade.getFriendFacade();
-        ArrayList<NormalUser> amis = new ArrayList<NormalUser>();
-        amis = friends.getFriends();
+        FriendFacade friendFacade = FriendFacade.getFriendFacade();
+        User  friend = UserFacade.getUserFacade().findUserByPhone("0611223344");
+        friendFacade.deleteFriend(friend);
+        System.out.println(friendFacade.getFriends().toString());
 
-        for(NormalUser ami: amis) {
-            System.out.println(ami.toString());
-        };
+        launch(args);
+
 
 
     }

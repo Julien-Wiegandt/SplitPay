@@ -10,7 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import ui.path.AuthPath;
-import util.RegexPattern;
+import utilities.RegexPattern;
 import main.SplitPay;
 import java.io.IOException;
 

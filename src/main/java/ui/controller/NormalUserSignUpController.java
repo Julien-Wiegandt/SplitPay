@@ -3,7 +3,7 @@ package ui.controller;
 import ui.path.AuthPath;
 import main.SplitPay;
 import core.facade.UserFacade;
-import util.RegexPattern;
+import utilities.RegexPattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

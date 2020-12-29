@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.ManageAccountController">
+    <top>
+        <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
+    </top>
+    <left>
+        <fx:include fx:id="normalUserMenu" source="menu.fxml" />
+    </left>
+   <center>
+      <AnchorPane prefHeight="298.0" prefWidth="470.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="149.0" layoutY="94.0" prefHeight="130.0" prefWidth="173.0">
+               <children>
+                  <Button fx:id="changePhone" mnemonicParsing="false" onAction="#goToChangePhoneView" prefHeight="25.0" prefWidth="174.0" text="Change Phone Number" />
+                  <Button fx:id="changePassword" mnemonicParsing="false" onAction="#goToSelectMethodView" prefHeight="25.0" prefWidth="178.0" text="Change Password" />
+                  <Button fx:id="changeEmail" mnemonicParsing="false" onAction="#goToChangeEmailView" prefHeight="25.0" prefWidth="174.0" text="Change Email" />
+                  <Button fx:id="confirmEmailPhone" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" text="Confirm Email/Phone" />
+                  <Button fx:id="deleteAccount" mnemonicParsing="false" prefHeight="25.0" prefWidth="173.0" text="Delete account" />
+               </children>
+            </VBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="195.0" text="Manage my account" textAlignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

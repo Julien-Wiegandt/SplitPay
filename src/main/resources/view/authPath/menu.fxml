@@ -9,12 +9,12 @@
       <Label fx:id="general" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="General" />
       <Button fx:id="myTransactionsButton" mnemonicParsing="false" onAction="#goToMyTransactionsView" prefHeight="27.0" prefWidth="194.0" text="My transactions" />
       <Button fx:id="mySplitsButton" mnemonicParsing="false" onAction="#goToMySplitsView" prefHeight="27.0" prefWidth="165.0" text="My splits" />
-      <Button fx:id="notificationsButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="165.0" text="Notifications" />
+      <Button fx:id="notificationsButton" mnemonicParsing="false" onAction="#goToNotificationView" prefHeight="27.0" prefWidth="165.0" text="Notifications" />
       <Label fx:id="socialLabel" alignment="CENTER" prefHeight="17.0" prefWidth="149.0" text="Social" />
-      <Button fx:id="friendsButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="169.0" text="Friends" />
+      <Button fx:id="friendsButton" mnemonicParsing="false" onAction="#goToFriendView" prefHeight="27.0" prefWidth="169.0" text="Friends" />
       <Button fx:id="groupsButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="173.0" text="Groups" />
       <Label fx:id="myInformationLabel" alignment="CENTER" prefHeight="17.0" prefWidth="149.0" text="My information" />
-      <Button fx:id="personalInformationButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="240.0" text="Personal information" />
+      <Button fx:id="personalInformationButton" mnemonicParsing="false" onAction="#goToManageAccountView" prefHeight="27.0" prefWidth="240.0" text="Personal information" />
       <Button fx:id="creditCardsButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="175.0" text="Credit cards" />
       <Button fx:id="bankAccountButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="174.0" text="Bank accounts" />
    </children>

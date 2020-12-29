@@ -1,5 +1,7 @@
 package core.models;
 
+import java.util.Date;
+
 public class Notification {
 
 
@@ -7,6 +9,7 @@ public class Notification {
     private String userID;
     private String label;
     private String message;
+
 
 
     //------------------------------------- Constructor--------------------------------
@@ -56,5 +59,15 @@ public class Notification {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "id='" + id + '\'' +
+                ", userID='" + userID + '\'' +
+                ", label='" + label + '\'' +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

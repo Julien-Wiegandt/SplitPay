@@ -1,7 +1,7 @@
 package core.models;
 
 /**
- * 
+ *
  */
 public class User {
 

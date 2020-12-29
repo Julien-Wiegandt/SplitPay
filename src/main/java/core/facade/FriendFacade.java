@@ -9,6 +9,7 @@ import persist.dao.UserDAO;
 import persist.dao.mysql.MySqlDAOFactory;
 import persist.dao.mysql.MySqlFriendDAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class FriendFacade{
@@ -68,7 +69,10 @@ public class FriendFacade{
 
     }
 
-    public void addFriendByEmail(String email){
+    public void addFriendByEmail(String email) throws SQLException {
+        UserFacade userFacade = UserFacade.getUserFacade();
+        User friend = userFacade.findUserByEmail(email);
+        getFriendDao().addFriend(userFacade.getLoggedUser(),friend);
 
     }
 

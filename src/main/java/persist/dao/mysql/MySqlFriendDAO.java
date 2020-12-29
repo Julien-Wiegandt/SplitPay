@@ -34,16 +34,19 @@ public class MySqlFriendDAO extends FriendDAO {
     public ArrayList<NormalUser> getFriends(String id) {
         Statement stmt = null;
         ArrayList<NormalUser> friends=new ArrayList<NormalUser>();
+        System.out.println("GETFRIENDSSSSSSSSSSSSSSSSSSSSSSS");
 
         try {
             stmt = MySqlDAOFactory.connection.createStatement();
             ResultSet rs = stmt.executeQuery("Select * From Friends JOIN NormalUser On NormalUser.normal_user_pk =  Friends.added_normal_user_fk  WHERE adder_normal_user_fk ="+"'"+ id +"'");
+            System.out.println("Select * From Friends JOIN NormalUser On NormalUser.normal_user_pk =  Friends.added_normal_user_fk  WHERE adder_normal_user_fk ="+"'"+ id +"'");
             while(rs.next()) {
                 NormalUser user = new NormalUser();
                 user.setId(rs.getString("normal_user_pk"));
                 user.setEmail(rs.getString("email"));
                 user.setPhone(rs.getString("phone"));
                 user.setNickname(rs.getString("nickname"));
+                System.out.println(user);
                 friends.add(user);
             }
 
@@ -62,8 +65,8 @@ public class MySqlFriendDAO extends FriendDAO {
             throwables.printStackTrace();
         }
         try {
-            System.out.println("INSERT INTO Friends VALUES ('"+user.getId()+"', '"+friend.getId()+"')");
-            Integer rs = stmt.executeUpdate("INSERT INTO Friends VALUES ('"+user.getId()+"', '"+friend.getId()+"')");
+            System.out.println("INSERT INTO Friends VALUES ('"+friend.getId()+"', '"+user.getId()+"')");
+            Integer rs = stmt.executeUpdate("INSERT INTO Friends VALUES ('"+friend.getId()+"', '"+user.getId()+"')");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -78,8 +81,8 @@ public class MySqlFriendDAO extends FriendDAO {
             throwables.printStackTrace();
         }
         try {
-            preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE FROM Friends WHERE added_normal_user_fk='" + user.getId() + "' AND adder_normal_user_fk='"+ friend.getId() + "'");
-            System.out.println("DELETE FROM Friends WHERE added_normal_user_fk='" + user.getId() + "' and adder_normal_user_fk="+ friend.getId() + "'");
+            preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE FROM Friends WHERE adder_normal_user_fk='" + user.getId() + "' AND added_normal_user_fk='"+ friend.getId() + "'");
+            System.out.println("DELETE FROM Friends WHERE adder_normal_user_fk='" + user.getId() + "' and added_normal_user_fk="+ friend.getId() + "'");
             preparedStmt.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -7,8 +7,9 @@ import core.models.NormalUser;
 import core.models.StoreOwner;
 import core.models.User;
 import persist.dao.mysql.MySqlDAOFactory;
+import utilities.SplitUtilities;
 
-import java.util.*;
+import java.sql.SQLException;
 
 /**
  *
@@ -130,6 +131,23 @@ public class UserFacade {
      */
     public User findUserByPhone(String phone){
         return userDao.findUserByPhone(phone);
+    }
+
+
+    public User findUserByEmail(String email) throws SQLException {
+        return userDao.findUserByEmail(email);
+    }
+
+    public void updateUser(User user){
+        this.user = user;
+        userDao.update(user);
+    }
+
+    public void generateVerificationCode(){
+        String code = SplitUtilities.generateCode();
+        System.out.println(code);
+        getUser().setValidationCode(code);
+
     }
 
 

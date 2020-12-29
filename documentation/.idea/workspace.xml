@@ -20,22 +20,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46e8b2a6-2ef7-42f4-867d-2b8da13f6f22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../src/main/java/core/facade/NotificationFacade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../src/main/java/core/models/Notification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../src/main/java/persist/dao/NotificationDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../src/main/java/persist/dao/mysql/MySqlNotificationDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/AddFriendController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/ChangeEmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/ChangePasswordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/ChangePhoneController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/FriendController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/ManageAccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/NotificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/SelectMethodController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/VerificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/utilities/SplitUtilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/resources/view/authPath/addFriendView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/resources/view/authPath/changeEmailView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/resources/view/authPath/changePhoneView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/resources/view/authPath/friendView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/resources/view/authPath/manageAccountView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/resources/view/authPath/notificationView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/resources/view/authPath/selectMethodView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/software_design/manage_notifications/manage_notifications_class_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/software_design/manage_notifications/manage_notifications_class_diagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/software_design/manage_notifications/manage_notifications_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/software_design/manage_notifications/manage_notifications_class_diagram.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/main/java/core/facade/FriendFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/core/facade/FriendFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/core/models/NormalUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/core/models/NormalUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/core/facade/NotificationFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/core/facade/NotificationFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/core/facade/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/core/facade/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/core/models/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/core/models/Notification.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/main/java/core/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/core/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/main/java/main/SplitPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/main/SplitPay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/persist/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/persist/DAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/persist/dao/FriendDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/persist/dao/FriendDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/persist/dao/mysql/MySqlDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/persist/dao/mysql/MySqlDAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/persist/dao/NotificationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/persist/dao/NotificationDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/main/java/persist/dao/mysql/MySqlFriendDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/persist/dao/mysql/MySqlFriendDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/persist/dao/mysql/MySqlNotificationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/persist/dao/mysql/MySqlNotificationDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/persist/dao/mysql/MySqlUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/persist/dao/mysql/MySqlUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/ui/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/ui/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/ui/controller/NormalUserSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/NormalUserSignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/ui/controller/StoreOwnerSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/ui/controller/StoreOwnerSignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/ui/path/AuthPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/ui/path/AuthPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/util/RegexPattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/utilities/RegexPattern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/view/authPath/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/view/authPath/menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +73,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -88,10 +108,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1608971455779">
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1609275883728">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608971455779" />
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1609275883728" />
     <state x="2552" y="145" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608971369697" />
   </component>
 </project>

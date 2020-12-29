@@ -5,7 +5,7 @@ import persist.exception.login.PasswordLoginDAOException;
 import core.models.NormalUser;
 import core.models.StoreOwner;
 import core.models.User;
-import util.RegexPattern;
+import utilities.RegexPattern;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -89,9 +89,9 @@ public class MySqlUserDAO extends UserDAO {
     }
 
 
-    public User findNormalUserByEmail(String email) throws SQLException {
+    public NormalUser findNormalUserByEmail(String email) throws SQLException {
         Statement stmt = null;
-        User user = null;
+        NormalUser user = null;
         try {
             stmt = MySqlDAOFactory.connection.createStatement();
         } catch (SQLException throwables) {
@@ -119,9 +119,9 @@ public class MySqlUserDAO extends UserDAO {
         return user;
     }
 
-    public User findStoreOwnerByEmail(String email) throws SQLException {
+    public StoreOwner findStoreOwnerByEmail(String email) throws SQLException {
         Statement stmt = null;
-        User user = null;
+        StoreOwner user = null;
         try {
             stmt = MySqlDAOFactory.connection.createStatement();
         } catch (SQLException throwables) {
@@ -312,16 +312,21 @@ public class MySqlUserDAO extends UserDAO {
         }
         try {
             if(user instanceof NormalUser) {
-                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"','"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                System.out.println("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName ='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
                         " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
-                        "WHERE id='" + user.getId() + "'");
+                        "WHERE normal_user_pk='" + user.getId() + "'");
+
+
+                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName ='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
+                        "WHERE normal_user_pk='" + user.getId() + "'");
             }else{
                 Integer rs = stmt.executeUpdate("UPDATE StoreOwner SET email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
                         " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "','"+((StoreOwner)user).getCompanyName()+"','"+((StoreOwner)user).getAddress()+"', balance='" + user.getBalance() + "'" +
                         "WHERE id='" + user.getId() + "'");
 
             }
-            MySqlDAOFactory.connection.commit();
+
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

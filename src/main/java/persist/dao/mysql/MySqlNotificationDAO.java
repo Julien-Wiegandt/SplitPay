@@ -5,6 +5,7 @@ import core.models.Notification;
 import persist.dao.NotificationDAO;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class MySqlNotificationDAO extends NotificationDAO {
 
@@ -54,6 +55,28 @@ public class MySqlNotificationDAO extends NotificationDAO {
 
 
 
+    }
+
+    public ArrayList<Notification> getNotifications(String id) {
+        Statement stmt = null;
+        ArrayList<Notification> notifications = new ArrayList<Notification>();
+
+
+        try {
+            stmt = MySqlDAOFactory.connection.createStatement();
+            ResultSet rs = stmt.executeQuery("Select * From Notification WHERE normal_user_fk ="+"'"+ id +"'");
+            while(rs.next()) {
+                Notification notification = new Notification(rs.getString("normal_user_fk"),rs.getString("label"),rs.getString("message"));
+
+                System.out.println(notification);
+                notifications.add(notification);
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return notifications;
     }
 
     /**

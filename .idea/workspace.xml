@@ -22,29 +22,50 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/facade/NotificationFacade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/models/Notification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/persist/dao/NotificationDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlNotificationDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/AddFriendController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChangeEmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChangePasswordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChangePhoneController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/FriendController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ManageAccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/NotificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/SelectMethodController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/controller/VerificationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utilities/SplitUtilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/addFriendView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/changeEmailView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/changePhoneView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/friendView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/manageAccountView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/notificationView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/selectMethodView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/documentation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/software_design/manage_notifications/manage_notifications_class_diagram.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/FriendFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/FriendFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/NormalUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/NormalUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/NotificationFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/NotificationFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/facade/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/models/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/Notification.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/SplitPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/SplitPay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/DAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/FriendDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/FriendDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlDAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/NotificationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/NotificationDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlFriendDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlFriendDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlNotificationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlNotificationDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persist/dao/mysql/MySqlUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/NormalUserSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/NormalUserSignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/StoreOwnerSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/StoreOwnerSignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/path/AuthPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/path/AuthPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/RegexPattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/RegexPattern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/authPath/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/authPath/menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,26 +113,29 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/SplitPay" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_notifications" />
-      <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_personnal_account" />
-      <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_friends" />
-      <recent name="$PROJECT_DIR$/documentation/software_design/manage_balance" />
-      <recent name="$PROJECT_DIR$/documentation/software_design/make_payment" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_notifications" />
       <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_personnal_account" />
       <recent name="$PROJECT_DIR$/documentation/software_design/make_payment" />
       <recent name="$PROJECT_DIR$/documentation/software_design/authentication" />
       <recent name="$PROJECT_DIR$/src/utils/jdk" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="util" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\imadl\Desktop\SplitPay\src\main\java\ui\controller" />
+      <recent name="C:\Users\imadl\Desktop\SplitPay\src\main\resources\view\authPath" />
+      <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_notifications" />
+      <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_personnal_account" />
+      <recent name="C:\Users\wiega\Google Drive\Development\IdeaProjects\SplitPay\documentation\software_design\manage_friends" />
     </key>
   </component>
   <component name="RunManager" selected="Application.SplitPay (1)">
@@ -193,7 +217,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -247,37 +271,37 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added generated blank code for persist and core layer" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1609004924931">
+    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1609267841563">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609004924931" />
-    <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1608895384076">
+    <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609267841563" />
+    <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1609269941243">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608895384076" />
-    <state width="1237" height="223" key="GridCell.Tab.0.bottom" timestamp="1609022012806">
+    <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609269941243" />
+    <state width="1237" height="98" key="GridCell.Tab.0.bottom" timestamp="1609275950178">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608926272092" />
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609007352855" />
+    <state width="1237" height="98" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1609275950178" />
+    <state width="1877" height="176" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609275871660" />
     <state width="1237" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609022012806" />
-    <state width="1237" height="223" key="GridCell.Tab.0.center" timestamp="1609022012806">
+    <state width="1237" height="98" key="GridCell.Tab.0.center" timestamp="1609275950178">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608926272092" />
-    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609007352855" />
+    <state width="1237" height="98" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1609275950178" />
+    <state width="1877" height="176" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609275871660" />
     <state width="1237" height="223" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609022012806" />
-    <state width="1237" height="223" key="GridCell.Tab.0.left" timestamp="1609022012806">
+    <state width="1237" height="98" key="GridCell.Tab.0.left" timestamp="1609275950177">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608926272092" />
-    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609007352855" />
+    <state width="1237" height="98" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1609275950177" />
+    <state width="1877" height="176" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609275871660" />
     <state width="1237" height="223" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609022012806" />
-    <state width="1237" height="223" key="GridCell.Tab.0.right" timestamp="1609022012806">
+    <state width="1237" height="98" key="GridCell.Tab.0.right" timestamp="1609275950178">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1608926272092" />
-    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609007352855" />
+    <state width="1237" height="98" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1609275950178" />
+    <state width="1877" height="176" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1609275871660" />
     <state width="1237" height="223" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609022012806" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
