@@ -15,12 +15,12 @@
                     <Insets bottom="5.0" />
                 </VBox.margin>
             </Label>
-            <TextField prefHeight="38.0" prefWidth="464.0" promptText="Code">
+            <TextField fx:id="splitCode" prefHeight="38.0" prefWidth="464.0" promptText="Code">
                 <VBox.margin>
                     <Insets bottom="5.0" left="350.0" right="350.0" />
                 </VBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" text="Join">
+            <Button onAction="#joinSplit" mnemonicParsing="false" text="Join">
                 <VBox.margin>
                     <Insets bottom="30.0" />
                 </VBox.margin>

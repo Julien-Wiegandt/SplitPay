@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import server.models.Split;
 
 import java.io.IOException;
@@ -55,6 +56,16 @@ public class SplitController {
 
     /// splitSection.fxml logic
 
+    @FXML
+    private TextField splitCode;
 
+    /**
+     * This methods sends the splitCode to the server to attempt
+     */
+    public void joinSplit(){
+        facade.joinSplit(splitCode.getText());
+    }
+
+//    public void
 
 }

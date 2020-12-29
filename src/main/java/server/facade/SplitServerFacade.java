@@ -25,14 +25,29 @@ public class SplitServerFacade implements Observer {
     public static final String CREATION_REQUEST= "#OS:Creation Request";
 
     /**
-     * The string sent to the observers when a client has connected.
+     * The string sent to the client when a has requested his splits.
      */
     public static final String GET_SPLIT_REQUEST= "#OS:Get Split Request";
 
     /**
-     * The string sent to the observers when a client has connected.
+     * The string sent to the client when a client has successfully joined a split.
      */
     public static final String JOINED_SPLIT= "#OS:Joined Split";
+
+    /**
+     * The string sent to the client when a client has failed to join a split.
+     */
+    public static final String SPLIT_NOT_FOUND= "#OS:Split Not Found";
+
+    /**
+     * The string sent to the observers when a client tries to join a split.
+     */
+    public static final String JOIN_SPLIT_ATTEMPT= "#OS:Join Split Attempt";
+
+    /**
+     * The string sent to the observers when a client tries to join a split.
+     */
+    public static final String PARTICIPANT_ALREADY_IN_SPLIT= "#OS:Participant Already In Split";
 
     private HashMap<String, Split> splits = new HashMap<>();
     private static SplitServerFacade instance = null;
@@ -90,8 +105,12 @@ public class SplitServerFacade implements Observer {
      * @exception SplitNotFoundException
      * @exception ParticipantAlreadyInException
      */
-    public void join(String splitCode, int participantId, String participantNickname) throws SplitNotFoundException, ParticipantAlreadyInException {
-        getSplitByCode(splitCode).addParticipant(participantId,participantNickname);
+    public HashMap<String,Split> join(String splitCode, int participantId, String participantNickname) throws SplitNotFoundException, ParticipantAlreadyInException {
+        Split split = getSplitByCode(splitCode);
+        split.addParticipant(participantId,participantNickname);
+        HashMap<String,Split> data = new HashMap<>();
+        data.put(splitCode,split);
+        return data;
     }
 
     /**
@@ -155,7 +174,6 @@ public class SplitServerFacade implements Observer {
      * @param participantId
      * @param newAmount
      * @throws SplitNotFoundException
-     * TODO : Check if goal amount will not be exceeded
      */
     public void changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
         getSplitByCode(splitCode).changeParticipantAmount(participantId,newAmount);
@@ -198,14 +216,19 @@ public class SplitServerFacade implements Observer {
      */
     public void handleMessageFromClient(Object msg, ConnectionToClient client) {
         SplitOriginatorMessage message = (SplitOriginatorMessage) msg;
+
+        int userId;
+        String splitCode;
+
         switch (message.getMessage()){
+            // TODO : test
             case CREATION_REQUEST:
                 int ownerId = Integer.getInteger(((SplitOriginatorMessage) msg).getArgument("ownerId"));
                 String ownerNickname = ((SplitOriginatorMessage) msg).getArgument("ownerNickname");
                 Double goalAmount = Double.parseDouble(((SplitOriginatorMessage) msg).getArgument("goalAmount"));
                 String label = ((SplitOriginatorMessage) msg).getArgument("label");
                 String splitMode = ((SplitOriginatorMessage) msg).getArgument("splitMode");
-                String splitCode = createSplit(ownerId,ownerNickname,goalAmount,label,splitMode);
+                splitCode = createSplit(ownerId,ownerNickname,goalAmount,label,splitMode);
                 try {
                     HashMap<Integer,Split> split = new HashMap<>();
                     //split.put(splitCode,getSplitByCode(splitCode));
@@ -221,7 +244,7 @@ public class SplitServerFacade implements Observer {
                 }
                 break;
             case GET_SPLIT_REQUEST:
-                int userId = Integer.parseInt(message.getArguments().get("userId"));
+                userId = Integer.parseInt(message.getArguments().get("userId"));
                 HashMap<String,Split> userSplits = getUserSplits(userId);
                 try {
                     client.sendToClient(new SplitOriginatorMessage(null, GET_SPLIT_REQUEST,null, userSplits));
@@ -229,6 +252,40 @@ public class SplitServerFacade implements Observer {
                     e.printStackTrace();
                 }
                 break;
+            case JOIN_SPLIT_ATTEMPT:
+                System.out.println("Join split attempt");
+                userId = Integer.parseInt(message.getArguments().get("userId"));
+                String nickName = message.getArgument("nickName");
+                splitCode = message.getArgument("splitCode");
+                try {
+                    HashMap<String,Split> data = join(splitCode,userId,nickName);
+                    // TODO : return split hash
+                    try {
+                        System.out.println("Success : Joined split");
+                        client.sendToClient(new SplitOriginatorMessage(null,JOINED_SPLIT,null,data));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } catch (SplitNotFoundException e) {
+                    try {
+                        System.out.println("Error : Split not found");
+                        // TODO : handle client side
+                        client.sendToClient(new SplitOriginatorMessage(null,SPLIT_NOT_FOUND,null,null));
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                } catch (ParticipantAlreadyInException e) {
+                    System.out.println("Error : Participant already in");
+                    // TODO : handle client side
+                    try {
+                        client.sendToClient(new SplitOriginatorMessage(null,PARTICIPANT_ALREADY_IN_SPLIT,null,null));
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+
+                }
+                break;
+
         }
     }
 
@@ -282,8 +339,7 @@ public class SplitServerFacade implements Observer {
 
         SplitServerFacade facade = new SplitServerFacade(port);
         facade.createSplit(1,"testUser",63.2,"bowling","freesplit");
-        facade.createSplit(1,"testUser",32.2,"Pizza","freesplit");
-
+        System.out.println(facade.createSplit(2,"User 2",32.2,"Pizza","freesplit"));
 
         try
         {

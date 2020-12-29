@@ -34,15 +34,38 @@ public class SplitClientFacade implements Observer
      */
     public static final String CONNECTION_ESTABLISHED = "#OC:Connection established.";
 
+    // CLASS VARIABLES
+
     /**
-     * The string sent to the observers when a client has connected.
+     * The string sent to the observers when a client requests a split cretion.
+     */
+    public static final String CREATION_REQUEST= "#OS:Creation Request";
+
+    /**
+     * The string sent to the client when a has requested his splits.
+     */
+    public static final String GET_SPLIT_REQUEST= "#OS:Get Split Request";
+
+    /**
+     * The string sent to the client when a client has successfully joined a split.
      */
     public static final String JOINED_SPLIT= "#OS:Joined Split";
 
     /**
-     * The string sent to the observers when a client has connected.
+     * The string sent to the client when a client has failed to join a split.
      */
-    public static final String GET_SPLIT_REQUEST= "#OS:Get Split Request";
+    public static final String SPLIT_NOT_FOUND= "#OS:Split Not Found";
+
+    /**
+     * The string sent to the observers when a client tries to join a split.
+     */
+    public static final String JOIN_SPLIT_ATTEMPT= "#OS:Join Split Attempt";
+
+    /**
+     * The string sent to the observers when a client tries to join a split.
+     */
+    public static final String PARTICIPANT_ALREADY_IN_SPLIT= "#OS:Participant Already In Split";
+
 
     //Instance variables **********************************************
 
@@ -134,6 +157,24 @@ public class SplitClientFacade implements Observer
                 }
                 splitController.setSplits(msgReceived.getSplits());
                 break;
+            case JOINED_SPLIT:
+                System.out.println("Success : Participant joined the split");
+                break;
+            case PARTICIPANT_ALREADY_IN_SPLIT:
+                System.out.println("Error : Participant already in Split");
+                try {
+                    communicationService.closeConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case SPLIT_NOT_FOUND:
+                System.out.println("Error : Wrong code");
+                try {
+                    communicationService.closeConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             case "exception":
                 System.out.println("exception");
         }
@@ -174,6 +215,26 @@ public class SplitClientFacade implements Observer
      * TODO : implement
      */
     public void joinSplit(String splitCode){
+        try {
+            communicationService.openConnection();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("splitcode entered :"+splitCode);
+
+        String id = UserFacade.getUserFacade().getLoggedUser().getId();
+        String nickName = UserFacade.getUserFacade().getLoggedUser().getNickname();
+
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("userId",id);
+        arguments.put("nickName",nickName);
+        arguments.put("splitCode",splitCode);
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,JOIN_SPLIT_ATTEMPT,arguments,null);
+
+        sendToServer(message);
+        System.out.println("joinSplit message sent to server");
 
     }
 
