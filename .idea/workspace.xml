@@ -30,14 +30,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6f8e1922-94ba-4668-8855-eb5e62a20b59" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseAmountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseAmountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseBankAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseBankAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseCreditCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseCreditCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseFriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseFriendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRecoverAmountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRecoverAmountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRefillAmountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ChooseRefillAmountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ForgottenPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ForgottenPasswordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/ManageBalanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/ManageBalanceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/MyTransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/MyTransactionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/NormalUserSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/NormalUserSignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/StoreOwnerSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/StoreOwnerSignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/controller/TransactionController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,15 +137,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -204,7 +199,8 @@
       <workItem from="1609093303260" duration="694000" />
       <workItem from="1609094005776" duration="4177000" />
       <workItem from="1609098194562" duration="9969000" />
-      <workItem from="1609147104043" duration="14548000" />
+      <workItem from="1609147104043" duration="15004000" />
+      <workItem from="1609255716271" duration="5653000" />
     </task>
     <servers />
   </component>

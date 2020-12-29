@@ -1,23 +1,30 @@
 package ui.controller;
 
-import core.facade.TransactionFacade;
 import core.facade.UserFacade;
 import core.models.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import java.awt.*;
-import java.util.Collection;
-import java.util.Iterator;
-
+/**
+ * Controller of the transactionView called when a user want to see the details of the selected transaction on myTransactionsView.
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2020-12-29
+ */
 public class TransactionController {
 
+    /**
+     * The Transaction's information.
+     */
     @FXML
     private Label transactionType, transactionDate, transactionAmount, splitParticipants, otherTransactionActor;
 
-    void setTransaction(Transaction transaction){
+    /**
+     * This method set all the transaction's details in the Labels
+     * @param transaction
+     */
+    public void setTransaction(Transaction transaction){
         if(transaction.getName().equals("UserToUserTransaction")){
             UserToUserTransaction t = (UserToUserTransaction) transaction;
             if(t.getSender_fk() == Integer.valueOf(UserFacade.getUserFacade().getLoggedUser().getId())) {
@@ -49,9 +56,5 @@ public class TransactionController {
         transactionType.setText(transaction.getName());
         transactionDate.setText(transaction.getDateCreated().toString());
         transactionAmount.setText(String.valueOf(transaction.getAmount()+"€"));
-    }
-
-    @FXML
-    private void initialize() {
     }
 }

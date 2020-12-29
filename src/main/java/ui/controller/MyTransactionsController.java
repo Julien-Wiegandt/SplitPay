@@ -1,7 +1,6 @@
 package ui.controller;
 
 import core.facade.TransactionFacade;
-import core.facade.UserFacade;
 import core.models.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,13 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import main.SplitPay;
-import persist.dao.TransactionDAO;
-import ui.path.AuthPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -24,11 +19,28 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
+/**
+ * Controller of the myTransactionsView called when the current user want to see his transaction history.
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2020-12-29
+ */
 public class MyTransactionsController {
+
+    /**
+     * Contains all the current user's Transactions.
+     */
     @FXML
     private ListView listView;
 
-    @FXML public void goToTransactionView(MouseEvent arg0) throws IOException {
+    /**
+     * This method transfers the selected Transaction in the TransactionController and load the transactionView.
+     * It is called by a button.
+     * @throws IOException
+     * @todo Handle the possible exceptions.
+     */
+    @FXML public void goToTransactionView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.transactionView));
         Parent root = loader.load();
         TransactionController transactionController = loader.getController();
@@ -36,6 +48,10 @@ public class MyTransactionsController {
         SplitPay.window.setScene(new Scene(root));
     }
 
+    /**
+     * This method fill the listView with all the current user's Transactions (sorted in descending order of dates).
+     * It is called at the view's load.
+     */
     @FXML
     private void initialize() {
         Collection<Transaction> res = TransactionFacade.getTransactionFacade().getTransactions();

@@ -14,16 +14,39 @@ import util.RegexPattern;
 import main.SplitPay;
 import java.io.IOException;
 
+/**
+ * Controller of the storeOwnerSignUpView called when a user want to sign up as a StoreOwner (not NormalUser).
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2020-12-29
+ */
 public class StoreOwnerSignUpController {
 
+    /**
+     * The information entered by the user.
+     */
     @FXML
     private TextField credential, nickname, companyName, siret;
+
+    /**
+     * The password entered by the user.
+     */
     @FXML
     private PasswordField password1, password2;
+
+    /**
+     * CheckBox checked if the user want to sign up as a StoreOwner.
+     */
     @FXML
     private CheckBox isCompany;
 
-    public void signUp(ActionEvent actionEvent) {
+    /**
+     * Create a StoreOwner with the entered information.
+     * If a entered information don't match the regex pattern,
+     * then the TextFields border is highlighted in red.
+     */
+    public void signUp() {
         allStyleSetDefault();
         if(RegexPattern.emailPattern.matcher(credential.getText()).find()
                 && RegexPattern.textPattern.matcher(companyName.getText()).find()
@@ -61,16 +84,31 @@ public class StoreOwnerSignUpController {
         }
     }
 
-    public void goToNormalUserSignUpView(ActionEvent actionEvent) throws IOException {
+    /**
+     * This method load the normalUserSignUpView.
+     * It is called by a button.
+     * @throws IOException
+     * @todo Handle the possible exceptions.
+     */
+    public void goToNormalUserSignUpView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(AuthPath.normalUserSignUpView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
-    public void goToLogInView(ActionEvent actionEvent) throws IOException {
+    /**
+     * This method load the logInView.
+     * It is called by a button.
+     * @throws IOException
+     * @todo Handle the possible exceptions.
+     */
+    public void goToLogInView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(AuthPath.logInView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
+    /**
+     * This method is used to set all user's input error feedback styles to default.
+     */
     private void allStyleSetDefault(){
         credential.setStyle("-fx-text-box-border: black");
         credential.setStyle("-fx-text-box-border: black");
