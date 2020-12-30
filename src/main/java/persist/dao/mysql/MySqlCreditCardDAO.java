@@ -3,8 +3,7 @@ package persist.dao.mysql;
 
 import core.facade.UserFacade;
 import core.models.CreditCard;
-import core.models.NormalUser;
-import core.models.User;
+
 import persist.dao.CreditCardDAO;
 
 import java.sql.ResultSet;

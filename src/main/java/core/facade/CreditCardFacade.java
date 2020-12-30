@@ -14,7 +14,7 @@ public class CreditCardFacade {
 
     private CreditCardDAO creditCardDAO;
 
-    private static CreditCardFacade creditCardFacade;
+    private static CreditCardFacade creditCardFacade = null;
 
     private static DAOFactory daoFactory = new MySqlDAOFactory();
 

@@ -1,10 +1,13 @@
 package main;
 
-import core.facade.BankAccountFacade;
 
+
+import core.facade.GroupFacade;
 import core.facade.UserFacade;
-import core.models.BankAccount;
 
+import core.models.Group;
+import core.models.NormalUser;
+import core.models.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -49,28 +52,47 @@ public class SplitPay extends Application {
             e.printStackTrace();
         }
 
-        BankAccountFacade ccs =  BankAccountFacade.getInstance();
+        GroupFacade ccs =  GroupFacade.getInstance();
 
-        ccs.createBankAccount("PAPAcarte", "222", "IBAN22319983", "David", "Saint");
-        ArrayList<BankAccount> cars = new ArrayList<BankAccount>();
+        ccs.addGroup("Gucci");
+        ArrayList<Group> cars = new ArrayList<Group>();
 
-        cars = ccs.getBankAccounts();
+        cars = ccs.getAllGroup();
 
-        for(BankAccount c: cars){
-            System.out.println("new man : " + c.toString());
+        for(Group c: cars){
+            System.out.println("group before: " + c.toString());
         }
 
-        /*ccs.deleteBankAccount("IBAN2233");
+        ccs.deleteGroup("3", null);
 
-        cars = ccs.getBankAccounts();
+        cars = ccs.getAllGroup();
 
-        for(BankAccount c: cars){
-            System.out.println("new man : " + c.toString());
+        for(Group c: cars){
+            System.out.println(" group after: " + c.toString());
         }
 
+        System.out.println("On ajoute des users dans le groupe:");
+        ccs.addFriendToGroup("4","SplitTeam", new User("3",null,null,null,null,null,null));
+        ccs.addFriendToGroup("4","SplitTeam", new User("4",null,null,null,null,null,null));
 
-         */
 
+        System.out.println("les membres du groupes:");
+        ArrayList<NormalUser> users = ccs.getAllFriendFromGroup("4");
+
+        for(User u: users){
+            System.out.println("user before: "+u.toString());
+        }
+
+        System.out.println("On supprime du groupes:");
+        ccs.deleteFriendFromGroup("4",null, new User("3",null,null,null,null,null,null));
+
+
+        System.out.println("Les membres du groupe:");
+        users = ccs.getAllFriendFromGroup("4");
+
+        for(User u: users){
+            System.out.println("user after: "+u.toString());
+        }
     }
 
 }

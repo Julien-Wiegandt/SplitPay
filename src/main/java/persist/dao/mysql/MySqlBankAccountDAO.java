@@ -3,7 +3,6 @@ package persist.dao.mysql;
 import core.facade.UserFacade;
 import core.models.BankAccount;
 
-import core.models.NormalUser;
 
 import persist.dao.BankAccountDAO;
 
@@ -91,7 +90,7 @@ COMMIT
                 String dbLastName = rs.getString("ownerLastName");
 
                 bankAccount = new BankAccount(dbId, dbLabel, dbBic, dbIban, dbFirstName, dbLastName);
-                //System.out.println(creditCard);
+
                 ccs.add(bankAccount);
             }
         }catch(SQLException throwables){
