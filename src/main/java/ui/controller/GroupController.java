@@ -36,19 +36,26 @@ public class GroupController {
 
     @FXML
     private void initialize() {
-        Collection transactions = GroupFacade.getInstance().getAllGroup();
+        Collection groups = GroupFacade.getInstance().getAllGroup();
         ObservableList<Group> items = FXCollections.observableArrayList();
 
-        Iterator<Group> iterator = transactions.iterator();
+        Iterator<Group> iterator = groups.iterator();
         while (iterator.hasNext()) {
             items.add(iterator.next());
         }
         listView.setItems(items);
+
     }
 
-    public void goToGroupView(ActionEvent actionEvent)throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
+    @FXML
+    public void goToEditGroupView()throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editGroupView));
+        Parent root = loader.load();
+        EditGroupController editGroupController = loader.getController();
+        editGroupController.setGroup((Group) listView.getSelectionModel().getSelectedItem());
         SplitPay.window.setScene(new Scene(root));
+
     }
     public void deleteGroup(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.deleteGroupView));

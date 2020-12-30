@@ -22,12 +22,8 @@
     <children>
         <BorderPane layoutX="9.0" layoutY="15.0" prefHeight="365.0" prefWidth="573.0">
             <center>
-                <ListView fx:id="listView" prefHeight="284.0" prefWidth="548.0" BorderPane.alignment="CENTER" >
-                    <Button mnemonicParsing="false" onAction="#deleteGroup" text="delete" >
+                <ListView fx:id="listView" prefHeight="284.0" prefWidth="548.0" BorderPane.alignment="CENTER" onMouseClicked="#goToEditGroupView"/>
 
-                    </Button>
-
-                </ListView>
             </center>
             <top>
                 <Button mnemonicParsing="false" onAction="#goToAddGroupView" text="New group" BorderPane.alignment="CENTER" />
