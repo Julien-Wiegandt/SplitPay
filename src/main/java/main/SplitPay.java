@@ -1,10 +1,10 @@
 package main;
 
 import core.facade.BankAccountFacade;
-import core.facade.CreditCardFacade;
+
 import core.facade.UserFacade;
 import core.models.BankAccount;
-import core.models.CreditCard;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,9 +13,9 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class SplitPay extends Application {
     public static Stage window;
@@ -51,7 +51,7 @@ public class SplitPay extends Application {
 
         BankAccountFacade ccs =  BankAccountFacade.getInstance();
 
-        ccs.createBankAccount("PAPA carte", "222", "IBAN2233", "David", "Saint");
+        ccs.createBankAccount("PAPAcarte", "222", "IBAN22319983", "David", "Saint");
         ArrayList<BankAccount> cars = new ArrayList<BankAccount>();
 
         cars = ccs.getBankAccounts();
@@ -60,7 +60,7 @@ public class SplitPay extends Application {
             System.out.println("new man : " + c.toString());
         }
 
-        ccs.deleteBankAccount("IBAN2233");
+        /*ccs.deleteBankAccount("IBAN2233");
 
         cars = ccs.getBankAccounts();
 
@@ -68,6 +68,8 @@ public class SplitPay extends Application {
             System.out.println("new man : " + c.toString());
         }
 
+
+         */
 
     }
 

@@ -63,7 +63,6 @@ public class AddCreditCardController {
         number.setStyle("-fx-text-box-border: black");
         nameOwner.setStyle("-fx-text-box-border: black");
         date.setStyle("-fx-text-box-border: black");
-        date.setStyle("-fx-text-box-border: black");
         cvv.setStyle("-fx-text-box-border: black");
     }
 

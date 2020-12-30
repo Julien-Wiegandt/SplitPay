@@ -33,6 +33,14 @@ public class MySqlBankAccountDAO extends BankAccountDAO {
             String id_iban = findBankAccountIdByIban(bankAccount.getIban());
             Integer rs2 = stmt.executeUpdate("INSERT INTO Relation_NormalUser_BankAccount VALUES ('" +UserFacade.getUserFacade().getLoggedUser().getId()+"', '"+id_iban+"')");
 
+            /*
+            BEGIN TRANSACTION
+   DECLARE @DataID int;
+   INSERT INTO DataTable (Column1 ...) VALUES (....);
+   SELECT @DataID = scope_identity();
+   INSERT INTO LinkTable VALUES (@ObjectID, @DataID);
+COMMIT
+             */
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

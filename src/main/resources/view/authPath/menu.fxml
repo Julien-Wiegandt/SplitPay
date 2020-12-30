@@ -16,6 +16,6 @@
       <Label fx:id="myInformationLabel" alignment="CENTER" prefHeight="17.0" prefWidth="149.0" text="My information" />
       <Button fx:id="personalInformationButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="240.0" text="Personal information" />
       <Button fx:id="creditCardsButton" mnemonicParsing="false" onAction="#goToCreditCardView" prefHeight="27.0" prefWidth="175.0" text="Credit cards" />
-      <Button fx:id="bankAccountButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="174.0" text="Bank accounts" />
+      <Button fx:id="bankAccountButton" mnemonicParsing="false" onAction="#goToBankAccountView" prefHeight="27.0" prefWidth="174.0" text="Bank accounts" />
    </children>
 </VBox>

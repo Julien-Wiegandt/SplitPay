@@ -49,7 +49,6 @@ public class MenuController {
             groupsButton.setManaged(false);
             friendsButton.setManaged(false);
             creditCardsButton.setManaged(false);
-
             socialLabel.setManaged(false);
             socialLabel.setManaged(false);
 
@@ -87,4 +86,14 @@ public class MenuController {
         SplitPay.window.setScene(new Scene(root));
     }
 
+
+    /**
+     * This method redirects to the BankAccountView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToBankAccountView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.bankAccountView));
+        SplitPay.window.setScene(new Scene(root));
+    }
 }

@@ -36,9 +36,7 @@ public class BankAccountFacade {
         this.bankAccountDAO.deleteBankAccount(iban);
     }
 
-    public ArrayList<BankAccount> getCards() {
-        return this.bankAccountDAO.getBankAccounts();
-    }
+
 
 
     public ArrayList<BankAccount> getBankAccounts() {

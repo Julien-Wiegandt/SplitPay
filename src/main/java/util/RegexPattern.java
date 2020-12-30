@@ -14,4 +14,8 @@ public class RegexPattern {
     public static Pattern nameOwnerPattern = Pattern.compile("[A-Z][a-z]*");
     public static Pattern datePattern = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
     public static Pattern cvvPattern = Pattern.compile("\\d{3}");
+
+    public static Pattern ibanPattern = Pattern.compile("^[a-zA-Z0-9@#$%^&-+=():;.,?/!§%*µ£#{}@]+$");
+    public static Pattern bicPattern = Pattern.compile("^[a-zA-Z0-9@#$%^&-+=():;.,?/!§%*µ£#{}@]+$");
+    public static Pattern labelPattern =Pattern.compile("^[a-zA-Z0-9@#$%^&-+=():;.,?/!§%*µ£#{}@]+$");
 }
