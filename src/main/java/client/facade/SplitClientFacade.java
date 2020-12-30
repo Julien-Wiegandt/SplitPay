@@ -3,8 +3,11 @@ package client.facade;
 import client.ObservableClient;
 import core.facade.UserFacade;
 import server.SplitOriginatorMessage;
-import server.facade.SplitServerFacade;
-import ui.controller.SplitController;
+import server.models.Split;
+import ui.controller.split.MySplitsController;
+import ui.controller.split.SplitController;
+import ui.controller.split.SplitSaloonController;
+import ui.controller.split.SplitSectionController;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -75,6 +78,7 @@ public class SplitClientFacade implements Observer
      */
     Object clientUI;
     ObservableClient communicationService;
+    // TODO : change splitController
     private SplitController splitController;
 
     // Variable that holds de name chosen by the user when created
@@ -124,18 +128,60 @@ public class SplitClientFacade implements Observer
     /**
      * Constructs an instance of the chat client.
      *
+     *                 // TODO : change splitController
      * @paarm splitController
      */
 
     private static SplitClientFacade instance;
 
-    public SplitClientFacade(SplitController splitController)
+    private SplitClientFacade()
     {
-        this.splitController=splitController;
+
         communicationService = new ObservableClient("localhost", 5555);
         communicationService.addObserver(this);
     }
 
+    public static SplitClientFacade getInstance(){
+        if(instance==null){
+            instance=new SplitClientFacade();
+        }
+        return instance;
+
+    }
+
+    // Dependencies on initialized views
+
+    public void setMySplitsController(MySplitsController mySplitsController){
+        this.mySplitsController=mySplitsController;
+    }
+
+    public void setSplitSaloonController(SplitSaloonController splitSaloonController){
+        this.splitSaloonController=splitSaloonController;
+    }
+
+    public void setSplitSectionController(SplitSectionController splitSectionController){
+        this.splitSectionController=splitSectionController;
+    }
+
+    //References to controllers receiving server data *****************
+
+    private MySplitsController mySplitsController;
+    private SplitSaloonController splitSaloonController;
+    private SplitSectionController splitSectionController;
+
+    //Data temporally stored for controllers
+
+    private Split joinedSplit;
+
+    //Controller data methods
+
+    private void setJoinedSplit(Split joinedSplit){
+        this.joinedSplit = joinedSplit;
+    }
+
+    public Split getJoinedSplit(){
+        return joinedSplit;
+    }
 
     //Instance methods ************************************************
 
@@ -155,18 +201,19 @@ public class SplitClientFacade implements Observer
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                splitController.setSplits(msgReceived.getSplits());
+                mySplitsController.setSplits(msgReceived.getSplits());
                 break;
             case JOINED_SPLIT:
                 System.out.println("Success : Participant joined the split");
                 System.out.println("Received split : " + msgReceived.getSplit());
-                splitController.setSplitSectionFlashMessage("Success : redirecting...");
-                splitController.splitJoined(msgReceived.getSplit());
+                setJoinedSplit(msgReceived.getSplit());
+                splitSectionController.setFlashMessage("Success : redirecting...");
+                splitSectionController.splitJoined();
                 break;
             case PARTICIPANT_ALREADY_IN_SPLIT:
                 System.out.println("Error : Participant already in Split");
                 try {
-                    splitController.setSplitSectionFlashMessage("Error : participant already in split");
+                    splitSectionController.setFlashMessage("Error : participant already in split");
                     communicationService.closeConnection();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -175,7 +222,7 @@ public class SplitClientFacade implements Observer
             case SPLIT_NOT_FOUND:
                 System.out.println("Error : Wrong code");
                 try {
-                    splitController.setSplitSectionFlashMessage("Error : wrong code split not found");
+                    splitSectionController.setFlashMessage("Error : wrong code split not found");
                     communicationService.closeConnection();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -217,7 +264,6 @@ public class SplitClientFacade implements Observer
 
     /**
      *
-     * TODO : implement
      */
     public void joinSplit(String splitCode){
         try {

@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.split;
 
 import client.facade.SplitClientFacade;
 import javafx.application.Platform;
@@ -20,11 +20,23 @@ import java.util.HashMap;
 
 public class SplitController {
 
+    private SplitController instance;
+
+    private SplitController(){ }
+
+    public SplitController getInstance(){
+        if(instance==null){
+            instance = new SplitController();
+        }
+
+        return instance;
+    }
+
     ///// mySplitView.fxml logic
 
     private HashMap<String, Split> splits = null;
 
-    private SplitClientFacade facade = new SplitClientFacade(this);
+    private SplitClientFacade facade = SplitClientFacade.getInstance();
 
     @FXML
     private ListView<Split> listView;
