@@ -44,7 +44,8 @@ public class SplitPay extends Application {
     }
 
     public static void main(String[] args) throws ParseException {
-        //launch(args);
+        launch(args);
+        /*
         UserFacade user = UserFacade.getUserFacade();
         try {
             user.emailLogIn("test@test.com","splitpay");
@@ -93,6 +94,10 @@ public class SplitPay extends Application {
         for(User u: users){
             System.out.println("user after: "+u.toString());
         }
+
+         */
     }
+
+
 
 }

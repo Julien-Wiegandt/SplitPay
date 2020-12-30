@@ -8,4 +8,5 @@ public class UserNavigationPath {
     public static String bankAccountView = "../../view/authPath/BankAccountView.fxml";
 
     public static String addBankAccountView = "../../view/authPath/AddBankAccountView.fxml";
+
 }

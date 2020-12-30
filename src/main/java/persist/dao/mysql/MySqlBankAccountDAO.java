@@ -20,6 +20,7 @@ public class MySqlBankAccountDAO extends BankAccountDAO {
     public void createBankAccount(BankAccount bankAccount){
         Statement stmt = null;
 
+
         try {
             stmt = MySqlDAOFactory.connection.createStatement();
         } catch (SQLException throwables) {
@@ -30,8 +31,13 @@ public class MySqlBankAccountDAO extends BankAccountDAO {
 
             Integer rs1 = stmt.executeUpdate("INSERT INTO BankAccount VALUES (NULL, '"+ bankAccount.getLabel()+"', '"+bankAccount.getBic()+"','"+ bankAccount.getIban()+"', '"+bankAccount.getOwnerFirstName()+"', '"+ bankAccount.getOwnerLastName()+"')");
             String id_iban = findBankAccountIdByIban(bankAccount.getIban());
-            Integer rs2 = stmt.executeUpdate("INSERT INTO Relation_NormalUser_BankAccount VALUES ('" +UserFacade.getUserFacade().getLoggedUser().getId()+"', '"+id_iban+"')");
+            if(UserFacade.getUserFacade().isStoreOwner()) {
 
+                Integer rs2 = stmt.executeUpdate("INSERT INTO Relation_StoreOwner_BankAccount VALUES ('" + UserFacade.getUserFacade().getLoggedUser().getId() + "', '" + id_iban + "')");
+
+            }else {
+                Integer rs2 = stmt.executeUpdate("INSERT INTO Relation_NormalUser_BankAccount VALUES ('" + UserFacade.getUserFacade().getLoggedUser().getId() + "', '" + id_iban + "')");
+            }
             /*
             BEGIN TRANSACTION
    DECLARE @DataID int;
@@ -78,7 +84,15 @@ COMMIT
         }
         try {
             String id = UserFacade.getUserFacade().getLoggedUser().getId();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM BankAccount B, Relation_NormalUser_BankAccount R, NormalUser U WHERE U.normal_user_pk='" +id+ "' AND R.normal_user_fk='"+id+"' AND R.bank_account_fk=B.bank_account_pk ");
+            ResultSet rs;
+            if(UserFacade.getUserFacade().isStoreOwner()){
+                rs = stmt.executeQuery("SELECT * FROM BankAccount B, Relation_StoreOwner_BankAccount R, StoreOwner U WHERE U.store_owner_pk='" +id+ "' AND R.store_owner_fk='"+id+"' AND R.bank_account_fk=B.bank_account_pk ");
+
+
+            }else{
+                rs = stmt.executeQuery("SELECT * FROM BankAccount B, Relation_NormalUser_BankAccount R, NormalUser U WHERE U.normal_user_pk='" +id+ "' AND R.normal_user_fk='"+id+"' AND R.bank_account_fk=B.bank_account_pk ");
+
+            }
 
             while (rs.next()) {
                 String dbId = rs.getString("bank_account_pk");
@@ -98,6 +112,8 @@ COMMIT
         }
         return ccs;
     }
+
+
     private String findBankAccountIdByIban(String iban) {
         Statement stmt = null;
         BankAccount bankAccount= null;
@@ -125,5 +141,7 @@ COMMIT
         }
         return bankAccount.getId();
     }
+
+
 
 }

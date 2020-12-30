@@ -96,4 +96,9 @@ public class MenuController {
         Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.bankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
+
+    public void goToGroupView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
+        SplitPay.window.setScene(new Scene(root));
+    }
 }

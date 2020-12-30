@@ -6,9 +6,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.authPath.AddGroupView"
-            prefHeight="400.0" prefWidth="600.0">
 
+<?import javafx.geometry.Insets?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.AddGroupController">
+    <children>
+        <VBox layoutX="243.0" layoutY="77.0" prefHeight="200.0" prefWidth="100.0">
+            <children>
+                <TextField fx:id="label" layoutX="85.0" layoutY="59.0" promptText="Label" />
+
+            </children>
+        </VBox>
+        <Label layoutX="249.0" layoutY="38.0" text="Add Group" />
+        <Button layoutX="266.0" layoutY="351.0" mnemonicParsing="false" onAction="#addGroup" text="Validate" />
+        <Button layoutX="14.0" layoutY="365.0" mnemonicParsing="false" onAction="#goToGroupView" text="Retour" />
+    </children>
+    <padding>
+        <Insets bottom="10.0" top="10.0" />
+    </padding>
 </AnchorPane>
