@@ -29,7 +29,7 @@ public class NormalUser extends User {
         return this.LastName;
     }
 
-    public String toString() {
+    public String toStringDebug() {
         return "User{" +
                 "id='" + this.getId() + '\'' +
                 ", email='" + this.getEmail() + '\'' +
@@ -41,6 +41,10 @@ public class NormalUser extends User {
                 ", lastName='" + this.getLastName() + '\'' +
                 ", firstName='" + this.getFirstName() + '\'' +
                 '}';
+    }
+
+    public  String toString(){
+        return this.firstName+" "+this.LastName+" ("+ this.getNickname() +")";
     }
 
 }

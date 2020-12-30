@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.ChooseRefillAmountController">
+    <center>
+        <VBox alignment="CENTER" fillWidth="false" prefHeight="340.0" prefWidth="469.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Amount">
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="amountInput">
+               <VBox.margin>
+                  <Insets bottom="60.0" />
+               </VBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#sendMoneyToBalance" text="Refill" />
+         </children></VBox>
+    </center>
+    <top>
+        <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
+    </top>
+    <left>
+        <fx:include fx:id="normalUserMenu" source="menu.fxml" />
+    </left>
+</BorderPane>

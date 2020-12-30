@@ -1,15 +1,12 @@
 package persist;
 
+import persist.dao.BankAccountDAO;
+import persist.dao.TransactionDAO;
 import persist.dao.UserDAO;
 
 import java.sql.Connection;
 
 public abstract class DAOFactory {
-
-    /**
-     *
-     */
-    public static Connection connection;
 
     /**
      * @return
@@ -19,12 +16,7 @@ public abstract class DAOFactory {
     /**
      * @return
      */
-    public abstract Connection getConnection();
+    public abstract TransactionDAO createTransactionDAO();
 
-    /**
-     * @return
-     */
-    private DAOFactory DaoFactory() {
-        return null;
-    }
+    public abstract BankAccountDAO createBankAccountDAO();
 }

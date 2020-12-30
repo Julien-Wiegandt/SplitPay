@@ -1,17 +1,19 @@
 package persist.dao.mysql;
 
+import core.facade.BankAccountFacade;
+import core.facade.UserFacade;
+import core.models.*;
 import persist.dao.UserDAO;
 import persist.exception.login.PasswordLoginDAOException;
-import core.models.NormalUser;
-import core.models.StoreOwner;
-import core.models.User;
 import util.RegexPattern;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  *
@@ -34,6 +36,26 @@ public class MySqlUserDAO extends UserDAO {
     }
 
 
+    public Collection getFriends(int userid) {
+        Statement stmt = null;
+        ArrayList<NormalUser> friends = new ArrayList<NormalUser>();
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Friends WHERE adder_normal_user_fk=" + userid + ";");
+
+            while (rs.next()) {
+                int added_normal_user_fk = rs.getInt("added_normal_user_fk");
+                friends.add(findNormalUserById(added_normal_user_fk));
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return friends;
+    }
 
     public User emailLogIn(String email, String password) throws Exception {
         User user = this.findUserByEmail(email);
@@ -93,7 +115,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -123,7 +145,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -156,7 +178,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -187,7 +209,7 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         User user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -216,16 +238,6 @@ public class MySqlUserDAO extends UserDAO {
     }
 
 
-
-    @Override
-    public User setValidationCode(int id) {
-        return null;
-    }
-
-
-
-
-
     public User create(User user){
         if( user instanceof NormalUser){
             createNormalUser(((NormalUser)user));
@@ -241,7 +253,7 @@ public class MySqlUserDAO extends UserDAO {
     public User createNormalUser(NormalUser user) {
         Statement stmt = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -261,7 +273,7 @@ public class MySqlUserDAO extends UserDAO {
     public User createStoreOwner(StoreOwner user) {
         Statement stmt = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -283,15 +295,15 @@ public class MySqlUserDAO extends UserDAO {
         Statement stmt = null;
         PreparedStatement preparedStmt = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
             if(user instanceof NormalUser) {
-                preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE NormalUser WHERE id='" + user.getId() + "'");
+                preparedStmt = ConnectionMySql.connection.prepareStatement("DELETE NormalUser WHERE id='" + user.getId() + "'");
             }else{
-                preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE StoreOwner WHERE id='" + user.getId() + "'");
+                preparedStmt = ConnectionMySql.connection.prepareStatement("DELETE StoreOwner WHERE id='" + user.getId() + "'");
             }
             preparedStmt.execute();
             return true;
@@ -306,22 +318,22 @@ public class MySqlUserDAO extends UserDAO {
     public boolean update(User user) {
         Statement stmt = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
             if(user instanceof NormalUser) {
-                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"','"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
-                        "WHERE id='" + user.getId() + "'");
+                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance=" + user.getBalance() +
+                        "WHERE normal_user_pk=" + user.getId() + "");
             }else{
                 Integer rs = stmt.executeUpdate("UPDATE StoreOwner SET email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "','"+((StoreOwner)user).getCompanyName()+"','"+((StoreOwner)user).getAddress()+"', balance='" + user.getBalance() + "'" +
-                        "WHERE id='" + user.getId() + "'");
+                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "','"+((StoreOwner)user).getCompanyName()+"','"+((StoreOwner)user).getAddress()+"', balance=" + user.getBalance() +
+                        "WHERE store_owner_pk=" + user.getId() + "");
 
             }
-            MySqlDAOFactory.connection.commit();
+            //ConnectionMySql.connection.commit();
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -344,16 +356,16 @@ public class MySqlUserDAO extends UserDAO {
         return user;
     }
 
-    public User findNormalUserById(int id) {
+    public NormalUser findNormalUserById(int id) {
         Statement stmt = null;
-        User user = null;
+        NormalUser user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM NormalUser WHERE id='" + id + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM NormalUser WHERE normal_user_pk='" + id + "'");
 
             while (rs.next()) {
                 String dbId = rs.getString("normal_user_pk");
@@ -362,11 +374,10 @@ public class MySqlUserDAO extends UserDAO {
                 String dbPhone = rs.getString("phone");
                 String dbNickname = rs.getString("nickname");
                 Float dbBalance = rs.getFloat("balance");
-                //String dbValidationCode = rs.getString("validationCode");
+
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
                 user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, null);
-                System.out.println(user);
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();
@@ -374,16 +385,16 @@ public class MySqlUserDAO extends UserDAO {
         return user;
     }
 
-    public User findStoreOwnerById(int id) {
+    public StoreOwner findStoreOwnerById(int id) {
         Statement stmt = null;
-        User user = null;
+        StoreOwner user = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM StoreOwner WHERE id='" + id + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM StoreOwner WHERE store_owner_pk='" + id + "'");
 
             while (rs.next()) {
                 String dbId = rs.getString("store_owner_pk");
@@ -398,12 +409,66 @@ public class MySqlUserDAO extends UserDAO {
                 String dbAddress = rs.getString("address");
 
                 user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, null, dbCompanyName, dbAddress);
-                System.out.println(user);
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();
         }
         return user;
+    }
+
+    public Collection<CreditCard> getCreditCards(){
+        Statement stmt = null;
+        ArrayList<CreditCard> creditCards = new ArrayList<CreditCard>();
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM CreditCard WHERE normal_user_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
+
+            while (rs.next()) {
+                String dbId = rs.getString("credit_card_pk");
+                String number = rs.getString("number");
+                String nameOwner = rs.getString("cardName");
+                Date date = rs.getDate("date");
+                String cvv = rs.getString("cvv");
+
+                creditCards.add(new CreditCard(dbId, number, nameOwner, date, cvv));
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return creditCards;
+    }
+
+    public Collection<BankAccount> getBankAccounts(){
+        Statement stmt = null;
+        ArrayList<BankAccount> bankAccounts = new ArrayList<BankAccount>();
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            if(UserFacade.getUserFacade().isNormalUser()) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_NormalUser_BankAccount WHERE normal_user_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
+                while (rs.next()) {
+                    BankAccount bankAccount = BankAccountFacade.getBankAccountFacade().getBankAccountById(rs.getInt("bank_account_fk"));
+                    bankAccounts.add(bankAccount);
+                }
+            }else{
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_StoreOwner_BankAccount WHERE store_owner_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
+                while (rs.next()){
+                    BankAccount bankAccount = BankAccountFacade.getBankAccountFacade().getBankAccountById(rs.getInt("bank_account_fk"));
+                    bankAccounts.add(bankAccount);
+                }
+            }
+
+            } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bankAccounts;
     }
 
     //prendre en compte héritage

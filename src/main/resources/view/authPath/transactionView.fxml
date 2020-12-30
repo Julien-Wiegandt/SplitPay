@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.TransactionController">
+    <top>
+        <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
+    </top>
+    <left>
+        <fx:include fx:id="normalUserMenu" source="menu.fxml" />
+    </left>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="transactionType" alignment="CENTER" layoutX="228.0" layoutY="28.0" text="Titre">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="transactionDate" alignment="CENTER" layoutX="230.0" layoutY="87.0" text="Date">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin></Label>
+            <Label fx:id="transactionAmount" alignment="CENTER" layoutX="220.0" layoutY="121.0" text="Amount">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin></Label>
+            <Label fx:id="otherTransactionActor" alignment="CENTER" layoutX="212.0" layoutY="202.0" text="Other actor">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin></Label>
+            <Label fx:id="splitParticipants" alignment="CENTER" layoutX="210.0" layoutY="162.0" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

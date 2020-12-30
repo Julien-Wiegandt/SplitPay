@@ -1,8 +1,6 @@
 package persist.dao;
 
-import core.models.NormalUser;
-import core.models.StoreOwner;
-import core.models.User;
+import core.models.*;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -12,11 +10,7 @@ import java.util.*;
  */
 public abstract class UserDAO{
 
-    /**
-     * Default constructor
-     */
-    public UserDAO() {
-    }
+    public abstract Collection getFriends(int userid);
 
     /**
      * @param phone
@@ -47,22 +41,6 @@ public abstract class UserDAO{
 
      */
     public abstract User findUserByPhone(String phone) ;
-
-    /**
-     * @param id
-
-     */
-    public boolean generateValidationCode(int id) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @param id
-
-     */
-    public abstract User setValidationCode(int id);
-
 
 
     /**
@@ -130,4 +108,9 @@ public abstract class UserDAO{
      */
     public abstract Collection<User> findAll();
 
+    public abstract User findUserById(int userId) throws SQLException;
+
+    public abstract Collection<CreditCard> getCreditCards();
+
+    public abstract Collection<BankAccount> getBankAccounts();
 }

@@ -15,19 +15,32 @@ import main.SplitPay;
 
 import java.io.IOException;
 
+/**
+ * Controller of the logInView called when a user want to log In.
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2020-12-28
+ */
 public class LogInController {
 
+    /**
+     * The credential entered by the user to log In(expected: e-mail adress or phone).
+     */
     @FXML
     private TextField credential;
+
+    /**
+     * The password entered by the user to log In.
+     */
     @FXML
     private PasswordField password;
 
     /**
      * This method log in the user in the SplitPay.SplitPay application if the regex patterns are
      * respected, else the wrong fields will be highlighted in red.
-     * @param actionEvent
      */
-    public void logIn(ActionEvent actionEvent) {
+    public void logIn() {
         this.allStyleSetDefault();
         //If the email and password match with their regex -> login with email
         if(RegexPattern.emailPattern.matcher(credential.getText()).find()
@@ -71,25 +84,29 @@ public class LogInController {
     }
 
     /**
-     * This method redirects to the normalUserSignUpView
-     * @param actionEvent
+     * This method redirects to the normalUserSignUpView.
+     * It is called by a button.
      * @throws IOException
+     * @todo Handle the possible exceptions.
      */
-    public void goToNormalUserSignUpView(ActionEvent actionEvent) throws IOException {
+    public void goToNormalUserSignUpView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(AuthPath.normalUserSignUpView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
     /**
-     * This method redirects to the forgottenPasswordView
-     * @param actionEvent
+     * This method redirects to the forgottenPasswordView.
+     * It is called by a button.
      * @throws IOException
      */
-    public void goToForgottenPasswordView(ActionEvent actionEvent) throws IOException {
+    public void goToForgottenPasswordView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(AuthPath.forgottenPasswordView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
+    /**
+     * This method is used to set all user's input error feedback styles to default.
+     */
     private void allStyleSetDefault(){
         credential.setStyle("-fx-text-box-border: black");
         password.setStyle("-fx-text-box-border: black");

@@ -91,10 +91,10 @@ package transaction <<Folder>> {
         - receiver_fk : BankAccount
     }
 
-    entity BankAccountToUserTransaction{
+    entity CreditCardToUserTransaction{
         - amount : Float
         - dateCreated : Date
-        - sender_fk : BankAccount
+        - sender_fk : CreditCard
         - receiver_fk : User
     }
 

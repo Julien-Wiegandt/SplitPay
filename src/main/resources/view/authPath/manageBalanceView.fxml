@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.ManageBalanceController">
+    <top>
+        <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
+    </top>
+    <left>
+        <fx:include fx:id="normalUserMenu" source="menu.fxml" />
+    </left>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="126.0" layoutY="249.0" mnemonicParsing="false" onAction="#goToChooseBankAccountView" text="Recover" />
+            <Button layoutX="291.0" layoutY="249.0" mnemonicParsing="false" onAction="#goToChooseCreditCardView" text="Refill" />
+            <Label layoutX="191.0" layoutY="37.0" text="Balance">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="balanceAmount" contentDisplay="CENTER" layoutX="214.0" layoutY="75.0" text="amount" textAlignment="CENTER" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
