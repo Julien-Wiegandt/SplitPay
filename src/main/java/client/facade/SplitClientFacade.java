@@ -159,10 +159,14 @@ public class SplitClientFacade implements Observer
                 break;
             case JOINED_SPLIT:
                 System.out.println("Success : Participant joined the split");
+                System.out.println("Received split : " + msgReceived.getSplit());
+                splitController.setSplitSectionFlashMessage("Success : redirecting...");
+                splitController.splitJoined(msgReceived.getSplit());
                 break;
             case PARTICIPANT_ALREADY_IN_SPLIT:
                 System.out.println("Error : Participant already in Split");
                 try {
+                    splitController.setSplitSectionFlashMessage("Error : participant already in split");
                     communicationService.closeConnection();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -171,6 +175,7 @@ public class SplitClientFacade implements Observer
             case SPLIT_NOT_FOUND:
                 System.out.println("Error : Wrong code");
                 try {
+                    splitController.setSplitSectionFlashMessage("Error : wrong code split not found");
                     communicationService.closeConnection();
                 } catch (IOException e) {
                     e.printStackTrace();

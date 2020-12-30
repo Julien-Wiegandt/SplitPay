@@ -20,11 +20,16 @@
                     <Insets bottom="5.0" left="350.0" right="350.0" />
                 </VBox.margin>
             </TextField>
-            <Button onAction="#joinSplit" mnemonicParsing="false" text="Join">
+            <Button mnemonicParsing="false" onAction="#joinSplit" text="Join">
                 <VBox.margin>
-                    <Insets bottom="30.0" />
+                    <Insets bottom="10.0" />
                 </VBox.margin>
             </Button>
+         <Label fx:id="splitSectionFlashMessage" text="Split section flash message">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin>
+         </Label>
 
             <Button mnemonicParsing="false" text="Create split" />
 
