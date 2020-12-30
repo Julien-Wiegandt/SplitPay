@@ -2,6 +2,7 @@ package ui.controller;
 
 import core.facade.CreditCardFacade;
 import core.models.CreditCard;
+import core.models.Group;
 import core.models.NormalUser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,8 +49,11 @@ public class CreditCardController {
         listView.setItems(items);
     }
 
-    public void goToCreditCardView(ActionEvent actionEvent)throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.creditCardView));
+    public void goToCreditCardView() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editCreditCardView));
+        Parent root = loader.load();
+        EditCreditCardController editCreditCardController = loader.getController();
+        editCreditCardController.setCreditCard((CreditCard) listView.getSelectionModel().getSelectedItem());
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -64,7 +68,5 @@ public class CreditCardController {
     }
 
 
-    public void deleteCard(ActionEvent actionEvent){
 
-    }
 }

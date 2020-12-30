@@ -10,4 +10,5 @@ public class NormalUserNavigationPath extends UserNavigationPath {
     public static String editGroupView = "../../view/authPath/EditGroupView.fxml";
 
 
+    public static String editCreditCardView = "../../view/authPath/editCreditCardView.fxml";
 }

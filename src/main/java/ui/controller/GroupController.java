@@ -57,10 +57,7 @@ public class GroupController {
         SplitPay.window.setScene(new Scene(root));
 
     }
-    public void deleteGroup(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.deleteGroupView));
-        SplitPay.window.setScene(new Scene(root));
-    }
+
 
     public void goToAddGroupView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.addGroupView));
