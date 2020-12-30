@@ -69,6 +69,16 @@ public class SplitClientFacade implements Observer
      */
     public static final String PARTICIPANT_ALREADY_IN_SPLIT= "#OS:Participant Already In Split";
 
+    /**
+     * The string sent to the observers when a client tries to change his amount in a split.
+     */
+    public static final String CHANGE_AMOUNT_REQUEST= "#OS:Change Amount Request";
+
+    /**
+     * The string sent to the observers when a client tries to change his amount in a split.
+     */
+    public static final String UPDATED_SPLIT_STATE= "#OS:Updated Split State";
+
 
     //Instance variables **********************************************
 
@@ -191,8 +201,9 @@ public class SplitClientFacade implements Observer
      * @param msg The message from the server.
      */
     public void handleMessageFromServer(Object msg) {
+
+        System.out.println(msg);
         SplitOriginatorMessage msgReceived = (SplitOriginatorMessage) msg;
-        System.out.println("Received message");
         switch ((String) msgReceived.getMessage()){
             case GET_SPLIT_REQUEST:
                 System.out.println(msgReceived.getSplits());
@@ -227,8 +238,12 @@ public class SplitClientFacade implements Observer
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            case "exception":
-                System.out.println("exception");
+                break;
+            case UPDATED_SPLIT_STATE:
+                System.out.println(msgReceived);
+                setJoinedSplit(msgReceived.getSplit());
+                splitSaloonController.updateSplit(getJoinedSplit());
+                break;
         }
 
     }
@@ -263,7 +278,7 @@ public class SplitClientFacade implements Observer
     }
 
     /**
-     *
+     * Method asking the server to join a split with a splitcode
      */
     public void joinSplit(String splitCode){
         try {
@@ -290,7 +305,28 @@ public class SplitClientFacade implements Observer
     }
 
     /**
-     *
+     * Method asking the server to change the currently logged user's
+     * current amount in the split corresponding to the provided splitcode.
+     * @param newAmount
+     * @param splitCode
+     * @param newAmount
+     */
+    public void changeAmount(double newAmount, String splitCode){
+
+        String id = UserFacade.getUserFacade().getLoggedUser().getId();
+
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("userId",id);
+        arguments.put("splitCode",splitCode);
+        arguments.put("newAmount",Double.toString(newAmount));
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,CHANGE_AMOUNT_REQUEST,arguments,null);
+        sendToServer(message);
+
+    }
+
+    /**
+     * Method asking the server the splits of the currently logged user
      */
     public void getSplits() throws IOException {
         communicationService.openConnection();

@@ -165,7 +165,7 @@ public class ObservableClient extends Observable
   {
     setChanged();
     // TODO : Handle exception
-    notifyObservers(new SplitOriginatorMessage(null,"exception",null,null));
+    notifyObservers(new SplitOriginatorMessage(null, exception.getMessage(), null,null));
   }
 
   /**

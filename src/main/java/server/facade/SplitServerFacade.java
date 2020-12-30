@@ -49,6 +49,16 @@ public class SplitServerFacade implements Observer {
      */
     public static final String PARTICIPANT_ALREADY_IN_SPLIT= "#OS:Participant Already In Split";
 
+    /**
+     * The string sent to the observers when a client tries to change his amount in a split.
+     */
+    public static final String CHANGE_AMOUNT_REQUEST= "#OS:Change Amount Request";
+
+    /**
+     * The string sent to the observers when a client tries to change his amount in a split.
+     */
+    public static final String UPDATED_SPLIT_STATE= "#OS:Updated Split State";
+
     private HashMap<String, Split> splits = new HashMap<>();
     private static SplitServerFacade instance = null;
 
@@ -175,8 +185,10 @@ public class SplitServerFacade implements Observer {
      * @param newAmount
      * @throws SplitNotFoundException
      */
-    public void changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
-        getSplitByCode(splitCode).changeParticipantAmount(participantId,newAmount);
+    public Split changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
+        Split split = getSplitByCode(splitCode);
+        split.changeParticipantAmount(participantId,newAmount);
+        return split;
     }
 
     /**
@@ -259,7 +271,6 @@ public class SplitServerFacade implements Observer {
                 splitCode = message.getArgument("splitCode");
                 try {
                     HashMap<String,Split> data = join(splitCode,userId,nickName);
-                    // TODO : return split hash
                     try {
                         System.out.println("Success : Joined split");
                         client.sendToClient(new SplitOriginatorMessage(null,JOINED_SPLIT,null,data));
@@ -269,20 +280,39 @@ public class SplitServerFacade implements Observer {
                 } catch (SplitNotFoundException e) {
                     try {
                         System.out.println("Error : Split not found");
-                        // TODO : handle client side
                         client.sendToClient(new SplitOriginatorMessage(null,SPLIT_NOT_FOUND,null,null));
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
                 } catch (ParticipantAlreadyInException e) {
                     System.out.println("Error : Participant already in");
-                    // TODO : handle client side
                     try {
                         client.sendToClient(new SplitOriginatorMessage(null,PARTICIPANT_ALREADY_IN_SPLIT,null,null));
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
 
+                }
+                break;
+            case CHANGE_AMOUNT_REQUEST:
+                System.out.println("Change amount request");
+                userId = Integer.parseInt(message.getArguments().get("userId"));
+                splitCode = message.getArgument("splitCode");
+                double newAmount = Double.parseDouble(message.getArgument("newAmount"));
+                try {
+                    Split updatedSplit = changeParticipantAmount(splitCode,userId,newAmount);
+                    HashMap<String,Split> data = new HashMap<>();
+                    data.put(updatedSplit.getSplitCode(),updatedSplit);
+                    client.sendToClient(new SplitOriginatorMessage(null,UPDATED_SPLIT_STATE,null,data));
+                    // TODO : Implement error handling
+                } catch (SplitNotFoundException e) {
+                    e.printStackTrace();
+                } catch (ParticipantNotFoundException e) {
+                    e.printStackTrace();
+                } catch (GoalAmountExceededException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
                 break;
 

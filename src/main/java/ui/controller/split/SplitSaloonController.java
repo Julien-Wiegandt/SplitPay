@@ -3,25 +3,85 @@ package ui.controller.split;
 import client.facade.SplitClientFacade;
 import core.facade.UserFacade;
 import core.models.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import server.models.Participant;
+import server.models.Split;
 
 import java.io.IOException;
 
 public class SplitSaloonController {
 
-    @FXML
-    private TextField joinedSplit;
+    private Split joinedSplit;
+
+    private SplitClientFacade facade = SplitClientFacade.getInstance();
+
+    private void setJoinedSplit(Split joinedSplit){
+        this.joinedSplit=joinedSplit;
+    }
+
+    private Split getJoinedSplit(){
+        return joinedSplit;
+    }
 
     @FXML
     private Label flashMessage;
 
     @FXML
-    // TODO : Find another way to initialize to avoid getting splits for every view using this controller
+    private Label splitLabel;
+
+    @FXML
+    private Label splitMode;
+
+    @FXML
+    private Label splitCode;
+
+    @FXML
+    private Label goalAmount;
+
+    @FXML
+    private ListView participants;
+
+    @FXML
+    private TextField moneyInput;
+
+    @FXML
     private void initialize() throws IOException {
         SplitClientFacade.getInstance().setSplitSaloonController(this);
-        joinedSplit.setText(SplitClientFacade.getInstance().getJoinedSplit().toString());
+        setJoinedSplit(SplitClientFacade.getInstance().getJoinedSplit());
+        updateDisplayedSplit();
+    }
+
+    /**
+     * Method called when the split's state changes
+     */
+    public void updateSplit(Split split){
+        setJoinedSplit(split);
+        updateDisplayedSplit();
+    }
+
+    /**
+     * Displays information about the joined split's current state
+     */
+    public void updateDisplayedSplit(){
+        splitLabel.setText(getJoinedSplit().getLabel());
+        splitMode.setText(getJoinedSplit().getSplitMode());
+        splitCode.setText(getJoinedSplit().getSplitCode());
+        goalAmount.setText(Double.toString(getJoinedSplit().getGoalAmount()));
+
+        ObservableList<Participant> items = FXCollections.observableArrayList ();
+        items.setAll(getJoinedSplit().getParticipants().values());
+        participants.setItems(items);
+
+    }
+
+    public void moneyInputHandler(){
+        Double newAmount = Double.parseDouble(moneyInput.getText());
+        facade.changeAmount(newAmount,getJoinedSplit().getSplitCode());
     }
 
 }
