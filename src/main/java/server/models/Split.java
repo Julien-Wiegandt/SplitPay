@@ -18,8 +18,6 @@ public class Split implements Serializable {
         this.goalAmount=goalAmount;
         this.splitMode=splitMode;
 
-        // The owner is the first participant
-        participants.put(ownerId,new Participant(ownerId,ownerNickName));
     }
 
     private String label;
