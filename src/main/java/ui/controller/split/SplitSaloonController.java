@@ -3,6 +3,7 @@ package ui.controller.split;
 import client.facade.SplitClientFacade;
 import core.facade.UserFacade;
 import core.models.User;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -68,17 +69,25 @@ public class SplitSaloonController {
      * Displays information about the joined split's current state
      */
     public void updateDisplayedSplit(){
-        splitLabel.setText(getJoinedSplit().getLabel());
-        splitMode.setText(getJoinedSplit().getSplitMode());
-        splitCode.setText(getJoinedSplit().getSplitCode());
-        goalAmount.setText(Double.toString(getJoinedSplit().getGoalAmount()));
 
-        ObservableList<Participant> items = FXCollections.observableArrayList ();
-        items.setAll(getJoinedSplit().getParticipants().values());
-        participants.setItems(items);
+        Platform.runLater(() -> {
+            splitLabel.setText(getJoinedSplit().getLabel());
+            splitMode.setText(getJoinedSplit().getSplitMode());
+            splitCode.setText(getJoinedSplit().getSplitCode());
+            goalAmount.setText(Double.toString(getJoinedSplit().getGoalAmount()));
+
+            ObservableList<Participant> items = FXCollections.observableArrayList ();
+            items.setAll(getJoinedSplit().getParticipants().values());
+            participants.setItems(items);
+        });
+
+
 
     }
 
+    /**
+     * Handles participant input, sends to the server the change amount request
+     */
     public void moneyInputHandler(){
         Double newAmount = Double.parseDouble(moneyInput.getText());
         facade.changeAmount(newAmount,getJoinedSplit().getSplitCode());

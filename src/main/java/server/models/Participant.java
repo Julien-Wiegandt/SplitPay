@@ -15,7 +15,7 @@ public class Participant implements Serializable {
     @Override
     public String toString() {
         return "Participant{" +
-                ", id=" + id +
+                " id=" + id +
                 ", amount=" + amount +
                 ", isReady=" + isReady +
                 ", nickname=" + nickname +

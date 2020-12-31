@@ -156,10 +156,13 @@ public class ConnectionToClient extends Thread
    */
   public void sendToClient(Object msg) throws IOException
   {
+    System.out.println(msg);
     if (clientSocket == null || output == null)
       throw new SocketException("socket does not exist");
+    output.reset();
 
     output.writeObject(msg);
+
   }
 
   /**

@@ -163,9 +163,24 @@ public class SplitServerFacade implements Observer {
                 userSplits.put(split.getKey().toString(),split.getValue());
             }
         }
-
         return userSplits;
+    }
 
+    /**
+     * Returns a hashmap of splits owned by the user
+     * @return
+     */
+    public HashMap<String,Split> getHashSplit(String splitCode) {
+        HashMap<String,Split> returnedSplit = new HashMap<>();
+        Iterator iterator = splits.entrySet().iterator();
+
+        while (iterator.hasNext()){
+            Map.Entry<String,Split> split = (Map.Entry) iterator.next();
+            if(split.getKey().equals(splitCode)){
+                returnedSplit.put(split.getKey(),split.getValue());
+            }
+        }
+        return returnedSplit;
     }
 
     /**
@@ -186,9 +201,8 @@ public class SplitServerFacade implements Observer {
      * @throws SplitNotFoundException
      */
     public Split changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
-        Split split = getSplitByCode(splitCode);
-        split.changeParticipantAmount(participantId,newAmount);
-        return split;
+        splits.get(splitCode).changeParticipantAmount(participantId,newAmount);
+        return splits.get(splitCode);
     }
 
     /**
@@ -228,6 +242,7 @@ public class SplitServerFacade implements Observer {
      */
     public void handleMessageFromClient(Object msg, ConnectionToClient client) {
         SplitOriginatorMessage message = (SplitOriginatorMessage) msg;
+        System.out.println(msg);
 
         int userId;
         String splitCode;
@@ -300,9 +315,8 @@ public class SplitServerFacade implements Observer {
                 splitCode = message.getArgument("splitCode");
                 double newAmount = Double.parseDouble(message.getArgument("newAmount"));
                 try {
-                    Split updatedSplit = changeParticipantAmount(splitCode,userId,newAmount);
-                    HashMap<String,Split> data = new HashMap<>();
-                    data.put(updatedSplit.getSplitCode(),updatedSplit);
+                    changeParticipantAmount(splitCode,userId,newAmount);
+                    HashMap<String,Split> data = getHashSplit(splitCode);
                     client.sendToClient(new SplitOriginatorMessage(null,UPDATED_SPLIT_STATE,null,data));
                     // TODO : Implement error handling
                 } catch (SplitNotFoundException e) {

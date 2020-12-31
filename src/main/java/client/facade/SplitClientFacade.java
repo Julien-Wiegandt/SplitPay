@@ -240,7 +240,7 @@ public class SplitClientFacade implements Observer
                 }
                 break;
             case UPDATED_SPLIT_STATE:
-                System.out.println(msgReceived);
+                System.out.println(msgReceived.getSplits());
                 setJoinedSplit(msgReceived.getSplit());
                 splitSaloonController.updateSplit(getJoinedSplit());
                 break;

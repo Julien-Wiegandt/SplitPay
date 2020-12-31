@@ -174,7 +174,7 @@ public class Split implements Serializable {
     @Override
     public String toString() {
         return "Split{" +
-                ", label='" + label + '\'' +
+                " label='" + label + '\'' +
                 ", splitCode='" + splitCode + '\'' +
                 ", expired=" + expired +
                 ", goalAmount=" + goalAmount +
