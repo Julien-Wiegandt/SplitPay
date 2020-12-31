@@ -93,4 +93,11 @@ public class SplitSaloonController {
         facade.changeAmount(newAmount,getJoinedSplit().getSplitCode());
     }
 
+    /**
+     * Handles participant's ready status change
+     */
+    public void isReadyHandler(){
+        facade.switchReadyStatus(getJoinedSplit().getSplitCode());
+    }
+
 }

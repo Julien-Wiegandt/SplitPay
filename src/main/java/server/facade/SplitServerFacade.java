@@ -59,6 +59,11 @@ public class SplitServerFacade implements Observer {
      */
     public static final String UPDATED_SPLIT_STATE= "#OS:Updated Split State";
 
+    /**
+     * The string sent to the observers when a participent tries to change his ready status state.
+     */
+    public static final String CHANGE_READY_STATUS= "#OS:Change Ready Status";
+
     private HashMap<String, Split> splits = new HashMap<>();
     private static SplitServerFacade instance = null;
 
@@ -326,6 +331,23 @@ public class SplitServerFacade implements Observer {
                 } catch (GoalAmountExceededException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case CHANGE_READY_STATUS:
+                userId = Integer.parseInt(message.getArguments().get("userId"));
+                splitCode = message.getArgument("splitCode");
+                try {
+                    switchSplitParticipantReadyStatus(splitCode,userId);
+                    HashMap<String,Split> data = getHashSplit(splitCode);
+                    try {
+                        client.sendToClient(new SplitOriginatorMessage(null,UPDATED_SPLIT_STATE,null,data));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } catch (SplitNotFoundException e) {
+                    e.printStackTrace();
+                } catch (ParticipantNotFoundException e) {
                     e.printStackTrace();
                 }
                 break;

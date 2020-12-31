@@ -79,6 +79,11 @@ public class SplitClientFacade implements Observer
      */
     public static final String UPDATED_SPLIT_STATE= "#OS:Updated Split State";
 
+    /**
+     * The string sent to the observers when a participent tries to change his ready status state.
+     */
+    public static final String CHANGE_READY_STATUS= "#OS:Change Ready Status";
+
 
     //Instance variables **********************************************
 
@@ -331,16 +336,28 @@ public class SplitClientFacade implements Observer
     public void getSplits() throws IOException {
         communicationService.openConnection();
 
-        String id = UserFacade.getUserFacade().getLoggedUser().getId();
-
         HashMap<String,String> arguments = new HashMap<>();
-        arguments.put("userId",id);
+        arguments.put("userId",UserFacade.getUserFacade().getLoggedUser().getId());
 
         SplitOriginatorMessage message = new SplitOriginatorMessage(null,GET_SPLIT_REQUEST,arguments,null);
 
         sendToServer(message);
     }
 
+    /**
+     * Method asking the server to change the logged user's current ready status
+     */
+    public void switchReadyStatus(String splitCode){
+
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("userId",UserFacade.getUserFacade().getLoggedUser().getId());
+        arguments.put("splitCode",splitCode);
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,CHANGE_READY_STATUS,arguments,null);
+
+        sendToServer(message);
+
+    }
 
     /**
      * This method is called whenever the observed object is changed. An
