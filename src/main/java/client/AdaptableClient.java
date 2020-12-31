@@ -77,6 +77,6 @@ class AdaptableClient extends AbstractClient
    */
   final protected void handleMessageFromServer(Object msg)
   {
-    System.out.println("In adaptable client: "+msg );client.handleMessageFromServer(msg);
+    client.handleMessageFromServer(msg);
   }
 }
