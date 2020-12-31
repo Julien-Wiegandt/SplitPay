@@ -350,16 +350,21 @@ public class SplitClientFacade implements Observer
     @Override
     public void update(Observable o, Object arg) {
         SplitOriginatorMessage msg = (SplitOriginatorMessage) arg;
+        System.out.println("Client update : "+msg);
         String message = msg.getMessage();
-        if(CONNECTION_CLOSED.contentEquals(message)){
-            connectionClosed();
+        // TODO : handle null problem
+        if(message != null){
+            if(CONNECTION_CLOSED.contentEquals(message)){
+                connectionClosed();
+            }
+            else if (CONNECTION_ESTABLISHED.contentEquals(message)){
+                connectionEstablished();
+            }
+            else {
+                handleMessageFromServer(msg);
+            }
         }
-        else if (CONNECTION_ESTABLISHED.contentEquals(message)){
-            connectionEstablished();
-        }
-        else {
-            handleMessageFromServer(msg);
-        }
+
     }
 
 }

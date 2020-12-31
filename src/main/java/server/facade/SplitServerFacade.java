@@ -77,9 +77,9 @@ public class SplitServerFacade implements Observer {
      * @exception SplitNotFoundException
      * @exception ParticipantAlreadyInException
      */
-    public HashMap<String,Split> join(String splitCode, int participantId, String participantNickname) throws SplitNotFoundException, ParticipantAlreadyInException {
+    public HashMap<String,Split> join(ConnectionToClient client,String splitCode, int participantId, String participantNickname) throws SplitNotFoundException, ParticipantAlreadyInException {
         Split split = getSplitByCode(splitCode);
-        split.addParticipant(participantId,participantNickname);
+        split.addParticipant(client,participantId,participantNickname);
         HashMap<String,Split> data = new HashMap<>();
         data.put(splitCode,split);
         return data;
@@ -247,10 +247,11 @@ public class SplitServerFacade implements Observer {
                 String nickName = message.getArgument("nickName");
                 splitCode = message.getArgument("splitCode");
                 try {
-                    HashMap<String,Split> data = join(splitCode,userId,nickName);
+                    HashMap<String,Split> data = join(client,splitCode,userId,nickName);
                     try {
                         System.out.println("Success : Joined split");
                         client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.JOINED_SPLIT,null,data));
+                        sendToParticipantUpdate(splitCode);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -279,15 +280,13 @@ public class SplitServerFacade implements Observer {
                 try {
                     changeParticipantAmount(splitCode,userId,newAmount);
                     HashMap<String,Split> data = getHashSplit(splitCode);
-                    client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.UPDATED_SPLIT_STATE,null,data));
+                    sendToParticipantUpdate(splitCode);
                     // TODO : Implement error handling
                 } catch (SplitNotFoundException e) {
                     e.printStackTrace();
                 } catch (ParticipantNotFoundException e) {
                     e.printStackTrace();
                 } catch (GoalAmountExceededException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -323,6 +322,40 @@ public class SplitServerFacade implements Observer {
                 }
                 break;
 
+        }
+    }
+
+    /**
+     *
+     */
+
+    /**
+     * Method which is called to send an update of the split state to participants
+     * @param splitCode
+     */
+    private void sendToParticipantUpdate(String splitCode){
+        Split split = null;
+        try {
+            split = getSplitByCode(splitCode);
+        } catch (SplitNotFoundException e) {
+            e.printStackTrace();
+        }
+        HashMap<String,Split> hashSplit = new HashMap<>();
+        hashSplit.put(split.getSplitCode(),split);
+        SplitOriginatorMessage update = new SplitOriginatorMessage(null,ClientServerProtocol.UPDATED_SPLIT_STATE,null,hashSplit);
+
+        HashMap<Integer,Participant> participants = split.getParticipants();
+
+        Iterator it = participants.entrySet().iterator();
+        while (it.hasNext()) {
+            Participant participant = (Participant) ((Map.Entry)it.next()).getValue();
+            try {
+                System.out.println("Sent to :"+participant.getId());
+                participant.getClientConnection().sendToClient(update);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+//            it.remove(); // avoids a ConcurrentModificationException
         }
     }
 

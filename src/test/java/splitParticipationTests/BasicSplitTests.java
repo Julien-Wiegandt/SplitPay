@@ -42,12 +42,12 @@ public class BasicSplitTests {
     public void getParticipantById() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
 
-        Participant owner = new Participant(1,"owner0");
+        Participant owner = new Participant(null,1,"owner0");
 
         String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
-        facade.join(splitCode,owner.getId(),owner.getNickname());
+        facade.join(null,splitCode,owner.getId(),owner.getNickname());
 
-        Participant expectedParticipant = new Participant(1,"owner0");
+        Participant expectedParticipant = new Participant(null,1,"owner0");
         Participant returnedParticipant = facade.getSplitByCode(splitCode).getParticipantById(expectedParticipant.getId());
         System.out.println(expectedParticipant);
         System.out.println(returnedParticipant);

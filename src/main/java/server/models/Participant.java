@@ -1,11 +1,15 @@
 package server.models;
 
+import server.ConnectionToClient;
+
 import java.io.Serializable;
+import java.net.ConnectException;
 import java.util.Objects;
 
 public class Participant implements Serializable {
 
-    public Participant(int id,String nickname){
+    public Participant(ConnectionToClient clientConnection,int id,String nickname){
+        this.clientConnection=clientConnection;
         this.amount=0;
         this.isReady=false;
         this.nickname=nickname;
@@ -30,7 +34,7 @@ public class Participant implements Serializable {
         return id == that.id && Double.compare(that.amount, amount) == 0 && isReady == that.isReady && Objects.equals(nickname, that.nickname);
     }
 
-
+    private transient ConnectionToClient clientConnection;
     private int id;
     private double amount;
     private boolean isReady;
@@ -56,6 +60,10 @@ public class Participant implements Serializable {
 
     public boolean isReady() {
         return isReady;
+    }
+
+    public ConnectionToClient getClientConnection() {
+        return clientConnection;
     }
 
     /**

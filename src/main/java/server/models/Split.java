@@ -1,10 +1,12 @@
 package server.models;
 
+import server.ConnectionToClient;
 import server.exception.GoalAmountExceededException;
 import server.exception.ParticipantAlreadyInException;
 import server.exception.ParticipantNotFoundException;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -50,10 +52,10 @@ public class Split implements Serializable {
      * Add user to the participants list if not already in
      * @param id
      */
-    public void addParticipant(int id, String nickname) throws ParticipantAlreadyInException {
+    public void addParticipant(ConnectionToClient client,int id, String nickname) throws ParticipantAlreadyInException {
         Participant participant = participants.get(id);
         if (participant == null){
-            this.participants.put(id,new Participant(id,nickname));
+            this.participants.put(id,new Participant(client,id,nickname));
         } else {
             throw new ParticipantAlreadyInException("Participant already in, can't add twice");
         }
