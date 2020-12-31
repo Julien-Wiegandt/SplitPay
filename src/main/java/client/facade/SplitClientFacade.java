@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
+import util.ClientServerProtocol;
+
 /**
  * This class overrides some of the methods defined in the abstract
  * superclass in order to give more functionality to the client.
@@ -36,54 +38,6 @@ public class SplitClientFacade implements Observer
      * Indicates establishment of a connection to server.
      */
     public static final String CONNECTION_ESTABLISHED = "#OC:Connection established.";
-
-    // CLASS VARIABLES
-
-    /**
-     * The string sent to the observers when a client requests a split cretion.
-     */
-    public static final String CREATION_REQUEST= "#OS:Creation Request";
-
-    /**
-     * The string sent to the client when a has requested his splits.
-     */
-    public static final String GET_SPLIT_REQUEST= "#OS:Get Split Request";
-
-    /**
-     * The string sent to the client when a client has successfully joined a split.
-     */
-    public static final String JOINED_SPLIT= "#OS:Joined Split";
-
-    /**
-     * The string sent to the client when a client has failed to join a split.
-     */
-    public static final String SPLIT_NOT_FOUND= "#OS:Split Not Found";
-
-    /**
-     * The string sent to the observers when a client tries to join a split.
-     */
-    public static final String JOIN_SPLIT_ATTEMPT= "#OS:Join Split Attempt";
-
-    /**
-     * The string sent to the observers when a client tries to join a split.
-     */
-    public static final String PARTICIPANT_ALREADY_IN_SPLIT= "#OS:Participant Already In Split";
-
-    /**
-     * The string sent to the observers when a client tries to change his amount in a split.
-     */
-    public static final String CHANGE_AMOUNT_REQUEST= "#OS:Change Amount Request";
-
-    /**
-     * The string sent to the observers when a client tries to change his amount in a split.
-     */
-    public static final String UPDATED_SPLIT_STATE= "#OS:Updated Split State";
-
-    /**
-     * The string sent to the observers when a participent tries to change his ready status state.
-     */
-    public static final String CHANGE_READY_STATUS= "#OS:Change Ready Status";
-
 
     //Instance variables **********************************************
 
@@ -178,17 +132,17 @@ public class SplitClientFacade implements Observer
         this.splitSectionController=splitSectionController;
     }
 
-    //References to controllers receiving server data *****************
+    /* References to controllers receiving server data ***************** */
 
     private MySplitsController mySplitsController;
     private SplitSaloonController splitSaloonController;
     private SplitSectionController splitSectionController;
 
-    //Data temporally stored for controllers
+    /* Data temporally stored for controllers */
 
     private Split joinedSplit;
 
-    //Controller data methods
+    /* Controller data methods */
 
     private void setJoinedSplit(Split joinedSplit){
         this.joinedSplit = joinedSplit;
@@ -198,7 +152,7 @@ public class SplitClientFacade implements Observer
         return joinedSplit;
     }
 
-    //Instance methods ************************************************
+    /* Instance methods ************************************************ */
 
     /**
      * This method handles all data that comes in from the server.
@@ -210,7 +164,7 @@ public class SplitClientFacade implements Observer
         System.out.println(msg);
         SplitOriginatorMessage msgReceived = (SplitOriginatorMessage) msg;
         switch ((String) msgReceived.getMessage()){
-            case GET_SPLIT_REQUEST:
+            case ClientServerProtocol.GET_SPLIT_REQUEST:
                 System.out.println(msgReceived.getSplits());
                 try {
                     communicationService.closeConnection();
@@ -219,14 +173,14 @@ public class SplitClientFacade implements Observer
                 }
                 mySplitsController.setSplits(msgReceived.getSplits());
                 break;
-            case JOINED_SPLIT:
+            case ClientServerProtocol.JOINED_SPLIT:
                 System.out.println("Success : Participant joined the split");
                 System.out.println("Received split : " + msgReceived.getSplit());
                 setJoinedSplit(msgReceived.getSplit());
                 splitSectionController.setFlashMessage("Success : redirecting...");
                 splitSectionController.splitJoined();
                 break;
-            case PARTICIPANT_ALREADY_IN_SPLIT:
+            case ClientServerProtocol.PARTICIPANT_ALREADY_IN_SPLIT:
                 System.out.println("Error : Participant already in Split");
                 try {
                     splitSectionController.setFlashMessage("Error : participant already in split");
@@ -235,7 +189,7 @@ public class SplitClientFacade implements Observer
                     e.printStackTrace();
                 }
                 break;
-            case SPLIT_NOT_FOUND:
+            case ClientServerProtocol.SPLIT_NOT_FOUND:
                 System.out.println("Error : Wrong code");
                 try {
                     splitSectionController.setFlashMessage("Error : wrong code split not found");
@@ -244,7 +198,7 @@ public class SplitClientFacade implements Observer
                     e.printStackTrace();
                 }
                 break;
-            case UPDATED_SPLIT_STATE:
+            case ClientServerProtocol.UPDATED_SPLIT_STATE:
                 System.out.println(msgReceived.getSplits());
                 setJoinedSplit(msgReceived.getSplit());
                 splitSaloonController.updateSplit(getJoinedSplit());
@@ -258,11 +212,8 @@ public class SplitClientFacade implements Observer
             communicationService.sendToServer(message);
         }
         catch(IOException e){
-//            clientUI.display
-//                    ("Could not send message to server.  Terminating client.");
             System.out.println("Could not send message to server.  Terminating client.");
             e.printStackTrace();
-
             quit();
         }
     }
@@ -281,6 +232,8 @@ public class SplitClientFacade implements Observer
         }
 
     }
+
+    /* Methods creating requests to the server ***************** */
 
     /**
      * Method asking the server to join a split with a splitcode
@@ -302,7 +255,7 @@ public class SplitClientFacade implements Observer
         arguments.put("nickName",nickName);
         arguments.put("splitCode",splitCode);
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,JOIN_SPLIT_ATTEMPT,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.JOIN_SPLIT_ATTEMPT,arguments,null);
 
         sendToServer(message);
         System.out.println("joinSplit message sent to server");
@@ -320,12 +273,13 @@ public class SplitClientFacade implements Observer
 
         String id = UserFacade.getUserFacade().getLoggedUser().getId();
 
+        /* Creating request arguments */
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("userId",id);
         arguments.put("splitCode",splitCode);
         arguments.put("newAmount",Double.toString(newAmount));
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,CHANGE_AMOUNT_REQUEST,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.CHANGE_AMOUNT_REQUEST,arguments,null);
         sendToServer(message);
 
     }
@@ -336,10 +290,11 @@ public class SplitClientFacade implements Observer
     public void getSplits() throws IOException {
         communicationService.openConnection();
 
+        /* Creating request arguments */
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("userId",UserFacade.getUserFacade().getLoggedUser().getId());
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,GET_SPLIT_REQUEST,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.GET_SPLIT_REQUEST,arguments,null);
 
         sendToServer(message);
     }
@@ -349,14 +304,29 @@ public class SplitClientFacade implements Observer
      */
     public void switchReadyStatus(String splitCode){
 
+        /* Creating request arguments */
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("userId",UserFacade.getUserFacade().getLoggedUser().getId());
         arguments.put("splitCode",splitCode);
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,CHANGE_READY_STATUS,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.CHANGE_READY_STATUS,arguments,null);
 
         sendToServer(message);
 
+    }
+
+    /**
+     * Method asking the server to remove a participant from a split
+     */
+    public void quitSplit(String splitCode){
+        /* Creating request arguments */
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("userId",UserFacade.getUserFacade().getLoggedUser().getId());
+        arguments.put("splitCode",splitCode);
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.CHANGE_READY_STATUS,arguments,null);
+
+        sendToServer(message);
     }
 
     /**
@@ -371,7 +341,7 @@ public class SplitClientFacade implements Observer
     @Override
     public void update(Observable o, Object arg) {
         SplitOriginatorMessage msg = (SplitOriginatorMessage) arg;
-        String message = (String) msg.getMessage();
+        String message = msg.getMessage();
         if(CONNECTION_CLOSED.contentEquals(message)){
             connectionClosed();
         }
