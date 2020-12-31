@@ -203,6 +203,9 @@ public class SplitClientFacade implements Observer
                 setJoinedSplit(msgReceived.getSplit());
                 splitSaloonController.updateSplit(getJoinedSplit());
                 break;
+            case ClientServerProtocol.QUIT_SPLIT_SUCCESS:
+                System.out.println("Quitted split successfully");
+                splitSaloonController.splitQuit();
         }
 
     }
@@ -319,12 +322,13 @@ public class SplitClientFacade implements Observer
      * Method asking the server to remove a participant from a split
      */
     public void quitSplit(String splitCode){
+
         /* Creating request arguments */
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("userId",UserFacade.getUserFacade().getLoggedUser().getId());
         arguments.put("splitCode",splitCode);
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.CHANGE_READY_STATUS,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_REQUEST,arguments,null);
 
         sendToServer(message);
     }

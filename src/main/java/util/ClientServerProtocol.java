@@ -48,4 +48,14 @@ public class ClientServerProtocol {
      */
     public static final String CHANGE_READY_STATUS= "#OS:Change Ready Status";
 
+    /**
+     * The string sent to the server when a participent tries to quit a split.
+     */
+    public static final String QUIT_SPLIT_REQUEST= "#OS:Quit Split Request";
+
+    /**
+     * The string sent to the server when a participent tries to quit a split.
+     */
+    public static final String QUIT_SPLIT_SUCCESS= "#OS:Quit Split Request";
+
 }

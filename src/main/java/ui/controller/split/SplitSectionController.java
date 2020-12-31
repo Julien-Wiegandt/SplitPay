@@ -41,11 +41,7 @@ public class SplitSectionController {
      * Method used to store the joined split and redirecting the user to the saloon
      */
     public void splitJoined(){
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                goToSaloonView();
-            }
-        });
+        Platform.runLater(() -> goToSaloonView());
 
     }
 

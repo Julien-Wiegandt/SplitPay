@@ -7,11 +7,16 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import main.SplitPay;
 import server.models.Participant;
 import server.models.Split;
+import ui.path.UserNavigationPath;
 
 import java.io.IOException;
 
@@ -81,9 +86,17 @@ public class SplitSaloonController {
             participants.setItems(items);
         });
 
+    }
 
+    /**
+     * Method called when the participant successfully quit the split
+     */
+    public void splitQuit(){
+        Platform.runLater(() -> goToHomeView());
 
     }
+
+    /* Methods handling UI action ************ */
 
     /**
      * Handles participant input, sends to the server the change amount request
@@ -98,6 +111,29 @@ public class SplitSaloonController {
      */
     public void isReadyHandler(){
         facade.switchReadyStatus(getJoinedSplit().getSplitCode());
+    }
+
+    /**
+     * Handles participant quit button
+     */
+    public void quitHandler(){
+        facade.quitSplit(getJoinedSplit().getSplitCode());
+    }
+
+    /* *************************************** */
+
+    /**
+     * Method to move the user to the home screen
+     */
+    private void goToHomeView(){
+        Parent root = null;
+        try {
+            // TODO : resource correctly
+            root = FXMLLoader.load(getClass().getResource("../../../view/authPath/homeView.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SplitPay.window.setScene(new Scene(root));
     }
 
 }

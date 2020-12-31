@@ -29,7 +29,7 @@
             <TextField fx:id="moneyInput" layoutX="14.0" layoutY="223.0" promptText="Enter amount" />
             <Button onAction="#moneyInputHandler" layoutX="199.0" layoutY="223.0" mnemonicParsing="false" text="Validate" />
             <Button onAction="#isReadyHandler" layoutX="201.0" layoutY="279.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" text="Ready" />
-            <Button layoutX="49.0" layoutY="279.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" text="Quit" />
+            <Button onAction="#quitHandler" layoutX="49.0" layoutY="279.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" text="Quit" />
             <Button layoutX="352.0" layoutY="279.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" text="Pay !" />
          </children>
       </AnchorPane>
