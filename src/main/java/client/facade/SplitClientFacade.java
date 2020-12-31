@@ -163,7 +163,7 @@ public class SplitClientFacade implements Observer
 
         System.out.println(msg);
         SplitOriginatorMessage msgReceived = (SplitOriginatorMessage) msg;
-        switch ((String) msgReceived.getMessage()){
+        switch (msgReceived.getMessage()){
             case ClientServerProtocol.GET_SPLIT_REQUEST:
                 System.out.println(msgReceived.getSplits());
                 try {
@@ -205,6 +205,11 @@ public class SplitClientFacade implements Observer
                 break;
             case ClientServerProtocol.QUIT_SPLIT_SUCCESS:
                 System.out.println("Quitted split successfully");
+                try {
+                    communicationService.closeConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 splitSaloonController.splitQuit();
         }
 
