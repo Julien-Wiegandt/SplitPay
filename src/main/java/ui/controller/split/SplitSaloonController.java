@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import main.SplitPay;
 import server.models.Participant;
@@ -54,6 +55,13 @@ public class SplitSaloonController {
     private TextField moneyInput;
 
     @FXML
+    public Label currentAmount;
+
+    @FXML
+    public ProgressBar progressBar;
+
+
+    @FXML
     private void initialize() throws IOException {
         SplitClientFacade.getInstance().setSplitSaloonController(this);
         setJoinedSplit(SplitClientFacade.getInstance().getJoinedSplit());
@@ -78,6 +86,8 @@ public class SplitSaloonController {
             splitMode.setText(getJoinedSplit().getSplitMode());
             splitCode.setText(getJoinedSplit().getSplitCode());
             goalAmount.setText(Double.toString(getJoinedSplit().getGoalAmount()));
+            currentAmount.setText(Double.toString(getJoinedSplit().getCurrentAmount()));
+            progressBar.setProgress(getJoinedSplit().getCurrentAmount()/getJoinedSplit().getGoalAmount());
 
             ObservableList<Participant> items = FXCollections.observableArrayList ();
             items.setAll(getJoinedSplit().getParticipants().values());
