@@ -131,7 +131,7 @@ public class SplitServerFacade implements Observer {
      * Returns a hashmap of splits owned by the user
      * @return the split formatted in a hashmap with it's splitcode
      */
-    public HashMap<String,Split> getHashSplit(String splitCode) {
+    public HashMap<String,Split> getHashSplit(String splitCode) throws SplitNotFoundException {
         HashMap<String,Split> returnedSplit = new HashMap<>();
         Iterator iterator = splits.entrySet().iterator();
 
@@ -140,6 +140,10 @@ public class SplitServerFacade implements Observer {
             if(split.getKey().equals(splitCode)){
                 returnedSplit.put(split.getKey(),split.getValue());
             }
+        }
+
+        if(returnedSplit.size()==0){
+            throw new SplitNotFoundException("Did not find the split");
         }
         return returnedSplit;
     }
@@ -320,29 +324,31 @@ public class SplitServerFacade implements Observer {
      * @param splitCode the splitcode of the targeted split
      */
     private void sendToParticipantUpdate(String splitCode){
-        Split split = null;
+        Split split;
+
         try {
+            /* Create the message object */
+            HashMap<String,Split> hashSplit = getHashSplit(splitCode);
+            SplitOriginatorMessage update = new SplitOriginatorMessage(null,ClientServerProtocol.UPDATED_SPLIT_STATE,null,hashSplit);
+
+            /* Get split participants */
             split = getSplitByCode(splitCode);
+            HashMap<Integer,Participant> participants = split.getParticipants();
+
+            /* Send the message to every participants */
+            for (Map.Entry<Integer, Participant> integerParticipantEntry : participants.entrySet()) {
+                Participant participant = integerParticipantEntry.getValue();
+                try {
+                    participant.getClientConnection().sendToClient(update);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
         } catch (SplitNotFoundException e) {
             e.printStackTrace();
         }
-        HashMap<String,Split> hashSplit = new HashMap<>();
-        hashSplit.put(split.getSplitCode(),split);
-        SplitOriginatorMessage update = new SplitOriginatorMessage(null,ClientServerProtocol.UPDATED_SPLIT_STATE,null,hashSplit);
 
-        HashMap<Integer,Participant> participants = split.getParticipants();
-
-        Iterator it = participants.entrySet().iterator();
-        while (it.hasNext()) {
-            Participant participant = (Participant) ((Map.Entry)it.next()).getValue();
-            try {
-                System.out.println("Sent to :"+participant.getId());
-                participant.getClientConnection().sendToClient(update);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-//            it.remove(); // avoids a ConcurrentModificationException
-        }
     }
 
     /**

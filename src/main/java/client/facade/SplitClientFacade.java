@@ -5,7 +5,6 @@ import core.facade.UserFacade;
 import server.SplitOriginatorMessage;
 import server.models.Split;
 import ui.controller.split.MySplitsController;
-import ui.controller.split.SplitController;
 import ui.controller.split.SplitSaloonController;
 import ui.controller.split.SplitSectionController;
 
@@ -17,13 +16,10 @@ import java.util.Observer;
 import util.ClientServerProtocol;
 
 /**
- * This class overrides some of the methods defined in the abstract
- * superclass in order to give more functionality to the client.
+ * This class is the facade linking the app to the server and
+ * receiving and processing data sent by the server
  *
- * @author Dr Timothy C. Lethbridge
- * @author Dr Robert Lagani&egrave;
- * @author Fran&ccedil;ois B&eacute;langer
- * @version July 2000
+ * @author Ayoub Moujane
  */
 public class SplitClientFacade implements Observer
 {
@@ -41,18 +37,8 @@ public class SplitClientFacade implements Observer
 
     //Instance variables **********************************************
 
-    /**
-     * The interface type variable.  It allows the implementation of
-     * the display method in the client.
-     */
-    Object clientUI;
     ObservableClient communicationService;
     // TODO : change splitController
-    private SplitController splitController;
-
-    // Variable that holds de name chosen by the user when created
-
-    String name;
 
     /**
      * Hook method called after the connection has been closed.
@@ -62,7 +48,6 @@ public class SplitClientFacade implements Observer
      * reconnect.
      */
     protected void connectionClosed() {
-//        clientUI.display("Connection closed correctly");
         System.out.println("Connection closed correctly");
     }
 
@@ -74,7 +59,6 @@ public class SplitClientFacade implements Observer
      * @param exception the exception raised.
      */
     protected void connectionException(Exception exception) {
-//        clientUI.display("Lost connection with the server");
         System.out.println("Lost connection with the server");
         quit();
     }
@@ -85,7 +69,6 @@ public class SplitClientFacade implements Observer
      * It may be overridden by subclasses to do anything they wish.
      */
     protected void connectionEstablished() {
-//        clientUI.display("Connection established successfully");
         System.out.println("Connection established successfully");
 
     }
@@ -273,9 +256,8 @@ public class SplitClientFacade implements Observer
     /**
      * Method asking the server to change the currently logged user's
      * current amount in the split corresponding to the provided splitcode.
-     * @param newAmount
-     * @param splitCode
-     * @param newAmount
+     * @param newAmount the new participant amount
+     * @param splitCode the split code
      */
     public void changeAmount(double newAmount, String splitCode){
 
