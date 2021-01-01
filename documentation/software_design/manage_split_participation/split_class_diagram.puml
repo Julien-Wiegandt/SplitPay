@@ -15,7 +15,7 @@ class Split {
     - currentAmount : Double
     + validatePayment() : void
     + changeAmount(int participant, Double amount) : void
-    + changeReadyStatus(int participant) : void
+    + switchParticipateReadyStatus(int participant) : void
     + removeParticipant(int participant) : void
     + addParticipant(int participant) : void
     + getNumberOfParticipant() : int
