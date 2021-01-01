@@ -1,8 +1,6 @@
 package ui.controller.split;
 
 import client.facade.SplitClientFacade;
-import core.facade.UserFacade;
-import core.models.User;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -102,7 +100,7 @@ public class SplitSaloonController {
      * Handles participant input, sends to the server the change amount request
      */
     public void moneyInputHandler(){
-        Double newAmount = Double.parseDouble(moneyInput.getText());
+        double newAmount = Double.parseDouble(moneyInput.getText());
         facade.changeAmount(newAmount,getJoinedSplit().getSplitCode());
     }
 

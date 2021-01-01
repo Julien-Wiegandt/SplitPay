@@ -73,8 +73,6 @@ public class SplitClientFacade implements Observer
 
     }
 
-
-
     //Constructors ****************************************************
 
     /**
@@ -187,7 +185,7 @@ public class SplitClientFacade implements Observer
                 splitSaloonController.updateSplit(getJoinedSplit());
                 break;
             case ClientServerProtocol.QUIT_SPLIT_SUCCESS:
-                System.out.println("Quitted split successfully");
+                System.out.println("Split quit successfully");
                 try {
                     communicationService.closeConnection();
                 } catch (IOException e) {
