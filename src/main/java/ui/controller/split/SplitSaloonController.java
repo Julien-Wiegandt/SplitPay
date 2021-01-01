@@ -129,7 +129,7 @@ public class SplitSaloonController {
         Parent root = null;
         try {
             // TODO : resource correctly
-            root = FXMLLoader.load(getClass().getResource("../../../view/authPath/homeView.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../"+UserNavigationPath.homeView));
         } catch (IOException e) {
             e.printStackTrace();
         }
