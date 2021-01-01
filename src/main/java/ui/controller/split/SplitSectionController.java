@@ -18,17 +18,11 @@ public class SplitSectionController {
 
     private SplitClientFacade facade = SplitClientFacade.getInstance();;
 
-    private Split joinedSplit;
-
     @FXML
     private TextField splitCode;
 
     @FXML
     private Label splitSectionFlashMessage;
-
-    private Split getJoinedSplit(){
-        return joinedSplit;
-    }
 
     /**
      * This methods sends the splitCode to the server to attempt joining a split
@@ -52,7 +46,7 @@ public class SplitSectionController {
         Parent root = null;
         try {
             // TODO : Handle resource path problem
-            root = FXMLLoader.load(getClass().getResource("../../../view/authPath/splitSaloonView.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../"+UserNavigationPath.splitSaloonView));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,17 +54,13 @@ public class SplitSectionController {
     }
 
     @FXML
-    public void setFlashMessage(final String flashMessage){
+    public void setFlashMessage(String flashMessage){
         System.out.println("ok");
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                splitSectionFlashMessage.setText(flashMessage);
-            }
-        });
+        Platform.runLater(() -> splitSectionFlashMessage.setText(flashMessage));
     }
 
     @FXML
-    private void initialize() throws IOException {
+    private void initialize() {
         SplitClientFacade.getInstance().setSplitSectionController(this);
     }
 
