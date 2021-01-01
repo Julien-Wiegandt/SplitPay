@@ -195,7 +195,7 @@ public class SplitServerFacade implements Observer {
      * Switches ready status state
      */
     public void switchSplitParticipantReadyStatus(String splitCode, int participantId) throws SplitNotFoundException, ParticipantNotFoundException {
-        getSplitByCode(splitCode).switchParticipateReadyStatus(participantId);
+        getSplitByCode(splitCode).switchParticipantReadyStatus(participantId);
     }
 
     /**

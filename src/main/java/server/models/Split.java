@@ -215,7 +215,7 @@ public class Split implements Serializable {
      * Switches participant ready status if exists in split
      * @param participantId
      */
-    public void switchParticipateReadyStatus(int participantId) throws ParticipantNotFoundException {
+    public void switchParticipantReadyStatus(int participantId) throws ParticipantNotFoundException {
         Participant participant = getParticipantById(participantId);
         participant.switchReadyStatus();
     }

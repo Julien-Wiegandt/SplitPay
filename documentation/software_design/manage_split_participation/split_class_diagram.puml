@@ -1,7 +1,8 @@
 @startuml
 
-class Split {
+abstract class Split {
     - id : int
+    - splitType : SplitType
     - label : String
     - splitCode : String
     - goalAmount : Double
@@ -15,7 +16,7 @@ class Split {
     - currentAmount : Double
     + validatePayment() : void
     + changeAmount(int participant, Double amount) : void
-    + switchParticipateReadyStatus(int participant) : void
+    + switchParticipantReadyStatus(int participant) : void
     + removeParticipant(int participant) : void
     + addParticipant(int participant) : void
     + getNumberOfParticipant() : int
@@ -32,6 +33,27 @@ class Participant {
     + cancel() : void
 }
 
-Split --> "0..n participants" Participant
+class FreeSplit{
+}
+
+class ItemSplit{
+    + pickItem(Item item) : void
+    + changeAmount() :  void
+}
+
+class EqualSplit{
+    + switchParticipantReadyStatus(int Participant) : void
+}
+
+enum SplitType{
+    FREESPLIT
+    ITEMSPLIT
+    EQUALSPLIT
+}
+
+Split -right-> "0..n participants" Participant
+FreeSplit -up-|> Split
+ItemSplit -up-|> Split
+EqualSplit -up-|> Split
 
 @enduml
