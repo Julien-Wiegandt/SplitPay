@@ -31,7 +31,7 @@ public class AddBankAccountController {
     private TextField lastName;
 
 
-    public void addBankAccount(ActionEvent actionEvent) {
+    public void addBankAccount(ActionEvent actionEvent) throws IOException {
         allStyleSetDefault();
 
         if(RegexPattern.labelPattern.matcher(label.getText()).find() &&
@@ -41,7 +41,8 @@ public class AddBankAccountController {
                 RegexPattern.nameOwnerPattern.matcher(lastName.getText()).find()){
 
             BankAccountFacade.getInstance().createBankAccount(label.getText(), bic.getText(), iban.getText(), firstName.getText(), lastName.getText());
-
+            Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.bankAccountView));
+            SplitPay.window.setScene(new Scene(root));
         }else {
             if(!RegexPattern.labelPattern.matcher(label.getText()).find()){
                 label.setStyle("-fx-text-box-border: red");

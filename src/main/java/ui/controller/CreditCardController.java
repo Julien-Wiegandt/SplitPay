@@ -49,6 +49,12 @@ public class CreditCardController {
         listView.setItems(items);
     }
 
+
+    /**
+
+     * @throws IOException
+     * @todo Handle the possible exceptions. (if the user click on empty field)
+     */
     public void goToCreditCardView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editCreditCardView));
         Parent root = loader.load();

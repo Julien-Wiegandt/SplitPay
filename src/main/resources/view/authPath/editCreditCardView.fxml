@@ -4,11 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.EditCreditCardController">
    <children>
       <Label fx:id="number" layoutX="285.0" layoutY="74.0" text="Label" />
       <Label fx:id="nameOwner" layoutX=" 285.0" layoutY="136.0" text="Label" />
        <Button layoutX="274.0" layoutY="259.0" mnemonicParsing="false" onAction="#deleteCreditCard" text="delete" />
+      <Button layoutX="30.0" layoutY="343.0" mnemonicParsing="false" onAction="#goToCreditCardView" text="Retour" />
    </children>
 </AnchorPane>

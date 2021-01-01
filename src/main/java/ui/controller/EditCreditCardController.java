@@ -18,6 +18,7 @@ import ui.path.NormalUserNavigationPath;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import ui.path.UserNavigationPath;
 
 public class EditCreditCardController {
 
@@ -47,6 +48,11 @@ public class EditCreditCardController {
 
     public void deleteCreditCard( ActionEvent actionEvent) throws IOException {
         CreditCardFacade.getInstance().deleteCreditCard(this.card_number,null,null,null);
+        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.creditCardView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    public void goToCreditCardView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.creditCardView));
         SplitPay.window.setScene(new Scene(root));
     }

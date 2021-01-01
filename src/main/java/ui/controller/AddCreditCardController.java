@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
 import ui.path.NormalUserNavigationPath;
+import ui.path.UserNavigationPath;
 import util.RegexPattern;
 
 public class AddCreditCardController {
@@ -29,7 +30,14 @@ public class AddCreditCardController {
     @FXML
     private TextField cvv;
 
-    public void addCard(ActionEvent actionEvent) throws ParseException {
+
+    /**
+
+     * @throws IOException
+     * @throws ParseException
+     * @todo Handle the possible exceptions.
+     */
+    public void addCard(ActionEvent actionEvent) throws ParseException, IOException {
         allStyleSetDefault();
 
         if(RegexPattern.numberPattern.matcher(number.getText()).find()
@@ -40,6 +48,8 @@ public class AddCreditCardController {
             Date real_date = new SimpleDateFormat("yyyy-MM-dd").parse(date.getText());
             CreditCardFacade.getInstance().createCreditCard(number.getText(),nameOwner.getText(),real_date,cvv.getText());
 
+            Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.creditCardView));
+            SplitPay.window.setScene(new Scene(root));
         }else{
             if(!RegexPattern.numberPattern.matcher(number.getText()).find()){
                 number.setStyle("-fx-text-box-border: red");

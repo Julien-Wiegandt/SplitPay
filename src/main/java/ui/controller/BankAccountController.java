@@ -3,6 +3,7 @@ package ui.controller;
 import core.facade.BankAccountFacade;
 import core.models.BankAccount;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,24 +12,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
+
 import javafx.scene.control.ListView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
+
 import main.SplitPay;
-import ui.path.NormalUserNavigationPath;
+
 import ui.path.UserNavigationPath;
 
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class BankAccountController {
     @FXML
-    private Button addCreditCard;
+    private Button addBankAccount;
 
     @FXML
     private ListView listView;
@@ -66,8 +65,18 @@ public class BankAccountController {
 
 
 
+    /**
 
-    public void deleteBankAccount(ActionEvent actionEvent) {
+     * @throws IOException
+     * @todo Handle the possible exceptions. (if the user click on empty field)
+     */
+
+    public void goToEditBankAccountView() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.editBankAccountView));
+        Parent root = loader.load();
+        EditBankAccountController editBankAccountController = loader.getController();
+        editBankAccountController.setBankAccount((BankAccount) listView.getSelectionModel().getSelectedItem());
+        SplitPay.window.setScene(new Scene(root));
     }
 
 

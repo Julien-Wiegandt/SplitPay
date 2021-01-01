@@ -9,4 +9,5 @@ public class UserNavigationPath {
 
     public static String addBankAccountView = "../../view/authPath/AddBankAccountView.fxml";
 
+    public static String editBankAccountView = "../../view/authPath/editBankAccountView.fxml";
 }

@@ -47,6 +47,12 @@ public class GroupController {
 
     }
 
+
+    /**
+
+     * @throws IOException
+     * @todo Handle the possible exceptions. (if the user click on empty field)
+     */
     @FXML
     public void goToEditGroupView()throws IOException {
 
