@@ -278,7 +278,6 @@ public class SplitServerFacade implements Observer {
                 double newAmount = Double.parseDouble(message.getArgument("newAmount"));
                 try {
                     changeParticipantAmount(splitCode,userId,newAmount);
-                    HashMap<String,Split> data = getHashSplit(splitCode);
                     sendToParticipantUpdate(splitCode);
                     // TODO : Implement error handling
                 } catch (SplitNotFoundException | ParticipantNotFoundException | GoalAmountExceededException e) {
@@ -293,6 +292,7 @@ public class SplitServerFacade implements Observer {
                     HashMap<String,Split> data = getHashSplit(splitCode);
                     try {
                         client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.UPDATED_SPLIT_STATE,null,data));
+                        sendToParticipantUpdate(splitCode);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -306,6 +306,7 @@ public class SplitServerFacade implements Observer {
                 try {
                     removeSplitParticipant(splitCode,userId);
                     client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_SUCCESS,null,null));
+                    sendToParticipantUpdate(splitCode);
                 } catch (SplitNotFoundException | ParticipantNotFoundException | IOException e) {
                     e.printStackTrace();
                 }
