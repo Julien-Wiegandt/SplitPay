@@ -1,6 +1,8 @@
 package ui.controller.split;
 
 import client.facade.SplitClientFacade;
+import com.sun.org.apache.xpath.internal.operations.Equals;
+import core.facade.UserFacade;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,10 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import main.SplitPay;
 import server.models.Participant;
 import server.models.Split;
@@ -60,6 +59,8 @@ public class SplitSaloonController {
     @FXML
     public ProgressBar progressBar;
 
+    @FXML
+    public Button payButton;
 
     @FXML
     private void initialize() throws IOException {
@@ -88,12 +89,20 @@ public class SplitSaloonController {
             goalAmount.setText(Double.toString(getJoinedSplit().getGoalAmount()));
             currentAmount.setText(Double.toString(getJoinedSplit().getCurrentAmount()));
             progressBar.setProgress(getJoinedSplit().getCurrentAmount()/getJoinedSplit().getGoalAmount());
-
             ObservableList<Participant> items = FXCollections.observableArrayList ();
             items.setAll(getJoinedSplit().getParticipants().values());
             participants.setItems(items);
+
+            // The pay button is only accessible for the split owner
+            if(isParticipantOwner()){
+                payButton.setVisible(false);
+            }
         });
 
+    }
+
+    private boolean isParticipantOwner(){
+        return getJoinedSplit().getOwnerId() == Integer.parseInt(UserFacade.getUserFacade().getLoggedUser().getId());
     }
 
     /**
