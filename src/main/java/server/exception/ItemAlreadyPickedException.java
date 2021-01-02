@@ -4,9 +4,9 @@ package server.exception;
  * Thrown when an item is already picked in a split
  *
  */
-public class ItemAlreadyPicked extends Exception{
+public class ItemAlreadyPickedException extends Exception{
 
-    public ItemAlreadyPicked(String message) {
+    public ItemAlreadyPickedException(String message) {
         super(message);
     }
 }
