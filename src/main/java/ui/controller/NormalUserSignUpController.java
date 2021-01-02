@@ -4,7 +4,6 @@ import ui.path.AuthPath;
 import main.SplitPay;
 import core.facade.UserFacade;
 import util.RegexPattern;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -28,9 +28,8 @@ package main{
 
 package core{
     package facade{
-        class UserFacade{
-        }
-        class NormalUserFacade{
+
+        class FriendFacade{
             +addFriendByPhone(phone:String): void
             +addFriendByEmail(email:String): void
             +deleteFriendByPhone(user:NormalUser): void
@@ -56,31 +55,29 @@ package persist{
     abstract class DAOFactory{
         #connection: Connection
         {static} +getConnection(): Connection
-        +createUserDAO(): UserDAO
+        +createFriendDAO(): UserDAO
         -DAOFactory(): DAOFactory
     }
     package dao{
         package mysql{
-            class MySqlUserDAO{
-                -MySqlUserDAO(): MySqlUserDAO
+            class MySqlFriendDAO{
+                -MySqlFriendDAO(): MySqlUserDAO
             }
             class MySqlDAOFactory{
-                +createUserDAO(): MySqlUserDAO
+                +createFriendDAO(): MySqlUserDAO
             }
         }
-        interface UserDAO{
-            +getConnection(): UserDAO
-            +findUserByEmail(email:String): User
-            +findUserByPhone(phone:String): User
+        interface FriendDAO{
+            +getConnection(): FriendDAO
             +getFriends(): Collection<User>
-            +addFriend(user:User): void
+            +addFriend(user:User, friend: User): void
         }
         package postgres{
-            class PostGresUserDAO{
-                -PostGresUserDAO(): PostGresUserDAO
+            class PostGresFriendDAO{
+                -PostGresFriendDAO(): PostGresUserDAO
             }
             class PostGresDAOFactory{
-                +createUserDAO(): PostGresUserDAO
+                +createFriendDAO(): PostGresUserDAO
             }
         }
     }
@@ -88,18 +85,18 @@ package persist{
 
 ManageFriendsController .up.> SplitPay : use
 AddFriendController .up.> SplitPay : use
-ManageFriendsController ..> NormalUserFacade : use
-AddFriendController .right.> NormalUserFacade : use
+ManageFriendsController ..> FriendFacade : use
+AddFriendController .right.> FriendFacade : use
 UserFacade ..> User : creates
 User <|-- NormalUser
-UserDAO <|.. MySqlUserDAO
-UserDAO <|.. PostGresUserDAO
+FriendDAO <|.. MySqlFriendDAO
+FriendDAO <|.. PostGresFriendDAO
 DAOFactory <|-down- MySqlDAOFactory
 DAOFactory <|-down- PostGresDAOFactory
-MySqlDAOFactory .down.> MySqlUserDAO : creates
-PostGresDAOFactory .down.> PostGresUserDAO : creates
-UserFacade -up> "1" DAOFactory
-UserFacade -up> "1" UserDAO
-UserFacade <|-- NormalUserFacade
+MySqlDAOFactory .down.> MySqlFriendDAO : creates
+PostGresDAOFactory .down.> PostGresFriendDAO : creates
+FriendFacade .up> DAOFactory : delegate  creation
+FriendFacade .up> UserFacade : delegate search
+FriendFacade -> FriendDAO
 Application <|-- SplitPay
 @enduml

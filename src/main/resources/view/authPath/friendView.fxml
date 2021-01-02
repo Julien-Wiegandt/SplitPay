@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.FriendController">
+    <top>
+        <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
+    </top>
+    <left>
+        <fx:include fx:id="normalUserMenu" source="menu.fxml" />
+    </left>
+   <center>
+      <AnchorPane prefHeight="298.0" prefWidth="470.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="myFriends" layoutY="75.0" prefHeight="226.0" prefWidth="430.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="195.0" text="My Friends" textAlignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
+            <Button fx:id="addFriend" layoutX="183.0" layoutY="32.0" mnemonicParsing="false" onAction="#goToAddFriendView" text="Add a friend" />
+            <Button fx:id="delete" layoutX="228.0" layoutY="307.0" mnemonicParsing="false" onAction="#deleteFriend" text="Delete" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

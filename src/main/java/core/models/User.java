@@ -1,13 +1,15 @@
 package core.models;
 
 /**
- * 
+ *
  */
 public class User {
 
     /**
      * Default constructor
      */
+    public User() {
+    }
     public User(String id, String email, String phone, String password, String nickname, Float balance, String validationCode) {
         this.id=id;
         this.email=email;
@@ -60,6 +62,12 @@ public class User {
     public String getPassword(){return this.password;}
     public Float getBalance(){return this.balance;}
     public String getValidationCode(){ return this.validationCode;}
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +

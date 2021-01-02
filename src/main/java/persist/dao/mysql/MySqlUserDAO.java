@@ -6,7 +6,9 @@ import core.models.*;
 import persist.dao.UserDAO;
 import persist.exception.login.PasswordLoginDAOException;
 import util.RegexPattern;
-
+import core.models.NormalUser;
+import core.models.StoreOwner;
+import core.models.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -111,9 +113,9 @@ public class MySqlUserDAO extends UserDAO {
     }
 
 
-    public User findNormalUserByEmail(String email) throws SQLException {
+    public NormalUser findNormalUserByEmail(String email) throws SQLException {
         Statement stmt = null;
-        User user = null;
+        NormalUser user = null;
         try {
             stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
@@ -141,9 +143,9 @@ public class MySqlUserDAO extends UserDAO {
         return user;
     }
 
-    public User findStoreOwnerByEmail(String email) throws SQLException {
+    public StoreOwner findStoreOwnerByEmail(String email) throws SQLException {
         Statement stmt = null;
-        User user = null;
+        StoreOwner user = null;
         try {
             stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
@@ -258,8 +260,8 @@ public class MySqlUserDAO extends UserDAO {
             throwables.printStackTrace();
         }
         try {
-            System.out.println("INSERT INTO NormalUser VALUES (NULL, '"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"')");
-            Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES (NULL, '"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"')");
+            System.out.println("INSERT INTO NormalUser VALUES ('"+user.getEmail()+"', '"+user.getPhone()+"','"+user.getNickname()+"', '"+user.getPassword()+"', '"+0.0+"', '"+user.getFirstName()+"', '"+user.getLastName()+"')");
+            Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES ('"+user.getEmail()+"', '"+user.getPhone()+"','"+user.getNickname()+"', '"+user.getPassword()+"', '"+0.0+"', '"+user.getFirstName()+"', '"+user.getLastName()+"')");
 //            MySqlDaoFactory.connection.commit();
             return user;
         } catch (SQLException throwables) {
@@ -301,11 +303,13 @@ public class MySqlUserDAO extends UserDAO {
         }
         try {
             if(user instanceof NormalUser) {
-                preparedStmt = ConnectionMySql.connection.prepareStatement("DELETE NormalUser WHERE id='" + user.getId() + "'");
-            }else{
-                preparedStmt = ConnectionMySql.connection.prepareStatement("DELETE StoreOwner WHERE id='" + user.getId() + "'");
+
+                System.out.println("DELETE NormalUser WHERE normal_user_pk = '" + user.getId()  );
+                stmt.executeUpdate("DELETE FROM NormalUser WHERE normal_user_pk = '" + user.getId()+"'" );
             }
-            preparedStmt.execute();
+            else {
+                preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE FROM StoreOwner WHERE store_owner_pk= '" + user.getId() +"'" );
+            }
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -324,16 +328,23 @@ public class MySqlUserDAO extends UserDAO {
         }
         try {
             if(user instanceof NormalUser) {
-                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance=" + user.getBalance() +
-                        "WHERE normal_user_pk=" + user.getId() + "");
+                System.out.println("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName ='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
+                        "WHERE normal_user_pk='" + user.getId() + "'");
+
+
+                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName ='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
+                        "WHERE normal_user_pk='" + user.getId() + "'");
+
             }else{
                 Integer rs = stmt.executeUpdate("UPDATE StoreOwner SET email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
                         " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "','"+((StoreOwner)user).getCompanyName()+"','"+((StoreOwner)user).getAddress()+"', balance=" + user.getBalance() +
                         "WHERE store_owner_pk=" + user.getId() + "");
 
             }
-            //ConnectionMySql.connection.commit();
+
+
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
