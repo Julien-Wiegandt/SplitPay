@@ -4,8 +4,6 @@
 
 package server;
 
-import server.models.Split;
-
 /**
 * The <code> ObservableOriginatorServer </code> is a subclass
 * of <code> ObservableServer </code> that sends

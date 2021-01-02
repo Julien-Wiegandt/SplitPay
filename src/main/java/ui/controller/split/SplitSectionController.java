@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.SplitPay;
-import server.models.Split;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;

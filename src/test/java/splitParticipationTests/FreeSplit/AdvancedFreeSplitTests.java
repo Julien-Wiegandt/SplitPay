@@ -1,4 +1,4 @@
-package splitParticipationTests;
+package splitParticipationTests.FreeSplit;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,13 +9,12 @@ import server.exception.ParticipantNotFoundException;
 import server.exception.SplitNotFoundException;
 import server.facade.SplitServerFacade;
 import server.models.Participant;
-import server.models.Split;
+import server.models.FreeSplit;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AdvancedSplitTests {
+public class AdvancedFreeSplitTests {
     @Before
     public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         Field instance = SplitServerFacade.class.getDeclaredField("instance");
@@ -241,7 +240,7 @@ public class AdvancedSplitTests {
         facade.createSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
 
 
-        HashMap<String,Split> returnedSplits = facade.getUserSplits(participant2.getId());
+        HashMap<String, FreeSplit> returnedSplits = facade.getUserSplits(participant2.getId());
 
         Assert.assertEquals(0,returnedSplits.size());
     }
@@ -258,7 +257,7 @@ public class AdvancedSplitTests {
         facade.createSplit(participant1.getId(), participant1.getNickname(),23,"new year bowling2","freesplit");
         facade.createSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
 
-        HashMap<String,Split> returnedSplits = facade.getUserSplits(participant1.getId());
+        HashMap<String, FreeSplit> returnedSplits = facade.getUserSplits(participant1.getId());
 
         Assert.assertEquals(2,returnedSplits.size());
     }

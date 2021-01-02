@@ -4,7 +4,7 @@
 
 package server;
 
-import server.models.Split;
+import server.models.FreeSplit;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -37,11 +37,11 @@ public class SplitOriginatorMessage implements Serializable
   /**
    * Split object, usually returned to clients to update their split state
    */
-  private HashMap<String, Split> splits;
+  private HashMap<String, FreeSplit> splits;
 
 // Constructor ***************************************************************
 
-  public SplitOriginatorMessage(ConnectionToClient originator, String message, HashMap<String, String> arguments, HashMap<String, Split> splits) {
+  public SplitOriginatorMessage(ConnectionToClient originator, String message, HashMap<String, String> arguments, HashMap<String, FreeSplit> splits) {
     this.originator = originator;
     this.message=message;
     this.arguments=arguments;
@@ -83,8 +83,8 @@ public class SplitOriginatorMessage implements Serializable
     this.originator=originator;
   }
 
-  public Split getSplit() {
-    Map.Entry<String, Split> entry = splits.entrySet().iterator().next();
+  public FreeSplit getSplit() {
+    Map.Entry<String, FreeSplit> entry = splits.entrySet().iterator().next();
     return entry.getValue();
   }
 
@@ -94,7 +94,7 @@ public class SplitOriginatorMessage implements Serializable
 
 
 
-  public HashMap<String, Split> getSplits() {
+  public HashMap<String, FreeSplit> getSplits() {
     return splits;
   }
 

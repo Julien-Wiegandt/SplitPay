@@ -6,28 +6,27 @@ import server.exception.ParticipantAlreadyInException;
 import server.exception.ParticipantNotFoundException;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Split implements Serializable {
+public abstract class Split implements Serializable {
 
-    public Split(String splitCode, int ownerId, String ownerNickName, double goalAmount, String label, String splitMode){
+    public Split(String splitCode, int ownerId, String ownerNickName, String label, String splitMode){
         this.splitCode=splitCode;
         this.label=label;
         this.ownerId=ownerId;
-        this.goalAmount=goalAmount;
+        this.ownerNickName=ownerNickName;
         this.splitMode=splitMode;
-
     }
 
     private String label;
     private String splitCode;
     private boolean expired = false;
-    private double goalAmount;
+    protected double goalAmount;
     private String splitMode;
     private int ownerId;
+    private String ownerNickName;
     private double currentAmount = 0;
 
     private HashMap<Integer,Participant> participants = new HashMap<>();
@@ -52,7 +51,7 @@ public class Split implements Serializable {
      * Add user to the participants list if not already in
      * @param id
      */
-    public void addParticipant(ConnectionToClient client,int id, String nickname) throws ParticipantAlreadyInException {
+    public void addParticipant(ConnectionToClient client, int id, String nickname) throws ParticipantAlreadyInException {
         Participant participant = participants.get(id);
         if (participant == null){
             this.participants.put(id,new Participant(client,id,nickname));
@@ -227,6 +226,4 @@ public class Split implements Serializable {
     public boolean isReadyForPayment(){
         return isGoalAmountReached() && isEveryOneReady();
     }
-
 }
-

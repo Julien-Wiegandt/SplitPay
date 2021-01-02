@@ -9,7 +9,7 @@ import server.exception.ParticipantAlreadyInException;
 import server.exception.ParticipantNotFoundException;
 import server.exception.SplitNotFoundException;
 import server.models.Participant;
-import server.models.Split;
+import server.models.FreeSplit;
 import util.ClientServerProtocol;
 import util.SplitUtilities;
 
@@ -20,7 +20,7 @@ public class SplitServerFacade implements Observer {
 
     // CLASS VARIABLES
 
-    private HashMap<String, Split> splits = new HashMap<>();
+    private HashMap<String, FreeSplit> splits = new HashMap<>();
     private static SplitServerFacade instance = null;
 
     ObservableServer communicationService;
@@ -63,7 +63,7 @@ public class SplitServerFacade implements Observer {
      */
     public String createSplit(int ownerId, String ownerNickName, double goalAmount, String label, String splitMode) {
         String splitCode = SplitUtilities.generateCode();
-        Split split = new Split(splitCode, ownerId,ownerNickName,goalAmount,label,splitMode);
+        FreeSplit split = new FreeSplit(splitCode, ownerId,ownerNickName,goalAmount,label,splitMode);
         splits.put(split.getSplitCode(),split);
         return splitCode;
     }
@@ -76,10 +76,10 @@ public class SplitServerFacade implements Observer {
      * @exception SplitNotFoundException no corresponding split found for the splitcode
      * @exception ParticipantAlreadyInException participant already in
      */
-    public HashMap<String,Split> join(ConnectionToClient client,String splitCode, int participantId, String participantNickname) throws SplitNotFoundException, ParticipantAlreadyInException {
-        Split split = getSplitByCode(splitCode);
+    public HashMap<String, FreeSplit> join(ConnectionToClient client, String splitCode, int participantId, String participantNickname) throws SplitNotFoundException, ParticipantAlreadyInException {
+        FreeSplit split = getSplitByCode(splitCode);
         split.addParticipant(client,participantId,participantNickname);
-        HashMap<String,Split> data = new HashMap<>();
+        HashMap<String, FreeSplit> data = new HashMap<>();
         data.put(splitCode,split);
         return data;
     }
@@ -90,8 +90,8 @@ public class SplitServerFacade implements Observer {
      * @return the split found
      * @throws SplitNotFoundException no corresponding split found for the splitcode
      */
-    public Split getSplitByCode(String splitCode) throws SplitNotFoundException {
-        Split split = splits.get(splitCode);
+    public FreeSplit getSplitByCode(String splitCode) throws SplitNotFoundException {
+        FreeSplit split = splits.get(splitCode);
         if(split==null){
             throw new SplitNotFoundException("No split matching the splitCode found");
         } else {
@@ -114,12 +114,12 @@ public class SplitServerFacade implements Observer {
      * Returns a hashmap of splits owned by the user
      * @return the splits of the user formatted in a hashmap with it's splitcode
      */
-    public HashMap<String,Split> getUserSplits(int id) {
-        HashMap<String,Split> userSplits = new HashMap<>();
+    public HashMap<String, FreeSplit> getUserSplits(int id) {
+        HashMap<String, FreeSplit> userSplits = new HashMap<>();
         Iterator iterator = splits.entrySet().iterator();
 
         while (iterator.hasNext()){
-            Map.Entry<String,Split> split = (Map.Entry) iterator.next();
+            Map.Entry<String, FreeSplit> split = (Map.Entry) iterator.next();
             if(split.getValue().getOwnerId()==id){
                 userSplits.put(split.getKey(),split.getValue());
             }
@@ -131,12 +131,12 @@ public class SplitServerFacade implements Observer {
      * Returns a hashmap of splits owned by the user
      * @return the split formatted in a hashmap with it's splitcode
      */
-    public HashMap<String,Split> getHashSplit(String splitCode) throws SplitNotFoundException {
-        HashMap<String,Split> returnedSplit = new HashMap<>();
+    public HashMap<String, FreeSplit> getHashSplit(String splitCode) throws SplitNotFoundException {
+        HashMap<String, FreeSplit> returnedSplit = new HashMap<>();
         Iterator iterator = splits.entrySet().iterator();
 
         while (iterator.hasNext()){
-            Map.Entry<String,Split> split = (Map.Entry) iterator.next();
+            Map.Entry<String, FreeSplit> split = (Map.Entry) iterator.next();
             if(split.getKey().equals(splitCode)){
                 returnedSplit.put(split.getKey(),split.getValue());
             }
@@ -165,7 +165,7 @@ public class SplitServerFacade implements Observer {
      * @param newAmount the new amount of the participant
      * @throws SplitNotFoundException no corresponding split found for the splitcode
      */
-    public Split changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
+    public FreeSplit changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
         splits.get(splitCode).changeParticipantAmount(participantId,newAmount);
         return splits.get(splitCode);
     }
@@ -222,7 +222,7 @@ public class SplitServerFacade implements Observer {
                 String splitMode = ((SplitOriginatorMessage) msg).getArgument("splitMode");
                 splitCode = createSplit(ownerId,ownerNickname,goalAmount,label,splitMode);
                 try {
-                    HashMap<Integer,Split> split = new HashMap<>();
+                    HashMap<Integer, FreeSplit> split = new HashMap<>();
                     //split.put(splitCode,getSplitByCode(splitCode));
                     getSplitByCode(splitCode);
                     // TODO : reimplement after changing type to string
@@ -237,7 +237,7 @@ public class SplitServerFacade implements Observer {
                 break;
             case ClientServerProtocol.GET_SPLIT_REQUEST:
                 userId = Integer.parseInt(message.getArguments().get("userId"));
-                HashMap<String,Split> userSplits = getUserSplits(userId);
+                HashMap<String, FreeSplit> userSplits = getUserSplits(userId);
                 try {
                     client.sendToClient(new SplitOriginatorMessage(null, ClientServerProtocol.GET_SPLIT_REQUEST,null, userSplits));
                 } catch (IOException e) {
@@ -250,7 +250,7 @@ public class SplitServerFacade implements Observer {
                 String nickName = message.getArgument("nickName");
                 splitCode = message.getArgument("splitCode");
                 try {
-                    HashMap<String,Split> data = join(client,splitCode,userId,nickName);
+                    HashMap<String, FreeSplit> data = join(client,splitCode,userId,nickName);
                     try {
                         System.out.println("Success : Joined split");
                         client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.JOINED_SPLIT,null,data));
@@ -293,7 +293,7 @@ public class SplitServerFacade implements Observer {
                 splitCode = message.getArgument("splitCode");
                 try {
                     switchSplitParticipantReadyStatus(splitCode,userId);
-                    HashMap<String,Split> data = getHashSplit(splitCode);
+                    HashMap<String, FreeSplit> data = getHashSplit(splitCode);
                     try {
                         client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.UPDATED_SPLIT_STATE,null,data));
                         sendToParticipantUpdate(splitCode);
@@ -324,11 +324,11 @@ public class SplitServerFacade implements Observer {
      * @param splitCode the splitcode of the targeted split
      */
     private void sendToParticipantUpdate(String splitCode){
-        Split split;
+        FreeSplit split;
 
         try {
             /* Create the message object */
-            HashMap<String,Split> hashSplit = getHashSplit(splitCode);
+            HashMap<String, FreeSplit> hashSplit = getHashSplit(splitCode);
             SplitOriginatorMessage update = new SplitOriginatorMessage(null,ClientServerProtocol.UPDATED_SPLIT_STATE,null,hashSplit);
 
             /* Get split participants */

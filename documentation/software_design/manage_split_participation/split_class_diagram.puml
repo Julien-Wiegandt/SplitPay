@@ -13,6 +13,7 @@ abstract class Split {
     - isReadyForPayment() : Boolean
     - getParticipantById(int id) : Participant
     - ownerId : int
+    - ownerNickName : String
     - currentAmount : Double
     + validatePayment() : void
     + changeAmount(int participant, Double amount) : void

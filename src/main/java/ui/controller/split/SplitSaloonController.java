@@ -1,7 +1,6 @@
 package ui.controller.split;
 
 import client.facade.SplitClientFacade;
-import com.sun.org.apache.xpath.internal.operations.Equals;
 import core.facade.UserFacade;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -13,22 +12,22 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import main.SplitPay;
 import server.models.Participant;
-import server.models.Split;
+import server.models.FreeSplit;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
 
 public class SplitSaloonController {
 
-    private Split joinedSplit;
+    private FreeSplit joinedSplit;
 
     private SplitClientFacade facade = SplitClientFacade.getInstance();
 
-    private void setJoinedSplit(Split joinedSplit){
+    private void setJoinedSplit(FreeSplit joinedSplit){
         this.joinedSplit=joinedSplit;
     }
 
-    private Split getJoinedSplit(){
+    private FreeSplit getJoinedSplit(){
         return joinedSplit;
     }
 
@@ -72,7 +71,7 @@ public class SplitSaloonController {
     /**
      * Method called when the split's state changes
      */
-    public void updateSplit(Split split){
+    public void updateSplit(FreeSplit split){
         setJoinedSplit(split);
         updateDisplayedSplit();
     }

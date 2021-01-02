@@ -3,7 +3,7 @@ package client.facade;
 import client.ObservableClient;
 import core.facade.UserFacade;
 import server.SplitOriginatorMessage;
-import server.models.Split;
+import server.models.FreeSplit;
 import ui.controller.split.MySplitsController;
 import ui.controller.split.SplitSaloonController;
 import ui.controller.split.SplitSectionController;
@@ -121,15 +121,15 @@ public class SplitClientFacade implements Observer
 
     /* Data temporally stored for controllers */
 
-    private Split joinedSplit;
+    private FreeSplit joinedSplit;
 
     /* Controller data methods */
 
-    private void setJoinedSplit(Split joinedSplit){
+    private void setJoinedSplit(FreeSplit joinedSplit){
         this.joinedSplit = joinedSplit;
     }
 
-    public Split getJoinedSplit(){
+    public FreeSplit getJoinedSplit(){
         return joinedSplit;
     }
 

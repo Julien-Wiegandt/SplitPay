@@ -1,17 +1,17 @@
-package splitParticipationTests;
+package splitParticipationTests.FreeSplit;
 
 import server.exception.ParticipantNotFoundException;
 import server.facade.SplitServerFacade;
 import server.exception.SplitNotFoundException;
 import server.models.Participant;
-import server.models.Split;
+import server.models.FreeSplit;
 import org.junit.Before;
 import org.junit.Test;
 import util.SplitUtilities;
 
 import java.lang.reflect.Field;
 
-public class BasicSplitTests {
+public class BasicFreeSplitTests {
     @Before
     public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         Field instance = SplitServerFacade.class.getDeclaredField("instance");
@@ -23,7 +23,7 @@ public class BasicSplitTests {
     public void getSplitByCode() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
         String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
-        Split expectedSplit = new Split(splitCode,1,"owner0",27.3,"new year bowling","freesplit");
+        FreeSplit expectedSplit = new FreeSplit(splitCode,1,"owner0",27.3,"new year bowling","freesplit");
         System.out.println(expectedSplit);
         System.out.println(facade.getSplitByCode(splitCode));
 
@@ -68,6 +68,4 @@ public class BasicSplitTests {
             throw new Exception("Didn't get the expected participant");
         }
     }
-
-
 }

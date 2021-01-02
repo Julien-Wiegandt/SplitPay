@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import main.SplitPay;
-import server.models.Split;
+import server.models.FreeSplit;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -34,12 +34,12 @@ public class SplitController {
 
     ///// mySplitView.fxml logic
 
-    private HashMap<String, Split> splits = null;
+    private HashMap<String, FreeSplit> splits = null;
 
     private SplitClientFacade facade = SplitClientFacade.getInstance();
 
     @FXML
-    private ListView<Split> listView;
+    private ListView<FreeSplit> listView;
 
     @FXML
     private Label noSplitsLabel;
@@ -48,9 +48,9 @@ public class SplitController {
         facade.getSplits();
     }
 
-    public void setSplits(HashMap<String,Split> splits){
+    public void setSplits(HashMap<String, FreeSplit> splits){
         this.splits=splits;
-        ObservableList<Split> items = FXCollections.observableArrayList ();
+        ObservableList<FreeSplit> items = FXCollections.observableArrayList ();
         items.setAll(splits.values());
         listView.setItems(items);
         updateMySplitsView();
@@ -80,7 +80,7 @@ public class SplitController {
 
     /// splitSection.fxml logic
 
-    private Split joinedSplit;
+    private FreeSplit joinedSplit;
 
     @FXML
     private TextField splitCode;
@@ -88,7 +88,7 @@ public class SplitController {
     @FXML
     private Label splitSectionFlashMessage;
 
-    private Split getJoinedSplit(){
+    private FreeSplit getJoinedSplit(){
         return joinedSplit;
     }
 
@@ -103,7 +103,7 @@ public class SplitController {
      * Method used to store the joined split and redirecting the user to the saloon
      * @param split
      */
-    public void splitJoined(final Split split){
+    public void splitJoined(final FreeSplit split){
         Platform.runLater(new Runnable() {
             @Override public void run() {
                 setJoinedSplit(split);
@@ -126,7 +126,7 @@ public class SplitController {
     /**
      * Method used to store the joined split
      */
-    private void setJoinedSplit(Split split){
+    private void setJoinedSplit(FreeSplit split){
         this.joinedSplit=split;
     }
 
