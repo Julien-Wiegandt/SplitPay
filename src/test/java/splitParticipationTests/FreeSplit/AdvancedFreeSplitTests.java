@@ -15,6 +15,14 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 
 public class AdvancedFreeSplitTests {
+    SplitServerFacade facade;
+
+    Participant owner0;
+    Participant participant1;
+    Participant participant2;
+
+    String splitCode;
+
     @Before
     public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         Field instance = SplitServerFacade.class.getDeclaredField("instance");
@@ -22,11 +30,18 @@ public class AdvancedFreeSplitTests {
         instance.set(null, null);
     }
 
+//    @Before
+//    public void resetSplit(){
+//        owner0 = new Participant(null,0,"owner0");
+//        participant1 = new Participant(null,1,"participant1");
+//        participant2 = new Participant(null,2,"participant2");
+//        splitCode = facade.createSplit(owner0.getId(), owner0.getNickname(), 10.99,"pizza night","freesplit");
+//    }
+
     @Test
     public void participantJoin() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
         String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
-        facade.createSplit(1,"owner0",10.99,"pizza night","freesplit");
 
         Participant owner = new Participant(null,1,"owner0");
         Participant expectedParticipant = new Participant(null,2,"participant1");
@@ -100,7 +115,7 @@ public class AdvancedFreeSplitTests {
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.changeParticipantAmount(splitCode,participant1.getId(),27.3);
 
-        Assert.assertEquals(true,facade.getSplitByCode(splitCode).isGoalAmountReached());
+        Assert.assertTrue(facade.getSplitByCode(splitCode).isGoalAmountReached());
 
     }
 
@@ -112,24 +127,24 @@ public class AdvancedFreeSplitTests {
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.changeParticipantAmount(splitCode,participant1.getId(),25.3);
 
-        Assert.assertEquals(false,facade.getSplitByCode(splitCode).isGoalAmountReached());
+        Assert.assertFalse(facade.getSplitByCode(splitCode).isGoalAmountReached());
 
     }
 
     @Test
-    public void changeState_Ready_true() throws ParticipantAlreadyInException, SplitNotFoundException, GoalAmountExceededException, ParticipantNotFoundException {
+    public void changeState_Ready_true() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
         String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant participant1 = new Participant(null,2,"participant1");
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.switchSplitParticipantReadyStatus(splitCode,participant1.getId());
 
-        Assert.assertEquals(true,facade.getSplitParticipant(splitCode,participant1.getId()).isReady());
+        Assert.assertTrue(facade.getSplitParticipant(splitCode, participant1.getId()).isReady());
 
     }
 
     @Test
-    public void changeState_False_false() throws ParticipantAlreadyInException, SplitNotFoundException, GoalAmountExceededException, ParticipantNotFoundException {
+    public void changeState_False_false() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
         String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant participant1 = new Participant(null,2,"participant1");
@@ -137,7 +152,7 @@ public class AdvancedFreeSplitTests {
         facade.switchSplitParticipantReadyStatus(splitCode,participant1.getId());
         facade.switchSplitParticipantReadyStatus(splitCode,participant1.getId());
 
-        Assert.assertEquals(false,facade.getSplitParticipant(splitCode,participant1.getId()).isReady());
+        Assert.assertFalse(facade.getSplitParticipant(splitCode, participant1.getId()).isReady());
 
     }
 
@@ -153,7 +168,7 @@ public class AdvancedFreeSplitTests {
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.switchSplitParticipantReadyStatus(splitCode,participant1.getId());
 
-        Assert.assertEquals(false,facade.getSplitByCode(splitCode).isEveryOneReady());
+        Assert.assertFalse(facade.getSplitByCode(splitCode).isEveryOneReady());
 
     }
 
@@ -171,7 +186,7 @@ public class AdvancedFreeSplitTests {
         facade.switchSplitParticipantReadyStatus(splitCode,participant1.getId());
         facade.switchSplitParticipantReadyStatus(splitCode,owner.getId());
 
-        Assert.assertEquals(true,facade.getSplitByCode(splitCode).isEveryOneReady());
+        Assert.assertTrue(facade.getSplitByCode(splitCode).isEveryOneReady());
 
     }
 
@@ -249,7 +264,6 @@ public class AdvancedFreeSplitTests {
     public void getUserSplits_TwoSplits_HashMapLength2() {
         SplitServerFacade facade = SplitServerFacade.getInstance();
 
-        Participant participant2 = new Participant(null,2,"participant2");
         Participant participant1 = new Participant(null,1,"participant1");
         Participant owner = new Participant(null,0,"owner0");
 
@@ -273,7 +287,7 @@ public class AdvancedFreeSplitTests {
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.changeParticipantAmount(splitCode,participant1.getId(),27.3);
 
-        Assert.assertEquals(false,facade.getSplitByCode(splitCode).isReadyForPayment());
+        Assert.assertFalse(facade.getSplitByCode(splitCode).isReadyForPayment());
 
     }
 
@@ -293,7 +307,7 @@ public class AdvancedFreeSplitTests {
         facade.switchSplitParticipantReadyStatus(splitCode,owner.getId());
 
 
-        Assert.assertEquals(true,facade.getSplitByCode(splitCode).isReadyForPayment());
+        Assert.assertTrue(facade.getSplitByCode(splitCode).isReadyForPayment());
 
     }
 

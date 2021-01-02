@@ -24,8 +24,6 @@ public class BasicFreeSplitTests {
         SplitServerFacade facade = SplitServerFacade.getInstance();
         String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
         FreeSplit expectedSplit = new FreeSplit(splitCode,1,"owner0",27.3,"new year bowling","freesplit");
-        System.out.println(expectedSplit);
-        System.out.println(facade.getSplitByCode(splitCode));
 
         if(!facade.getSplitByCode(splitCode).equals(expectedSplit)){throw new Exception("Didn't get the expected split");}
     }
@@ -49,8 +47,6 @@ public class BasicFreeSplitTests {
 
         Participant expectedParticipant = new Participant(null,1,"owner0");
         Participant returnedParticipant = facade.getSplitByCode(splitCode).getParticipantById(expectedParticipant.getId());
-        System.out.println(expectedParticipant);
-        System.out.println(returnedParticipant);
 
         if(!expectedParticipant.equals(returnedParticipant)){
             throw new Exception("Didn't get the expected participant");
