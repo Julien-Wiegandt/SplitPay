@@ -1,4 +1,4 @@
-package server.exception;
+package server.exception.splitException;
 
 /**
  * Thrown when an item is already picked in a split

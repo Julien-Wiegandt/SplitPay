@@ -2,11 +2,7 @@
 // "Object Oriented Software Engineering" and is issued under the open-source
 // license found at www.lloseng.com
 
-package server;
-
-import java.io.*;
-import java.net.*;
-import java.util.*;
+package server.communication;
 
 /**
 * The <code> AdaptableServer </code> is an adapter class

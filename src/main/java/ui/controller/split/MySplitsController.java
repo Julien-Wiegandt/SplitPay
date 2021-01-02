@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import server.models.FreeSplit;
+import server.models.split.FreeSplit;
 
 import java.io.IOException;
 import java.util.HashMap;

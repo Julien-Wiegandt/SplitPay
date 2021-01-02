@@ -1,4 +1,4 @@
-package server.models;
+package server.models.split;
 
 public class Item {
 

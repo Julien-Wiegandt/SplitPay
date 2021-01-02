@@ -3,10 +3,10 @@ package splitParticipationTests.ItemSplit;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import server.exception.*;
-import server.models.Item;
-import server.models.ItemSplit;
-import server.models.Participant;
+import server.exception.splitException.*;
+import server.models.split.Item;
+import server.models.split.ItemSplit;
+import server.models.split.Participant;
 import util.SplitUtilities;
 
 public class ItemSplitTests {

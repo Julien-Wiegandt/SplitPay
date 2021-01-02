@@ -2,9 +2,9 @@
 // "Object Oriented Software Engineering" and is issued under the open-source
 // license found at www.lloseng.com
 
-package server;
+package server.communication;
 
-import server.models.FreeSplit;
+import server.models.split.FreeSplit;
 
 import java.io.Serializable;
 import java.util.HashMap;

@@ -1,9 +1,9 @@
 package client.facade;
 
-import client.ObservableClient;
+import client.communication.ObservableClient;
 import core.facade.UserFacade;
-import server.SplitOriginatorMessage;
-import server.models.FreeSplit;
+import server.communication.SplitOriginatorMessage;
+import server.models.split.FreeSplit;
 import ui.controller.split.MySplitsController;
 import ui.controller.split.SplitSaloonController;
 import ui.controller.split.SplitSectionController;

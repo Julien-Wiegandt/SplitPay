@@ -11,8 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import main.SplitPay;
-import server.models.Participant;
-import server.models.FreeSplit;
+import server.models.split.Participant;
+import server.models.split.FreeSplit;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;

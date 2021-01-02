@@ -1,4 +1,4 @@
-package server.exception;
+package server.exception.splitException;
 
 /**
  * Thrown if the goal amount of the split is about to be exceeded

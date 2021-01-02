@@ -1,9 +1,8 @@
-package server.models;
+package server.models.split;
 
-import server.ConnectionToClient;
+import server.communication.ConnectionToClient;
 
 import java.io.Serializable;
-import java.net.ConnectException;
 import java.util.Objects;
 
 public class Participant implements Serializable {

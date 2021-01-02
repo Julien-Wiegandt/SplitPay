@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import main.SplitPay;
-import server.models.FreeSplit;
+import server.models.split.FreeSplit;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;

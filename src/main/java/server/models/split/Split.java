@@ -1,9 +1,9 @@
-package server.models;
+package server.models.split;
 
-import server.ConnectionToClient;
-import server.exception.GoalAmountExceededException;
-import server.exception.ParticipantAlreadyInException;
-import server.exception.ParticipantNotFoundException;
+import server.communication.ConnectionToClient;
+import server.exception.splitException.GoalAmountExceededException;
+import server.exception.splitException.ParticipantAlreadyInException;
+import server.exception.splitException.ParticipantNotFoundException;
 
 import java.io.Serializable;
 import java.util.HashMap;

@@ -1,15 +1,15 @@
 package server.facade;
 
-import server.ConnectionToClient;
-import server.ObservableOriginatorServer;
-import server.ObservableServer;
-import server.SplitOriginatorMessage;
-import server.exception.GoalAmountExceededException;
-import server.exception.ParticipantAlreadyInException;
-import server.exception.ParticipantNotFoundException;
-import server.exception.SplitNotFoundException;
-import server.models.Participant;
-import server.models.FreeSplit;
+import server.communication.ConnectionToClient;
+import server.communication.ObservableOriginatorServer;
+import server.communication.ObservableServer;
+import server.communication.SplitOriginatorMessage;
+import server.exception.splitException.GoalAmountExceededException;
+import server.exception.splitException.ParticipantAlreadyInException;
+import server.exception.splitException.ParticipantNotFoundException;
+import server.exception.splitException.SplitNotFoundException;
+import server.models.split.Participant;
+import server.models.split.FreeSplit;
 import util.ClientServerProtocol;
 import util.SplitUtilities;
 
@@ -20,6 +20,11 @@ public class SplitServerFacade implements Observer {
 
     // CLASS VARIABLES
 
+    /**
+     * The default port to listen on.
+     */
+    final public static int DEFAULT_PORT = 5555;
+
     private HashMap<String, FreeSplit> splits = new HashMap<>();
     private static SplitServerFacade instance = null;
 
@@ -28,9 +33,9 @@ public class SplitServerFacade implements Observer {
     /**
      * Private constructor for Singleton pattern
      */
-    private SplitServerFacade(int port)
+    private SplitServerFacade()
     {
-        communicationService = new ObservableOriginatorServer(port);
+        communicationService = new ObservableOriginatorServer(DEFAULT_PORT);
         communicationService.addObserver(this);
     }
 
@@ -46,7 +51,7 @@ public class SplitServerFacade implements Observer {
         if (instance == null) {
             synchronized(SplitServerFacade.class) {
                 if (instance == null) {
-                    instance = new SplitServerFacade(DEFAULT_PORT);
+                    instance = new SplitServerFacade();
                 }
             }
         }
@@ -379,40 +384,5 @@ public class SplitServerFacade implements Observer {
         }
 
     }
-
-    /**
-     * The default port to listen on.
-     */
-    final public static int DEFAULT_PORT = 5555;
-
-    public static void main(String[] args)
-    {
-
-        int port = 0; //Port to listen on
-
-        try
-        {
-            port = Integer.parseInt(args[0]); //Get port from command line
-        }
-        catch(Throwable t)
-        {
-            port = DEFAULT_PORT; //Set port to 5555
-        }
-
-        SplitServerFacade facade = new SplitServerFacade(port);
-        facade.createSplit(1,"testUser",63.2,"bowling","freesplit");
-        System.out.println(facade.createSplit(2,"User 2",32.2,"Pizza","freesplit"));
-
-        try
-        {
-            facade.listen();
-            //Start listening for connections
-        }
-        catch (Exception ex)
-        {
-            System.out.println("ERROR - Could not listen for clients!");
-        }
-    }
-
 
 }

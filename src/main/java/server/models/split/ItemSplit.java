@@ -1,7 +1,7 @@
-package server.models;
+package server.models.split;
 
-import server.ConnectionToClient;
-import server.exception.*;
+import server.communication.ConnectionToClient;
+import server.exception.splitException.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

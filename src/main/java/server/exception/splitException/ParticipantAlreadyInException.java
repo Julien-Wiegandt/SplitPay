@@ -1,4 +1,4 @@
-package server.exception;
+package server.exception.splitException;
 
 /**
  * Thrown when a user is already a participant

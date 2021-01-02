@@ -1,4 +1,4 @@
-package server.exception;
+package server.exception.splitException;
 
 /**
  * Thrown when can't find matching split

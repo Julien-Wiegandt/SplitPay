@@ -1,4 +1,4 @@
-package server.exception;
+package server.exception.splitException;
 
 /**
  * Thrown couldn't retrieve a matching participant
