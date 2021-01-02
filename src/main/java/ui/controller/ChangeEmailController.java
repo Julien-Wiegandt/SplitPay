@@ -8,15 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
-import utilities.Mail;
 import utilities.RegexPattern;
 import utilities.SplitUtilities;
 
-import javax.mail.MessagingException;
 import java.io.IOException;
 
 public class ChangeEmailController {

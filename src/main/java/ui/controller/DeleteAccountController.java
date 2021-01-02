@@ -1,6 +1,5 @@
 package ui.controller;
 
-import core.auth.Session;
 import core.facade.UserFacade;
 import core.models.User;
 import javafx.event.ActionEvent;

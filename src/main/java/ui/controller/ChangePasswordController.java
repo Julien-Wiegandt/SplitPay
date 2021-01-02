@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import core.facade.UserFacade;
-import core.models.NormalUser;
 import core.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

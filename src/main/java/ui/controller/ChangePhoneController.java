@@ -1,7 +1,5 @@
 package ui.controller;
 
-import core.auth.Session;
-import core.facade.FriendFacade;
 import core.facade.UserFacade;
 import core.models.NormalUser;
 import core.models.User;
@@ -15,17 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
-import utilities.Mail;
 import utilities.RegexPattern;
 import utilities.SplitUtilities;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class ChangePhoneController {
 
-    @FXML
-    private Label verificationLabel;
+
 
     @FXML
     private Label phoneLabel;
@@ -34,8 +29,7 @@ public class ChangePhoneController {
     @FXML
     private TextField phone;
 
-    @FXML
-    private TextField verification;
+
 
     @FXML
     private Button cancel;
@@ -43,17 +37,13 @@ public class ChangePhoneController {
     @FXML
     private Button confirm;
 
-    @FXML
-    private Button validate;
+
 
     private String code;
 
     @FXML
     void initialize() {
 
-        verification.setManaged(false);
-        verificationLabel.setManaged(false);
-        validate.setManaged(false);
 
     }
 
@@ -81,19 +71,4 @@ public class ChangePhoneController {
 
     }
 
-    /**
-     * This method check if the validation code is correct and set the new user phone number
-     * @param actionEvent
-     * @throws IOException
-     */
-    public void validate(ActionEvent actionEvent) throws IOException {
-        if (code.equals(verification.getText())){
-            NormalUser user = UserFacade.getUserFacade().getLoggedNormalUser();
-            user.setPhone(phone.getText());
-            UserFacade.getUserFacade().updateUser(user);
-            System.out.println(user);
-        }
-
-
-    }
 }
