@@ -23,7 +23,7 @@ public class MySqlCreditCardDAO extends CreditCardDAO {
     public void createCreditCard(CreditCard creditCard) {
         Statement stmt = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class MySqlCreditCardDAO extends CreditCardDAO {
         Statement stmt = null;
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -67,7 +67,7 @@ public class MySqlCreditCardDAO extends CreditCardDAO {
         CreditCard creditCard= null;
         Date date = null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

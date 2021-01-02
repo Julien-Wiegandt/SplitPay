@@ -93,7 +93,7 @@ public class MenuController {
      * @throws IOException
      */
     public void goToBankAccountView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.bankAccountView));
+        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.bankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 

@@ -101,7 +101,7 @@ public class MySqlGroupDAO extends GroupDAO {
         Group group;
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -129,7 +129,7 @@ public class MySqlGroupDAO extends GroupDAO {
         NormalUser normalUser;
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

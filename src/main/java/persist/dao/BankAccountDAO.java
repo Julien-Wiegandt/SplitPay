@@ -17,4 +17,6 @@ public abstract class BankAccountDAO {
     public abstract void deleteBankAccount(String iban);
 
     public abstract ArrayList<BankAccount> getBankAccounts();
+
+    public abstract BankAccount getBankAccountById(int bankAccountId);
 }

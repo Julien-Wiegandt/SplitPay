@@ -20,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import main.SplitPay;
 import ui.path.NormalUserNavigationPath;
+import ui.path.UserNavigationPath;
 
 
 import java.io.IOException;
@@ -69,7 +70,7 @@ public class CreditCardController {
     }
 
     public void goToHomeView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.homeView));
+        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
     }
 

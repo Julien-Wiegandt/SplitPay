@@ -21,7 +21,7 @@ public class MySqlBankAccountDAO extends BankAccountDAO {
 
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -54,7 +54,7 @@ COMMIT
         Statement stmt = null;
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -77,7 +77,7 @@ COMMIT
         BankAccount bankAccount= null;
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -117,7 +117,7 @@ COMMIT
         Statement stmt = null;
         BankAccount bankAccount= null;
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

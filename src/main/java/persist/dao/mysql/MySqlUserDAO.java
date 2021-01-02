@@ -454,13 +454,13 @@ public class MySqlUserDAO extends UserDAO {
             if(UserFacade.getUserFacade().isNormalUser()) {
                 ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_NormalUser_BankAccount WHERE normal_user_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
                 while (rs.next()) {
-                    BankAccount bankAccount = BankAccountFacade.getBankAccountFacade().getBankAccountById(rs.getInt("bank_account_fk"));
+                    BankAccount bankAccount = BankAccountFacade.getInstance().getBankAccountById(rs.getInt("bank_account_fk"));
                     bankAccounts.add(bankAccount);
                 }
             }else{
                 ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_StoreOwner_BankAccount WHERE store_owner_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
                 while (rs.next()){
-                    BankAccount bankAccount = BankAccountFacade.getBankAccountFacade().getBankAccountById(rs.getInt("bank_account_fk"));
+                    BankAccount bankAccount = BankAccountFacade.getInstance().getBankAccountById(rs.getInt("bank_account_fk"));
                     bankAccounts.add(bankAccount);
                 }
             }
