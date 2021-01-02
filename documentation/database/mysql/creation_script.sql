@@ -3,7 +3,6 @@ DROP TABLE IF EXISTS UserToBankAccount;
 DROP TABLE IF EXISTS StoreOwnerToBankAccount;
 DROP TABLE IF EXISTS CreditCardToUserTransaction;
 DROP TABLE IF EXISTS SplitTransaction;
-DROP TABLE IF EXISTS BankAccountToUserTransaction;
 
 DROP TABLE IF EXISTS CreditCard;
 DROP TABLE IF EXISTS Notification;
@@ -204,15 +203,15 @@ CREATE TABLE `UserToBankAccount` (
      CONSTRAINT `FK_NormalUser_UserToBankAccountTransaction` FOREIGN KEY (`receiver_fk`) REFERENCES `BankAccount` (`bank_account_pk`) ON DELETE SET NULL ON UPDATE RESTRICT
 );
 
-CREATE TABLE `BankAccountToUserTransaction` (
+CREATE TABLE `CreditCardToUserTransaction` (
     `amount` int NOT NULL,
     `dateCreated` timestamp NOT NULL,
     `sender_fk` int DEFAULT NULL,
     `receiver_fk` int DEFAULT NULL,
     KEY `sender_fk` (`sender_fk`),
     KEY `receiver_fk` (`receiver_fk`),
-    CONSTRAINT `FK_BankAccount_BankAccountToUserTransaction` FOREIGN KEY (`sender_fk`) REFERENCES `BankAccount` (`bank_account_pk`) ON DELETE SET NULL ON UPDATE RESTRICT,
-    CONSTRAINT `FK_NormalUser_BankAccountToUserTransaction` FOREIGN KEY (`receiver_fk`) REFERENCES `NormalUser` (`normal_user_pk`) ON DELETE SET NULL ON UPDATE RESTRICT
+    CONSTRAINT `FK_CreditCard_CreditCardToUserTransaction` FOREIGN KEY (`sender_fk`) REFERENCES `CreditCard` (`credit_card_pk`) ON DELETE SET NULL ON UPDATE RESTRICT,
+    CONSTRAINT `FK_NormalUser_CreditCardToUserTransaction` FOREIGN KEY (`receiver_fk`) REFERENCES `NormalUser` (`normal_user_pk`) ON DELETE SET NULL ON UPDATE RESTRICT
 );
 
 CREATE TABLE `StoreOwnerToBankAccount` (
