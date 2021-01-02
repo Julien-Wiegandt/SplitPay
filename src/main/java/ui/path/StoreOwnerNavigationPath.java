@@ -1,4 +1,4 @@
 package ui.path;
 
-public class StoreOwnerNavigationPath {
+public class StoreOwnerNavigationPath extends UserNavigationPath {
 }

@@ -1,12 +1,24 @@
 package main;
 
+
+
+import core.facade.GroupFacade;
 import core.facade.UserFacade;
+
+import core.models.Group;
+import core.models.NormalUser;
+import core.models.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.text.ParseException;
+
+import java.util.ArrayList;
+
 
 public class SplitPay extends Application {
     public static Stage window;
@@ -31,7 +43,11 @@ public class SplitPay extends Application {
         window.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         launch(args);
+
     }
+
+
+
 }

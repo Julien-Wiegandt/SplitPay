@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import main.SplitPay;
+import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -48,7 +49,6 @@ public class MenuController {
             groupsButton.setManaged(false);
             friendsButton.setManaged(false);
             creditCardsButton.setManaged(false);
-
             socialLabel.setManaged(false);
             socialLabel.setManaged(false);
 
@@ -75,4 +75,30 @@ public class MenuController {
         SplitPay.window.setScene(new Scene(root));
     }
 
+
+    /**
+     * This method redirects to the CreditCardView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToCreditCardView(ActionEvent actionEvent) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.creditCardView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+
+    /**
+     * This method redirects to the BankAccountView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToBankAccountView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.bankAccountView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    public void goToGroupView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
+        SplitPay.window.setScene(new Scene(root));
+    }
 }

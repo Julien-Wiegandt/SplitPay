@@ -10,4 +10,8 @@ public class UserNavigationPath {
     public static String manageBalanceView = "../../view/authPath/manageBalanceView.fxml";
     public static String chooseRecoverAmountView = "../../view/authPath/chooseRecoverAmountView.fxml";
     public static String chooseRefillAmountView = "../../view/authPath/chooseRefillAmountView.fxml";
+
+    public static String bankAccountView = "../../view/authPath/BankAccountView.fxml";
+    public static String addBankAccountView = "../../view/authPath/AddBankAccountView.fxml";
+    public static String editBankAccountView = "../../view/authPath/editBankAccountView.fxml";
 }

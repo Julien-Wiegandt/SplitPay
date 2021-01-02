@@ -2,6 +2,13 @@ package persist.dao.mysql;
 
 
 import persist.DAOFactory;
+import persist.dao.BankAccountDAO;
+import persist.dao.CreditCardDAO;
+import persist.dao.GroupDAO;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import persist.dao.TransactionDAO;
 
 /**
@@ -18,6 +25,20 @@ public class MySqlDAOFactory extends DAOFactory {
     }
 
     public MySqlTransactionDAO createTransactionDAO() { return new MySqlTransactionDAO(); }
+
+        return connection;
+    }
+
+    public CreditCardDAO createCreditCardDao() {
+        return new MySqlCreditCardDAO();
+    }
+
+
+    public BankAccountDAO createBankAccountDAO() {
+        return new MySqlBankAccountDAO();
+    }
+
+    public GroupDAO createGroupDAO(){return new MySqlGroupDAO();}
 
     public MySqlBankAccountDAO createBankAccountDAO() { return new MySqlBankAccountDAO(); }
 }
