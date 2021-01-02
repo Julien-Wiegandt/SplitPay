@@ -1,6 +1,7 @@
 package ui.controller;
 
 import core.facade.UserFacade;
+import core.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,24 +33,37 @@ public class VerificationController {
     @FXML
     private Button confirm;
 
+    private static User tempUser;
+
     @FXML
-    void initialize() {
-        assert code != null : "fx:id=\"code\" was not injected: check your FXML file 'verificationView.fxml'.";
-        assert cancel != null : "fx:id=\"cancel\" was not injected: check your FXML file 'verificationView.fxml'.";
-        assert confirm != null : "fx:id=\"confirm\" was not injected: check your FXML file 'verificationView.fxml'.";
+    void initialize(){
+
 
     }
     /**
-     * This method verify if the validation code is correct
+     * This method verify if the validation code is correct and update the user
      * @param actionEvent
      * @throws IOException
      */
     public void verifyCode(ActionEvent actionEvent) throws IOException {
         System.out.println(code.getText());
-        System.out.println(UserFacade.getUserFacade().getLoggedUser().getValidationCode());
-        if (code.getText().equals(UserFacade.getUserFacade().getLoggedUser().getValidationCode())) {
-            Parent root = FXMLLoader.load(getClass().getResource(AuthPath.changePasswordView));
-            SplitPay.window.setScene(new Scene(root, 320, 500));
+        System.out.println(getTempUser().getValidationCode());
+        if (code.getText().equals(tempUser.getValidationCode())) {
+            UserFacade.getUserFacade().updateUser(tempUser);
+            Parent root = FXMLLoader.load(getClass().getResource(AuthPath.manageAccountView));
+            SplitPay.window.setScene(new Scene(root));
+            //Parent root = FXMLLoader.load(getClass().getResource(AuthPath.changePasswordView));
+            //SplitPay.window.setScene(new Scene(root, 320, 500));
         }
+    }
+
+
+    public User getTempUser() {
+        return tempUser;
+    }
+
+
+    public static void setTempUser(User tempUser) {
+        VerificationController.tempUser = tempUser;
     }
 }

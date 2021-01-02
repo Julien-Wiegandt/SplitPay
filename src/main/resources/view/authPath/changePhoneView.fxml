@@ -3,7 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -12,20 +13,16 @@
     <center>
         <Label text="My splits" BorderPane.alignment="CENTER">
          <graphic>
-            <BorderPane prefHeight="308.0" prefWidth="626.0">
-               <left>
-                  <VBox alignment="CENTER" prefHeight="316.0" prefWidth="128.0" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets left="250.0" right="49.0" top="50.0" />
-                     </BorderPane.margin>
+            <AnchorPane prefHeight="303.0" prefWidth="502.0">
+               <children>
+                  <VBox layoutX="225.0" layoutY="77.0" prefHeight="91.0" prefWidth="100.0">
                      <children>
-                        <Label text="Enter phone:" />
-                        <PasswordField fx:id="phone" />
+                        <Label fx:id="phoneLabel" contentDisplay="CENTER" prefHeight="18.0" prefWidth="101.0" text="Enter phone :" textAlignment="CENTER" />
+                        <TextField fx:id="phone" />
                      </children>
                   </VBox>
-               </left>
-               <bottom>
-                  <HBox prefHeight="100.0" prefWidth="518.0" BorderPane.alignment="CENTER">
+                  <Label layoutX="220.0" layoutY="5.0" text="Change Phone :" />
+                  <HBox layoutX="8.0" layoutY="216.0" prefHeight="100.0" prefWidth="518.0">
                      <children>
                         <Button fx:id="cancel" mnemonicParsing="false" text="Cancel">
                            <HBox.margin>
@@ -35,18 +32,15 @@
                               <Insets right="50.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="confirm" mnemonicParsing="false" text="Ok">
+                        <Button fx:id="confirm" mnemonicParsing="false" onAction="#changePhone" text="Ok">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
                         </Button>
                      </children>
                   </HBox>
-               </bottom>
-               <top>
-                  <Label text="Change Phone :" BorderPane.alignment="CENTER" />
-               </top>
-            </BorderPane>
+               </children>
+            </AnchorPane>
          </graphic></Label>
     </center>
     <top>

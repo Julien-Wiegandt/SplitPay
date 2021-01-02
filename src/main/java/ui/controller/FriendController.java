@@ -11,13 +11,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import main.SplitPay;
 import ui.path.AuthPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.ResourceBundle;
@@ -60,6 +65,16 @@ public class FriendController {
         Parent root = FXMLLoader.load(getClass().getResource(AuthPath.addFriendView));
         SplitPay.window.setScene(new Scene(root));
     }
+
+    public void deleteFriend(ActionEvent actionEvent) throws IOException {
+        ObservableList<NormalUser> friends =  myFriends.getSelectionModel().getSelectedItems();
+        for (NormalUser user : friends) {
+            FriendFacade.getFriendFacade().deleteFriend(user);
+        }
+        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.friendView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
 
 
 }

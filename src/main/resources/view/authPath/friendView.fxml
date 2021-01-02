@@ -17,13 +17,14 @@
    <center>
       <AnchorPane prefHeight="298.0" prefWidth="470.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="myFriends" layoutY="75.0" prefHeight="245.0" prefWidth="430.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0" />
+            <ListView fx:id="myFriends" layoutY="75.0" prefHeight="226.0" prefWidth="430.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="195.0" text="My Friends" textAlignment="CENTER">
                <padding>
                   <Insets bottom="10.0" />
                </padding>
             </Label>
             <Button fx:id="addFriend" layoutX="183.0" layoutY="32.0" mnemonicParsing="false" onAction="#goToAddFriendView" text="Add a friend" />
+            <Button fx:id="delete" layoutX="228.0" layoutY="307.0" mnemonicParsing="false" onAction="#deleteFriend" text="Delete" />
          </children>
       </AnchorPane>
    </center>

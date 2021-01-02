@@ -150,5 +150,11 @@ public class UserFacade {
 
     }
 
+    public static void deleteAccount(){
+        User user = getUserFacade().getLoggedUser();
+        getUserFacade().userDao.delete(user);
+
+    }
+
 
 }

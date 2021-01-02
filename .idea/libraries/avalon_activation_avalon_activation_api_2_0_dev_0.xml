@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="avalon-activation:avalon-activation-api:2.0.dev-0" type="repository">
+    <properties maven-id="avalon-activation:avalon-activation-api:2.0.dev-0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/avalon-activation/avalon-activation-api/2.0.dev-0/avalon-activation-api-2.0.dev-0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

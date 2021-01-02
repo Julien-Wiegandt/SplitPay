@@ -40,18 +40,19 @@ public class SplitPay extends Application {
     }
 
     public static void main(String[] args) {
-
         UserFacade user = UserFacade.getUserFacade();
+
+
         try {
             user.emailLogIn("test@test.com","splitpay");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        FriendFacade friendFacade = FriendFacade.getFriendFacade();
-        User  friend = UserFacade.getUserFacade().findUserByPhone("0611223344");
-        friendFacade.deleteFriend(friend);
-        System.out.println(friendFacade.getFriends().toString());
+        NormalUser test = user.getLoggedNormalUser();
+        test.setPhone(null);
+        user.updateUser(test);
 
+        System.out.println(user.getLoggedUser());
         launch(args);
 
 

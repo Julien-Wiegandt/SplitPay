@@ -16,6 +16,6 @@ public class AuthPath {
     public static String manageAccountView = "../../view/authPath/manageAccountView.fxml";
     public static String changeEmailView = "../../view/authPath/changeEmailView.fxml";
     public static String changePhoneView = "../../view/authPath/changePhoneView.fxml";
-
-
+    public static String deleteAccountView ="../../view/authPath/deleteAccountView.fxml";
+    public static String confirmCredentialsView = "../../view/authPath/confirmCredentialsView.fxml";
 }

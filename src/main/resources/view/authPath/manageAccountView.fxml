@@ -20,10 +20,10 @@
             <VBox layoutX="149.0" layoutY="94.0" prefHeight="130.0" prefWidth="173.0">
                <children>
                   <Button fx:id="changePhone" mnemonicParsing="false" onAction="#goToChangePhoneView" prefHeight="25.0" prefWidth="174.0" text="Change Phone Number" />
-                  <Button fx:id="changePassword" mnemonicParsing="false" onAction="#goToSelectMethodView" prefHeight="25.0" prefWidth="178.0" text="Change Password" />
+                  <Button fx:id="changePassword" mnemonicParsing="false" onAction="#goToChangePasswordView" prefHeight="25.0" prefWidth="178.0" text="Change Password" />
                   <Button fx:id="changeEmail" mnemonicParsing="false" onAction="#goToChangeEmailView" prefHeight="25.0" prefWidth="174.0" text="Change Email" />
-                  <Button fx:id="confirmEmailPhone" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" text="Confirm Email/Phone" />
-                  <Button fx:id="deleteAccount" mnemonicParsing="false" prefHeight="25.0" prefWidth="173.0" text="Delete account" />
+                  <Button fx:id="confirmEmailPhone" mnemonicParsing="false" onAction="#goToConfirmCredentialsView" prefHeight="25.0" prefWidth="174.0" text="Confirm Email/Phone" />
+                  <Button fx:id="deleteAccount" mnemonicParsing="false"  onAction="#goToDeleteAccountView" prefHeight="25.0" prefWidth="173.0" text="Delete account" />
                </children>
             </VBox>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="195.0" text="Manage my account" textAlignment="CENTER">

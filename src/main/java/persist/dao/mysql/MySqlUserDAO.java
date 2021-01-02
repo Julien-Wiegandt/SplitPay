@@ -246,8 +246,8 @@ public class MySqlUserDAO extends UserDAO {
             throwables.printStackTrace();
         }
         try {
-            System.out.println("INSERT INTO NormalUser VALUES (NULL, '"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"')");
-            Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES (NULL, '"+user.getFirstName()+"', '"+user.getLastName()+"','"+user.getEmail()+"', '"+user.getPhone()+"', '"+user.getPassword()+"', '"+user.getNickname()+"', '"+user.getBalance()+"')");
+            System.out.println("INSERT INTO NormalUser VALUES ('"+user.getEmail()+"', '"+user.getPhone()+"','"+user.getNickname()+"', '"+user.getPassword()+"', '"+0.0+"', '"+user.getFirstName()+"', '"+user.getLastName()+"')");
+            Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES ('"+user.getEmail()+"', '"+user.getPhone()+"','"+user.getNickname()+"', '"+user.getPassword()+"', '"+0.0+"', '"+user.getFirstName()+"', '"+user.getLastName()+"')");
 //            MySqlDaoFactory.connection.commit();
             return user;
         } catch (SQLException throwables) {
@@ -289,11 +289,12 @@ public class MySqlUserDAO extends UserDAO {
         }
         try {
             if(user instanceof NormalUser) {
-                preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE NormalUser WHERE id='" + user.getId() + "'");
-            }else{
-                preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE StoreOwner WHERE id='" + user.getId() + "'");
+                System.out.println("DELETE NormalUser WHERE normal_user_pk = '" + user.getId()  );
+                stmt.executeUpdate("DELETE FROM NormalUser WHERE normal_user_pk = '" + user.getId()+"'" );
             }
-            preparedStmt.execute();
+            else {
+                preparedStmt = MySqlDAOFactory.connection.prepareStatement("DELETE FROM StoreOwner WHERE store_owner_pk= '" + user.getId() +"'" );
+            }
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
