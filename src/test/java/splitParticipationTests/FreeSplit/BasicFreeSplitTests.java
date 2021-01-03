@@ -22,7 +22,7 @@ public class BasicFreeSplitTests {
     @Test
     public void getSplitByCode() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         FreeSplit expectedSplit = new FreeSplit(splitCode,1,"owner0",27.3,"new year bowling");
 
         if(!facade.getSplitByCode(splitCode).equals(expectedSplit)){throw new Exception("Didn't get the expected split");}
@@ -32,7 +32,7 @@ public class BasicFreeSplitTests {
     public void getSplitByWrongCode() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
         String splitCode=SplitUtilities.generateCode();
-        facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         facade.getSplitByCode(splitCode);
     }
 
@@ -42,7 +42,7 @@ public class BasicFreeSplitTests {
 
         Participant owner = new Participant(null,1,"owner0");
 
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         facade.join(null,splitCode,owner.getId(),owner.getNickname());
 
         Participant expectedParticipant = new Participant(null,1,"owner0");
@@ -56,7 +56,7 @@ public class BasicFreeSplitTests {
     @Test(expected = ParticipantNotFoundException.class)
     public void getParticipantByWrongId() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant expectedParticipant = null;
         Participant returnedParticipant = facade.getSplitByCode(splitCode).getParticipantById(123456);
 

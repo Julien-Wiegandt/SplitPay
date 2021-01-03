@@ -10,6 +10,7 @@ import server.exception.splitException.SplitNotFoundException;
 import server.facade.SplitServerFacade;
 import server.models.split.Participant;
 import server.models.split.FreeSplit;
+import server.models.split.Split;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -41,7 +42,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void participantJoin() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
 
         Participant owner = new Participant(null,1,"owner0");
         Participant expectedParticipant = new Participant(null,2,"participant1");
@@ -55,7 +56,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void participantChangeAmount() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant participant = new Participant(null,2,"participant1");
         facade.join(null,splitCode,2,participant.getNickname());
         facade.changeParticipantAmount(splitCode,participant.getId(),2.50);
@@ -65,7 +66,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void splitAmountUpdateCorrectlyOneParticipant() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
 
         Participant participant1 = new Participant(null,2,"participant1");
 
@@ -80,7 +81,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void splitAmountUpdateCorrectlyMultipleParticipant() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
 
         Participant participant1 = new Participant(null,2,"participant1");
         Participant participant2 = new Participant(null,3,"participant2");
@@ -98,7 +99,7 @@ public class AdvancedFreeSplitTests {
     @Test(expected = GoalAmountExceededException.class)
     public void splitAmountLimit() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
 
         Participant participant1 = new Participant(null,2,"participant1");
 
@@ -110,7 +111,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void isGoalAmountReached_CurrentAmountEqualsToGoal_True() throws ParticipantAlreadyInException, SplitNotFoundException, GoalAmountExceededException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant participant1 = new Participant(null,2,"participant1");
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.changeParticipantAmount(splitCode,participant1.getId(),27.3);
@@ -122,7 +123,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void isGoalAmountReached_CurrentAmountLessThanGoal_False() throws ParticipantAlreadyInException, SplitNotFoundException, GoalAmountExceededException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant participant1 = new Participant(null,2,"participant1");
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.changeParticipantAmount(splitCode,participant1.getId(),25.3);
@@ -134,7 +135,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void changeState_Ready_true() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant participant1 = new Participant(null,2,"participant1");
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.switchSplitParticipantReadyStatus(splitCode,participant1.getId());
@@ -146,7 +147,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void changeState_False_false() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant participant1 = new Participant(null,2,"participant1");
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.switchSplitParticipantReadyStatus(splitCode,participant1.getId());
@@ -159,7 +160,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void isEveryOneReady_EveryOneIsNotReady_false() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
 
         Participant owner = new Participant(null,1,"owner0");
         Participant participant1 = new Participant(null,2,"participant1");
@@ -175,7 +176,7 @@ public class AdvancedFreeSplitTests {
     @Test
     public void isEveryOneReady_EveryOneIsReady_true() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
 
         Participant owner = new Participant(null,1,"owner0");
         Participant participant1 = new Participant(null,2,"participant1");
@@ -193,7 +194,7 @@ public class AdvancedFreeSplitTests {
     @Test(expected = ParticipantNotFoundException.class)
     public void removeParticipant_isRemoved_True() throws ParticipantAlreadyInException, SplitNotFoundException, ParticipantNotFoundException {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
         Participant participant1 = new Participant(null,2,"participant1");
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.removeSplitParticipant(splitCode,participant1.getId());
@@ -207,7 +208,7 @@ public class AdvancedFreeSplitTests {
         Participant participant1 = new Participant(null,2,"participant1");
         Participant owner = new Participant(null,1,"owner0");
 
-        String splitCode = facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
 
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.join(null,splitCode,owner.getId(),owner.getNickname());
@@ -228,7 +229,7 @@ public class AdvancedFreeSplitTests {
         Participant participant1 = new Participant(null,2,"participant1");
         Participant owner = new Participant(null,1,"owner0");
 
-        String splitCode = facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
 
         facade.join(null,splitCode,owner.getId(),owner.getNickname());
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
@@ -250,12 +251,12 @@ public class AdvancedFreeSplitTests {
         Participant participant1 = new Participant(null,1,"participant1");
         Participant owner = new Participant(null,0,"owner0");
 
-        facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
-        facade.createSplit(participant1.getId(), participant1.getNickname(),23,"new year bowling2","freesplit");
-        facade.createSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
+        facade.createFreeSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        facade.createFreeSplit(participant1.getId(), participant1.getNickname(),23,"new year bowling2","freesplit");
+        facade.createFreeSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
 
 
-        HashMap<String, FreeSplit> returnedSplits = facade.getUserSplits(participant2.getId());
+        HashMap<String, Split> returnedSplits = facade.getUserSplits(participant2.getId());
 
         Assert.assertEquals(0,returnedSplits.size());
     }
@@ -267,11 +268,11 @@ public class AdvancedFreeSplitTests {
         Participant participant1 = new Participant(null,1,"participant1");
         Participant owner = new Participant(null,0,"owner0");
 
-        facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
-        facade.createSplit(participant1.getId(), participant1.getNickname(),23,"new year bowling2","freesplit");
-        facade.createSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
+        facade.createFreeSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        facade.createFreeSplit(participant1.getId(), participant1.getNickname(),23,"new year bowling2","freesplit");
+        facade.createFreeSplit(participant1.getId(), participant1.getNickname(),22,"new year bowling3","freesplit");
 
-        HashMap<String, FreeSplit> returnedSplits = facade.getUserSplits(participant1.getId());
+        HashMap<String, Split> returnedSplits = facade.getUserSplits(participant1.getId());
 
         Assert.assertEquals(2,returnedSplits.size());
     }
@@ -283,7 +284,7 @@ public class AdvancedFreeSplitTests {
         Participant participant1 = new Participant(null,1,"participant1");
         Participant owner = new Participant(null,0,"owner0");
 
-        String splitCode = facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.changeParticipantAmount(splitCode,participant1.getId(),27.3);
 
@@ -298,7 +299,7 @@ public class AdvancedFreeSplitTests {
         Participant participant1 = new Participant(null,1,"participant1");
         Participant owner = new Participant(null,0,"owner0");
 
-        String splitCode = facade.createSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
+        String splitCode = facade.createFreeSplit(owner.getId(), owner.getNickname(),27.3,"new year bowling","freesplit");
         facade.join(null,splitCode,participant1.getId(),participant1.getNickname());
         facade.join(null,splitCode,owner.getId(),owner.getNickname());
 

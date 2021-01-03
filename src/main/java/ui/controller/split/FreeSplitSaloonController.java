@@ -13,11 +13,12 @@ import javafx.scene.control.*;
 import main.SplitPay;
 import server.models.split.Participant;
 import server.models.split.FreeSplit;
+import server.models.split.Split;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
 
-public class SplitSaloonController {
+public class FreeSplitSaloonController {
 
     private FreeSplit joinedSplit;
 
@@ -64,15 +65,16 @@ public class SplitSaloonController {
     @FXML
     private void initialize() throws IOException {
         SplitClientFacade.getInstance().setSplitSaloonController(this);
-        setJoinedSplit(SplitClientFacade.getInstance().getJoinedSplit());
+        setJoinedSplit((FreeSplit) SplitClientFacade.getInstance().getJoinedSplit());
         updateDisplayedSplit();
     }
 
     /**
      * Method called when the split's state changes
+     * @param split
      */
     public void updateSplit(FreeSplit split){
-        setJoinedSplit(split);
+        setJoinedSplit((FreeSplit) split);
         updateDisplayedSplit();
     }
 

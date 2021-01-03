@@ -4,8 +4,9 @@ import client.communication.ObservableClient;
 import core.facade.UserFacade;
 import server.communication.SplitOriginatorMessage;
 import server.models.split.FreeSplit;
+import server.models.split.Split;
 import ui.controller.split.MySplitsController;
-import ui.controller.split.SplitSaloonController;
+import ui.controller.split.FreeSplitSaloonController;
 import ui.controller.split.SplitSectionController;
 
 import java.io.IOException;
@@ -105,8 +106,8 @@ public class SplitClientFacade implements Observer
         this.mySplitsController=mySplitsController;
     }
 
-    public void setSplitSaloonController(SplitSaloonController splitSaloonController){
-        this.splitSaloonController=splitSaloonController;
+    public void setSplitSaloonController(FreeSplitSaloonController freeSplitSaloonController){
+        this.freeSplitSaloonController = freeSplitSaloonController;
     }
 
     public void setSplitSectionController(SplitSectionController splitSectionController){
@@ -116,20 +117,20 @@ public class SplitClientFacade implements Observer
     /* References to controllers receiving server data ***************** */
 
     private MySplitsController mySplitsController;
-    private SplitSaloonController splitSaloonController;
+    private FreeSplitSaloonController freeSplitSaloonController;
     private SplitSectionController splitSectionController;
 
     /* Data temporally stored for controllers */
 
-    private FreeSplit joinedSplit;
+    private Split joinedSplit;
 
     /* Controller data methods */
 
-    private void setJoinedSplit(FreeSplit joinedSplit){
+    private void setJoinedSplit(Split joinedSplit){
         this.joinedSplit = joinedSplit;
     }
 
-    public FreeSplit getJoinedSplit(){
+    public Split getJoinedSplit(){
         return joinedSplit;
     }
 
@@ -182,7 +183,7 @@ public class SplitClientFacade implements Observer
             case ClientServerProtocol.UPDATED_SPLIT_STATE:
                 System.out.println(msgReceived.getSplits());
                 setJoinedSplit(msgReceived.getSplit());
-                splitSaloonController.updateSplit(getJoinedSplit());
+                freeSplitSaloonController.updateSplit((FreeSplit) getJoinedSplit());
                 break;
             case ClientServerProtocol.QUIT_SPLIT_SUCCESS:
                 System.out.println("Split quit successfully");
@@ -191,7 +192,7 @@ public class SplitClientFacade implements Observer
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                splitSaloonController.splitQuit();
+                freeSplitSaloonController.splitQuit();
         }
 
     }

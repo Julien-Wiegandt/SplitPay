@@ -11,8 +11,8 @@ public class main {
     public static void main(String[] args)
     {
         SplitServerFacade facade = SplitServerFacade.getInstance();
-        facade.createSplit(1,"testUser",63.2,"bowling","freesplit");
-        System.out.println(facade.createSplit(2,"User 2",32.2,"Pizza","freesplit"));
+        facade.createFreeSplit(1,"testUser",63.2,"bowling","freesplit");
+        System.out.println(facade.createFreeSplit(2,"User 2",32.2,"Pizza","freesplit"));
 
         try
         {
