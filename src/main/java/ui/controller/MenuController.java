@@ -68,7 +68,7 @@ public class MenuController {
      * @throws IOException
      */
     public void goToMySplitsView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.mySplitsView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("view/authPath/mySplitsView.fxml"));
         SplitPay.window.setScene(new Scene(root));
     }
 
