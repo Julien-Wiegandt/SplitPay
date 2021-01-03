@@ -13,10 +13,10 @@
 
 </center>
 <top>
-    <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
+    <fx:include fx:id="normalUserHeaderBar" source="../headerBar.fxml" />
 </top>
 <left>
-    <fx:include fx:id="normalUserMenu" source="menu.fxml" />
+    <fx:include fx:id="normalUserMenu" source="../menu.fxml" />
 </left>
    <center>
       <AnchorPane prefHeight="252.0" prefWidth="470.0" BorderPane.alignment="CENTER">
