@@ -13,8 +13,6 @@ import java.util.HashMap;
 
 public class MySplitsController {
 
-    ///// mySplitView.fxml logic
-
     private HashMap<String, FreeSplit> splits = null;
 
     private SplitClientFacade facade = SplitClientFacade.getInstance();

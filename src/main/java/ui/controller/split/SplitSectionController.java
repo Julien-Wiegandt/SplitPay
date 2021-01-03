@@ -45,7 +45,7 @@ public class SplitSectionController {
         Parent root = null;
         try {
             // TODO : Handle resource path problem
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("view/authPath/split/splitSaloonView.fxml"));
+            root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.splitSaloonView));
         } catch (IOException e) {
             e.printStackTrace();
         }

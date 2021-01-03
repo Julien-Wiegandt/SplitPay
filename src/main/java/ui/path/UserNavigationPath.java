@@ -3,7 +3,6 @@ package ui.path;
 public class UserNavigationPath {
     public static String homeView = "../../view/authPath/homeView.fxml";
     public static String myTransactionsView = "../../view/authPath/myTransactionsView.fxml";
-    public static String mySplitsView = "../../view/authPath/mySplitsView.fxml";
     public static String transactionView = "../../view/authPath/transactionView.fxml";
     public static String chooseCreditCardView = "../../view/authPath/chooseCreditCardView.fxml";
     public static String chooseBankAccountView = "../../view/authPath/chooseBankAccountView.fxml";
@@ -12,7 +11,8 @@ public class UserNavigationPath {
     public static String chooseRefillAmountView = "../../view/authPath/chooseRefillAmountView.fxml";
 
     // Ayoub
-    public static String splitSaloonView = "../../view/authPath/splitSaloonView.fxml";
+    public static String splitSaloonView = "view/authPath/split/splitSaloonView.fxml";
+    public static String mySplitsView = "view/authPath/split/mySplitsView.fxml";
 
     public static String bankAccountView = "../../view/authPath/BankAccountView.fxml";
     public static String addBankAccountView = "../../view/authPath/AddBankAccountView.fxml";
