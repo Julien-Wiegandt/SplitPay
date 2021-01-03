@@ -1,7 +1,9 @@
 package util;
+
 import java.util.Random;
 
 public class SplitUtilities {
+
     private static final int splitCodeLength = 6;
 
     public static String generateCode() {
