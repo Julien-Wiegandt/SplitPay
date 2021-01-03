@@ -45,6 +45,10 @@ public class ItemSplit extends Split{
         }
     }
 
+    public List<Item> getItems(){
+        return items;
+    }
+
     /**
      * Picks the n`th item for the participant and puts it in his cart
      * @param itemId
@@ -155,6 +159,20 @@ public class ItemSplit extends Split{
      */
     public List<Item> getParticipantCart(int participantId){
         return participantsCart.get(participantId);
+    }
+
+    @Override
+    public String toString() {
+        return "Split{" +
+                " label='" + label + '\'' +
+                ", splitCode='" + splitCode + '\'' +
+                ", expired=" + expired +
+                ", goalAmount=" + goalAmount +
+                ", splitMode='" + splitMode + '\'' +
+                ", ownerId=" + ownerId +
+                ", participants=" + participants +
+                ", items="+ items +
+                '}';
     }
 
 }

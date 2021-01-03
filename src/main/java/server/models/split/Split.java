@@ -19,16 +19,16 @@ public abstract class Split implements Serializable {
         this.ownerNickName=ownerNickName;
     }
 
-    private String label;
-    private String splitCode;
-    private boolean expired = false;
+    protected String label;
+    protected String splitCode;
+    protected boolean expired = false;
     protected double goalAmount;
-    private SplitMode splitMode;
-    private int ownerId;
-    private String ownerNickName;
-    private double currentAmount = 0;
+    protected SplitMode splitMode;
+    protected int ownerId;
+    protected String ownerNickName;
+    protected double currentAmount = 0;
 
-    private HashMap<Integer,Participant> participants = new HashMap<>();
+    protected HashMap<Integer,Participant> participants = new HashMap<>();
 
     public double getCurrentAmount() {
         return currentAmount;

@@ -11,7 +11,8 @@ public class UserNavigationPath {
     public static String chooseRefillAmountView = "../../view/authPath/chooseRefillAmountView.fxml";
 
     // Ayoub
-    public static String splitSaloonView = "view/authPath/split/freeSplitSaloonView.fxml";
+    public static String freeSplitSaloonView = "view/authPath/split/freeSplitSaloonView.fxml";
+    public static String itemSplitSaloonView = "view/authPath/split/itemSplitSaloonView.fxml";
     public static String mySplitsView = "view/authPath/split/mySplitsView.fxml";
 
     public static String bankAccountView = "../../view/authPath/BankAccountView.fxml";

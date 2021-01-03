@@ -4,7 +4,10 @@ import client.communication.ObservableClient;
 import core.facade.UserFacade;
 import server.communication.SplitOriginatorMessage;
 import server.models.split.FreeSplit;
+import server.models.split.ItemSplit;
 import server.models.split.Split;
+import server.models.split.SplitMode;
+import ui.controller.split.ItemSplitSaloonController;
 import ui.controller.split.MySplitsController;
 import ui.controller.split.FreeSplitSaloonController;
 import ui.controller.split.SplitSectionController;
@@ -105,7 +108,7 @@ public class SplitClientFacade implements Observer
     public void setMySplitsController(MySplitsController mySplitsController){
         this.mySplitsController=mySplitsController;
     }
-
+// TODO : rename to setFreeSplitSaloonController
     public void setSplitSaloonController(FreeSplitSaloonController freeSplitSaloonController){
         this.freeSplitSaloonController = freeSplitSaloonController;
     }
@@ -114,10 +117,15 @@ public class SplitClientFacade implements Observer
         this.splitSectionController=splitSectionController;
     }
 
+    public void setItemSplitSaloonController(ItemSplitSaloonController itemSplitSaloonController){
+        this.itemSplitSaloonController=itemSplitSaloonController;
+    }
+
     /* References to controllers receiving server data ***************** */
 
     private MySplitsController mySplitsController;
     private FreeSplitSaloonController freeSplitSaloonController;
+    private ItemSplitSaloonController itemSplitSaloonController;
     private SplitSectionController splitSectionController;
 
     /* Data temporally stored for controllers */
@@ -162,6 +170,7 @@ public class SplitClientFacade implements Observer
                 splitSectionController.setFlashMessage("Success : redirecting...");
                 splitSectionController.splitJoined();
                 break;
+                // TODO : Participant already in split, moves in the saloon without adding ?
             case ClientServerProtocol.PARTICIPANT_ALREADY_IN_SPLIT:
                 System.out.println("Error : Participant already in Split");
                 try {
@@ -183,7 +192,15 @@ public class SplitClientFacade implements Observer
             case ClientServerProtocol.UPDATED_SPLIT_STATE:
                 System.out.println(msgReceived.getSplits());
                 setJoinedSplit(msgReceived.getSplit());
-                freeSplitSaloonController.updateSplit((FreeSplit) getJoinedSplit());
+                switch (getJoinedSplit().getSplitMode()){
+                    case FREESPLIT:
+                        freeSplitSaloonController.updateSplit((FreeSplit) getJoinedSplit());
+                        break;
+                    case ITEMSPLIT:
+                        itemSplitSaloonController.updateSplit((ItemSplit) getJoinedSplit());
+                        break;
+                }
+
                 break;
             case ClientServerProtocol.QUIT_SPLIT_SUCCESS:
                 System.out.println("Split quit successfully");
@@ -192,7 +209,14 @@ public class SplitClientFacade implements Observer
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                freeSplitSaloonController.splitQuit();
+                switch (getJoinedSplit().getSplitMode()){
+                    case FREESPLIT:
+                        freeSplitSaloonController.splitQuit();
+                        break;
+                    case ITEMSPLIT:
+                        itemSplitSaloonController.splitQuit();
+                        break;
+                }
         }
 
     }
