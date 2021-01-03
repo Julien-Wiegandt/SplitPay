@@ -66,9 +66,10 @@ public class SplitServerFacade implements Observer {
      * @param label the title of the split
      * @param splitMode the split mode
      */
+    // TODO : change to createFreeSplit, itemSplit
     public String createSplit(int ownerId, String ownerNickName, double goalAmount, String label, String splitMode) {
         String splitCode = SplitUtilities.generateCode();
-        FreeSplit split = new FreeSplit(splitCode, ownerId,ownerNickName,goalAmount,label,splitMode);
+        FreeSplit split = new FreeSplit(splitCode, ownerId,ownerNickName,goalAmount,label);
         splits.put(split.getSplitCode(),split);
         return splitCode;
     }

@@ -12,19 +12,18 @@ import java.util.Map;
 
 public abstract class Split implements Serializable {
 
-    public Split(String splitCode, int ownerId, String ownerNickName, String label, String splitMode){
+    public Split(String splitCode, int ownerId, String ownerNickName, String label){
         this.splitCode=splitCode;
         this.label=label;
         this.ownerId=ownerId;
         this.ownerNickName=ownerNickName;
-        this.splitMode=splitMode;
     }
 
     private String label;
     private String splitCode;
     private boolean expired = false;
     protected double goalAmount;
-    private String splitMode;
+    private SplitMode splitMode;
     private int ownerId;
     private String ownerNickName;
     private double currentAmount = 0;
@@ -144,11 +143,11 @@ public abstract class Split implements Serializable {
         this.goalAmount = goalAmount;
     }
 
-    public String getSplitMode() {
+    public SplitMode getSplitMode() {
         return splitMode;
     }
 
-    public void setSplitMode(String splitMode) {
+    public void setSplitMode(SplitMode splitMode) {
         this.splitMode = splitMode;
     }
 

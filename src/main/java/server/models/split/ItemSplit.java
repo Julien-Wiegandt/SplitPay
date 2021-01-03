@@ -19,17 +19,17 @@ public class ItemSplit extends Split{
      * @param ownerId
      * @param ownerNickName
      * @param label
-     * @param splitMode
      * @param items
      */
-    public ItemSplit(String splitCode, int ownerId, String ownerNickName, String label, String splitMode,Item[] items){
-        super(splitCode,ownerId,ownerNickName,label,splitMode);
+    public ItemSplit(String splitCode, int ownerId, String ownerNickName, String label,Item[] items){
+        super(splitCode,ownerId,ownerNickName,label);
         double totalAmount = 0;
         for (int i = 0; i < items.length ; i++) {
             this.items.add(items[i]);
             totalAmount+= items[i].getPrice();
         }
         this.goalAmount=totalAmount;
+        setSplitMode(SplitMode.ITEMSPLIT);
     }
 
     /**

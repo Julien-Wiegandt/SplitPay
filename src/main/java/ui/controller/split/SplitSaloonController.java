@@ -83,7 +83,7 @@ public class SplitSaloonController {
 
         Platform.runLater(() -> {
             splitLabel.setText(getJoinedSplit().getLabel());
-            splitMode.setText(getJoinedSplit().getSplitMode());
+            splitMode.setText(getJoinedSplit().getSplitMode().toString());
             splitCode.setText(getJoinedSplit().getSplitCode());
             goalAmount.setText(Double.toString(getJoinedSplit().getGoalAmount()));
             currentAmount.setText(Double.toString(getJoinedSplit().getCurrentAmount()));

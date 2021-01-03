@@ -1,5 +1,5 @@
 package server.models.split;
 
-public enum SplitType {
+public enum SplitMode {
     FREESPLIT,ITEMSPLIT,EQUALSPLIT
 }

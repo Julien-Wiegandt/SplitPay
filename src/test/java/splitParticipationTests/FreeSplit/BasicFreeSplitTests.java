@@ -23,7 +23,7 @@ public class BasicFreeSplitTests {
     public void getSplitByCode() throws Exception {
         SplitServerFacade facade = SplitServerFacade.getInstance();
         String splitCode = facade.createSplit(1,"owner0",27.3,"new year bowling","freesplit");
-        FreeSplit expectedSplit = new FreeSplit(splitCode,1,"owner0",27.3,"new year bowling","freesplit");
+        FreeSplit expectedSplit = new FreeSplit(splitCode,1,"owner0",27.3,"new year bowling");
 
         if(!facade.getSplitByCode(splitCode).equals(expectedSplit)){throw new Exception("Didn't get the expected split");}
     }
