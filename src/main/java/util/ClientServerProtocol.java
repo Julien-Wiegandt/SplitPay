@@ -68,4 +68,9 @@ public class ClientServerProtocol {
      */
     public static final String REMOVE_ITEM_ATTEMPT= "#OS:Remove Item Attempt";
 
+    /**
+     * The string sent to the server when a participant a split owner tries to pay a split.
+     */
+    public static final String SPLIT_PAYMENT_REQUEST= "#OS:Split Payment Request";
+
 }
