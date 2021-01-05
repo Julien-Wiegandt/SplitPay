@@ -1,12 +1,15 @@
 package server.models.split;
 
+import core.facade.TransactionFacade;
 import core.models.StoreOwner;
 import server.communication.ConnectionToClient;
 import server.exception.splitException.GoalAmountExceededException;
 import server.exception.splitException.ParticipantAlreadyInException;
 import server.exception.splitException.ParticipantNotFoundException;
+import server.exception.splitException.SplitNotReadyForPayment;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -232,6 +235,32 @@ public abstract class Split implements Serializable {
     public void switchParticipantReadyStatus(int participantId) throws ParticipantNotFoundException {
         Participant participant = getParticipantById(participantId);
         participant.switchReadyStatus();
+    }
+
+    /**
+     * creates the transactions for the split
+     */
+    public void paySplit() throws SplitNotReadyForPayment {
+        if(isReadyForPayment()){
+            TransactionFacade transactionFacade = TransactionFacade.getTransactionFacade();
+            String stringParticipants = participantsToString();
+            for (Participant participant: getParticipants().values()) {
+                transactionFacade.createSplitTransaction(
+                        (float) participant.getAmount(),
+                        new Date(System.currentTimeMillis()),
+                        participant.getId(),
+                        Integer.parseInt(getReceiver().getId()),
+                        stringParticipants);
+            }
+
+            setExpired(true);
+        } else {
+            throw new SplitNotReadyForPayment("Can't pay ! Split not ready for payment");
+        }
+    }
+
+    public StoreOwner getReceiver() {
+        return receiver;
     }
 
     /**
