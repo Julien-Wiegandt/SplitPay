@@ -56,7 +56,9 @@ CREATE TABLE `Friends` (
  CONSTRAINT `fk_NormalUser_Friends_adder`
     FOREIGN KEY (`adder_normal_user_fk`)
     REFERENCES `NormalUser` (`normal_user_pk`)
-    ON DELETE CASCADE ON UPDATE RESTRICT
+    ON DELETE CASCADE ON UPDATE RESTRICT,
+ CONSTRAINT `friends_pk`
+     PRIMARY KEY (`added_normal_user_fk`,`adder_normal_user_fk`)
 );
 
 CREATE TABLE `FriendGroup` (
