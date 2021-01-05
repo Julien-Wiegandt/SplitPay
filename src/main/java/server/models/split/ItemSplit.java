@@ -172,6 +172,7 @@ public class ItemSplit extends Split{
                 ", ownerId=" + ownerId +
                 ", participants=" + participants +
                 ", items="+ items +
+                ", participantsCard="+ participantsCart +
                 '}';
     }
 
