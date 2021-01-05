@@ -4,10 +4,7 @@ import server.communication.ConnectionToClient;
 import server.communication.ObservableOriginatorServer;
 import server.communication.ObservableServer;
 import server.communication.SplitOriginatorMessage;
-import server.exception.splitException.GoalAmountExceededException;
-import server.exception.splitException.ParticipantAlreadyInException;
-import server.exception.splitException.ParticipantNotFoundException;
-import server.exception.splitException.SplitNotFoundException;
+import server.exception.splitException.*;
 import server.models.split.*;
 import util.ClientServerProtocol;
 import util.SplitUtilities;
@@ -182,9 +179,27 @@ public class SplitServerFacade implements Observer {
      * @param newAmount the new amount of the participant
      * @throws SplitNotFoundException no corresponding split found for the splitcode
      */
-    public Split changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
+    public FreeSplit changeParticipantAmount(String splitCode, int participantId, double newAmount) throws SplitNotFoundException, ParticipantNotFoundException, GoalAmountExceededException {
         splits.get(splitCode).changeParticipantAmount(participantId,newAmount);
-        return splits.get(splitCode);
+        return (FreeSplit) splits.get(splitCode);
+    }
+
+    /**
+     * Attempts to pick the item for the participant and returns the updated split
+     * @param splitCode
+     * @param participantId
+     * @param itemId
+     * @return
+     * @throws SplitNotFoundException
+     * @throws ItemAlreadyPickedException
+     * @throws GoalAmountExceededException
+     * @throws UnknownItemException
+     * @throws ParticipantNotFoundException
+     */
+    // TODO : test
+    public ItemSplit pickSplitItem(String splitCode, int participantId, int itemId) throws SplitNotFoundException, ItemAlreadyPickedException, GoalAmountExceededException, UnknownItemException, ParticipantNotFoundException {
+        ((ItemSplit) getSplitByCode(splitCode)).pickItem(itemId,participantId);
+        return ((ItemSplit) getSplitByCode(splitCode));
     }
 
     /**
