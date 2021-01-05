@@ -127,16 +127,12 @@ public class ItemSplitSaloonController {
     }
 
     /* Methods handling UI action ************ */
-//
-//    /**
-//     * Handles participant input, sends to the server the change amount request
-//     */
-//    public void moneyInputHandler(){
-//        double newAmount = Double.parseDouble(moneyInput.getText());
-//        facade.changeAmount(newAmount,getJoinedSplit().getSplitCode());
-//    }
 
     // TODO : implement
+
+    /**
+     * Sends to the server a request to pick the selected item and put it in the user's cart
+     */
     public void pickItem(){
         int itemId = splitItems.getSelectionModel().getSelectedIndex();
         facade.pickItem(itemId,getJoinedSplit().getSplitCode());
