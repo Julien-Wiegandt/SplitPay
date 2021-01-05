@@ -49,16 +49,20 @@ public class ItemSplitSaloonController {
     private ListView participants;
 
     @FXML
-    public Label currentAmount;
+    private Label currentAmount;
 
     @FXML
-    public ProgressBar progressBar;
+    private ProgressBar progressBar;
 
     @FXML
-    public Button payButton;
+    private Button payButton;
 
     @FXML
-    public ListView splitItems;
+    private ListView splitItems;
+
+    @FXML
+    private ListView participantsCart;
+
 
     @FXML
     private void initialize() throws IOException {
@@ -95,6 +99,12 @@ public class ItemSplitSaloonController {
             ObservableList<Item> itemsElement = FXCollections.observableArrayList ();
             itemsElement.setAll(getJoinedSplit().getItems());
             splitItems.setItems(itemsElement);
+
+            ObservableList<String> cartElement = FXCollections.observableArrayList ();
+
+            cartElement.add(getJoinedSplit().getParticipantsCart().toString());
+            System.out.println(getJoinedSplit().getParticipantsCart().toString());
+            participantsCart.setItems(cartElement);
 
             // The pay button is only accessible for the split owner
             if(isParticipantOwner()){

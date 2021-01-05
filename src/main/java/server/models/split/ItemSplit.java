@@ -161,6 +161,10 @@ public class ItemSplit extends Split{
         return participantsCart.get(participantId);
     }
 
+    public HashMap<Integer, List<Item>> getParticipantsCart() {
+        return participantsCart;
+    }
+
     @Override
     public String toString() {
         return "Split{" +
