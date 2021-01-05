@@ -2,8 +2,22 @@ package core.models;
 
 import java.util.Date;
 
+/**
+ * Model of the UserToBankAccount which represents the transaction from a User's balance to a BankAccount.
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2021-01-05
+ */
 public class UserToBankAccount extends Transaction{
 
+    /**
+     * UserToBankAccount's constructor.
+     * @param amount
+     * @param dateCreated
+     * @param sender_fk
+     * @param receiver_fk
+     */
     public UserToBankAccount(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
         this.name = "UserToBankAccount";
         this.amount = amount;
@@ -28,6 +42,10 @@ public class UserToBankAccount extends Transaction{
         this.receiver_fk = receiver_fk;
     }
 
+    /**
+     * Represents the transaction.
+     * @return the String representation of the transaction.
+     */
     public String toString(){
         return "To BankAccount " + this.getReceiver_fk() + ": -" + this.getAmount() + "€ on " + this.getDateCreated().toString();
     }
