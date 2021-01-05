@@ -347,7 +347,16 @@ public class SplitServerFacade implements Observer {
                     e.printStackTrace();
                 }
                 break;
-
+            case ClientServerProtocol.PICK_ITEM_ATTEMPT:
+                userId = Integer.parseInt(message.getArguments().get("userId"));
+                splitCode = message.getArgument("splitCode");
+                int itemId = Integer.parseInt(message.getArguments().get("itemId"));
+                try {
+                    pickSplitItem(splitCode,userId,itemId);
+                    sendToParticipantUpdate(splitCode);
+                } catch (SplitNotFoundException | ItemAlreadyPickedException | GoalAmountExceededException | UnknownItemException | ParticipantNotFoundException e) {
+                    e.printStackTrace();
+                }
         }
     }
 

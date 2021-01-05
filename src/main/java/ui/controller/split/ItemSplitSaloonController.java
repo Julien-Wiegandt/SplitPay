@@ -138,7 +138,8 @@ public class ItemSplitSaloonController {
 
     // TODO : implement
     public void pickItem(){
-
+        int itemId = splitItems.getSelectionModel().getSelectedIndex();
+        facade.pickItem(itemId,getJoinedSplit().getSplitCode());
     }
 
     /**
