@@ -4,6 +4,7 @@ import core.facade.UserFacade;
 import core.models.*;
 import persist.dao.TransactionDAO;
 
+import java.lang.invoke.LambdaMetafactory;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -127,7 +128,7 @@ public class MySqlTransactionDAO implements TransactionDAO {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String mysqlDateString = formatter.format(dateCreated);
-            stmt.executeUpdate("INSERT INTO StoreOwnerToBankAccount VALUES ("+amount+", '"+participants+"', '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
+            stmt.executeUpdate("INSERT INTO SplitTransaction VALUES ("+amount+", '"+participants+"', '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
