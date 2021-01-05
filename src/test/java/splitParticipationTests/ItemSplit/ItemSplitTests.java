@@ -34,7 +34,7 @@ public class ItemSplitTests {
         items = new Item[]{pizza, drink, desert};
 
         splitCode = SplitUtilities.generateCode();
-        split = new ItemSplit(splitCode,participant1.getId(),participant1.getNickname(),"Bowlingstar Montpellier",items);
+        split = new ItemSplit(splitCode,participant1.getId(),participant1.getNickname(),"Bowlingstar Montpellier",items,null);
 
     }
     @Test

@@ -12,55 +12,57 @@ import util.SplitUtilities;
 import java.lang.reflect.Field;
 
 public class BasicFreeSplitTests {
+    SplitServerFacade facade = SplitServerFacade.getInstance();
+
+    Participant owner0;
+    Participant participant1;
+    Participant participant2;
+
+    String splitCode;
+
     @Before
     public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         Field instance = SplitServerFacade.class.getDeclaredField("instance");
         instance.setAccessible(true);
         instance.set(null, null);
+
     }
 
-    @Test
-    public void getSplitByCode() throws Exception {
-        SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
-        FreeSplit expectedSplit = new FreeSplit(splitCode,1,"owner0",27.3,"new year bowling");
+    @Before
+    public void resetSplit(){
+        owner0 = new Participant(null,0,"owner0");
+        participant1 = new Participant(null,1,"participant1");
+        participant2 = new Participant(null,2,"participant2");
+        splitCode = facade.createFreeSplit(owner0.getId(), owner0.getNickname(), 27.3,"New year bowling",null);
 
-        if(!facade.getSplitByCode(splitCode).equals(expectedSplit)){throw new Exception("Didn't get the expected split");}
     }
 
     @Test(expected = SplitNotFoundException.class)
-    public void getSplitByWrongCode() throws Exception {
-        SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode=SplitUtilities.generateCode();
-        facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
-        facade.getSplitByCode(splitCode);
+    public void getSplitByCode_WrongCode_ThrowsSplitNotFoundException() throws Exception {
+
+        String randomSplitCode = SplitUtilities.generateCode();
+        facade.getSplitByCode(randomSplitCode);
+
     }
 
     @Test
-    public void getParticipantById() throws Exception {
-        SplitServerFacade facade = SplitServerFacade.getInstance();
+    public void getParticipantById_CorrectId_ReturnsExpectedParticipant() throws Exception {
 
-        Participant owner = new Participant(null,1,"owner0");
+        facade.join(null,splitCode,owner0.getId(),owner0.getNickname());
 
-        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
-        facade.join(null,splitCode,owner.getId(),owner.getNickname());
+        Participant returnedParticipant = facade.getSplitByCode(splitCode).getParticipantById(owner0.getId());
 
-        Participant expectedParticipant = new Participant(null,1,"owner0");
-        Participant returnedParticipant = facade.getSplitByCode(splitCode).getParticipantById(expectedParticipant.getId());
-
-        if(!expectedParticipant.equals(returnedParticipant)){
+        if(!owner0.equals(returnedParticipant)){
             throw new Exception("Didn't get the expected participant");
         }
     }
 
     @Test(expected = ParticipantNotFoundException.class)
     public void getParticipantByWrongId() throws Exception {
-        SplitServerFacade facade = SplitServerFacade.getInstance();
-        String splitCode = facade.createFreeSplit(1,"owner0",27.3,"new year bowling","freesplit");
-        Participant expectedParticipant = null;
+
         Participant returnedParticipant = facade.getSplitByCode(splitCode).getParticipantById(123456);
 
-        if(returnedParticipant!=expectedParticipant){
+        if(returnedParticipant!= null){
             throw new Exception("Didn't get the expected participant");
         }
     }

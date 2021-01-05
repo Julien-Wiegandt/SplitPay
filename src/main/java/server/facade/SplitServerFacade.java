@@ -1,5 +1,6 @@
 package server.facade;
 
+import core.models.StoreOwner;
 import server.communication.ConnectionToClient;
 import server.communication.ObservableOriginatorServer;
 import server.communication.ObservableServer;
@@ -60,11 +61,11 @@ public class SplitServerFacade implements Observer {
      * @param ownerNickName the nickname of the split creator
      * @param goalAmount the goal amount of the split
      * @param label the title of the split
-     * @param splitMode the split mode
+     * @param receiver the payment receiver
      */
-    public String createFreeSplit(int ownerId, String ownerNickName, double goalAmount, String label, String splitMode) {
+    public String createFreeSplit(int ownerId, String ownerNickName, double goalAmount, String label, StoreOwner receiver) {
         String splitCode = SplitUtilities.generateCode();
-        FreeSplit split = new FreeSplit(splitCode, ownerId,ownerNickName,goalAmount,label);
+        FreeSplit split = new FreeSplit(splitCode, ownerId,ownerNickName,goalAmount,label,receiver);
         splits.put(split.getSplitCode(),split);
         return splitCode;
     }
@@ -75,9 +76,9 @@ public class SplitServerFacade implements Observer {
      * @param ownerNickName the nickname of the split creator
      * @param label the title of the split
      */
-    public String createItemSplit(int ownerId, String ownerNickName, String label, Item[] items) {
+    public String createItemSplit(int ownerId, String ownerNickName, String label, Item[] items,StoreOwner receiver) {
         String splitCode = SplitUtilities.generateCode();
-        ItemSplit split = new ItemSplit(splitCode, ownerId,ownerNickName,label,items);
+        ItemSplit split = new ItemSplit(splitCode, ownerId,ownerNickName,label,items,receiver);
         splits.put(split.getSplitCode(),split);
         return splitCode;
     }
@@ -257,7 +258,7 @@ public class SplitServerFacade implements Observer {
                 Double goalAmount = Double.parseDouble(((SplitOriginatorMessage) msg).getArgument("goalAmount"));
                 String label = ((SplitOriginatorMessage) msg).getArgument("label");
                 String splitMode = ((SplitOriginatorMessage) msg).getArgument("splitMode");
-                splitCode = createFreeSplit(ownerId,ownerNickname,goalAmount,label,splitMode);
+                splitCode = createFreeSplit(ownerId,ownerNickname,goalAmount,label,null);
                 try {
                     HashMap<Integer, FreeSplit> split = new HashMap<>();
                     //split.put(splitCode,getSplitByCode(splitCode));

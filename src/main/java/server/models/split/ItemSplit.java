@@ -1,5 +1,6 @@
 package server.models.split;
 
+import core.models.StoreOwner;
 import server.communication.ConnectionToClient;
 import server.exception.splitException.*;
 
@@ -21,8 +22,8 @@ public class ItemSplit extends Split{
      * @param label
      * @param items
      */
-    public ItemSplit(String splitCode, int ownerId, String ownerNickName, String label,Item[] items){
-        super(splitCode,ownerId,ownerNickName,label);
+    public ItemSplit(String splitCode, int ownerId, String ownerNickName, String label, Item[] items, StoreOwner receiver){
+        super(splitCode,ownerId,ownerNickName,label,receiver);
         double totalAmount = 0;
         for (int i = 0; i < items.length ; i++) {
             this.items.add(items[i]);

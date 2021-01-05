@@ -1,5 +1,6 @@
 package server.models.split;
 
+import core.models.StoreOwner;
 import server.communication.ConnectionToClient;
 import server.exception.splitException.GoalAmountExceededException;
 import server.exception.splitException.ParticipantAlreadyInException;
@@ -12,11 +13,14 @@ import java.util.Map;
 
 public abstract class Split implements Serializable {
 
-    public Split(String splitCode, int ownerId, String ownerNickName, String label){
+    StoreOwner receiver;
+
+    public Split(String splitCode, int ownerId, String ownerNickName, String label, StoreOwner receiver){
         this.splitCode=splitCode;
         this.label=label;
         this.ownerId=ownerId;
         this.ownerNickName=ownerNickName;
+        this.receiver=receiver;
     }
 
     protected String label;
@@ -168,6 +172,18 @@ public abstract class Split implements Serializable {
     }
 
     public int getNumberOfParticipant(){return participants.size();}
+
+    /**
+     * Returns split participants following the following format "participantNickName1/participantNickname2/..."
+     * @return
+     */
+    public String participantsToString(){
+        String string="";
+        for (Participant participant:participants.values()) {
+            string = string.concat(participant.getNickname()+"/");
+        }
+        return string;
+    }
 
     @Override
     public String toString() {
