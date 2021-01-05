@@ -45,7 +45,6 @@ public class SplitSectionController {
      */
     private void goToSplitSaloonView() {
         URL url;
-        System.out.println(facade.getJoinedSplit().getSplitMode());
         switch(facade.getJoinedSplit().getSplitMode()){
             case ITEMSPLIT:
                 url = getClass().getClassLoader().getResource(UserNavigationPath.itemSplitSaloonView);
@@ -57,7 +56,6 @@ public class SplitSectionController {
                 throw new IllegalStateException("Unexpected value: " + facade.getJoinedSplit().getSplitMode());
         }
 
-        System.out.println(url);
         Parent root = null;
         try {
             // TODO : Handle resource path problem
@@ -65,7 +63,7 @@ public class SplitSectionController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         SplitPay.window.setScene(new Scene(root));
     }
 
