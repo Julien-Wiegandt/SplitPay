@@ -47,9 +47,9 @@ public class SplitSectionController {
         URL url;
         switch(facade.getJoinedSplit().getSplitMode()){
             case ITEMSPLIT:
-                url = getClass().getClassLoader().getResource(UserNavigationPath.freeSplitSaloonView);
-            case FREESPLIT:
                 url = getClass().getClassLoader().getResource(UserNavigationPath.itemSplitSaloonView);
+            case FREESPLIT:
+                url = getClass().getClassLoader().getResource(UserNavigationPath.freeSplitSaloonView);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + facade.getJoinedSplit().getSplitMode());
