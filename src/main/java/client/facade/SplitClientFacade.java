@@ -292,6 +292,21 @@ public class SplitClientFacade implements Observer
         sendToServer(message);
     }
 
+    public void removeItem(int itemId, String splitCode){
+        String id = UserFacade.getUserFacade().getLoggedUser().getId();
+        String nickName = UserFacade.getUserFacade().getLoggedUser().getNickname();
+
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("userId",id);
+        arguments.put("nickName",nickName);
+        arguments.put("splitCode",splitCode);
+        arguments.put("itemId",Integer.toString(itemId));
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.REMOVE_ITEM_ATTEMPT,arguments,null);
+
+        sendToServer(message);
+    }
+
     /**
      * Method asking the server to change the currently logged user's
      * current amount in the split corresponding to the provided splitcode.

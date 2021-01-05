@@ -63,4 +63,9 @@ public class ClientServerProtocol {
      */
     public static final String PICK_ITEM_ATTEMPT= "#OS:Pick Item Attempt";
 
+    /**
+     * The string sent to the server when a participant tries to remove an item in a split.
+     */
+    public static final String REMOVE_ITEM_ATTEMPT= "#OS:Remove Item Attempt";
+
 }

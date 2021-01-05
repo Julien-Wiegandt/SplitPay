@@ -135,7 +135,15 @@ public class ItemSplitSaloonController {
      */
     public void pickItem(){
         int itemId = splitItems.getSelectionModel().getSelectedIndex();
-        facade.pickItem(itemId,getJoinedSplit().getSplitCode());
+        int userId = Integer.parseInt(UserFacade.getUserFacade().getLoggedUser().getId());
+        Item itemclicked = (Item) splitItems.getSelectionModel().getSelectedItem();
+        if(itemclicked.isPicked()){
+            if(getJoinedSplit().getParticipantCart(userId).contains(itemclicked)){
+                facade.removeItem(itemId,getJoinedSplit().getSplitCode());
+            }
+        } else {
+            facade.pickItem(itemId,getJoinedSplit().getSplitCode());
+        }
     }
 
     /**

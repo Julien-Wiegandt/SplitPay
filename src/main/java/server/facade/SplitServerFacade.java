@@ -196,9 +196,13 @@ public class SplitServerFacade implements Observer {
      * @throws UnknownItemException
      * @throws ParticipantNotFoundException
      */
-    // TODO : test
     public ItemSplit pickSplitItem(String splitCode, int participantId, int itemId) throws SplitNotFoundException, ItemAlreadyPickedException, GoalAmountExceededException, UnknownItemException, ParticipantNotFoundException {
         ((ItemSplit) getSplitByCode(splitCode)).pickItem(itemId,participantId);
+        return ((ItemSplit) getSplitByCode(splitCode));
+    }
+
+    public ItemSplit removeSplitItem(String splitCode, int participantId, int itemId) throws SplitNotFoundException, ItemAlreadyPickedException, GoalAmountExceededException, UnknownItemException, ParticipantNotFoundException {
+        ((ItemSplit) getSplitByCode(splitCode)).removeItem(itemId,participantId);
         return ((ItemSplit) getSplitByCode(splitCode));
     }
 
@@ -242,6 +246,7 @@ public class SplitServerFacade implements Observer {
         System.out.println(msg);
 
         int userId;
+        int itemId;
         String splitCode;
 
         switch (message.getMessage()){
@@ -350,13 +355,25 @@ public class SplitServerFacade implements Observer {
             case ClientServerProtocol.PICK_ITEM_ATTEMPT:
                 userId = Integer.parseInt(message.getArguments().get("userId"));
                 splitCode = message.getArgument("splitCode");
-                int itemId = Integer.parseInt(message.getArguments().get("itemId"));
+                itemId = Integer.parseInt(message.getArguments().get("itemId"));
                 try {
                     pickSplitItem(splitCode,userId,itemId);
                     sendToParticipantUpdate(splitCode);
                 } catch (SplitNotFoundException | ItemAlreadyPickedException | GoalAmountExceededException | UnknownItemException | ParticipantNotFoundException e) {
                     e.printStackTrace();
                 }
+                break;
+            case ClientServerProtocol.REMOVE_ITEM_ATTEMPT:
+                userId = Integer.parseInt(message.getArguments().get("userId"));
+                splitCode = message.getArgument("splitCode");
+                itemId = Integer.parseInt(message.getArguments().get("itemId"));
+                try {
+                    removeSplitItem(splitCode,userId,itemId);
+                    sendToParticipantUpdate(splitCode);
+                } catch (SplitNotFoundException | ItemAlreadyPickedException | GoalAmountExceededException | UnknownItemException | ParticipantNotFoundException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
