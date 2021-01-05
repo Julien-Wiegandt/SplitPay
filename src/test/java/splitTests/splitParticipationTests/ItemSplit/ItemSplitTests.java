@@ -1,4 +1,4 @@
-package splitParticipationTests.ItemSplit;
+package splitTests.splitParticipationTests.ItemSplit;
 
 import org.junit.Assert;
 import org.junit.Before;

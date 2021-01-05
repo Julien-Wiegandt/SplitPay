@@ -1,10 +1,9 @@
-package splitParticipationTests.FreeSplit;
+package splitTests.splitParticipationTests.FreeSplit;
 
 import server.exception.splitException.ParticipantNotFoundException;
 import server.facade.SplitServerFacade;
 import server.exception.splitException.SplitNotFoundException;
 import server.models.split.Participant;
-import server.models.split.FreeSplit;
 import org.junit.Before;
 import org.junit.Test;
 import util.SplitUtilities;
