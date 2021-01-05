@@ -15,6 +15,7 @@ import server.models.split.Participant;
 import server.models.split.FreeSplit;
 import server.models.split.Split;
 import ui.path.UserNavigationPath;
+import util.RegexPattern;
 
 import java.io.IOException;
 
@@ -117,11 +118,16 @@ public class FreeSplitSaloonController {
     /* Methods handling UI action ************ */
 
     /**
-     * Handles participant input, sends to the server the change amount request
+     * Handles participant input, checks the input, sends to the server the change amount request
      */
     public void moneyInputHandler(){
-        double newAmount = Double.parseDouble(moneyInput.getText());
-        facade.changeAmount(newAmount,getJoinedSplit().getSplitCode());
+        if(RegexPattern.decimalPattern.matcher(moneyInput.getText()).find()){
+            double newAmount = Double.parseDouble(moneyInput.getText());
+            facade.changeAmount(newAmount,getJoinedSplit().getSplitCode());
+            flashMessage.setText("");
+        } else {
+            flashMessage.setText("Invalid amount");
+        }
     }
 
     /**
