@@ -228,7 +228,7 @@ CREATE TABLE `StoreOwnerToBankAccount` (
 );
 
 CREATE TABLE `SplitTransaction` (
-    `amount` int NOT NULL,
+    `amount` float NOT NULL,
     `participants` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `dateCreated` timestamp NOT NULL,
     `sender_fk` int DEFAULT NULL,
