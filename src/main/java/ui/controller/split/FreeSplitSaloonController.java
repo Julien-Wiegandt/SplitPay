@@ -95,6 +95,13 @@ public class FreeSplitSaloonController {
             items.setAll(getJoinedSplit().getParticipants().values());
             participants.setItems(items);
 
+            // Pay button disabled if split not ready for payment
+            if(getJoinedSplit().isReadyForPayment()){
+                payButton.setDisable(false);
+            } else {
+                payButton.setDisable(true);
+            }
+
             // The pay button is only accessible for the split owner
             if(isParticipantOwner()){
                 payButton.setVisible(false);

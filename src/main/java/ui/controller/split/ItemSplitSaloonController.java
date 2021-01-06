@@ -106,6 +106,13 @@ public class ItemSplitSaloonController {
             System.out.println(getJoinedSplit().getParticipantsCart().toString());
             participantsCart.setItems(cartElement);
 
+            // Pay button disabled if split not ready for payment
+            if(getJoinedSplit().isReadyForPayment()){
+                payButton.setDisable(false);
+            } else {
+                payButton.setDisable(true);
+            }
+
             // The pay button is only accessible for the split owner
             if(isParticipantOwner()){
                 payButton.setVisible(false);
