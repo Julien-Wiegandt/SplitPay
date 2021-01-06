@@ -15,7 +15,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="126.0" layoutY="249.0" mnemonicParsing="false" onAction="#goToChooseBankAccountView" text="Recover" />
-            <Button layoutX="291.0" layoutY="249.0" mnemonicParsing="false" onAction="#goToChooseCreditCardView" text="Refill" />
+            <Button fx:id="refill" layoutX="291.0" layoutY="249.0" mnemonicParsing="false" onAction="#goToChooseCreditCardView" text="Refill" />
             <Label layoutX="191.0" layoutY="37.0" text="Balance">
                <font>
                   <Font size="26.0" />

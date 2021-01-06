@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import main.SplitPay;
 import ui.path.UserNavigationPath;
@@ -25,6 +26,9 @@ public class ManageBalanceController {
      */
     @FXML
     private Label balanceAmount;
+
+    @FXML
+    private Button refill;
 
     /**
      * This method load the chooseCreditCardView.
@@ -52,6 +56,10 @@ public class ManageBalanceController {
      */
     @FXML
     private void initialize() {
-        balanceAmount.setText(UserFacade.getUserFacade().getLoggedUser().getBalance().toString());
+        balanceAmount.setText(UserFacade.getUserFacade().getLoggedUser().getBalance().toString()+"€");
+        if(!UserFacade.getUserFacade().isNormalUser()) {
+            refill.setVisible(false);
+            refill.setManaged(false);
+        }
     }
 }
