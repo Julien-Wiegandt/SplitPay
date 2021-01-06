@@ -73,4 +73,9 @@ public class ClientServerProtocol {
      */
     public static final String SPLIT_PAYMENT_REQUEST= "#OS:Split Payment Request";
 
+    /**
+     * The string sent to the client when a split is paid
+     */
+    public static final String SPLIT_PAID_RESPONSE= "#OS:Split Paid Response";
+
 }
