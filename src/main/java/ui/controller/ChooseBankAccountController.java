@@ -1,5 +1,6 @@
 package ui.controller;
 
+import core.facade.BankAccountFacade;
 import core.facade.UserFacade;
 import core.models.BankAccount;
 import javafx.collections.FXCollections;
@@ -54,7 +55,7 @@ public class ChooseBankAccountController {
      */
     @FXML
     private void initialize() {
-        Collection<BankAccount> bankAccounts = UserFacade.getUserFacade().getBankAccounts();
+        Collection<BankAccount> bankAccounts = BankAccountFacade.getInstance().getBankAccounts();
 
         ObservableList<BankAccount> items = FXCollections.observableArrayList ();
 

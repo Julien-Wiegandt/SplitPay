@@ -39,11 +39,13 @@ public class ChooseFriendController {
      * @throws IOException
      */
     public void goToChooseAmountView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.chooseAmountView));
-        Parent root = loader.load();
-        ChooseAmountController chooseAmountController = loader.getController();
-        chooseAmountController.setFriend((NormalUser) friendsList.getSelectionModel().getSelectedItem());
-        SplitPay.window.setScene(new Scene(root));
+        if(friendsList.getSelectionModel().getSelectedItem() != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.chooseAmountView));
+            Parent root = loader.load();
+            ChooseAmountController chooseAmountController = loader.getController();
+            chooseAmountController.setFriend((NormalUser) friendsList.getSelectionModel().getSelectedItem());
+            SplitPay.window.setScene(new Scene(root));
+        }
     }
 
     /**

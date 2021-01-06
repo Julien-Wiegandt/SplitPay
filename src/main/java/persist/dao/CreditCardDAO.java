@@ -5,6 +5,7 @@ import core.models.CreditCard;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public abstract class CreditCardDAO {
     private Connection connection;
@@ -18,4 +19,7 @@ public abstract class CreditCardDAO {
     public abstract void deleteCreditCard(CreditCard creditCard);
 
     public abstract ArrayList<CreditCard> getCards();
+
+    public abstract Collection<CreditCard> getCreditCards();
+
 }

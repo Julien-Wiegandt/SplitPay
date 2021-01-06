@@ -427,61 +427,6 @@ public class MySqlUserDAO extends UserDAO {
         return user;
     }
 
-    public Collection<CreditCard> getCreditCards(){
-        Statement stmt = null;
-        ArrayList<CreditCard> creditCards = new ArrayList<CreditCard>();
-        try {
-            stmt = ConnectionMySql.connection.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM CreditCard WHERE normal_user_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
-
-            while (rs.next()) {
-                String dbId = rs.getString("credit_card_pk");
-                String number = rs.getString("number");
-                String nameOwner = rs.getString("cardName");
-                Date date = rs.getDate("date");
-                String cvv = rs.getString("cvv");
-
-                creditCards.add(new CreditCard(dbId, number, nameOwner, date, cvv));
-            }
-        }catch(SQLException throwables){
-            throwables.printStackTrace();
-        }
-        return creditCards;
-    }
-
-    public Collection<BankAccount> getBankAccounts(){
-        Statement stmt = null;
-        ArrayList<BankAccount> bankAccounts = new ArrayList<BankAccount>();
-        try {
-            stmt = ConnectionMySql.connection.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
-            if(UserFacade.getUserFacade().isNormalUser()) {
-                ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_NormalUser_BankAccount WHERE normal_user_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
-                while (rs.next()) {
-                    BankAccount bankAccount = BankAccountFacade.getInstance().getBankAccountById(rs.getInt("bank_account_fk"));
-                    bankAccounts.add(bankAccount);
-                }
-            }else{
-                ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_StoreOwner_BankAccount WHERE store_owner_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
-                while (rs.next()){
-                    BankAccount bankAccount = BankAccountFacade.getInstance().getBankAccountById(rs.getInt("bank_account_fk"));
-                    bankAccounts.add(bankAccount);
-                }
-            }
-
-            } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return bankAccounts;
-    }
-
     //prendre en compte héritage
     @Override
     public void error() {

@@ -11,6 +11,7 @@ import persist.dao.mysql.MySqlBankAccountDAO;
 import persist.dao.mysql.MySqlDAOFactory;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class BankAccountFacade {
 
@@ -39,10 +40,7 @@ public class BankAccountFacade {
         this.bankAccountDAO.deleteBankAccount(iban);
     }
 
-
-
-
-    public ArrayList<BankAccount> getBankAccounts() {
+    public Collection<BankAccount> getBankAccounts() {
         return this.bankAccountDAO.getBankAccounts();
 
     }

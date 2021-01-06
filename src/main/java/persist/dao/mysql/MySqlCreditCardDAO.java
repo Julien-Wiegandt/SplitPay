@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 public class MySqlCreditCardDAO extends CreditCardDAO {
@@ -97,5 +98,30 @@ public class MySqlCreditCardDAO extends CreditCardDAO {
         return ccs;
     }
 
+    public Collection<CreditCard> getCreditCards(){
+        Statement stmt = null;
+        ArrayList<CreditCard> creditCards = new ArrayList<CreditCard>();
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM CreditCard WHERE normal_user_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
+
+            while (rs.next()) {
+                String dbId = rs.getString("credit_card_pk");
+                String number = rs.getString("number");
+                String nameOwner = rs.getString("cardName");
+                Date date = rs.getDate("date");
+                String cvv = rs.getString("cvv");
+
+                creditCards.add(new CreditCard(dbId, number, nameOwner, date, cvv));
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return creditCards;
+    }
 
 }

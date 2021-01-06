@@ -1,13 +1,12 @@
 package core.facade;
 
-import core.models.Group;
-import core.models.NormalUser;
-import core.models.User;
+import core.models.*;
 import persist.DAOFactory;
 import persist.dao.GroupDAO;
 import persist.dao.mysql.MySqlDAOFactory;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class GroupFacade {
 
@@ -59,6 +58,5 @@ public class GroupFacade {
     public ArrayList<NormalUser> getAllFriendFromGroup(String id){
 
         return this.groupDAO.getAllFriendFromGroup(id);
-
     }
 }

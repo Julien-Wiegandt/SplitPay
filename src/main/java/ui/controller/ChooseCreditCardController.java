@@ -1,5 +1,6 @@
 package ui.controller;
 
+import core.facade.CreditCardFacade;
 import core.facade.UserFacade;
 import core.models.CreditCard;
 import javafx.collections.FXCollections;
@@ -55,7 +56,7 @@ public class ChooseCreditCardController {
 
     @FXML
     private void initialize() {
-        Collection<CreditCard> creditCards = UserFacade.getUserFacade().getCreditCards();
+        Collection<CreditCard> creditCards = CreditCardFacade.getInstance().getCreditCards();
 
         ObservableList<CreditCard> items = FXCollections.observableArrayList ();
 

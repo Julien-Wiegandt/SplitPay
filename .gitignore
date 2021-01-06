@@ -2,6 +2,7 @@
 *.iws
 workspace.xml
 tasks.xml
+.name
 
 #folder generated after run
 target/

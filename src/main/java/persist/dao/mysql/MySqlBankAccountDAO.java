@@ -1,5 +1,6 @@
 package persist.dao.mysql;
 
+import core.facade.BankAccountFacade;
 import core.facade.UserFacade;
 import core.models.BankAccount;
 
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 
 public class MySqlBankAccountDAO extends BankAccountDAO {
@@ -69,49 +71,6 @@ COMMIT
         }
     }
 
-    @Override
-    public ArrayList<BankAccount> getBankAccounts() {
-        ArrayList<BankAccount> ccs = new ArrayList<BankAccount>();
-
-        Statement stmt = null;
-        BankAccount bankAccount= null;
-
-        try {
-            stmt = ConnectionMySql.connection.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
-            String id = UserFacade.getUserFacade().getLoggedUser().getId();
-            ResultSet rs;
-            if(UserFacade.getUserFacade().isStoreOwner()){
-                rs = stmt.executeQuery("SELECT * FROM BankAccount B, Relation_StoreOwner_BankAccount R, StoreOwner U WHERE U.store_owner_pk='" +id+ "' AND R.store_owner_fk='"+id+"' AND R.bank_account_fk=B.bank_account_pk ");
-
-
-            }else{
-                rs = stmt.executeQuery("SELECT * FROM BankAccount B, Relation_NormalUser_BankAccount R, NormalUser U WHERE U.normal_user_pk='" +id+ "' AND R.normal_user_fk='"+id+"' AND R.bank_account_fk=B.bank_account_pk ");
-
-            }
-
-            while (rs.next()) {
-                String dbId = rs.getString("bank_account_pk");
-                String dbLabel = rs.getString("label");
-                String dbBic = rs.getString("bic");
-                String dbIban = rs.getString("iban");
-
-                String dbFirstName = rs.getString("ownerFirstName");
-                String dbLastName = rs.getString("ownerLastName");
-
-                bankAccount = new BankAccount(dbId, dbLabel, dbBic, dbIban, dbFirstName, dbLastName);
-
-                ccs.add(bankAccount);
-            }
-        }catch(SQLException throwables){
-            throwables.printStackTrace();
-        }
-        return ccs;
-    }
-
 
     private String findBankAccountIdByIban(String iban) {
         Statement stmt = null;
@@ -168,6 +127,32 @@ COMMIT
         return bankAccount;
     }
 
+    public Collection<BankAccount> getBankAccounts(){
+        Statement stmt = null;
+        ArrayList<BankAccount> bankAccounts = new ArrayList<BankAccount>();
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            if(UserFacade.getUserFacade().isNormalUser()) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_NormalUser_BankAccount WHERE normal_user_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
+                while (rs.next()) {
+                    BankAccount bankAccount = BankAccountFacade.getInstance().getBankAccountById(rs.getInt("bank_account_fk"));
+                    bankAccounts.add(bankAccount);
+                }
+            }else{
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_StoreOwner_BankAccount WHERE store_owner_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
+                while (rs.next()){
+                    BankAccount bankAccount = BankAccountFacade.getInstance().getBankAccountById(rs.getInt("bank_account_fk"));
+                    bankAccounts.add(bankAccount);
+                }
+            }
 
-
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bankAccounts;
+    }
 }

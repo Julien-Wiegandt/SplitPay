@@ -145,14 +145,6 @@ public class UserFacade {
         }
     }
 
-    public Collection<CreditCard> getCreditCards() {
-        return userDao.getCreditCards();
-    }
-
-    public Collection<BankAccount> getBankAccounts() {
-        return userDao.getBankAccounts();
-    }
-
     /**
      * Returns the user having this phone number
      * else throws exception
