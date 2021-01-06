@@ -4,6 +4,7 @@ import core.facade.UserFacade;
 import core.models.*;
 import persist.dao.TransactionDAO;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -32,17 +33,14 @@ public class MySqlTransactionDAO implements TransactionDAO {
      * @return user's Transactions.
      */
     public Collection<Transaction> findAllTransactions(int userId) {
-        Statement stmt = null;
+        PreparedStatement statement = null;
         ArrayList<Transaction> transactions = new ArrayList<Transaction>();
-        try {
-            stmt = ConnectionMySql.connection.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
         try {
             ResultSet rs;
             if(UserFacade.getUserFacade().isNormalUser()){
-                rs = stmt.executeQuery("SELECT * FROM SplitTransaction WHERE sender_fk='"+ userId +"';");
+                statement = ConnectionMySql.connection.prepareStatement("SELECT * FROM SplitTransaction WHERE sender_fk=?;");
+                statement.setInt(1, userId);
+                rs = statement.executeQuery();
                 while(rs.next()){
                     Float amount = rs.getFloat("amount");
                     Date dateCreated = rs.getDate("dateCreated");
@@ -52,8 +50,10 @@ public class MySqlTransactionDAO implements TransactionDAO {
 
                     transactions.add(new SplitTransaction(amount, dateCreated, sender_fk, receiver_fk, participants));
                 }
-
-                rs = stmt.executeQuery("SELECT * FROM UserToUserTransaction WHERE sender_fk='"+ userId +"' OR receiver_fk='"+ userId +"';");
+                statement = ConnectionMySql.connection.prepareStatement("SELECT * FROM UserToUserTransaction WHERE sender_fk=? OR receiver_fk=?;");
+                statement.setInt(1, userId);
+                statement.setInt(2, userId);
+                rs = statement.executeQuery();
                 while(rs.next()){
                     Float amount = rs.getFloat("amount");
                     Date dateCreated = rs.getDate("dateCreated");
@@ -62,8 +62,9 @@ public class MySqlTransactionDAO implements TransactionDAO {
 
                     transactions.add(new UserToUserTransaction(amount, dateCreated, sender_fk, receiver_fk));
                 }
-
-                rs = stmt.executeQuery("SELECT * FROM UserToBankAccount WHERE sender_fk='"+ userId +"';");
+                statement = ConnectionMySql.connection.prepareStatement("SELECT * FROM UserToBankAccount WHERE sender_fk=?;");
+                statement.setInt(1, userId);
+                rs = statement.executeQuery();
                 while(rs.next()){
                     Float amount = rs.getFloat("amount");
                     Date dateCreated = rs.getDate("dateCreated");
@@ -72,8 +73,9 @@ public class MySqlTransactionDAO implements TransactionDAO {
 
                     transactions.add(new UserToBankAccount(amount, dateCreated, sender_fk, receiver_fk));
                 }
-
-                rs = stmt.executeQuery("SELECT * FROM CreditCardToUserTransaction WHERE receiver_fk='"+ userId +"';");
+                statement = ConnectionMySql.connection.prepareStatement("SELECT * FROM CreditCardToUserTransaction WHERE receiver_fk=?;");
+                statement.setInt(1, userId);
+                rs = statement.executeQuery();
                 while(rs.next()){
                     Float amount = rs.getFloat("amount");
                     Date dateCreated = rs.getDate("dateCreated");
@@ -83,8 +85,10 @@ public class MySqlTransactionDAO implements TransactionDAO {
                     transactions.add(new CreditCardToUserTransaction(amount, dateCreated, sender_fk, receiver_fk));
                 }
 
-            }else{ ;
-                rs = stmt.executeQuery("SELECT * FROM SplitTransaction WHERE receiver_fk='" + userId + "';");
+            }else{
+                statement = ConnectionMySql.connection.prepareStatement("SELECT * FROM SplitTransaction WHERE receiver_fk=?;");
+                statement.setInt(1, userId);
+                rs = statement.executeQuery();
                 while(rs.next()){
                     Float amount = rs.getFloat("amount");
                     Date dateCreated = rs.getDate("dateCreated");
@@ -94,9 +98,9 @@ public class MySqlTransactionDAO implements TransactionDAO {
 
                     transactions.add(new SplitTransaction(amount, dateCreated, sender_fk, receiver_fk, participants));
                 }
-
-
-                rs = stmt.executeQuery("SELECT * FROM StoreOwnerToBankAccount WHERE sender_fk='" + userId + "';");
+                statement = ConnectionMySql.connection.prepareStatement("SELECT * FROM StoreOwnerToBankAccount WHERE sender_fk=?;");
+                statement.setInt(1, userId);
+                rs = statement.executeQuery();
                 while(rs.next()){
                     Float amount = rs.getFloat("amount");
                     Date dateCreated = rs.getDate("dateCreated");
@@ -121,16 +125,15 @@ public class MySqlTransactionDAO implements TransactionDAO {
      * @param receiver_fk
      */
     public void createCreditCardToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
-        Statement stmt = null;
-        try {
-            stmt = ConnectionMySql.connection.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String mysqlDateString = formatter.format(dateCreated);
-            stmt.executeUpdate("INSERT INTO CreditCardToUserTransaction VALUES ("+amount+", '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
+            PreparedStatement statement = ConnectionMySql.connection.prepareStatement("INSERT INTO CreditCardToUserTransaction VALUES (?, ?, ?, ?);");
+            statement.setFloat(1, amount);
+            statement.setDate(2, dateCreated);
+            statement.setInt(3, sender_fk);
+            statement.setInt(4, receiver_fk);
+            statement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
