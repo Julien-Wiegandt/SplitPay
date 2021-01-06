@@ -2,6 +2,7 @@ package ui.controller;
 
 import core.facade.UserFacade;
 import core.models.NormalUser;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,6 @@ import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class HomeController {
@@ -48,6 +48,16 @@ public class HomeController {
 
     public void goToManageBalanceView(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.manageBalanceView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * This method redirects to the myTransactionsView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToHomeView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
     }
 }

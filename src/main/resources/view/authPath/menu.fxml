@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="130.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MenuController">
-   <children>
-      <Label fx:id="general" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="General" />
-      <Button fx:id="myTransactionsButton" mnemonicParsing="false" onAction="#goToMyTransactionsView" prefHeight="27.0" prefWidth="194.0" text="My transactions" />
-      <Button fx:id="mySplitsButton" mnemonicParsing="false" onAction="#goToMySplitsView" prefHeight="27.0" prefWidth="165.0" text="My splits" />
-      <Button fx:id="notificationsButton" mnemonicParsing="false" onAction="#goToNotificationView" prefHeight="27.0" prefWidth="165.0" text="Notifications" />
-      <Label fx:id="socialLabel" alignment="CENTER" prefHeight="17.0" prefWidth="149.0" text="Social" />
-       <Button fx:id="friendsButton" mnemonicParsing="false" onAction="#goToFriendView" prefHeight="27.0" prefWidth="169.0" text="Friends" />
-      <Button fx:id="groupsButton" mnemonicParsing="false" onAction="#goToGroupView" prefHeight="27.0" prefWidth="173.0" text="Groups" />
-      <Label fx:id="myInformationLabel" alignment="CENTER" prefHeight="17.0" prefWidth="149.0" text="My information" />
-       <Button fx:id="personalInformationButton" mnemonicParsing="false" onAction="#goToManageAccountView" prefHeight="27.0" prefWidth="240.0" text="Personal information" />
-      <Button fx:id="creditCardsButton" mnemonicParsing="false" onAction="#goToCreditCardView" prefHeight="27.0" prefWidth="175.0" text="Credit cards" />
-      <Button fx:id="bankAccountButton" mnemonicParsing="false" onAction="#goToBankAccountView" prefHeight="27.0" prefWidth="174.0" text="Bank accounts" />
-
-   </children>
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MenuController">
+   <MenuBar prefHeight="25.0" prefWidth="273.0" BorderPane.alignment="CENTER">
+      <menus>
+         <Menu mnemonicParsing="false" text="SplitPay">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#goToMySplitsView" text="My Splits" />
+               <MenuItem mnemonicParsing="false" onAction="#goToMyTransactionsView" text="My Transactions" />
+            </items>
+         </Menu>
+         <Menu mnemonicParsing="false" text="Social">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#goToFriendView" text="Friends" />
+               <MenuItem mnemonicParsing="false" onAction="#goToGroupView" text="Groups" />
+               <MenuItem mnemonicParsing="false" onAction="#goToNotificationView" text="Notifications" />
+            </items>
+         </Menu>
+         <Menu mnemonicParsing="false" text="Account">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#goToManageAccountView" text="Personal Information" />
+               <MenuItem mnemonicParsing="false" onAction="#goToCreditCardView" text="Credit Cards" />
+               <MenuItem mnemonicParsing="false" onAction="#goToBankAccountView" text="Bank Accounts" />
+               <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+            </items>
+         </Menu>
+      </menus>
+   </MenuBar>
 </VBox>
