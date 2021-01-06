@@ -12,9 +12,9 @@
         </VBox>
     </center>
     <top>
-        <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
+        <fx:include fx:id="normalUserHeaderBar" source="../headerBar.fxml" />
     </top>
     <left>
-        <fx:include fx:id="normalUserMenu" source="menu.fxml" />
+        <fx:include fx:id="normalUserMenu" source="../menu.fxml" />
     </left>
 </BorderPane>
