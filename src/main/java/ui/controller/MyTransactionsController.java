@@ -38,14 +38,15 @@ public class MyTransactionsController {
      * This method transfers the selected Transaction in the TransactionController and load the transactionView.
      * It is called by a button.
      * @throws IOException
-     * @todo Handle the possible exceptions.
      */
     @FXML public void goToTransactionView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.transactionView));
-        Parent root = loader.load();
-        TransactionController transactionController = loader.getController();
-        transactionController.setTransaction((Transaction) listView.getSelectionModel().getSelectedItem());
-        SplitPay.window.setScene(new Scene(root));
+        if(listView.getSelectionModel().getSelectedItem() != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.transactionView));
+            Parent root = loader.load();
+            TransactionController transactionController = loader.getController();
+            transactionController.setTransaction((Transaction) listView.getSelectionModel().getSelectedItem());
+            SplitPay.window.setScene(new Scene(root));
+        }
     }
 
     /**

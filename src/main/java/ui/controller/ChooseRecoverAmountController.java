@@ -44,7 +44,6 @@ public class ChooseRecoverAmountController {
      * if there is not enough money in the current user's balance,
      * then the amountInput TextField border is highlighted in red.
      * @throws IOException
-     * @todo Handle the possible exceptions.
      */
     public void sendMoneyToBankAccount() throws IOException {
         this.allStyleSetDefault();

@@ -53,7 +53,6 @@ public class ChooseRefillAmountController {
      * if there is not enough money in the current user's CreditCard,
      * then the amountInput TextField border is highlighted in red.
      * @throws IOException
-     * @todo Handle the possible exceptions.
      */
     public void sendMoneyToBalance() throws IOException {
         this.allStyleSetDefault();

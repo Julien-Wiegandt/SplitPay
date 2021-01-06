@@ -30,7 +30,6 @@ public class ManageBalanceController {
      * This method load the chooseCreditCardView.
      * It is called by a button.
      * @throws IOException
-     * @todo Handle the possible exceptions.
      */
     public void goToChooseCreditCardView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.chooseCreditCardView));
@@ -41,7 +40,6 @@ public class ManageBalanceController {
      * This method load the chooseBankAccountView.
      * It is called by a button.
      * @throws IOException
-     * @todo Handle the possible exceptions.
      */
     public void goToChooseBankAccountView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.chooseBankAccountView));

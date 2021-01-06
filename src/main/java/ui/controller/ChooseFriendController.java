@@ -37,7 +37,6 @@ public class ChooseFriendController {
      * This method transfers the selected friend in the ChooseAmountController and load the chooseAmountView.
      * It is called by a button.
      * @throws IOException
-     * @todo Handle the possible exceptions.
      */
     public void goToChooseAmountView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.chooseAmountView));

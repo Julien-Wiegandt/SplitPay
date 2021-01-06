@@ -37,7 +37,6 @@ public class ChooseBankAccountController {
      * This method transfers the selected BankAccount in the ChooseRecoverAmountController and load the chooseRecoverAmountView.
      * It is called by a button.
      * @throws IOException
-     * @todo Handle the possible exceptions.
      */
     public void goToChooseRecoverAmountView() throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null) {

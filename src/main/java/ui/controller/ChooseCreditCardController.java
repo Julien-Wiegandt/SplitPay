@@ -37,7 +37,6 @@ public class ChooseCreditCardController {
      This method transfers the selected CreditCard in the ChooseRefillAmountController and load the chooseRefillAmountView.
      * It is called by a button.
      * @throws IOException
-     * @todo Handle the possible exceptions.
      */
     public void goToChooseRefillAmountView() throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null) {

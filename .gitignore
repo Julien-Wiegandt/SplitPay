@@ -1,0 +1,7 @@
+#.idea
+*.iws
+workspace.xml
+tasks.xml
+
+#folder generated after run
+target/
