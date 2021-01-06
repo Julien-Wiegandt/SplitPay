@@ -1,6 +1,7 @@
 package server.models.split;
 
 import core.facade.TransactionFacade;
+import core.facade.UserFacade;
 import core.models.StoreOwner;
 import server.communication.ConnectionToClient;
 import server.exception.splitException.GoalAmountExceededException;
@@ -238,18 +239,24 @@ public abstract class Split implements Serializable {
     }
 
     /**
-     * creates the transactions for the split
+     * creates the transactions for the split and updates user balances
      */
     public void paySplit() throws SplitNotReadyForPayment {
         if(isReadyForPayment()){
             TransactionFacade transactionFacade = TransactionFacade.getTransactionFacade();
+            UserFacade userFacade = UserFacade.getUserFacade();
             String stringParticipants = participantsToString();
+            int receiverId = Integer.parseInt(getReceiver().getId());
             for (Participant participant: getParticipants().values()) {
+                float participantAmount = (float) participant.getAmount();
+                userFacade.updateUserBalanceById(participant.getId(), participantAmount*(-1));
+                // TODO : replace userFacade by store owner facade
+                userFacade.updateUserBalanceById(receiverId, participantAmount);
                 transactionFacade.createSplitTransaction(
-                        (float) participant.getAmount(),
+                        participantAmount,
                         new Date(System.currentTimeMillis()),
                         participant.getId(),
-                        Integer.parseInt(getReceiver().getId()),
+                        receiverId,
                         stringParticipants);
             }
 
