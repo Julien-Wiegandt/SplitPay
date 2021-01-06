@@ -134,7 +134,7 @@ public class MySqlUserDAO extends UserDAO {
                 //String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
-                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, null);
+                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -166,7 +166,7 @@ public class MySqlUserDAO extends UserDAO {
                 String dbCompanyName = rs.getString("companyName");
                 String dbAddress = rs.getString("address");
 
-                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, null, dbCompanyName, dbAddress);
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbCompanyName, dbAddress);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -197,7 +197,7 @@ public class MySqlUserDAO extends UserDAO {
                 //String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
-                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, null);
+                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -230,7 +230,7 @@ public class MySqlUserDAO extends UserDAO {
                 String dbCompanyName = rs.getString("companyName");
                 String dbAddress = rs.getString("address");
 
-                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, null, dbCompanyName, dbAddress);
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbCompanyName, dbAddress);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -388,7 +388,7 @@ public class MySqlUserDAO extends UserDAO {
 
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
-                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, null);
+                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance);
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();
@@ -413,13 +413,12 @@ public class MySqlUserDAO extends UserDAO {
                 String dbPhone = rs.getString("phone");
                 String dbNickname = rs.getString("nickname");
                 Float dbBalance = rs.getFloat("balance");
-                //String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
                 String dbCompanyName = rs.getString("companyName");
                 String dbAddress = rs.getString("address");
 
-                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, null, dbCompanyName, dbAddress);
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbCompanyName, dbAddress);
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();

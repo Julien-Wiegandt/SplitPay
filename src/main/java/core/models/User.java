@@ -3,30 +3,26 @@ package core.models;
 /**
  *
  */
-public class User {
+public abstract class User {
 
-    /**
-     * Default constructor
-     */
-    public User() {
-    }
-    public User(String id, String email, String phone, String password, String nickname, Float balance, String validationCode) {
+    protected User(){}
+
+    protected User(String id, String email, String phone, String password, String nickname, Float balance) {
         this.id=id;
         this.email=email;
         this.phone=phone;
         this.password=password;
         this.nickname=nickname;
         this.balance=balance;
-        this.validationCode=validationCode;
     }
 
 
-    private String id;
-    private String email;
-    private String phone;
-    private String nickname;
-    private String password;
-    private Float balance;
+    protected String id;
+    protected String email;
+    protected String phone;
+    protected String nickname;
+    protected String password;
+    protected Float balance;
 
     public void setEmail(String email) {
         this.email = email;
@@ -48,25 +44,21 @@ public class User {
         this.balance = balance;
     }
 
-    public void setValidationCode(String validationCode) {
-        this.validationCode = validationCode;
-    }
-
-    private String validationCode;
-
     public String getId(){ return this.id;}
 
     public String getEmail(){ return this.email;}
+
     public String getPhone(){ return this.phone;}
+
     public String getNickname(){return this.nickname;}
+
     public String getPassword(){return this.password;}
+
     public Float getBalance(){return this.balance;}
-    public String getValidationCode(){ return this.validationCode;}
 
     public void setId(String id) {
         this.id = id;
     }
-
 
     @Override
     public String toString() {
@@ -77,7 +69,6 @@ public class User {
                 ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", balance=" + balance +
-                ", validationCode='" + validationCode + '\'' +
                 '}';
     }
 }

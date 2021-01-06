@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
+import util.SplitUtilities;
 
 import java.io.IOException;
 
@@ -26,14 +27,16 @@ public class DeleteAccountController {
 
     private static User tempUser;
 
+    private String realCode;
 
     @FXML
     void initialize() {
-
+        realCode = SplitUtilities.generateCode();
+        System.out.println(realCode);
     }
 
     public void deleteAccount(ActionEvent actionEvent) throws IOException {
-        if (code.getText().equals(tempUser.getValidationCode())) {
+        if (code.getText().equals(realCode)) {
             UserFacade.deleteAccount();
             Parent root = FXMLLoader.load(getClass().getResource(AuthPath.logInView));
             SplitPay.window.setScene(new Scene(root));

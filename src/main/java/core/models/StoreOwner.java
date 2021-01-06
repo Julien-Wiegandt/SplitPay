@@ -14,13 +14,30 @@ public class StoreOwner extends User {
      */
     private String siret;
     private String companyName;
+
+    public void setSiret(String siret) {
+        this.siret = siret;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     private String address;
 
-    public StoreOwner(String id, String email, String phone, String siret, String password, String nickname, Float balance, String validationCode, String companyName, String address) {
-        super(id, email, phone, password, nickname, balance, validationCode);
+    public StoreOwner(String id, String email, String phone, String siret, String password, String nickname, Float balance, String companyName, String address) {
+        super(id, email, phone, password, nickname, balance);
         this.siret = siret;
         this.companyName = companyName;
         this.address = address;
+    }
+
+    public StoreOwner(){
+        super();
     }
 
     public String getSiret(){
@@ -43,7 +60,6 @@ public class StoreOwner extends User {
                 ", nickname='" + this.getNickname() + '\'' +
                 ", password='" + this.getPassword() + '\'' +
                 ", balance=" + this.getBalance() +
-                ", validationCode='" + this.getValidationCode() + '\'' +
                 ", companyName='" + this.getCompanyName() + '\'' +
                 ", address='" + this.getAddress() + '\'' +
                 '}';

@@ -141,7 +141,7 @@ public class MySqlGroupDAO extends GroupDAO {
                 String dbEmail = rs.getString("email");
                 String dbFirstName = rs.getString("firstName");
 
-                normalUser = new NormalUser(dbFirstName,null,dbId,dbEmail,null,null,null,null,null);
+                normalUser = new NormalUser(dbFirstName,null,dbId,dbEmail,null,null,null,null);
 
                 ccs.add(normalUser);
             }

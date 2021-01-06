@@ -1,7 +1,6 @@
 package core.models;
 
 public class NormalUser extends User {
-
     /**
      * Default constructor
      *
@@ -15,12 +14,13 @@ public class NormalUser extends User {
     private String firstName;
     private String LastName;
 
-    public NormalUser(String firstName, String LastName, String id, String email, String phone, String password, String nickname, Float balance, String validationCode) {
-        super(id, email, phone, password, nickname, balance, validationCode);
+    public NormalUser(String firstName, String LastName, String id, String email, String phone, String password, String nickname, Float balance) {
+        super(id, email, phone, password, nickname, balance);
         this.firstName = firstName;
         this.LastName = LastName;
     }
-    public NormalUser() {
+
+    public NormalUser(){
         super();
     }
 
@@ -32,6 +32,14 @@ public class NormalUser extends User {
         return this.LastName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
     public String toStringDebug() {
         return "User{" +
                 "id='" + this.getId() + '\'' +
@@ -40,7 +48,6 @@ public class NormalUser extends User {
                 ", nickname='" + this.getNickname() + '\'' +
                 ", password='" + this.getPassword() + '\'' +
                 ", balance=" + this.getBalance() +
-                ", validationCode='" + this.getValidationCode() + '\'' +
                 ", lastName='" + this.getLastName() + '\'' +
                 ", firstName='" + this.getFirstName() + '\'' +
                 '}';
