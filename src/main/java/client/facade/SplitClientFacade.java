@@ -375,6 +375,20 @@ public class SplitClientFacade implements Observer
     }
 
     /**
+     * Method askin the server to pay the split
+     * @param splitCode
+     */
+    public void paySplit(String splitCode){
+        /* Creating request arguments */
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("splitCode",splitCode);
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_REQUEST,arguments,null);
+
+        sendToServer(message);
+    }
+
+    /**
      * This method is called whenever the observed object is changed. An
      * application calls an {@code Observable} object's
      * {@code notifyObservers} method to have all the object's

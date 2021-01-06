@@ -160,6 +160,10 @@ public class ItemSplitSaloonController {
         facade.switchReadyStatus(getJoinedSplit().getSplitCode());
     }
 
+    public void payButtonHandler(){
+        System.out.println("Pay attempt");
+    }
+
     /**
      * Handles participant quit button
      */

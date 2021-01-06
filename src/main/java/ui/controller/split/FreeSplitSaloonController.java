@@ -75,7 +75,7 @@ public class FreeSplitSaloonController {
      * @param split
      */
     public void updateSplit(FreeSplit split){
-        setJoinedSplit((FreeSplit) split);
+        setJoinedSplit(split);
         updateDisplayedSplit();
     }
 
