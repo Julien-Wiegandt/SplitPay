@@ -328,19 +328,26 @@ public class MySqlUserDAO extends UserDAO {
         }
         try {
             if(user instanceof NormalUser) {
-                System.out.println("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName ='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
-                        "WHERE normal_user_pk='" + user.getId() + "'");
 
-
-                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName ='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
+                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET " +
+                        "firstName='"+((NormalUser) user).getFirstName()+"', " +
+                        "lastName ='"+((NormalUser) user).getLastName()+"', " +
+                        "email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                        "password='" + user.getPassword() + "', " +
+                        "nickname='" + user.getNickname() + "', " +
+                        "balance='" + user.getBalance() + "'" +
                         "WHERE normal_user_pk='" + user.getId() + "'");
 
             }else{
-                Integer rs = stmt.executeUpdate("UPDATE StoreOwner SET email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "','"+((StoreOwner)user).getCompanyName()+"','"+((StoreOwner)user).getAddress()+"', balance=" + user.getBalance() +
-                        "WHERE store_owner_pk=" + user.getId() + "");
+                Integer rs = stmt.executeUpdate("UPDATE StoreOwner SET " +
+                        "email='" + user.getEmail() + "', " +
+                        "phone='" + user.getPhone() + "'," +
+                        "password='" + user.getPassword() + "', " +
+                        "nickname='" + user.getNickname() + "'," +
+                        "companyName='"+((StoreOwner)user).getCompanyName()+"'," +
+                        "address='"+((StoreOwner)user).getAddress()+"', " +
+                        "balance='" + user.getBalance() + "'" +
+                        "WHERE store_owner_pk='" + user.getId() + "'");
 
             }
 

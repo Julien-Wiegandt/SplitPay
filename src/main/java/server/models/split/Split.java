@@ -251,7 +251,7 @@ public abstract class Split implements Serializable {
                 float participantAmount = (float) participant.getAmount();
                 userFacade.updateUserBalanceById(participant.getId(), participantAmount*(-1));
                 // TODO : replace userFacade by store owner facade
-                userFacade.updateUserBalanceById(receiverId, participantAmount);
+                userFacade.updateStoreOwnerBalanceById(receiverId, participantAmount);
                 transactionFacade.createSplitTransaction(
                         participantAmount,
                         new Date(System.currentTimeMillis()),

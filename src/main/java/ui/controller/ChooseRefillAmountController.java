@@ -3,7 +3,6 @@ package ui.controller;
 import core.facade.TransactionFacade;
 import core.facade.UserFacade;
 import core.models.CreditCard;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

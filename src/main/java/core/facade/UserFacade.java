@@ -130,11 +130,8 @@ public class UserFacade {
         return money <= getUser().getBalance();
     }
 
+    // TODO : refactor to updateNormalUserBalanceById
     public void updateUserBalanceById(int userId, Float amount){
-        if(userId == Integer.valueOf(user.getId())){
-            user.setBalance(user.getBalance()+amount);
-            userDao.update(user);
-        }else{
             try {
                 User u = userDao.findUserById(userId);
                 u.setBalance(u.getBalance()+amount);
@@ -142,6 +139,15 @@ public class UserFacade {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+    }
+
+    public void updateStoreOwnerBalanceById(int userId, Float amount){
+        try {
+            User u = userDao.findStoreOwnerById(userId);
+            u.setBalance(u.getBalance()+amount);
+            userDao.update(u);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 
