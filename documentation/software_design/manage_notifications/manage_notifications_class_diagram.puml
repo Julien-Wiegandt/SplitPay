@@ -58,7 +58,7 @@ package persist{
         interface NotificationDAO{
             +getConnection(): UserDAO
             +deleteNotificationById(id: String): void
-            +addNotification(notification: Notification): Notification
+            +addNotification(notification: Notification): void
             +getAllCurrentUserNotifications(): Collection<Notification>
         }
         package postgres{

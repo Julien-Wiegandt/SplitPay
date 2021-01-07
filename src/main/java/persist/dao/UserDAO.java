@@ -108,9 +108,11 @@ public abstract class UserDAO{
      */
     public abstract Collection<User> findAll();
 
+
     public abstract User findUserById(int userId) throws SQLException;
 
     public abstract Collection<CreditCard> getCreditCards();
 
     public abstract Collection<BankAccount> getBankAccounts();
+
 }

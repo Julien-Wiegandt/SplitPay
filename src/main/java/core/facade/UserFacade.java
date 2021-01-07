@@ -2,11 +2,10 @@ package core.facade;
 
 import core.auth.Session;
 import core.models.*;
-import javafx.scene.control.IndexedCell;
 import persist.DAOFactory;
 import persist.dao.UserDAO;
 import persist.dao.mysql.MySqlDAOFactory;
-
+import util.SplitUtilities;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -122,10 +121,11 @@ public class UserFacade {
         return user;
     }
 
-    public Collection getFriends(int userId) {
+    // à remplacer par FriendFacade.getFriends()
+    /*public Collection getFriends(int userId) {
         return userDao.getFriends(userId);
     }
-
+*/
     public Boolean isEnoughtMoneyInBalance(Float money){
         return money <= getUser().getBalance();
     }
@@ -152,4 +152,37 @@ public class UserFacade {
     public Collection<BankAccount> getBankAccounts() {
         return userDao.getBankAccounts();
     }
+
+    /**
+     * Returns the user having this phone number
+     * else throws exception
+     */
+    public User findUserByPhone(String phone){
+        return userDao.findUserByPhone(phone);
+    }
+
+
+    public User findUserByEmail(String email) throws SQLException {
+        return userDao.findUserByEmail(email);
+    }
+
+    public void updateUser(User user){
+        this.user = user;
+        userDao.update(user);
+    }
+
+    public void generateVerificationCode(){
+        String code = SplitUtilities.generateCode();
+        System.out.println(code);
+        getUser().setValidationCode(code);
+
+    }
+
+    public static void deleteAccount(){
+        User user = getUserFacade().getLoggedUser();
+        getUserFacade().userDao.delete(user);
+
+    }
+
+
 }

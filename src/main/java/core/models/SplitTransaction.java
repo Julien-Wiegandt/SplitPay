@@ -2,8 +2,23 @@ package core.models;
 
 import java.util.Date;
 
+/**
+ * Model of the SplitTransaction which represents the transaction from a NormalUser's balance to a StoreOwner's balance.
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2021-01-05
+ */
 public class SplitTransaction extends Transaction{
 
+     /**
+     * SplitTransaction's constructor.
+     * @param amount
+     * @param dateCreated
+     * @param sender_fk
+     * @param receiver_fk
+     * @param participants
+     */
     public SplitTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk, String participants) {
         this.name = "SplitTransaction";
         this.amount = amount;
@@ -37,6 +52,10 @@ public class SplitTransaction extends Transaction{
         this.participants = participants;
     }
 
+    /**
+     * Represents the transaction.
+     * @return the String representation of the transaction.
+     */
     public String toString(){
         return "To SplitPay: -" + this.getAmount() + "€ on " + this.getDateCreated().toString();
     }

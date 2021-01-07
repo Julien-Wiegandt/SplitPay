@@ -1,0 +1,60 @@
+@startuml
+
+abstract class Split {
+    - id : int
+    - splitType : SplitType
+    - label : String
+    - splitCode : String
+    - goalAmount : Double
+    - splitMode : String
+    - expired : Boolean
+    - isEveryoneReady() : Boolean
+    - isGoalAmountReached() : Boolean
+    - isReadyForPayment() : Boolean
+    - getParticipantById(int id) : Participant
+    - ownerId : int
+    - ownerNickName : String
+    - currentAmount : Double
+    + validatePayment() : void
+    + changeAmount(int participant, Double amount) : void
+    + switchParticipantReadyStatus(int participant) : void
+    + removeParticipant(int participant) : void
+    + addParticipant(int participant) : void
+    + getNumberOfParticipant() : int
+}
+
+class Participant {
+    - id : int
+    - amount : Double
+    - nickname : String
+    - isReady : Boolean
+    + isReady() : Boolean
+    + changeReadyStatus() : void
+    + changeAmount(Double newAmount) : void
+    + cancel() : void
+}
+
+class FreeSplit{
+}
+
+class ItemSplit{
+    + pickItem(Item item) : void
+    + changeAmount() :  void
+}
+
+class EqualSplit{
+    + switchParticipantReadyStatus(int Participant) : void
+}
+
+enum SplitType{
+    FREESPLIT
+    ITEMSPLIT
+    EQUALSPLIT
+}
+
+Split -right-> "0..n participants" Participant
+FreeSplit -up-|> Split
+ItemSplit -up-|> Split
+EqualSplit -up-|> Split
+
+@enduml

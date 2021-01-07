@@ -32,13 +32,6 @@ public class TransactionController {
             }else{
                 otherTransactionActor.setText("From : "+String.valueOf(t.getSender_fk()));
             }
-        }else if(transaction.getName().equals("UserToStoreOwnerTransaction")){
-            UserToStoreOwnerTransaction t = (UserToStoreOwnerTransaction) transaction;
-            if(UserFacade.getUserFacade().isNormalUser()) {
-                otherTransactionActor.setText("To : "+String.valueOf(t.getReceiver_fk()));
-            }else{
-                otherTransactionActor.setText("From : "+String.valueOf(t.getSender_fk()));
-            }
         }else if(transaction.getName().equals("UserToBankAccount")){
             UserToBankAccount t = (UserToBankAccount) transaction;
             otherTransactionActor.setText("To : "+String.valueOf(t.getReceiver_fk()));

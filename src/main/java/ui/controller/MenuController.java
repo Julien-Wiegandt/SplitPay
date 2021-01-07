@@ -10,10 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import main.SplitPay;
 import ui.path.NormalUserNavigationPath;
+import ui.path.AuthPath;
 import ui.path.UserNavigationPath;
-
 import java.io.IOException;
-
 public class MenuController {
 
     @FXML
@@ -39,8 +38,6 @@ public class MenuController {
     private Label socialLabel;
     @FXML
     private Label myInformationLabel;
-
-
 
 
     @FXML
@@ -71,10 +68,9 @@ public class MenuController {
      * @throws IOException
      */
     public void goToMySplitsView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.mySplitsView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("view/authPath/mySplitsView.fxml"));
         SplitPay.window.setScene(new Scene(root));
     }
-
 
     /**
      * This method redirects to the CreditCardView
@@ -99,6 +95,36 @@ public class MenuController {
 
     public void goToGroupView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
+
+    }
+
+    /**
+     * This method redirects to the selectMethodView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToManageAccountView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.manageAccountView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * This method redirects to the friendView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToFriendView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.friendView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * This method redirects to the notificationView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToNotificationView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.notificationView));
         SplitPay.window.setScene(new Scene(root));
     }
 }

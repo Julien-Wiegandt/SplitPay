@@ -1,5 +1,6 @@
 package ui.controller;
 
+import core.facade.FriendFacade;
 import core.facade.UserFacade;
 import core.models.NormalUser;
 import javafx.collections.FXCollections;
@@ -52,7 +53,7 @@ public class ChooseFriendController {
      */
     @FXML
     private void initialize() {
-        Collection friends = UserFacade.getUserFacade().getFriends(Integer.valueOf(UserFacade.getUserFacade().getLoggedNormalUser().getId()));
+        Collection friends = FriendFacade.getFriendFacade().getFriends();
         ObservableList<NormalUser> items = FXCollections.observableArrayList ();
         Iterator<NormalUser> iterator = friends.iterator();
         while (iterator.hasNext()) {

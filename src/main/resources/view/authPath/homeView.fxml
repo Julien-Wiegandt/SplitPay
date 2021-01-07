@@ -7,7 +7,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HomeController">
    <center>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="340.0" prefWidth="469.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="340.0" prefWidth="637.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" prefHeight="31.0" prefWidth="546.0" text="Balance">
                <font>
@@ -24,31 +24,11 @@
                   <Insets bottom="30.0" />
                </VBox.margin>
             </Button>
-            <VBox fx:id="joinSplitSection" alignment="CENTER" prefHeight="80.0" prefWidth="120.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="531.0" text="Enter split code">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <TextField promptText="Code">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Button mnemonicParsing="false" text="Join">
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" text="Create split">
-                     <VBox.margin>
-                        <Insets bottom="30.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <Button fx:id="sendMoneyToFriendButton" mnemonicParsing="false" onAction="#goToChooseFriendView" text="Send money to friend" />
+            <fx:include source="splitSection.fxml" />
+            <Button fx:id="sendMoneyToFriendButton" mnemonicParsing="false" onAction="#goToChooseFriendView" text="Send money to friend">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Button>
          </children>
       </VBox>
    </center>

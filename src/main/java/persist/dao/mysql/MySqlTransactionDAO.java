@@ -12,13 +12,25 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+/**
+ * Transaction MySql DAO which provides all possible operations on the persistent data concerning Transaction for a MySQL database.
+ *
+ * @author Julien Wiegandt
+ * @version 1.0
+ * @since 2021-01-05
+ */
 public class MySqlTransactionDAO implements TransactionDAO {
 
-    public MySqlTransactionDAO(){
+    /**
+     * MySqlTransactionDAO's constructor.
+     */
+    public MySqlTransactionDAO(){ }
 
-    }
-
-
+    /**
+     * This method makes SQL queries on persistent data to find all transactions of the user having userid.
+     * @param userId id of the user whose transactions are wanted.
+     * @return user's Transactions.
+     */
     public Collection<Transaction> findAllTransactions(int userId) {
         Statement stmt = null;
         ArrayList<Transaction> transactions = new ArrayList<Transaction>();
@@ -101,6 +113,13 @@ public class MySqlTransactionDAO implements TransactionDAO {
         return transactions;
     }
 
+    /**
+     * This method creates a CreditCardToUserTransaction in persistent data via an sql query.
+     * @param amount
+     * @param dateCreated
+     * @param sender_fk
+     * @param receiver_fk
+     */
     public void createCreditCardToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
         Statement stmt = null;
         try {
@@ -117,6 +136,14 @@ public class MySqlTransactionDAO implements TransactionDAO {
         }
     }
 
+    /**
+     * This method creates a SplitTransaction in persistent data via an sql query.
+     * @param amount
+     * @param dateCreated
+     * @param sender_fk
+     * @param receiver_fk
+     * @param participants
+     */
     public void createSplitTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk, String participants) {
         Statement stmt = null;
         try {
@@ -133,6 +160,13 @@ public class MySqlTransactionDAO implements TransactionDAO {
         }
     }
 
+    /**
+     * This method creates a StoreOwnerToBankAccount in persistent data via an sql query.
+     * @param amount
+     * @param dateCreated
+     * @param sender_fk
+     * @param receiver_fk
+     */
     public void createStoreOwnerToBankAccount(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
         Statement stmt = null;
         try {
@@ -149,6 +183,13 @@ public class MySqlTransactionDAO implements TransactionDAO {
         }
     }
 
+    /**
+     * This method creates a UserToBankAccount in persistent data via an sql query.
+     * @param amount
+     * @param dateCreated
+     * @param sender_fk
+     * @param receiver_fk
+     */
     public void createUserToBankAccount(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
         Statement stmt = null;
         try {
@@ -165,22 +206,13 @@ public class MySqlTransactionDAO implements TransactionDAO {
         }
     }
 
-    public void createUserToStoreOwnerTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
-        Statement stmt = null;
-        try {
-            stmt = ConnectionMySql.connection.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String mysqlDateString = formatter.format(dateCreated);
-            stmt.executeUpdate("INSERT INTO UserToStoreOwnerTransaction VALUES ("+amount+", '"+mysqlDateString+"', "+sender_fk+", "+receiver_fk+");");
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
+    /**
+     * This method creates a UserToUserTransaction in persistent data via an sql query.
+     * @param amount
+     * @param dateCreated
+     * @param sender_fk
+     * @param receiver_fk
+     */
     public void createUserToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk) {
         Statement stmt = null;
         try {
