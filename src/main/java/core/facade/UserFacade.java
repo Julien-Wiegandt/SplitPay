@@ -171,4 +171,7 @@ public class UserFacade {
     }
 
 
+    public Collection getFriends(int parseInt) {
+        return userDao.getFriends(parseInt);
+    }
 }

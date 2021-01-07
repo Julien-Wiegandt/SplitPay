@@ -21,14 +21,14 @@ public class MySqlGroupDAO extends GroupDAO {
         Statement stmt = null;
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
             System.out.println("création..");
 
-            Integer rs = stmt.executeUpdate("INSERT INTO FriendGroup VALUES (NULL, '"+label+"', '"+ UserFacade.getUserFacade().getLoggedUser().getId()+"')");
+            Integer rs = stmt.executeUpdate("INSERT INTO FriendGroup VALUES (NULL,'"+label+"', '"+ UserFacade.getUserFacade().getLoggedUser().getId()+"')");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -40,7 +40,7 @@ public class MySqlGroupDAO extends GroupDAO {
         Statement stmt = null;
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -60,13 +60,13 @@ public class MySqlGroupDAO extends GroupDAO {
         Statement stmt = null;
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
             System.out.println("création..");
-
+            System.out.println("INSERT INTO Relation_FriendGroup_User VALUES ('" +group.getId()+"', '"+friend.getId()+"')");
             Integer rs2 = stmt.executeUpdate("INSERT INTO Relation_FriendGroup_User VALUES ('" +group.getId()+"', '"+friend.getId()+"')");
 
         } catch (SQLException throwables) {
@@ -80,13 +80,13 @@ public class MySqlGroupDAO extends GroupDAO {
         Statement stmt = null;
 
         try {
-            stmt = MySqlDAOFactory.connection.createStatement();
+            stmt = ConnectionMySql.connection.createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         try {
             System.out.println("suppression...");
-
+            System.out.println("DELETE FROM Relation_FriendGroup_User WHERE friend_group_fk = '" + group.getId()+ "' AND normal_user_fk = '"+friend.getId()+"' ");
             stmt.executeUpdate("DELETE FROM Relation_FriendGroup_User WHERE friend_group_fk = '" + group.getId()+ "' AND normal_user_fk = '"+friend.getId()+"' "  );
         }catch(SQLException throwables) {
             throwables.printStackTrace();
