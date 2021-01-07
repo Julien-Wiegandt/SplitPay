@@ -132,7 +132,7 @@ public class MenuController {
      * @throws IOException
      */
     public void goToHomeView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
     }
 

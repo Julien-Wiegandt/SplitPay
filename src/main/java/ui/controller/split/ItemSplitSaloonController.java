@@ -189,7 +189,7 @@ public class ItemSplitSaloonController {
         Parent root = null;
         try {
             // TODO : resource correctly
-            root = FXMLLoader.load(getClass().getResource("../"+UserNavigationPath.homeView));
+            root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         } catch (IOException e) {
             e.printStackTrace();
         }

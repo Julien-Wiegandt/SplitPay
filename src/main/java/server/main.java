@@ -33,9 +33,9 @@ public class main {
                 "delarte34",
                 "delarte34080",
                 Float.parseFloat("743.67"),
-                "null",
                 "Del arte restaurant",
                 "145 Rue Alphonse Beau de Rochas, 34170 Castelnau");
+
 
         System.out.println("Free split : " + facade.createFreeSplit(2,"User 2",32.2,"Pizza",storeOwner));
         System.out.println("Item split : " + facade.createItemSplit(1,"testUser","Restaurant",items,storeOwner));

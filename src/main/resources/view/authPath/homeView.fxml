@@ -32,31 +32,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Label text="Enter split code">
-                     <VBox.margin>
-                        <Insets top="40.0" />
-                     </VBox.margin>
-                  </Label>
-                  <TextField>
-                     <VBox.margin>
-                        <Insets left="100.0" right="100.0" top="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Button mnemonicParsing="false" text="Join">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Label text="Split section flash message">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Button mnemonicParsing="false" text="Create split">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Button>
+                  <fx:include source="splitSection.fxml"/>
                   <Button fx:id="sendMoneyToFriendButton" mnemonicParsing="false" onAction="#goToChooseFriendView" text="Send money to friend">
                      <VBox.margin>
                         <Insets bottom="20.0" top="80.0" />

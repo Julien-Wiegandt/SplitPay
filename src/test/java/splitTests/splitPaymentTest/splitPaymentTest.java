@@ -44,7 +44,6 @@ public class splitPaymentTest {
                 "delarte34",
                 "delarte34080",
                 Float.parseFloat("743.67"),
-                "null",
                 "Del arte restaurant",
                 "145 Rue Alphonse Beau de Rochas, 34170 Castelnau");
 
