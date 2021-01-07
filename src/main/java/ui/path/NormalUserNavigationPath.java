@@ -9,7 +9,7 @@ public class NormalUserNavigationPath {
 
     public static String groupView = "../../view/authPath/GroupView.fxml";
     public static String addGroupView = "../../view/authPath/AddGroupView.fxml";
-    public static String deleteGroupView;
+
     public static String editGroupView = "../../view/authPath/EditGroupView.fxml";
 
 

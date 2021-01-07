@@ -116,12 +116,12 @@ public class EditGroupController {
 
     public void selectFriendInAll(MouseEvent mouseEvent) {
         this.friend_in_all = (NormalUser)all_my_friends.getSelectionModel().getSelectedItem();
-        System.out.println(friend_in_all.getId());
+
     }
 
     public void selectFriendInGroup(MouseEvent mouseEvent){
         this.friend_in_group = (NormalUser)friends_in_group.getSelectionModel().getSelectedItem();
-        System.out.println(friend_in_group.getId());
+
     }
 
     public void deleteFriendFromGroup(ActionEvent actionEvent) throws IOException {

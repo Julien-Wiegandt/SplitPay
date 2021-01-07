@@ -72,11 +72,13 @@ public class BankAccountController {
      */
 
     public void goToEditBankAccountView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.editBankAccountView));
-        Parent root = loader.load();
-        EditBankAccountController editBankAccountController = loader.getController();
-        editBankAccountController.setBankAccount((BankAccount) listView.getSelectionModel().getSelectedItem());
-        SplitPay.window.setScene(new Scene(root));
+        if(listView.getSelectionModel().getSelectedItem() !=null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.editBankAccountView));
+            Parent root = loader.load();
+            EditBankAccountController editBankAccountController = loader.getController();
+            editBankAccountController.setBankAccount((BankAccount) listView.getSelectionModel().getSelectedItem());
+            SplitPay.window.setScene(new Scene(root));
+        }
     }
 
 
