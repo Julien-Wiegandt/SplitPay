@@ -48,7 +48,6 @@ public class MenuController {
             creditCardsButton.setManaged(false);
             socialLabel.setManaged(false);
             socialLabel.setManaged(false);
-
         }
     }
 
@@ -58,7 +57,7 @@ public class MenuController {
      * @throws IOException
      */
     public void goToMyTransactionsView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.myTransactionsView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.myTransactionsView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -82,7 +81,6 @@ public class MenuController {
         SplitPay.window.setScene(new Scene(root));
     }
 
-
     /**
      * This method redirects to the BankAccountView
      * @param actionEvent
@@ -95,7 +93,6 @@ public class MenuController {
 
     public void goToGroupView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
-
     }
 
     /**

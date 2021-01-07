@@ -1,8 +1,8 @@
 package ui.path;
 
 public class NormalUserNavigationPath {
-    public static String chooseFriendView = "../../view/authPath/sendMoneyToFriend/chooseFriendView.fxml";
-    public static String chooseAmountView = "../../view/authPath/sendMoneyToFriend/chooseAmountView.fxml";
+    public static String chooseFriendView = "view/authPath/sendMoneyToFriend/chooseFriendView.fxml";
+    public static String chooseAmountView = "view/authPath/sendMoneyToFriend/chooseAmountView.fxml";
 
     public static String creditCardView = "../../view/authPath/manageCreditCard/CreditCardView.fxml";
     public static String addCreditCardView = "../../view/authPath/manageCreditCard/AddCreditCardView.fxml";

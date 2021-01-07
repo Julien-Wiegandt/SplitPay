@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageBalance;
 
 import core.facade.TransactionFacade;
 import core.facade.UserFacade;
@@ -54,7 +54,7 @@ public class ChooseRecoverAmountController {
             }else{
                 TransactionFacade.getTransactionFacade().createStoreOwnerToBankAccount(Float.valueOf(amountInput.getText()), new Date(), Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Integer.valueOf(bankAccount.getId()));
             }
-            Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
             SplitPay.window.setScene(new Scene(root));
         }else{
             amountInput.setStyle("-fx-text-box-border: red");

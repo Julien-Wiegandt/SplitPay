@@ -1,7 +1,6 @@
-package ui.controller;
+package ui.controller.manageBalance;
 
 import core.facade.CreditCardFacade;
-import core.facade.UserFacade;
 import core.models.CreditCard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 import main.SplitPay;
 import ui.path.UserNavigationPath;
 
@@ -41,7 +39,7 @@ public class ChooseCreditCardController {
      */
     public void goToChooseRefillAmountView() throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.chooseRefillAmountView));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(UserNavigationPath.chooseRefillAmountView));
             Parent root = loader.load();
             ChooseRefillAmountController chooseRefillAmountController = loader.getController();
             chooseRefillAmountController.setCreditCard((CreditCard) listView.getSelectionModel().getSelectedItem());

@@ -1,7 +1,6 @@
-package ui.controller;
+package ui.controller.manageBalance;
 
 import core.facade.BankAccountFacade;
-import core.facade.UserFacade;
 import core.models.BankAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 import main.SplitPay;
 import ui.path.UserNavigationPath;
 
@@ -41,7 +39,7 @@ public class ChooseBankAccountController {
      */
     public void goToChooseRecoverAmountView() throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.chooseRecoverAmountView));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(UserNavigationPath.chooseRecoverAmountView));
             Parent root = loader.load();
             ChooseRecoverAmountController chooseRecoverAmountController = loader.getController();
             chooseRecoverAmountController.setBankAccount((BankAccount) listView.getSelectionModel().getSelectedItem());

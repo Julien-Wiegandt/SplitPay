@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.transaction;
 
 import core.facade.UserFacade;
 import core.models.*;

@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageBalance;
 
 import core.facade.UserFacade;
 import javafx.fxml.FXML;
@@ -36,7 +36,7 @@ public class ManageBalanceController {
      * @throws IOException
      */
     public void goToChooseCreditCardView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.chooseCreditCardView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.chooseCreditCardView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -46,7 +46,7 @@ public class ManageBalanceController {
      * @throws IOException
      */
     public void goToChooseBankAccountView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.chooseBankAccountView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.chooseBankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 

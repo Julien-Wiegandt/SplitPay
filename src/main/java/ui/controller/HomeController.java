@@ -42,12 +42,12 @@ public class HomeController {
     }
 
     public void goToChooseFriendView(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.chooseFriendView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.chooseFriendView));
         SplitPay.window.setScene(new Scene(root));
     }
 
     public void goToManageBalanceView(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.manageBalanceView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.manageBalanceView));
         SplitPay.window.setScene(new Scene(root));
     }
 

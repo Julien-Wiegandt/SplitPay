@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.transaction;
 
 import core.facade.TransactionFacade;
 import core.models.Transaction;
@@ -40,7 +40,7 @@ public class MyTransactionsController {
      */
     @FXML public void goToTransactionView() throws IOException {
         if(listView.getSelectionModel().getSelectedItem() != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.transactionView));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(UserNavigationPath.transactionView));
             Parent root = loader.load();
             TransactionController transactionController = loader.getController();
             transactionController.setTransaction((Transaction) listView.getSelectionModel().getSelectedItem());

@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.sendMoneyToFriend;
 
 import core.facade.TransactionFacade;
 import core.facade.UserFacade;
@@ -59,7 +59,7 @@ public class ChooseAmountController {
             UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText())*(-1));
             UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(friend.getId()), Float.valueOf(amountInput.getText()));
             TransactionFacade.getTransactionFacade().createUserToUserTransaction(Float.valueOf(amountInput.getText()), new Date(), Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Integer.valueOf(friend.getId()));
-            Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
             SplitPay.window.setScene(new Scene(root));
         }else{
             amountInput.setStyle("-fx-text-box-border: red");

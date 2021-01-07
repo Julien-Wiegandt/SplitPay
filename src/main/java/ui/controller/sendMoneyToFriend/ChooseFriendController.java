@@ -1,7 +1,6 @@
-package ui.controller;
+package ui.controller.sendMoneyToFriend;
 
 import core.facade.FriendFacade;
-import core.facade.UserFacade;
 import core.models.NormalUser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import main.SplitPay;
+import ui.controller.sendMoneyToFriend.ChooseAmountController;
 import ui.path.NormalUserNavigationPath;
 
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class ChooseFriendController {
      */
     public void goToChooseAmountView() throws IOException {
         if(friendsList.getSelectionModel().getSelectedItem() != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.chooseAmountView));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(NormalUserNavigationPath.chooseAmountView));
             Parent root = loader.load();
             ChooseAmountController chooseAmountController = loader.getController();
             chooseAmountController.setFriend((NormalUser) friendsList.getSelectionModel().getSelectedItem());
