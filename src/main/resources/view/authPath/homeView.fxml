@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -69,19 +68,9 @@
                </BorderPane.margin>
             </VBox>
          </center>
+         <bottom>
+            <fx:include source="homeButtonView.fxml" />
+         </bottom>
       </BorderPane>
-      <HBox alignment="CENTER" prefHeight="62.0" prefWidth="320.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#goToHomeView" style="-fx-background-radius: 100;">
-               <graphic>
-                  <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../home-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
    </children>
 </VBox>

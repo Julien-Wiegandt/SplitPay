@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<HBox alignment="CENTER" prefHeight="62.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HomeButtonController">
+    <children>
+        <Button mnemonicParsing="false" onAction="#goToHomeView" style="-fx-background-radius: 100;">
+            <graphic>
+                <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../home-icon.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
+</HBox>

@@ -3,18 +3,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.ChooseCreditCardController">
-    <center>
-        <VBox alignment="CENTER" fillWidth="false" prefHeight="340.0" prefWidth="469.0" BorderPane.alignment="CENTER">
-            <children>
-                <ListView fx:id="listView" prefHeight="277.0" prefWidth="382.0" onMouseClicked="#goToChooseRefillAmountView"/>
-            </children>
-        </VBox>
-    </center>
-    <top>
-        <fx:include fx:id="normalUserHeaderBar" source="../headerBar.fxml" />
-    </top>
-    <left>
-        <fx:include fx:id="normalUserMenu" source="../menu.fxml" />
-    </left>
-</BorderPane>
+<?import javafx.geometry.Insets?>
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.ChooseCreditCardController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+            <center>
+                <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ListView fx:id="listView" onMouseClicked="#goToChooseRefillAmountView" prefHeight="277.0" prefWidth="382.0">
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin></ListView>
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>
