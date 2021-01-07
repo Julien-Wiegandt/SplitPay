@@ -48,7 +48,7 @@ public class GroupFacade {
     public void deleteFriendFromGroup(String id, String label, User user){
 
         Group group = new Group(id, label);
-
+        System.out.println(user.getId());
         this.groupDAO.deleteFriendFromGroup(group, user);
     }
 
