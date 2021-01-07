@@ -14,6 +14,7 @@ import main.SplitPay;
 import server.models.split.Participant;
 import server.models.split.FreeSplit;
 import server.models.split.Split;
+import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 import util.RegexPattern;
 
@@ -122,6 +123,13 @@ public class FreeSplitSaloonController {
 
     }
 
+    /**
+     * Method to redirect the user to the payment success view
+     */
+    public void splitPaid() {
+        Platform.runLater(() -> goToPaymentSuccessView());
+    }
+
     /* Methods handling UI action ************ */
 
     /**
@@ -172,6 +180,21 @@ public class FreeSplitSaloonController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * Redirects the user to the payment success view
+     */
+    private void goToPaymentSuccessView() {
+        Parent root = null;
+        try {
+            // TODO : Handle resource path problem
+            root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.paymentSuccessView));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         SplitPay.window.setScene(new Scene(root));
     }
 
