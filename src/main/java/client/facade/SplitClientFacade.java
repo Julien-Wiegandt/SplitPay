@@ -200,7 +200,6 @@ public class SplitClientFacade implements Observer
                         itemSplitSaloonController.updateSplit((ItemSplit) getJoinedSplit());
                         break;
                 }
-
                 break;
             case ClientServerProtocol.QUIT_SPLIT_SUCCESS:
                 System.out.println("Split quit successfully");
