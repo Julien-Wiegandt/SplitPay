@@ -197,7 +197,7 @@ public class ItemSplitSaloonController {
     }
 
     /**
-     *
+     * Redirects the user to the payment success view
      */
     private void goToPaymentSuccessView() {
         Parent root = null;
