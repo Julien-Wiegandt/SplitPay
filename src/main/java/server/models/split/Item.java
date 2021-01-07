@@ -1,6 +1,8 @@
 package server.models.split;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
 
     private String label;
     private double price;
@@ -25,5 +27,14 @@ public class Item {
 
     public void setPicked(boolean picked) {
         isPicked = picked;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "label='" + label + '\'' +
+                ", price=" + price +
+                ", isPicked=" + isPicked +
+                '}';
     }
 }

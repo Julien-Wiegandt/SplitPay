@@ -8,15 +8,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.split.SplitSaloonController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.split.FreeSplitSaloonController">
 <center>
 
 </center>
 <top>
-    <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
+    <fx:include fx:id="normalUserHeaderBar" source="../headerBar.fxml" />
 </top>
 <left>
-    <fx:include fx:id="normalUserMenu" source="menu.fxml" />
+    <fx:include fx:id="normalUserMenu" source="../menu.fxml" />
 </left>
    <center>
       <AnchorPane prefHeight="252.0" prefWidth="470.0" BorderPane.alignment="CENTER">
@@ -32,7 +32,7 @@
             <Button layoutX="199.0" layoutY="223.0" mnemonicParsing="false" onAction="#moneyInputHandler" text="Validate" />
             <Button layoutX="201.0" layoutY="279.0" mnemonicParsing="false" onAction="#isReadyHandler" prefHeight="40.0" prefWidth="70.0" text="Ready" />
             <Button layoutX="49.0" layoutY="279.0" mnemonicParsing="false" onAction="#quitHandler" prefHeight="40.0" prefWidth="70.0" text="Quit" />
-            <Button fx:id="payButton" layoutX="352.0" layoutY="279.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" text="Pay !" />
+            <Button fx:id="payButton" onAction="#payButtonHandler" layoutX="352.0" layoutY="279.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" text="Pay !" />
             <ProgressBar fx:id="progressBar" layoutX="310.0" layoutY="138.0" prefHeight="20.0" prefWidth="162.0" progress="0.0" rotate="-90.0" />
          </children>
       </AnchorPane>

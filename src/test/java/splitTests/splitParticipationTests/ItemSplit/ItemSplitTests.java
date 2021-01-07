@@ -1,4 +1,4 @@
-package splitParticipationTests.ItemSplit;
+package splitTests.splitParticipationTests.ItemSplit;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -34,7 +34,7 @@ public class ItemSplitTests {
         items = new Item[]{pizza, drink, desert};
 
         splitCode = SplitUtilities.generateCode();
-        split = new ItemSplit(splitCode,participant1.getId(),participant1.getNickname(),"Bowlingstar Montpellier","itemsplit",items);
+        split = new ItemSplit(splitCode,participant1.getId(),participant1.getNickname(),"Bowlingstar Montpellier",items,null);
 
     }
     @Test

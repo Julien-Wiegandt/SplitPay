@@ -1,6 +1,8 @@
 package core.models;
 
-public class StoreOwner extends User {
+import java.io.Serializable;
+
+public class StoreOwner extends User implements Serializable {
 
     /**
      * Default constructor

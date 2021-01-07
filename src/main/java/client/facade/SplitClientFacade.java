@@ -4,8 +4,12 @@ import client.communication.ObservableClient;
 import core.facade.UserFacade;
 import server.communication.SplitOriginatorMessage;
 import server.models.split.FreeSplit;
+import server.models.split.ItemSplit;
+import server.models.split.Split;
+import server.models.split.SplitMode;
+import ui.controller.split.ItemSplitSaloonController;
 import ui.controller.split.MySplitsController;
-import ui.controller.split.SplitSaloonController;
+import ui.controller.split.FreeSplitSaloonController;
 import ui.controller.split.SplitSectionController;
 
 import java.io.IOException;
@@ -104,32 +108,37 @@ public class SplitClientFacade implements Observer
     public void setMySplitsController(MySplitsController mySplitsController){
         this.mySplitsController=mySplitsController;
     }
-
-    public void setSplitSaloonController(SplitSaloonController splitSaloonController){
-        this.splitSaloonController=splitSaloonController;
+// TODO : rename to setFreeSplitSaloonController
+    public void setSplitSaloonController(FreeSplitSaloonController freeSplitSaloonController){
+        this.freeSplitSaloonController = freeSplitSaloonController;
     }
 
     public void setSplitSectionController(SplitSectionController splitSectionController){
         this.splitSectionController=splitSectionController;
     }
 
+    public void setItemSplitSaloonController(ItemSplitSaloonController itemSplitSaloonController){
+        this.itemSplitSaloonController=itemSplitSaloonController;
+    }
+
     /* References to controllers receiving server data ***************** */
 
     private MySplitsController mySplitsController;
-    private SplitSaloonController splitSaloonController;
+    private FreeSplitSaloonController freeSplitSaloonController;
+    private ItemSplitSaloonController itemSplitSaloonController;
     private SplitSectionController splitSectionController;
 
     /* Data temporally stored for controllers */
 
-    private FreeSplit joinedSplit;
+    private Split joinedSplit;
 
     /* Controller data methods */
 
-    private void setJoinedSplit(FreeSplit joinedSplit){
+    private void setJoinedSplit(Split joinedSplit){
         this.joinedSplit = joinedSplit;
     }
 
-    public FreeSplit getJoinedSplit(){
+    public Split getJoinedSplit(){
         return joinedSplit;
     }
 
@@ -161,6 +170,7 @@ public class SplitClientFacade implements Observer
                 splitSectionController.setFlashMessage("Success : redirecting...");
                 splitSectionController.splitJoined();
                 break;
+                // TODO : Participant already in split, moves in the saloon without adding ?
             case ClientServerProtocol.PARTICIPANT_ALREADY_IN_SPLIT:
                 System.out.println("Error : Participant already in Split");
                 try {
@@ -182,7 +192,14 @@ public class SplitClientFacade implements Observer
             case ClientServerProtocol.UPDATED_SPLIT_STATE:
                 System.out.println(msgReceived.getSplits());
                 setJoinedSplit(msgReceived.getSplit());
-                splitSaloonController.updateSplit(getJoinedSplit());
+                switch (getJoinedSplit().getSplitMode()){
+                    case FREESPLIT:
+                        freeSplitSaloonController.updateSplit((FreeSplit) getJoinedSplit());
+                        break;
+                    case ITEMSPLIT:
+                        itemSplitSaloonController.updateSplit((ItemSplit) getJoinedSplit());
+                        break;
+                }
                 break;
             case ClientServerProtocol.QUIT_SPLIT_SUCCESS:
                 System.out.println("Split quit successfully");
@@ -191,7 +208,26 @@ public class SplitClientFacade implements Observer
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                splitSaloonController.splitQuit();
+                switch (getJoinedSplit().getSplitMode()){
+                    case FREESPLIT:
+                        freeSplitSaloonController.splitQuit();
+                        break;
+                    case ITEMSPLIT:
+                        itemSplitSaloonController.splitQuit();
+                        break;
+                }
+                break;
+            case ClientServerProtocol.SPLIT_PAID_RESPONSE:
+                switch (getJoinedSplit().getSplitMode()){
+                    case FREESPLIT:
+                        freeSplitSaloonController.splitPaid();
+                        break;
+                    case ITEMSPLIT:
+                        itemSplitSaloonController.splitPaid();
+                        break;
+                }
+                System.out.println("Split paid success");
+                break;
         }
 
     }
@@ -249,6 +285,36 @@ public class SplitClientFacade implements Observer
         sendToServer(message);
         System.out.println("joinSplit message sent to server");
 
+    }
+
+    public void pickItem(int itemId, String splitCode){
+        String id = UserFacade.getUserFacade().getLoggedUser().getId();
+        String nickName = UserFacade.getUserFacade().getLoggedUser().getNickname();
+
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("userId",id);
+        arguments.put("nickName",nickName);
+        arguments.put("splitCode",splitCode);
+        arguments.put("itemId",Integer.toString(itemId));
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.PICK_ITEM_ATTEMPT,arguments,null);
+
+        sendToServer(message);
+    }
+
+    public void removeItem(int itemId, String splitCode){
+        String id = UserFacade.getUserFacade().getLoggedUser().getId();
+        String nickName = UserFacade.getUserFacade().getLoggedUser().getNickname();
+
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("userId",id);
+        arguments.put("nickName",nickName);
+        arguments.put("splitCode",splitCode);
+        arguments.put("itemId",Integer.toString(itemId));
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.REMOVE_ITEM_ATTEMPT,arguments,null);
+
+        sendToServer(message);
     }
 
     /**
@@ -314,6 +380,20 @@ public class SplitClientFacade implements Observer
         arguments.put("splitCode",splitCode);
 
         SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_REQUEST,arguments,null);
+
+        sendToServer(message);
+    }
+
+    /**
+     * Method asking the server to pay the split
+     * @param splitCode
+     */
+    public void paySplit(String splitCode){
+        /* Creating request arguments */
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("splitCode",splitCode);
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_PAYMENT_REQUEST,arguments,null);
 
         sendToServer(message);
     }
