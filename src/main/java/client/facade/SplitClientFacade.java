@@ -219,6 +219,14 @@ public class SplitClientFacade implements Observer
                 }
                 break;
             case ClientServerProtocol.SPLIT_PAID_RESPONSE:
+                switch (getJoinedSplit().getSplitMode()){
+                    case FREESPLIT:
+                        freeSplitSaloonController.splitQuit();
+                        break;
+                    case ITEMSPLIT:
+                        itemSplitSaloonController.splitPaid();
+                        break;
+                }
                 System.out.println("Split paid success");
                 break;
         }

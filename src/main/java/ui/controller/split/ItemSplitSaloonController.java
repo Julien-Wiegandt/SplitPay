@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import main.SplitPay;
 import server.models.split.*;
+import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -133,6 +134,13 @@ public class ItemSplitSaloonController {
 
     }
 
+    /**
+     * Method to redirect the user to the payment success view
+     */
+    public void splitPaid() {
+        Platform.runLater(() -> goToPaymentSuccessView());
+    }
+
     /* Methods handling UI action ************ */
 
     /**
@@ -185,6 +193,21 @@ public class ItemSplitSaloonController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     *
+     */
+    private void goToPaymentSuccessView() {
+        Parent root = null;
+        try {
+            // TODO : Handle resource path problem
+            root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.paymentSuccessView));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         SplitPay.window.setScene(new Scene(root));
     }
 

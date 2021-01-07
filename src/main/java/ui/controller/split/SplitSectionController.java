@@ -1,6 +1,7 @@
 package ui.controller.split;
 
 import client.facade.SplitClientFacade;
+import core.models.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.SplitPay;
+import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -36,7 +38,6 @@ public class SplitSectionController {
      */
     public void splitJoined(){
         Platform.runLater(() -> goToSplitSaloonView());
-
     }
 
     /**

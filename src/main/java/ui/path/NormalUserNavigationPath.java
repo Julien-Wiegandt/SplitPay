@@ -14,4 +14,6 @@ public class NormalUserNavigationPath {
 
 
     public static String editCreditCardView = "../../view/authPath/editCreditCardView.fxml";
+
+    public static String paymentSuccessView = "view/authPath/split/paymentSuccessView.fxml";
 }
