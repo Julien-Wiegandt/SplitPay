@@ -218,6 +218,9 @@ public class SplitClientFacade implements Observer
                         break;
                 }
                 break;
+            case ClientServerProtocol.SPLIT_PAID_RESPONSE:
+                System.out.println("Split paid success");
+                break;
         }
 
     }
@@ -375,7 +378,7 @@ public class SplitClientFacade implements Observer
     }
 
     /**
-     * Method askin the server to pay the split
+     * Method asking the server to pay the split
      * @param splitCode
      */
     public void paySplit(String splitCode){
@@ -383,7 +386,7 @@ public class SplitClientFacade implements Observer
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("splitCode",splitCode);
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_REQUEST,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_PAYMENT_REQUEST,arguments,null);
 
         sendToServer(message);
     }

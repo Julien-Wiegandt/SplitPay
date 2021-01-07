@@ -145,6 +145,14 @@ public class FreeSplitSaloonController {
     }
 
     /**
+     * Handles owner pay request
+     */
+    public void payButtonHandler(){
+        facade.paySplit(getJoinedSplit().getSplitCode());
+    }
+
+
+    /**
      * Handles participant quit button
      */
     public void quitHandler(){

@@ -135,8 +135,6 @@ public class ItemSplitSaloonController {
 
     /* Methods handling UI action ************ */
 
-    // TODO : implement
-
     /**
      * Sends to the server a request to pick the selected item and put it in the user's cart
      */
@@ -160,8 +158,11 @@ public class ItemSplitSaloonController {
         facade.switchReadyStatus(getJoinedSplit().getSplitCode());
     }
 
+    /**
+     * Handles owner pay request
+     */
     public void payButtonHandler(){
-        System.out.println("Pay attempt");
+        facade.paySplit(getJoinedSplit().getSplitCode());
     }
 
     /**
