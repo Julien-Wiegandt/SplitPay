@@ -49,15 +49,14 @@ public class FriendController {
 
     /**
      * This method redirects to the addFriendView
-     * @param actionEvent
      * @throws IOException
      */
-    public void goToAddFriendView(ActionEvent actionEvent) throws IOException {
+    public void goToAddFriendView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.addFriendView));
         SplitPay.window.setScene(new Scene(root));
     }
 
-    public void deleteFriend(ActionEvent actionEvent) throws IOException {
+    public void deleteFriend() throws IOException {
         ObservableList<NormalUser> friends =  myFriends.getSelectionModel().getSelectedItems();
         for (NormalUser user : friends) {
             FriendFacade.getFriendFacade().deleteFriend(user);

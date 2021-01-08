@@ -1,58 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageFriend.AddFriendController">
-    <center>
-        <Label prefHeight="255.0" prefWidth="470.0" text="Verification" BorderPane.alignment="TOP_CENTER">
-         <graphic>
-            <BorderPane prefHeight="277.0" prefWidth="626.0">
-               <left>
-                  <VBox alignment="CENTER" prefHeight="316.0" prefWidth="128.0" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets left="250.0" right="49.0" top="50.0" />
-                     </BorderPane.margin>
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageFriend.AddFriendController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+            <center>
+                <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label text="Enter friend info" BorderPane.alignment="CENTER" />
+                        <Label text="Phone number or email :">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></Label>
+                        <TextField fx:id="credentials">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></TextField>
+                  <HBox>
                      <children>
-                        <Label text="Phone number or email :" />
-                        <TextField fx:id="credentials" prefHeight="25.0" prefWidth="137.0" text="ex : 07 67 65 45 63" />
-                     </children>
-                  </VBox>
-               </left>
-               <bottom>
-                  <HBox prefHeight="100.0" prefWidth="518.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="cancel" mnemonicParsing="false" text="Cancel">
+                              <Button fx:id="cancel" mnemonicParsing="false" text="Cancel">
                            <HBox.margin>
-                              <Insets left="200.0" />
-                           </HBox.margin>
-                           <padding>
-                              <Insets right="50.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="confirm" mnemonicParsing="false" onAction="#addFriend" text="Ok">
-                           <HBox.margin>
-                              <Insets left="30.0" />
+                              <Insets right="20.0" />
                            </HBox.margin>
                         </Button>
+                              <Button fx:id="confirm" mnemonicParsing="false" onAction="#addFriend" text="Add Friend" />
                      </children>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
                   </HBox>
-               </bottom>
-               <top>
-                  <Label text="Enter friend info" BorderPane.alignment="CENTER" />
-               </top>
-            </BorderPane>
-         </graphic></Label>
-    </center>
-    <top>
-        <fx:include fx:id="normalUserHeaderBar" source="../headerBar.fxml" />
-    </top>
-    <left>
-        <fx:include fx:id="normalUserMenu" source="../menu.fxml" />
-    </left>
-</BorderPane>
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>

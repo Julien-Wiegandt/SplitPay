@@ -44,10 +44,9 @@ public class AddFriendController {
 
     /**
      * This method add a friend to the logged user
-     * @param actionEvent
      * @throws IOException
      */
-    public void addFriend(ActionEvent actionEvent) throws IOException {
+    public void addFriend() throws IOException {
         try {
             if(RegexPattern.emailPattern.matcher(credentials.getText()).find()) {
                 FriendFacade.getFriendFacade().addFriendByEmail(credentials.getText());
