@@ -12,7 +12,7 @@
             <fx:include source="menu.fxml" />
          </top>
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" minHeight="410.0" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
                   <Label alignment="CENTER" prefHeight="31.0" prefWidth="546.0" text="Balance">
                      <font>
@@ -29,10 +29,10 @@
                   </Label>
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToManageBalanceView" text="Manage balance">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets bottom="20.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <fx:include source="splitSection.fxml"/>
+                  <fx:include source="splitSection.fxml" />
                   <Button fx:id="sendMoneyToFriendButton" mnemonicParsing="false" onAction="#goToChooseFriendView" text="Send money to friend">
                      <VBox.margin>
                         <Insets bottom="20.0" top="80.0" />
