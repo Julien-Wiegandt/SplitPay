@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageBankAccount.EditBankAccountController">
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageBankAccount.EditBankAccountController">
    <children>
-      <Label fx:id="label" layoutX="270.0" layoutY="67.0" text="Label" />
-      <Label fx:id="ownerFirstName" layoutX="270.0" layoutY="112.0" text="Label" />
-      <Label fx:id="ownerLastName" layoutX="270.0" layoutY="166.0" text="Label" />
-      <Label fx:id="iban" layoutX="270.0" layoutY="213.0" text="Label" />
-      <Button layoutX="258.0" layoutY="285.0" mnemonicParsing="false" onAction="#deleteBankAccount" text="Delete" />
-      <Button layoutX="36.0" layoutY="331.0" mnemonicParsing="false" onAction="#goToBankAccountView" text="Retour" />
+      <BorderPane prefHeight="15.0" prefWidth="320.0">
+         <top>
+            <fx:include source="../menu.fxml" />
+         </top>
+         <center>
+            <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="label" layoutX="270.0" layoutY="67.0" text="Label" />
+                  <Label fx:id="ownerFirstName" layoutX="270.0" layoutY="112.0" text="Label">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="ownerLastName" layoutX="270.0" layoutY="166.0" text="Label">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="iban" layoutX="270.0" layoutY="213.0" text="Label">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#goToBankAccountView" text="Back">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#deleteBankAccount" text="Delete" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <fx:include source="../homeButtonView.fxml" />
+         </bottom>
+      </BorderPane>
    </children>
-</AnchorPane>
+</VBox>

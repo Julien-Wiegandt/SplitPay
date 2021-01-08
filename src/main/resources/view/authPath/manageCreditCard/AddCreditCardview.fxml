@@ -11,7 +11,7 @@
             <fx:include source="../menu.fxml" />
          </top>
          <center>
-            <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="249.0" layoutY="38.0" text="Add Credit Card">
                      <VBox.margin>

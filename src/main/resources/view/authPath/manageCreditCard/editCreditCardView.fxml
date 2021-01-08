@@ -20,7 +20,7 @@
                      </VBox.margin></Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#goToCreditCardView" text="Cancel">
+                        <Button mnemonicParsing="false" onAction="#goToCreditCardView" text="Back">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin></Button>

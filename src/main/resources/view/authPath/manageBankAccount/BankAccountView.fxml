@@ -12,20 +12,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageBankAccount.BankAccountController">
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageBankAccount.BankAccountController">
     <children>
-        <BorderPane layoutX="9.0" layoutY="15.0" prefHeight="365.0" prefWidth="573.0">
-            <center>
-                <ListView fx:id="listView" prefHeight="284.0" prefWidth="548.0" BorderPane.alignment="CENTER" onMouseClicked="#goToEditBankAccountView" >
-
-                </ListView>
-            </center>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
             <top>
-                <Button mnemonicParsing="false" onAction="#goToAddBankAccountView" text="Add new bank account" BorderPane.alignment="CENTER" />
+                <fx:include source="../menu.fxml" />
             </top>
+            <center>
+                <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ListView fx:id="listView" prefHeight="277.0" prefWidth="382.0" onMouseClicked="#goToEditBankAccountView"/>
+                    </children>
+                </VBox>
+            </center>
             <bottom>
-                <Button mnemonicParsing="false" onAction="#goToHomeView" text="Retour" BorderPane.alignment="CENTER" />
+                <fx:include source="../homeButtonView.fxml" />
             </bottom>
         </BorderPane>
     </children>
-</AnchorPane>
+</VBox>
