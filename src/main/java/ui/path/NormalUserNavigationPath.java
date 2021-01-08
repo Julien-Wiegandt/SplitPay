@@ -8,10 +8,9 @@ public class NormalUserNavigationPath {
     public static String addCreditCardView = "view/authPath/manageCreditCard/AddCreditCardView.fxml";
     public static String editCreditCardView = "view/authPath/manageCreditCard/editCreditCardView.fxml";
 
-    public static String groupView = "../../view/authPath/GroupView.fxml";
-    public static String addGroupView = "../../view/authPath/AddGroupView.fxml";
-
-    public static String editGroupView = "../../view/authPath/EditGroupView.fxml";
+    public static String groupView = "view/authPath/manageGroup/GroupView.fxml";
+    public static String addGroupView = "view/authPath/manageGroup/AddGroupView.fxml";
+    public static String editGroupView = "view/authPath/manageGroup/EditGroupView.fxml";
 
     public static String paymentSuccessView = "view/authPath/split/paymentSuccessView.fxml";
 }

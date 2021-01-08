@@ -1,10 +1,7 @@
-package ui.controller;
+package ui.controller.manageGroup;
 
-import core.facade.BankAccountFacade;
 import core.facade.GroupFacade;
-import core.models.BankAccount;
 import core.models.Group;
-import core.models.NormalUser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import main.SplitPay;
+import ui.controller.manageGroup.EditGroupController;
 import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 
@@ -56,7 +54,7 @@ public class GroupController {
     @FXML
     public void goToEditGroupView()throws IOException {
         if(listView.getSelectionModel().getSelectedItem() !=null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editGroupView));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(NormalUserNavigationPath.editGroupView));
             Parent root = loader.load();
             EditGroupController editGroupController = loader.getController();
             editGroupController.setGroup((Group) listView.getSelectionModel().getSelectedItem());
@@ -66,14 +64,14 @@ public class GroupController {
     }
 
 
-    public void goToAddGroupView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.addGroupView));
+    public void goToAddGroupView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.addGroupView));
         SplitPay.window.setScene(new Scene(root));
 
     }
 
-    public void goToHomeView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+    public void goToHomeView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
 
     }

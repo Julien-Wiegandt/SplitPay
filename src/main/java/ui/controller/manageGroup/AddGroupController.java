@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageGroup;
 
 import core.facade.BankAccountFacade;
 import core.facade.GroupFacade;
@@ -20,7 +20,7 @@ public class AddGroupController {
     @FXML
     private TextField label;
 
-    public void addGroup(ActionEvent actionEvent) {
+    public void addGroup() {
         allStyleSetDefault();
         if(RegexPattern.labelPattern.matcher(label.getText()).find()){
             GroupFacade.getInstance().addGroup(label.getText());
@@ -30,8 +30,8 @@ public class AddGroupController {
 
     }
 
-    public void goToGroupView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
+    public void goToGroupView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.groupView));
         SplitPay.window.setScene(new Scene(root));
     }
 

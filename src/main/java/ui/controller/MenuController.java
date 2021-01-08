@@ -88,7 +88,7 @@ public class MenuController {
     }
 
     public void goToGroupView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.groupView));
         SplitPay.window.setScene(new Scene(root));
     }
 
