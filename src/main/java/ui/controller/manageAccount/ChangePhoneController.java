@@ -18,28 +18,17 @@ import java.io.IOException;
 
 public class ChangePhoneController {
 
-
-
-    @FXML
-    private Label phoneLabel;
-
-
     @FXML
     private TextField phone;
 
 
-
-    @FXML
-    private Button cancel;
-
-    @FXML
-    private Button confirm;
-
-
-    @FXML
-    void initialize() {
-
-
+    /**
+     * This method redirects to the selectMethodView
+     * @throws IOException
+     */
+    public void goToManageAccountView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
+        SplitPay.window.setScene(new Scene(root));
     }
 
     /**
@@ -58,8 +47,6 @@ public class ChangePhoneController {
         else {
             phone.setStyle("-fx-text-box-border: red");
         }
-
-
     }
 
 }

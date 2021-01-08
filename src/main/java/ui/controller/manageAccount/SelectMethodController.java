@@ -22,30 +22,21 @@ public class SelectMethodController {
     @FXML
     private RadioButton sms;
 
-    @FXML
-    private Button cancel;
-
-    @FXML
-    private Button confirm;
+    /**
+     * This method redirects to the selectMethodView
+     * @throws IOException
+     */
+    public void goToManageAccountView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
+        SplitPay.window.setScene(new Scene(root));
+    }
 
     @FXML
     void initialize() {
         assert email != null : "fx:id=\"email\" was not injected: check your FXML file 'selectMethod.fxml'.";
         assert sms != null : "fx:id=\"sms\" was not injected: check your FXML file 'selectMethod.fxml'.";
-        assert cancel != null : "fx:id=\"cancel\" was not injected: check your FXML file 'selectMethod.fxml'.";
-        assert confirm != null : "fx:id=\"confirm\" was not injected: check your FXML file 'selectMethod.fxml'.";
-
     }
 
-    @FXML
-    void emailMethod() {
-
-    }
-
-    @FXML
-    void smsMethod() {
-
-    }
     /**
      * This method redirects to the forgottenPasswordView
      * @throws IOException
@@ -55,12 +46,10 @@ public class SelectMethodController {
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
-
     /**
      * This method redirects to the homeView
      * @throws IOException
      */
-
     public void goToHomeView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));

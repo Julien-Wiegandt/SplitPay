@@ -17,30 +17,18 @@ import java.io.IOException;
 
 public class ChangeEmailController {
 
-
-
-
     @FXML
     private TextField email1;
     @FXML
     private TextField email2;
 
-    @FXML
-    private Button cancel;
-
-    @FXML
-    private Button confirm;
-
-
-
-    private String code;
-
-
-    @FXML
-    void initialize() {
-
-
-
+    /**
+     * This method redirects to the selectMethodView
+     * @throws IOException
+     */
+    public void goToManageAccountView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
+        SplitPay.window.setScene(new Scene(root));
     }
 
     /**
@@ -62,9 +50,6 @@ public class ChangeEmailController {
 
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
             SplitPay.window.setScene(new Scene(root));
-
-
-
         }
         else {
             email1.setStyle("-fx-text-box-border: red");

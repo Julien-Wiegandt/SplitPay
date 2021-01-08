@@ -18,9 +18,9 @@
                         <Insets />
                      </VBox.margin>
                   </ListView>
-                  <Button mnemonicParsing="false" onAction="#goToAddCreditCardView" text="Add credit card" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#goToAddCreditCardView" text="Add Credit Card" BorderPane.alignment="CENTER">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="20.0" />
                      </VBox.margin></Button>
                </children>
             </VBox>

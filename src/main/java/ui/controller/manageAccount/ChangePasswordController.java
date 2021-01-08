@@ -20,33 +20,26 @@ import util.SplitUtilities;
 public class ChangePasswordController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private PasswordField password1;
 
     @FXML
     private PasswordField password2;
 
-    @FXML
-    private Button cancel;
-
-    @FXML
-    private Button confirm;
-
-
+    /**
+     * This method redirects to the selectMethodView
+     * @throws IOException
+     */
+    public void goToManageAccountView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
+        SplitPay.window.setScene(new Scene(root));
+    }
 
     @FXML
     void initialize() {
         assert password1 != null : "fx:id=\"password1\" was not injected: check your FXML file 'changePasswordView.fxml'.";
         assert password2 != null : "fx:id=\"password2\" was not injected: check your FXML file 'changePasswordView.fxml'.";
-        assert cancel != null : "fx:id=\"cancel\" was not injected: check your FXML file 'changePasswordView.fxml'.";
-        assert confirm != null : "fx:id=\"confirm\" was not injected: check your FXML file 'changePasswordView.fxml'.";
-
     }
+
     /**
      * This method change the password
      * @throws IOException

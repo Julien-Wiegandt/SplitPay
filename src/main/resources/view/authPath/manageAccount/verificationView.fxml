@@ -20,12 +20,12 @@
                      </VBox.margin></TextField>
                   <HBox>
                      <children>
-                              <Button fx:id="cancel1" mnemonicParsing="false" text="Cancel">
+                              <Button fx:id="cancel1" mnemonicParsing="false" onAction="#goToManageAccountView" text="Cancel">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Button>
-                              <Button fx:id="confirm1" mnemonicParsing="false" onAction="#verifyCode" text="Ok" />
+                              <Button fx:id="confirm1" mnemonicParsing="false" onAction="#verifyCode" text="Verify" />
                      </children>
                      <VBox.margin>
                         <Insets top="40.0" />

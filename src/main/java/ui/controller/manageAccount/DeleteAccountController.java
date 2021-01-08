@@ -19,15 +19,18 @@ public class DeleteAccountController {
     @FXML
     private TextField code;
 
-    @FXML
-    private Button cancel;
-
-    @FXML
-    private Button confirm;
-
     private static User tempUser;
 
     private String realCode;
+
+    /**
+     * This method redirects to the selectMethodView
+     * @throws IOException
+     */
+    public void goToManageAccountView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
+        SplitPay.window.setScene(new Scene(root));
+    }
 
     @FXML
     void initialize() {
@@ -42,7 +45,6 @@ public class DeleteAccountController {
             SplitPay.window.setScene(new Scene(root));
         }
     }
-
 
     public User getTempUser() {
         return tempUser;

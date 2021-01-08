@@ -64,7 +64,7 @@ public class AddBankAccountController {
     }
 
     public void goToBankAccountView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.bankAccountView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.bankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 

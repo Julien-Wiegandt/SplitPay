@@ -17,20 +17,20 @@ import java.io.IOException;
 
 public class ConfirmCredentialsController {
 
-
     @FXML
     private Button change;
 
     @FXML
     private TextField credentials;
 
-    @FXML
-    private Button cancel;
-
-    @FXML
-    private Button confirm;
-
-
+    /**
+     * This method redirects to the selectMethodView
+     * @throws IOException
+     */
+    public void goToManageAccountView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
+        SplitPay.window.setScene(new Scene(root));
+    }
 
     @FXML
     void initialize() {
@@ -46,11 +46,7 @@ public class ConfirmCredentialsController {
         }
         else {
             credentials.setManaged(false);
-            
-
-
         }
-
     }
 
 
@@ -75,6 +71,5 @@ public class ConfirmCredentialsController {
         System.out.println(code);
         Parent root = FXMLLoader.load(getClass().getResource(AuthPath.verificationView));
         SplitPay.window.setScene(new Scene(root));
-
     }
 }

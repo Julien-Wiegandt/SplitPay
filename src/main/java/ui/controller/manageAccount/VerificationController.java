@@ -20,19 +20,7 @@ import java.util.ResourceBundle;
 public class VerificationController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private TextField code;
-
-    @FXML
-    private Button cancel;
-
-    @FXML
-    private Button confirm;
 
     private static User tempUser;
 
@@ -43,6 +31,16 @@ public class VerificationController {
         realCode = SplitUtilities.generateCode();
         System.out.println(realCode);
     }
+
+    /**
+     * This method redirects to the selectMethodView
+     * @throws IOException
+     */
+    public void goToManageAccountView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
     /**
      * This method verify if the validation code is correct and update the user
      * @throws IOException

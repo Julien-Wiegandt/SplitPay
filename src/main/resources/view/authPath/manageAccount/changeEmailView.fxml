@@ -32,7 +32,7 @@
                          </VBox.margin></TextField>
                       <HBox>
                          <children>
-                                  <Button fx:id="cancel" mnemonicParsing="false" text="Cancel">
+                                  <Button fx:id="cancel" mnemonicParsing="false" onAction="#goToManageAccountView" text="Cancel">
                                <HBox.margin>
                                   <Insets right="20.0" />
                                </HBox.margin>
