@@ -1,9 +1,7 @@
-package ui.controller;
+package ui.controller.manageCreditCard;
 
 import core.facade.CreditCardFacade;
 import core.models.CreditCard;
-import core.models.Group;
-import core.models.NormalUser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,12 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import main.SplitPay;
 import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
@@ -60,7 +53,7 @@ public class CreditCardController {
         if(listView.getSelectionModel().getSelectedItem() !=null) {
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editCreditCardView));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(NormalUserNavigationPath.editCreditCardView));
             Parent root = loader.load();
             EditCreditCardController editCreditCardController = loader.getController();
             editCreditCardController.setCreditCard((CreditCard) listView.getSelectionModel().getSelectedItem());
@@ -68,12 +61,12 @@ public class CreditCardController {
         }
     }
 
-    public void goToAddCreditCardView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.addCreditCardView));
+    public void goToAddCreditCardView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.addCreditCardView));
         SplitPay.window.setScene(new Scene(root));
     }
 
-    public void goToHomeView(ActionEvent actionEvent) throws IOException {
+    public void goToHomeView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
     }

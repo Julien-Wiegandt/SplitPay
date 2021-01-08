@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageBankAccount;
 
 import core.facade.BankAccountFacade;
 
@@ -31,7 +31,7 @@ public class AddBankAccountController {
     private TextField lastName;
 
 
-    public void addBankAccount(ActionEvent actionEvent) throws IOException {
+    public void addBankAccount() throws IOException {
         allStyleSetDefault();
 
         if(RegexPattern.labelPattern.matcher(label.getText()).find() &&
@@ -41,7 +41,7 @@ public class AddBankAccountController {
                 RegexPattern.nameOwnerPattern.matcher(lastName.getText()).find()){
 
             BankAccountFacade.getInstance().createBankAccount(label.getText(), bic.getText(), iban.getText(), firstName.getText(), lastName.getText());
-            Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.bankAccountView));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.bankAccountView));
             SplitPay.window.setScene(new Scene(root));
         }else {
             if(!RegexPattern.labelPattern.matcher(label.getText()).find()){
@@ -63,7 +63,7 @@ public class AddBankAccountController {
 
     }
 
-    public void goToBankAccountView(ActionEvent actionEvent) throws IOException {
+    public void goToBankAccountView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.bankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }

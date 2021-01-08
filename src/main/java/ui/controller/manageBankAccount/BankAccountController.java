@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageBankAccount;
 
 import core.facade.BankAccountFacade;
 import core.models.BankAccount;
@@ -21,7 +21,6 @@ import ui.path.UserNavigationPath;
 
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -48,18 +47,18 @@ public class BankAccountController {
         listView.setItems(items);
     }
 
-    public void goToBankAccountView(ActionEvent actionEvent)throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.bankAccountView));
+    public void goToBankAccountView()throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.bankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 
-    public void goToAddBankAccountView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.addBankAccountView));
+    public void goToAddBankAccountView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.addBankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 
-    public void goToHomeView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+    public void goToHomeView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -73,7 +72,7 @@ public class BankAccountController {
 
     public void goToEditBankAccountView() throws IOException {
         if(listView.getSelectionModel().getSelectedItem() !=null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(UserNavigationPath.editBankAccountView));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(UserNavigationPath.editBankAccountView));
             Parent root = loader.load();
             EditBankAccountController editBankAccountController = loader.getController();
             editBankAccountController.setBankAccount((BankAccount) listView.getSelectionModel().getSelectedItem());

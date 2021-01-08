@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageBankAccount;
 
 import core.facade.BankAccountFacade;
 import core.facade.CreditCardFacade;
@@ -43,14 +43,14 @@ public class EditBankAccountController {
     }
 
 
-    public void deleteBankAccount(ActionEvent actionEvent) throws IOException {
+    public void deleteBankAccount() throws IOException {
         BankAccountFacade.getInstance().deleteBankAccount(this.iban_bankAccount);
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.bankAccountView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.bankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 
-    public void goToBankAccountView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.bankAccountView));
+    public void goToBankAccountView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.bankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 }

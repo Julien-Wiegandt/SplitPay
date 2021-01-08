@@ -17,8 +17,8 @@ public class UserNavigationPath {
     public static String itemSplitSaloonView = "view/authPath/split/itemSplitSaloonView.fxml";
     public static String mySplitsView = "view/authPath/split/mySplitsView.fxml";
 
-    public static String bankAccountView = "../../view/authPath/BankAccountView.fxml";
-    public static String addBankAccountView = "../../view/authPath/AddBankAccountView.fxml";
-    public static String editBankAccountView = "../../view/authPath/editBankAccountView.fxml";
+    public static String bankAccountView = "view/authPath/manageBankAccount/BankAccountView.fxml";
+    public static String addBankAccountView = "view/authPath/manageBankAccount/AddBankAccountView.fxml";
+    public static String editBankAccountView = "view/authPath/manageBankAccount/editBankAccountView.fxml";
 
 }

@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageCreditCard;
 
 import core.facade.CreditCardFacade;
 
@@ -46,14 +46,14 @@ public class EditCreditCardController {
 
 
 
-    public void deleteCreditCard( ActionEvent actionEvent) throws IOException {
+    public void deleteCreditCard() throws IOException {
         CreditCardFacade.getInstance().deleteCreditCard(this.card_number,null,null,null);
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.creditCardView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.creditCardView));
         SplitPay.window.setScene(new Scene(root));
     }
 
-    public void goToCreditCardView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.creditCardView));
+    public void goToCreditCardView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.creditCardView));
         SplitPay.window.setScene(new Scene(root));
     }
 }
