@@ -1,8 +1,5 @@
 #.idea
-*.iws
-workspace.xml
-tasks.xml
-.name
+.idea/
 
 #folder generated after run
 target/
