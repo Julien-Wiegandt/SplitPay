@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.HBox;
 import main.SplitPay;
 import ui.path.NormalUserNavigationPath;
 import ui.path.AuthPath;
@@ -16,38 +19,16 @@ import java.io.IOException;
 public class MenuController {
 
     @FXML
-    private Button myTransactionsButton;
-    @FXML
-    private Button mySplitsButton;
-    @FXML
-    private Button notificationsButton;
-    @FXML
-    private Button friendsButton;
-    @FXML
-    private Button groupsButton;
-    @FXML
-    private Button personalInformationButton;
-    @FXML
-    private Button creditCardsButton;
-    @FXML
-    private Button bankAccountButton;
+    private Menu social;
 
     @FXML
-    private Label general;
-    @FXML
-    private Label socialLabel;
-    @FXML
-    private Label myInformationLabel;
-
+    private MenuItem creditCard;
 
     @FXML
     private void initialize() {
         if(UserFacade.getUserFacade().isStoreOwner()){
-            groupsButton.setManaged(false);
-            friendsButton.setManaged(false);
-            creditCardsButton.setManaged(false);
-            socialLabel.setManaged(false);
-            socialLabel.setManaged(false);
+            social.setVisible(false);
+            creditCard.setVisible(false);
         }
     }
 

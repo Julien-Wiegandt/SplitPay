@@ -1,6 +1,7 @@
 package ui.controller.split;
 
 import client.facade.SplitClientFacade;
+import core.facade.UserFacade;
 import core.models.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import main.SplitPay;
 import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
@@ -19,6 +21,9 @@ import java.net.URL;
 public class SplitSectionController {
 
     private SplitClientFacade facade = SplitClientFacade.getInstance();;
+
+    @FXML
+    private AnchorPane splitSection;
 
     @FXML
     private TextField splitCode;
@@ -76,6 +81,10 @@ public class SplitSectionController {
 
     @FXML
     private void initialize() {
+        if(UserFacade.getUserFacade().isStoreOwner()) {
+            splitSection.setVisible(false);
+            splitSection.setManaged(false);
+        }
         SplitClientFacade.getInstance().setSplitSectionController(this);
     }
 

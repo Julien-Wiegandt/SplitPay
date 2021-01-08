@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MenuController">
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MenuController">
    <MenuBar prefHeight="25.0" prefWidth="273.0" BorderPane.alignment="CENTER">
       <menus>
          <Menu mnemonicParsing="false" text="SplitPay">
@@ -12,7 +12,7 @@
                <MenuItem mnemonicParsing="false" onAction="#goToMyTransactionsView" text="My Transactions" />
             </items>
          </Menu>
-         <Menu mnemonicParsing="false" text="Social">
+         <Menu fx:id="social" mnemonicParsing="false" text="Social">
             <items>
                <MenuItem mnemonicParsing="false" onAction="#goToFriendView" text="Friends" />
                <MenuItem mnemonicParsing="false" onAction="#goToGroupView" text="Groups" />
@@ -22,7 +22,7 @@
          <Menu mnemonicParsing="false" text="Account">
             <items>
                <MenuItem mnemonicParsing="false" onAction="#goToManageAccountView" text="Personal Information" />
-               <MenuItem mnemonicParsing="false" onAction="#goToCreditCardView" text="Credit Cards" />
+               <MenuItem fx:id="creditCard" mnemonicParsing="false" onAction="#goToCreditCardView" text="Credit Cards" />
                <MenuItem mnemonicParsing="false" onAction="#goToBankAccountView" text="Bank Accounts" />
                <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
             </items>

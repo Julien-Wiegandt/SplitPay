@@ -24,20 +24,14 @@ public class HomeController {
     private Label balance;
 
     @FXML
-    private VBox joinSplitSection;
-
-    @FXML
     private Button sendMoneyToFriendButton;
 
 
     @FXML
     private void initialize() {
-        balance.setText(UserFacade.getUserFacade().getLoggedUser().getBalance().toString());
+        balance.setText(UserFacade.getUserFacade().getLoggedUser().getBalance().toString()+"€");
         if(UserFacade.getUserFacade().isStoreOwner()){
-            joinSplitSection.setVisible(false);
-            joinSplitSection.setManaged(false);
             sendMoneyToFriendButton.setVisible(false);
-            sendMoneyToFriendButton.setManaged(false);
         }
     }
 
