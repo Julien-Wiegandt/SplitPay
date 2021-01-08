@@ -25,7 +25,7 @@
                   </Button>
                         <Button fx:id="addFriend" mnemonicParsing="false" onAction="#goToAddFriendView" prefWidth="87.0" text="Add Friend">
                      <VBox.margin>
-                        <Insets top="40.0" />
+                        <Insets top="30.0" />
                      </VBox.margin>
                   </Button>
                     </children>
