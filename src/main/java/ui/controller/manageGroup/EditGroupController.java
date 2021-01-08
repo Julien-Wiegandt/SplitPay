@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageGroup;
 
 import core.facade.GroupFacade;
 import core.facade.UserFacade;
@@ -81,13 +81,13 @@ public class EditGroupController {
 
     }
 
-    public void deleteGroup(ActionEvent actionEvent) throws IOException {
+    public void deleteGroup() throws IOException {
         GroupFacade.getInstance().deleteGroup(id_group, label_group);
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.groupView));
         SplitPay.window.setScene(new Scene(root));
     }
 
-    public void addFriend(ActionEvent actionEvent)throws IOException{
+    public void addFriend()throws IOException{
 
         if((this.friend_in_all != null)){
             if((!isInCollection(friend_in_all,friends_group))) {
@@ -109,8 +109,8 @@ public class EditGroupController {
         return present;
     }
 
-    public void goToGroupView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
+    public void goToGroupView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.groupView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -124,7 +124,7 @@ public class EditGroupController {
 
     }
 
-    public void deleteFriendFromGroup(ActionEvent actionEvent) throws IOException {
+    public void deleteFriendFromGroup() throws IOException {
 
         if((this.friend_in_group != null) ) {
             if((!isInCollection(friend_in_group, my_friends))) {
@@ -136,7 +136,7 @@ public class EditGroupController {
     }
 
     private void refresh() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editGroupView));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(NormalUserNavigationPath.editGroupView));
         Parent root = loader.load();
         EditGroupController editGroupController = loader.getController();
         editGroupController.setGroup(new Group(this.id_group, this.label_group));

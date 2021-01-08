@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageGroup.EditGroupController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+             <center>
+                 <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label fx:id="label" text="Group's friends" />
+                        <ListView fx:id="friends_in_group" onMouseClicked="#selectFriendInGroup" prefHeight="200.0" />
+                        <Button mnemonicParsing="false" onAction="#deleteFriendFromGroup" text="Delete from Group">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Button>
+                        <Label text="All my friends">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                        <ListView fx:id="all_my_friends" onMouseClicked="#selectFriendInAll" prefHeight="200.0" />
+                        <Button mnemonicParsing="false" onAction="#addFriend" text="Add to group">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Button>
+                  <HBox>
+                     <children>
+                              <Button mnemonicParsing="false" onAction="#goToGroupView" text="Back">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                              <Button mnemonicParsing="false" onAction="#deleteGroup" prefHeight="27.0" prefWidth="90.0" text="Delete Group" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                    </children>
+                 </VBox>
+             </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>

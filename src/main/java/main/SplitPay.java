@@ -18,7 +18,8 @@ public class SplitPay extends Application {
         //Main app
         Image logo = new Image(getClass().getResourceAsStream("../SplitPayV2XL.png"));
         window.getIcons().add(logo);
-        window.setTitle("main");
+        window.setTitle("SplitPay");
+        window.setResizable(false);
         window.centerOnScreen();
 
         //LogIn

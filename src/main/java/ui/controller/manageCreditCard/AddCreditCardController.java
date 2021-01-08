@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageCreditCard;
 
 import java.awt.*;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class AddCreditCardController {
      * @throws ParseException
      * @todo Handle the possible exceptions.
      */
-    public void addCard(ActionEvent actionEvent) throws ParseException, IOException {
+    public void addCard() throws ParseException, IOException {
         allStyleSetDefault();
 
         if(RegexPattern.numberPattern.matcher(number.getText()).find()
@@ -48,7 +48,7 @@ public class AddCreditCardController {
             Date real_date = new SimpleDateFormat("yyyy-MM-dd").parse(date.getText());
             CreditCardFacade.getInstance().createCreditCard(number.getText(),nameOwner.getText(),real_date,cvv.getText());
 
-            Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.creditCardView));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.creditCardView));
             SplitPay.window.setScene(new Scene(root));
         }else{
             if(!RegexPattern.numberPattern.matcher(number.getText()).find()){
@@ -78,8 +78,8 @@ public class AddCreditCardController {
 
 
 
-    public void goToCreditCardView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.creditCardView));
+    public void goToCreditCardView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.creditCardView));
         SplitPay.window.setScene(new Scene(root));
     }
 }

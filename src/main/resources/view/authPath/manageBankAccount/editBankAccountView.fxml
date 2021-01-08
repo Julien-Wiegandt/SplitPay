@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageCreditCard.AddCreditCardController">
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageBankAccount.EditBankAccountController">
    <children>
       <BorderPane prefHeight="15.0" prefWidth="320.0">
          <top>
@@ -13,34 +13,27 @@
          <center>
             <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="249.0" layoutY="38.0" text="Add Credit Card">
+                  <Label fx:id="label" layoutX="270.0" layoutY="67.0" text="Label" />
+                  <Label fx:id="ownerFirstName" layoutX="270.0" layoutY="112.0" text="Label">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Label>
-                  <TextField fx:id="number" layoutX="85.0" layoutY="59.0" promptText="number">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin></TextField>
-                  <TextField fx:id="nameOwner" layoutX="85.0" layoutY="281.0" promptText="Name">
+                  <Label fx:id="ownerLastName" layoutX="270.0" layoutY="166.0" text="Label">
                      <VBox.margin>
                         <Insets top="10.0" />
-                     </VBox.margin></TextField>
-                  <TextField fx:id="date" layoutX="85.0" layoutY="102.0" promptText="date">
+                     </VBox.margin></Label>
+                  <Label fx:id="iban" layoutX="270.0" layoutY="213.0" text="Label">
                      <VBox.margin>
                         <Insets top="10.0" />
-                     </VBox.margin></TextField>
-                  <TextField fx:id="cvv" layoutX="85.0" layoutY="190.0" promptText="cvv">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin></TextField>
-                  <HBox alignment="CENTER" minWidth="320.0" prefHeight="100.0" prefWidth="200.0">
+                     </VBox.margin></Label>
+                  <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#goToCreditCardView" text="Cancel">
+                        <Button mnemonicParsing="false" onAction="#goToBankAccountView" text="Back">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#addCard" text="Validate" />
+                        <Button mnemonicParsing="false" onAction="#deleteBankAccount" text="Delete" />
                      </children>
                      <VBox.margin>
                         <Insets top="40.0" />
@@ -48,7 +41,7 @@
                   </HBox>
                </children>
             </VBox>
-        </center>
+         </center>
          <bottom>
             <fx:include source="../homeButtonView.fxml" />
          </bottom>
