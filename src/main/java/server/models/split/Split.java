@@ -1,35 +1,42 @@
 package server.models.split;
 
+import core.facade.TransactionFacade;
+import core.facade.UserFacade;
+import core.models.StoreOwner;
 import server.communication.ConnectionToClient;
 import server.exception.splitException.GoalAmountExceededException;
 import server.exception.splitException.ParticipantAlreadyInException;
 import server.exception.splitException.ParticipantNotFoundException;
+import server.exception.splitException.SplitNotReadyForPayment;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 public abstract class Split implements Serializable {
 
-    public Split(String splitCode, int ownerId, String ownerNickName, String label, String splitMode){
+    StoreOwner receiver;
+
+    public Split(String splitCode, int ownerId, String ownerNickName, String label, StoreOwner receiver){
         this.splitCode=splitCode;
         this.label=label;
         this.ownerId=ownerId;
         this.ownerNickName=ownerNickName;
-        this.splitMode=splitMode;
+        this.receiver=receiver;
     }
 
-    private String label;
-    private String splitCode;
-    private boolean expired = false;
+    protected String label;
+    protected String splitCode;
+    protected boolean expired = false;
     protected double goalAmount;
-    private String splitMode;
-    private int ownerId;
-    private String ownerNickName;
-    private double currentAmount = 0;
+    protected SplitMode splitMode;
+    protected int ownerId;
+    protected String ownerNickName;
+    protected double currentAmount = 0;
 
-    private HashMap<Integer,Participant> participants = new HashMap<>();
+    protected HashMap<Integer,Participant> participants = new HashMap<>();
 
     public double getCurrentAmount() {
         return currentAmount;
@@ -144,11 +151,11 @@ public abstract class Split implements Serializable {
         this.goalAmount = goalAmount;
     }
 
-    public String getSplitMode() {
+    public SplitMode getSplitMode() {
         return splitMode;
     }
 
-    public void setSplitMode(String splitMode) {
+    public void setSplitMode(SplitMode splitMode) {
         this.splitMode = splitMode;
     }
 
@@ -169,6 +176,18 @@ public abstract class Split implements Serializable {
     }
 
     public int getNumberOfParticipant(){return participants.size();}
+
+    /**
+     * Returns split participants following the following format "participantNickName1/participantNickname2/..."
+     * @return
+     */
+    public String participantsToString(){
+        String string="";
+        for (Participant participant:participants.values()) {
+            string = string.concat(participant.getNickname()+"/");
+        }
+        return string;
+    }
 
     @Override
     public String toString() {
@@ -217,6 +236,38 @@ public abstract class Split implements Serializable {
     public void switchParticipantReadyStatus(int participantId) throws ParticipantNotFoundException {
         Participant participant = getParticipantById(participantId);
         participant.switchReadyStatus();
+    }
+
+    /**
+     * creates the transactions for the split and updates user balances
+     */
+    public void paySplit() throws SplitNotReadyForPayment {
+        if(isReadyForPayment()){
+            TransactionFacade transactionFacade = TransactionFacade.getTransactionFacade();
+            UserFacade userFacade = UserFacade.getUserFacade();
+            String stringParticipants = participantsToString();
+            int receiverId = Integer.parseInt(getReceiver().getId());
+            for (Participant participant: getParticipants().values()) {
+                float participantAmount = (float) participant.getAmount();
+                userFacade.updateUserBalanceById(participant.getId(), participantAmount*(-1));
+                // TODO : replace userFacade by store owner facade
+                userFacade.updateStoreOwnerBalanceById(receiverId, participantAmount);
+                transactionFacade.createSplitTransaction(
+                        participantAmount,
+                        new Date(System.currentTimeMillis()),
+                        participant.getId(),
+                        receiverId,
+                        stringParticipants);
+            }
+
+            setExpired(true);
+        } else {
+            throw new SplitNotReadyForPayment("Can't pay ! Split not ready for payment");
+        }
+    }
+
+    public StoreOwner getReceiver() {
+        return receiver;
     }
 
     /**

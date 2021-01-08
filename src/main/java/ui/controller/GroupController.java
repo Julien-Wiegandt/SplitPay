@@ -55,12 +55,13 @@ public class GroupController {
      */
     @FXML
     public void goToEditGroupView()throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editGroupView));
-        Parent root = loader.load();
-        EditGroupController editGroupController = loader.getController();
-        editGroupController.setGroup((Group) listView.getSelectionModel().getSelectedItem());
-        SplitPay.window.setScene(new Scene(root));
+        if(listView.getSelectionModel().getSelectedItem() !=null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editGroupView));
+            Parent root = loader.load();
+            EditGroupController editGroupController = loader.getController();
+            editGroupController.setGroup((Group) listView.getSelectionModel().getSelectedItem());
+            SplitPay.window.setScene(new Scene(root));
+        }
 
     }
 

@@ -1,5 +1,6 @@
 package core.facade;
 
+import core.models.BankAccount;
 import core.models.CreditCard;
 import persist.DAOFactory;
 import persist.dao.CreditCardDAO;
@@ -7,6 +8,7 @@ import persist.dao.mysql.MySqlDAOFactory;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 public class CreditCardFacade {
@@ -44,5 +46,9 @@ public class CreditCardFacade {
 
     public ArrayList<CreditCard> getCards() {
         return this.creditCardDAO.getCards();
+    }
+
+    public Collection<CreditCard> getCreditCards() {
+        return creditCardDAO.getCreditCards();
     }
 }

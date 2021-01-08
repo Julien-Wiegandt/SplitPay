@@ -60,19 +60,19 @@ public class UserFacade {
     }
 
     public void storeOwnerPhoneSignUp(String credential, String companyName, String nickname, String siret, String password){
-        user = userDao.createStoreOwner(new StoreOwner(null, null, credential, siret, password, nickname, 0f, null, companyName, null));
+        user = userDao.createStoreOwner(new StoreOwner(null, null, credential, siret, password, nickname, 0f, null, companyName));
     }
 
     public void storeOwnerEmailSignUp(String credential, String companyName, String nickname, String siret, String password){
-        user = userDao.createStoreOwner(new StoreOwner(null, credential, null, siret, password, nickname, 0f, null, companyName, null));
+        user = userDao.createStoreOwner(new StoreOwner(null, credential, null, siret, password, nickname, 0f, null, companyName));
     }
 
     public void normalUserEmailSignUp(String credential, String firstName, String lastName, String nickname, String password){
-        user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, credential, null, password, nickname, 0f, null));
+        user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, credential, null, password, nickname, 0f));
     }
 
     public void normalUserPhoneSignUp(String credential, String firstName, String lastName, String nickname, String password){
-        user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, null, credential, password, nickname, 0f, null));
+        user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, null, credential, password, nickname, 0f));
     }
 
     public NormalUser getLoggedNormalUser(){
@@ -84,6 +84,7 @@ public class UserFacade {
     }
 
     public boolean isStoreOwner() {return session.isStoreOwner();}
+
     public boolean isNormalUser() {return session.isNormalUser();}
 
     /** pre : a user must be logged in
@@ -130,11 +131,8 @@ public class UserFacade {
         return money <= getUser().getBalance();
     }
 
+    // TODO : refactor to updateNormalUserBalanceById
     public void updateUserBalanceById(int userId, Float amount){
-        if(userId == Integer.valueOf(user.getId())){
-            user.setBalance(user.getBalance()+amount);
-            userDao.update(user);
-        }else{
             try {
                 User u = userDao.findUserById(userId);
                 u.setBalance(u.getBalance()+amount);
@@ -142,15 +140,16 @@ public class UserFacade {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+    }
+
+    public void updateStoreOwnerBalanceById(int userId, Float amount){
+        try {
+            User u = userDao.findStoreOwnerById(userId);
+            u.setBalance(u.getBalance()+amount);
+            userDao.update(u);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-    }
-
-    public Collection<CreditCard> getCreditCards() {
-        return userDao.getCreditCards();
-    }
-
-    public Collection<BankAccount> getBankAccounts() {
-        return userDao.getBankAccounts();
     }
 
     /**
@@ -171,13 +170,6 @@ public class UserFacade {
         userDao.update(user);
     }
 
-    public void generateVerificationCode(){
-        String code = SplitUtilities.generateCode();
-        System.out.println(code);
-        getUser().setValidationCode(code);
-
-    }
-
     public static void deleteAccount(){
         User user = getUserFacade().getLoggedUser();
         getUserFacade().userDao.delete(user);
@@ -185,4 +177,7 @@ public class UserFacade {
     }
 
 
+    public Collection getFriends(int parseInt) {
+        return userDao.getFriends(parseInt);
+    }
 }

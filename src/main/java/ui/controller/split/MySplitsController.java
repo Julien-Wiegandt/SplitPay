@@ -7,20 +7,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import server.models.split.FreeSplit;
+import server.models.split.Split;
 
 import java.io.IOException;
 import java.util.HashMap;
 
 public class MySplitsController {
 
-    ///// mySplitView.fxml logic
-
-    private HashMap<String, FreeSplit> splits = null;
+    private HashMap<String, Split> splits = null;
 
     private SplitClientFacade facade = SplitClientFacade.getInstance();
 
     @FXML
-    private ListView<FreeSplit> listView;
+    private ListView<Split> listView;
 
     @FXML
     private Label noSplitsLabel;
@@ -29,9 +28,9 @@ public class MySplitsController {
         facade.getSplits();
     }
 
-    public void setSplits(HashMap<String, FreeSplit> splits){
+    public void setSplits(HashMap<String, Split> splits){
         this.splits=splits;
-        ObservableList<FreeSplit> items = FXCollections.observableArrayList ();
+        ObservableList<Split> items = FXCollections.observableArrayList ();
         items.setAll(splits.values());
         listView.setItems(items);
         updateMySplitsView();
@@ -53,4 +52,5 @@ public class MySplitsController {
         SplitClientFacade.getInstance().setMySplitsController(this);
         getSplits();
     }
+
 }

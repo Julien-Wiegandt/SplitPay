@@ -100,10 +100,7 @@ public class ManageAccountController {
      */
 
     public void goToDeleteAccountView(ActionEvent actionEvent) throws IOException {
-        String code  = SplitUtilities.generateCode();
-        System.out.println(code);
         User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
-        tempUser.setValidationCode(code);
 
         DeleteAccountController.setTempUser(tempUser);
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.deleteAccountView));

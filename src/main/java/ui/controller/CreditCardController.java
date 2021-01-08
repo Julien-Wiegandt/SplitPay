@@ -57,11 +57,15 @@ public class CreditCardController {
      * @todo Handle the possible exceptions. (if the user click on empty field)
      */
     public void goToCreditCardView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editCreditCardView));
-        Parent root = loader.load();
-        EditCreditCardController editCreditCardController = loader.getController();
-        editCreditCardController.setCreditCard((CreditCard) listView.getSelectionModel().getSelectedItem());
-        SplitPay.window.setScene(new Scene(root));
+        if(listView.getSelectionModel().getSelectedItem() !=null) {
+
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(NormalUserNavigationPath.editCreditCardView));
+            Parent root = loader.load();
+            EditCreditCardController editCreditCardController = loader.getController();
+            editCreditCardController.setCreditCard((CreditCard) listView.getSelectionModel().getSelectedItem());
+            SplitPay.window.setScene(new Scene(root));
+        }
     }
 
     public void goToAddCreditCardView(ActionEvent actionEvent) throws IOException {
@@ -70,7 +74,7 @@ public class CreditCardController {
     }
 
     public void goToHomeView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
     }
 

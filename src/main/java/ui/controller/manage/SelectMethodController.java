@@ -1,4 +1,4 @@
-package ui.controller.manage;
+package ui.controller;
 
 import core.facade.UserFacade;
 import javafx.event.ActionEvent;
@@ -52,7 +52,6 @@ public class SelectMethodController {
      * @throws IOException
      */
     public void goToVerificationView(ActionEvent actionEvent) throws IOException {
-        UserFacade.getUserFacade().generateVerificationCode();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }

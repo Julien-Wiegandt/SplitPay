@@ -48,7 +48,6 @@ public class MenuController {
             creditCardsButton.setManaged(false);
             socialLabel.setManaged(false);
             socialLabel.setManaged(false);
-
         }
     }
 
@@ -58,7 +57,7 @@ public class MenuController {
      * @throws IOException
      */
     public void goToMyTransactionsView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.myTransactionsView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.myTransactionsView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -68,7 +67,7 @@ public class MenuController {
      * @throws IOException
      */
     public void goToMySplitsView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("view/authPath/mySplitsView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.mySplitsView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -82,7 +81,6 @@ public class MenuController {
         SplitPay.window.setScene(new Scene(root));
     }
 
-
     /**
      * This method redirects to the BankAccountView
      * @param actionEvent
@@ -95,7 +93,7 @@ public class MenuController {
 
     public void goToGroupView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NormalUserNavigationPath.groupView));
-
+        SplitPay.window.setScene(new Scene(root));
     }
 
     /**
@@ -125,6 +123,27 @@ public class MenuController {
      */
     public void goToNotificationView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.notificationView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * This method redirects to the myTransactionsView
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToHomeView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * This method logs the current user out and redirects him to the login page
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void logout(ActionEvent actionEvent) throws IOException {
+        UserFacade.getUserFacade().logout();
+        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.logInView));
         SplitPay.window.setScene(new Scene(root));
     }
 }

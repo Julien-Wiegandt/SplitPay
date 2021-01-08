@@ -51,9 +51,7 @@ public class ChangeEmailController {
      */
     public void changeEmail(ActionEvent actionEvent) throws IOException {
         if (RegexPattern.emailPattern.matcher(email1.getText()).find() && RegexPattern.emailPattern.matcher(email2.getText()).find() ) {
-            code = SplitUtilities.generateCode();
             User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
-            tempUser.setValidationCode(code);
             tempUser.setEmail(email1.getText());
             VerificationController.setTempUser(tempUser);
             /*
@@ -63,7 +61,7 @@ public class ChangeEmailController {
                 e.printStackTrace();
             }
             */
-            System.out.println(code);
+
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
             SplitPay.window.setScene(new Scene(root));
 

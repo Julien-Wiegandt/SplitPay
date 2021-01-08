@@ -57,7 +57,6 @@ public class ChangePasswordController {
         if (password1.getText().equals(password2.getText())) {
             String code = SplitUtilities.generateCode();
             User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
-            tempUser.setValidationCode(code);
             tempUser.setPassword(password1.getText());
             VerificationController.setTempUser(tempUser);
             System.out.println(code);

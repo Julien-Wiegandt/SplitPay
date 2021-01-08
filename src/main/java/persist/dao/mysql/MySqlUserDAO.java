@@ -134,7 +134,7 @@ public class MySqlUserDAO extends UserDAO {
                 //String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
-                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, null);
+                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -166,7 +166,7 @@ public class MySqlUserDAO extends UserDAO {
                 String dbCompanyName = rs.getString("companyName");
                 String dbAddress = rs.getString("address");
 
-                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, null, dbCompanyName, dbAddress);
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbCompanyName, dbAddress);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -197,7 +197,7 @@ public class MySqlUserDAO extends UserDAO {
                 //String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
-                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, null);
+                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -230,7 +230,7 @@ public class MySqlUserDAO extends UserDAO {
                 String dbCompanyName = rs.getString("companyName");
                 String dbAddress = rs.getString("address");
 
-                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, null, dbCompanyName, dbAddress);
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbCompanyName, dbAddress);
                 System.out.println(user);
             }
         }catch(SQLException throwables){
@@ -328,19 +328,26 @@ public class MySqlUserDAO extends UserDAO {
         }
         try {
             if(user instanceof NormalUser) {
-                System.out.println("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName ='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
-                        "WHERE normal_user_pk='" + user.getId() + "'");
 
-
-                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET firstName='"+((NormalUser) user).getFirstName()+"', lastName ='"+((NormalUser) user).getLastName()+"', email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "', balance='" + user.getBalance() + "'" +
+                Integer rs = stmt.executeUpdate("UPDATE NormalUser SET " +
+                        "firstName='"+((NormalUser) user).getFirstName()+"', " +
+                        "lastName ='"+((NormalUser) user).getLastName()+"', " +
+                        "email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
+                        "password='" + user.getPassword() + "', " +
+                        "nickname='" + user.getNickname() + "', " +
+                        "balance='" + user.getBalance() + "'" +
                         "WHERE normal_user_pk='" + user.getId() + "'");
 
             }else{
-                Integer rs = stmt.executeUpdate("UPDATE StoreOwner SET email='" + user.getEmail() + "', phone='" + user.getPhone() + "'," +
-                        " password='" + user.getPassword() + "', nickname='" + user.getNickname() + "','"+((StoreOwner)user).getCompanyName()+"','"+((StoreOwner)user).getAddress()+"', balance=" + user.getBalance() +
-                        "WHERE store_owner_pk=" + user.getId() + "");
+                Integer rs = stmt.executeUpdate("UPDATE StoreOwner SET " +
+                        "email='" + user.getEmail() + "', " +
+                        "phone='" + user.getPhone() + "'," +
+                        "password='" + user.getPassword() + "', " +
+                        "nickname='" + user.getNickname() + "'," +
+                        "companyName='"+((StoreOwner)user).getCompanyName()+"'," +
+                        "address='"+((StoreOwner)user).getAddress()+"', " +
+                        "balance='" + user.getBalance() + "'" +
+                        "WHERE store_owner_pk='" + user.getId() + "'");
 
             }
 
@@ -388,7 +395,7 @@ public class MySqlUserDAO extends UserDAO {
 
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
-                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance, null);
+                user = new NormalUser(dbFirstName, dbLastName, dbId, dbEmail, dbPhone, dbPassword, dbNickname, dbBalance);
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();
@@ -413,73 +420,17 @@ public class MySqlUserDAO extends UserDAO {
                 String dbPhone = rs.getString("phone");
                 String dbNickname = rs.getString("nickname");
                 Float dbBalance = rs.getFloat("balance");
-                //String dbValidationCode = rs.getString("validationCode");
                 String dbEmail = rs.getString("email");
                 String dbPassword = rs.getString("password");
                 String dbCompanyName = rs.getString("companyName");
                 String dbAddress = rs.getString("address");
 
-                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, null, dbCompanyName, dbAddress);
+                user = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbCompanyName, dbAddress);
             }
         }catch(SQLException throwables){
             throwables.printStackTrace();
         }
         return user;
-    }
-
-    public Collection<CreditCard> getCreditCards(){
-        Statement stmt = null;
-        ArrayList<CreditCard> creditCards = new ArrayList<CreditCard>();
-        try {
-            stmt = ConnectionMySql.connection.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM CreditCard WHERE normal_user_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
-
-            while (rs.next()) {
-                String dbId = rs.getString("credit_card_pk");
-                String number = rs.getString("number");
-                String nameOwner = rs.getString("cardName");
-                Date date = rs.getDate("date");
-                String cvv = rs.getString("cvv");
-
-                creditCards.add(new CreditCard(dbId, number, nameOwner, date, cvv));
-            }
-        }catch(SQLException throwables){
-            throwables.printStackTrace();
-        }
-        return creditCards;
-    }
-
-    public Collection<BankAccount> getBankAccounts(){
-        Statement stmt = null;
-        ArrayList<BankAccount> bankAccounts = new ArrayList<BankAccount>();
-        try {
-            stmt = ConnectionMySql.connection.createStatement();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
-            if(UserFacade.getUserFacade().isNormalUser()) {
-                ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_NormalUser_BankAccount WHERE normal_user_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
-                while (rs.next()) {
-                    BankAccount bankAccount = BankAccountFacade.getInstance().getBankAccountById(rs.getInt("bank_account_fk"));
-                    bankAccounts.add(bankAccount);
-                }
-            }else{
-                ResultSet rs = stmt.executeQuery("SELECT * FROM Relation_StoreOwner_BankAccount WHERE store_owner_fk=" + UserFacade.getUserFacade().getUser().getId() + ";");
-                while (rs.next()){
-                    BankAccount bankAccount = BankAccountFacade.getInstance().getBankAccountById(rs.getInt("bank_account_fk"));
-                    bankAccounts.add(bankAccount);
-                }
-            }
-
-            } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return bankAccounts;
     }
 
     //prendre en compte héritage

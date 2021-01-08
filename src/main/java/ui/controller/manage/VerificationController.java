@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
+import util.SplitUtilities;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,10 +36,12 @@ public class VerificationController {
 
     private static User tempUser;
 
+    private String realCode;
+
     @FXML
     void initialize(){
-
-
+        realCode = SplitUtilities.generateCode();
+        System.out.println(realCode);
     }
     /**
      * This method verify if the validation code is correct and update the user
@@ -47,15 +50,14 @@ public class VerificationController {
      */
     public void verifyCode(ActionEvent actionEvent) throws IOException {
         System.out.println(code.getText());
-        System.out.println(getTempUser().getValidationCode());
-        if (code.getText().equals(tempUser.getValidationCode())) {
+        System.out.println(realCode);
+        if (code.getText().equals(realCode)) {
             UserFacade.getUserFacade().updateUser(tempUser);
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
             SplitPay.window.setScene(new Scene(root));
 
         }
     }
-
 
     public User getTempUser() {
         return tempUser;

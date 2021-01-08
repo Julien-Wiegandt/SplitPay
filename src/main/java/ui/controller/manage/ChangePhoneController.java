@@ -37,9 +37,6 @@ public class ChangePhoneController {
     private Button confirm;
 
 
-
-    private String code;
-
     @FXML
     void initialize() {
 
@@ -53,10 +50,7 @@ public class ChangePhoneController {
      */
     public void changePhone(ActionEvent actionEvent) throws IOException {
         if (RegexPattern.phonePattern.matcher(phone.getText()).find()) {
-            code = SplitUtilities.generateCode();
-            System.out.println(code);
             User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
-            tempUser.setValidationCode(code);
             tempUser.setPhone(phone.getText());
             VerificationController.setTempUser(tempUser);
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));

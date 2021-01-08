@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="splitSection" prefHeight="60.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.split.SplitSectionController">
-    <VBox alignment="CENTER" layoutX="-135.0" prefHeight="138.0" prefWidth="820.0">
+<AnchorPane fx:id="splitSection" maxHeight="-Infinity" maxWidth="320.0" minWidth="-Infinity" prefHeight="145.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.split.SplitSectionController">
+    <VBox alignment="CENTER" layoutX="-15.0" prefHeight="158.0" prefWidth="320.0">
         <children>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="531.0" text="Enter split code">
                 <VBox.margin>
@@ -17,7 +17,7 @@
             </Label>
             <TextField fx:id="splitCode" prefHeight="38.0" prefWidth="464.0" promptText="Code">
                 <VBox.margin>
-                    <Insets bottom="5.0" left="350.0" right="350.0" />
+                    <Insets bottom="5.0" left="100.0" right="100.0" />
                 </VBox.margin>
             </TextField>
             <Button mnemonicParsing="false" onAction="#joinSplit" text="Join">

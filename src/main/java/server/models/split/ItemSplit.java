@@ -1,5 +1,6 @@
 package server.models.split;
 
+import core.models.StoreOwner;
 import server.communication.ConnectionToClient;
 import server.exception.splitException.*;
 
@@ -19,17 +20,17 @@ public class ItemSplit extends Split{
      * @param ownerId
      * @param ownerNickName
      * @param label
-     * @param splitMode
      * @param items
      */
-    public ItemSplit(String splitCode, int ownerId, String ownerNickName, String label, String splitMode,Item[] items){
-        super(splitCode,ownerId,ownerNickName,label,splitMode);
+    public ItemSplit(String splitCode, int ownerId, String ownerNickName, String label, Item[] items, StoreOwner receiver){
+        super(splitCode,ownerId,ownerNickName,label,receiver);
         double totalAmount = 0;
         for (int i = 0; i < items.length ; i++) {
             this.items.add(items[i]);
             totalAmount+= items[i].getPrice();
         }
         this.goalAmount=totalAmount;
+        setSplitMode(SplitMode.ITEMSPLIT);
     }
 
     /**
@@ -43,6 +44,10 @@ public class ItemSplit extends Split{
         } catch(IndexOutOfBoundsException e){
             throw new UnknownItemException("Error : Unknown item requested");
         }
+    }
+
+    public List<Item> getItems(){
+        return items;
     }
 
     /**
@@ -155,6 +160,25 @@ public class ItemSplit extends Split{
      */
     public List<Item> getParticipantCart(int participantId){
         return participantsCart.get(participantId);
+    }
+
+    public HashMap<Integer, List<Item>> getParticipantsCart() {
+        return participantsCart;
+    }
+
+    @Override
+    public String toString() {
+        return "Split{" +
+                " label='" + label + '\'' +
+                ", splitCode='" + splitCode + '\'' +
+                ", expired=" + expired +
+                ", goalAmount=" + goalAmount +
+                ", splitMode='" + splitMode + '\'' +
+                ", ownerId=" + ownerId +
+                ", participants=" + participants +
+                ", items="+ items +
+                ", participantsCard="+ participantsCart +
+                '}';
     }
 
 }

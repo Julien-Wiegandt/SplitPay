@@ -5,37 +5,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HomeController">
-   <center>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="340.0" prefWidth="637.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" prefHeight="31.0" prefWidth="546.0" text="Balance">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Label>
-            <Label fx:id="balance" alignment="CENTER" prefHeight="17.0" prefWidth="532.0" text="0">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToManageBalanceView" text="Manage balance">
-               <VBox.margin>
-                  <Insets bottom="30.0" />
-               </VBox.margin>
-            </Button>
-            <fx:include source="splitSection.fxml" />
-            <Button fx:id="sendMoneyToFriendButton" mnemonicParsing="false" onAction="#goToChooseFriendView" text="Send money to friend">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin></Button>
-         </children>
-      </VBox>
-   </center>
-   <top>
-      <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
-   </top>
-   <left>
-      <fx:include fx:id="normalUserMenu" source="menu.fxml" />
-   </left>
-</BorderPane>
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HomeController">
+   <children>
+      <BorderPane prefHeight="15.0" prefWidth="320.0">
+         <top>
+            <fx:include source="menu.fxml" />
+         </top>
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="31.0" prefWidth="546.0" text="Balance">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="balance" alignment="CENTER" prefHeight="17.0" prefWidth="532.0" text="0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToManageBalanceView" text="Manage balance">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <fx:include source="splitSection.fxml"/>
+                  <Button fx:id="sendMoneyToFriendButton" mnemonicParsing="false" onAction="#goToChooseFriendView" text="Send money to friend">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="80.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="5.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <bottom>
+            <fx:include source="homeButtonView.fxml" />
+         </bottom>
+      </BorderPane>
+   </children>
+</VBox>

@@ -46,7 +46,7 @@ public class LogInController {
                 && RegexPattern.passwordPattern.matcher(password.getText()).find()) {
             try {
                 UserFacade.getUserFacade().emailLogIn(credential.getText(), password.getText());
-                Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
                 SplitPay.window.setScene(new Scene(root));
             } catch (Exception e) {
                 password.setText("");
@@ -61,12 +61,12 @@ public class LogInController {
 
                 if(UserFacade.getUserFacade().getLoggedNormalUser()!=null){
                     // Logged in as a NormalUser
-                    root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+                    root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
 
                 }
                 else{
                     // Logged in as a StoreOwner
-                    root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
+                    root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
 
                 }
 
