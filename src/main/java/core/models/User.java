@@ -48,6 +48,7 @@ public class User {
         this.balance = balance;
     }
 
+
     public void setValidationCode(String validationCode) {
         this.validationCode = validationCode;
     }
@@ -80,4 +81,6 @@ public class User {
                 ", validationCode='" + validationCode + '\'' +
                 '}';
     }
+
+
 }

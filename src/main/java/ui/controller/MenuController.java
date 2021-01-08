@@ -104,7 +104,7 @@ public class MenuController {
      * @throws IOException
      */
     public void goToManageAccountView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.manageAccountView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -114,7 +114,7 @@ public class MenuController {
      * @throws IOException
      */
     public void goToFriendView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.friendView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.friendView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -124,7 +124,7 @@ public class MenuController {
      * @throws IOException
      */
     public void goToNotificationView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.notificationView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.notificationView));
         SplitPay.window.setScene(new Scene(root));
     }
 }

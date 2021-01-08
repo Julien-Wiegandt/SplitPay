@@ -46,6 +46,14 @@ public class NormalUser extends User {
                 '}';
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
     public  String toString(){
         return this.firstName+" "+this.LastName+" ("+ this.getNickname() +")";
     }

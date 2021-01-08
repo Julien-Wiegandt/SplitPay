@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manage;
 
 import core.facade.UserFacade;
 import core.models.User;
@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.SplitPay;
+import ui.controller.manage.VerificationController;
 import ui.path.AuthPath;
 import util.SplitUtilities;
 

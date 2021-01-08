@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manage;
 
 import core.facade.UserFacade;
 import javafx.event.ActionEvent;
@@ -53,7 +53,7 @@ public class SelectMethodController {
      */
     public void goToVerificationView(ActionEvent actionEvent) throws IOException {
         UserFacade.getUserFacade().generateVerificationCode();
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.verificationView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
@@ -65,8 +65,8 @@ public class SelectMethodController {
      */
 
     public void goToHomeView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
-        SplitPay.window.setScene(new Scene(root, 320, 500));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
+        SplitPay.window.setScene(new Scene(root));
     }
 
 }

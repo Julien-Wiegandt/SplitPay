@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -62,8 +62,11 @@ public class ChangePasswordController {
             VerificationController.setTempUser(tempUser);
             System.out.println(code);
 
-            Parent root = FXMLLoader.load(getClass().getResource(AuthPath.selectMethodView));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.selectMethodView));
             SplitPay.window.setScene(new Scene(root));
+        }
+        else {
+            password2.setStyle("-fx-text-box-border: red");
         }
     }
 }

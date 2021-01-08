@@ -63,11 +63,6 @@ public class Notification {
 
     @Override
     public String toString() {
-        return "Notification{" +
-                "id='" + id + '\'' +
-                ", userID='" + userID + '\'' +
-                ", label='" + label + '\'' +
-                ", message='" + message + '\'' +
-                '}';
+        return  label + " : "+  message;
     }
 }

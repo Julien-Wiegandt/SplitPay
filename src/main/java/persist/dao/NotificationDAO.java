@@ -9,8 +9,5 @@ public abstract class NotificationDAO {
 
     public abstract void addNotification(Notification notification);
     public abstract void deleteNotificationById(String id);
-
-    public abstract void show();
-
     public abstract ArrayList<Notification> getNotifications(String id);
 }

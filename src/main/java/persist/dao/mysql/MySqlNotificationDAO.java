@@ -30,32 +30,7 @@ public class MySqlNotificationDAO extends NotificationDAO {
 
     }
 
-    public void show() {
-        Statement stmt = null;
-        try {
-            stmt = ConnectionMySql.connection.createStatement();
-            ResultSet rs = stmt.executeQuery("Select * From Notification");
-            System.out.println(rs.toString());
-            ResultSetMetaData rsmd = rs.getMetaData();
-            System.out.println("querying SELECT * FROM XXX");
-            int columnsNumber = rsmd.getColumnCount();
-            while (rs.next()) {
-                for (int i = 1; i <= columnsNumber; i++) {
-                    if (i > 1) System.out.print(",  ");
-                    String columnValue = rs.getString(i);
-                    System.out.print(columnValue + " " + rsmd.getColumnName(i));
-                }
-                System.out.println("");
-            }
 
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-
-
-    }
 
     public ArrayList<Notification> getNotifications(String id) {
         Statement stmt = null;

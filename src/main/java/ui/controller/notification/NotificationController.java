@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.notification;
 
 import core.facade.NotificationFacade;
 import core.models.Notification;

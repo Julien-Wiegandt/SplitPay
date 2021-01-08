@@ -34,8 +34,6 @@ public class MySqlFriendDAO extends FriendDAO {
     public ArrayList<NormalUser> getFriends(String id) {
         Statement stmt = null;
         ArrayList<NormalUser> friends=new ArrayList<NormalUser>();
-        System.out.println("GETFRIENDSSSSSSSSSSSSSSSSSSSSSSS");
-
         try {
             stmt = ConnectionMySql.connection.createStatement();
             ResultSet rs = stmt.executeQuery("Select * From Friends JOIN NormalUser On NormalUser.normal_user_pk =  Friends.added_normal_user_fk  WHERE adder_normal_user_fk ="+"'"+ id +"'");
@@ -46,6 +44,8 @@ public class MySqlFriendDAO extends FriendDAO {
                 user.setEmail(rs.getString("email"));
                 user.setPhone(rs.getString("phone"));
                 user.setNickname(rs.getString("nickname"));
+                user.setLastName(rs.getString("lastName"));
+                user.setFirstName(rs.getString("firstName"));
                 System.out.println(user);
                 friends.add(user);
             }

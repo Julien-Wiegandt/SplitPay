@@ -3,21 +3,45 @@ package ui.controller;
 import core.facade.UserFacade;
 import core.models.User;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import main.SplitPay;
+import ui.controller.manage.DeleteAccountController;
 import ui.path.AuthPath;
 import util.SplitUtilities;
-
 import java.io.IOException;
+
 
 public class ManageAccountController {
 
+    @FXML
+    private Button changePhone;
+
+    @FXML
+    private Button changePassword;
+
+    @FXML
+    private Button changeEmail;
+
+    @FXML
+    private Button confirmEmailPhone;
+
+    @FXML
+    private Button deleteAccount;
 
 
 
+    @FXML
+    private void initialize() {
+        User user = UserFacade.getUserFacade().getLoggedUser();
+        if ( user.getPhone() != null && user.getEmail() != null) {
+            confirmEmailPhone.setManaged(false);
+        }
 
+    }
 
 
 
@@ -30,7 +54,7 @@ public class ManageAccountController {
      */
 
     public void goToSelectMethodView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.selectMethodView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.selectMethodView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -41,7 +65,7 @@ public class ManageAccountController {
      */
 
     public void goToChangePhoneView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.changePhoneView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.changePhoneView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -52,7 +76,7 @@ public class ManageAccountController {
      */
 
     public void goToChangeEmailView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.changeEmailView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.changeEmailView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -65,7 +89,7 @@ public class ManageAccountController {
      */
 
     public void goToChangePasswordView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.changePasswordView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.changePasswordView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -82,7 +106,7 @@ public class ManageAccountController {
         tempUser.setValidationCode(code);
 
         DeleteAccountController.setTempUser(tempUser);
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.deleteAccountView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.deleteAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 
@@ -93,7 +117,7 @@ public class ManageAccountController {
      */
 
     public void goToConfirmCredentialsView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.confirmCredentialsView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.confirmCredentialsView));
         SplitPay.window.setScene(new Scene(root));
     }
 

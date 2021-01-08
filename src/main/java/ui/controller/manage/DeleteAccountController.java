@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manage;
 
 import core.facade.UserFacade;
 import core.models.User;
@@ -35,7 +35,7 @@ public class DeleteAccountController {
     public void deleteAccount(ActionEvent actionEvent) throws IOException {
         if (code.getText().equals(tempUser.getValidationCode())) {
             UserFacade.deleteAccount();
-            Parent root = FXMLLoader.load(getClass().getResource(AuthPath.logInView));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.logInView));
             SplitPay.window.setScene(new Scene(root));
         }
     }

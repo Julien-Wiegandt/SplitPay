@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.AddFriendController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.friend.AddFriendController">
     <center>
         <Label prefHeight="255.0" prefWidth="470.0" text="Verification" BorderPane.alignment="TOP_CENTER">
          <graphic>
@@ -50,9 +50,9 @@
          </graphic></Label>
     </center>
     <top>
-        <fx:include fx:id="normalUserHeaderBar" source="headerBar.fxml" />
+        <fx:include fx:id="normalUserHeaderBar" source="../headerBar.fxml" />
     </top>
     <left>
-        <fx:include fx:id="normalUserMenu" source="menu.fxml" />
+        <fx:include fx:id="normalUserMenu" source="../menu.fxml" />
     </left>
 </BorderPane>

@@ -72,9 +72,6 @@ public class NotificationFacade {
 
 
     }
-    public void show(){
-        getNotificationDao().show();
-    }
 
     /**
      * delete from the database

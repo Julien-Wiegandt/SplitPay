@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.friend;
 
 import core.facade.FriendFacade;
 import javafx.event.ActionEvent;
@@ -48,25 +48,26 @@ public class AddFriendController {
      * @throws IOException
      */
     public void addFriend(ActionEvent actionEvent) throws IOException {
-        if(RegexPattern.emailPattern.matcher(credentials.getText()).find()) {
-            try {
+        try {
+            if(RegexPattern.emailPattern.matcher(credentials.getText()).find()) {
                 FriendFacade.getFriendFacade().addFriendByEmail(credentials.getText());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
             }
+            else if (RegexPattern.phonePattern.matcher(credentials.getText()).find()){
+                FriendFacade.getFriendFacade().addFriendByPhone(credentials.getText());
+            }
+            else {
+                credentials.setStyle("-fx-text-box-border: red");
+            }
+        } catch (SQLException throwables) {
+            System.out.println("Vous avez déjà ajouter cet utilisateur comme ami");
+            throwables.printStackTrace();
 
         }
-        else if (RegexPattern.phonePattern.matcher(credentials.getText()).find()){
-            FriendFacade.getFriendFacade().addFriendByPhone(credentials.getText());
-
-        }
-        else {
-            credentials.setStyle("-fx-text-box-border: red");
-        }
-
-
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.friendView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.friendView));
         SplitPay.window.setScene(new Scene(root));
+
+
+
     }
 
 }

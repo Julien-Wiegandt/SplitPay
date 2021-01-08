@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manage;
 
 import core.facade.UserFacade;
 import core.models.User;
@@ -50,10 +50,9 @@ public class VerificationController {
         System.out.println(getTempUser().getValidationCode());
         if (code.getText().equals(tempUser.getValidationCode())) {
             UserFacade.getUserFacade().updateUser(tempUser);
-            Parent root = FXMLLoader.load(getClass().getResource(AuthPath.manageAccountView));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.manageAccountView));
             SplitPay.window.setScene(new Scene(root));
-            //Parent root = FXMLLoader.load(getClass().getResource(AuthPath.changePasswordView));
-            //SplitPay.window.setScene(new Scene(root, 320, 500));
+
         }
     }
 
