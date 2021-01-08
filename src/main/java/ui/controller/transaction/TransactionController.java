@@ -3,7 +3,14 @@ package ui.controller.transaction;
 import core.facade.UserFacade;
 import core.models.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import main.SplitPay;
+import ui.path.UserNavigationPath;
+
+import java.io.IOException;
 
 /**
  * Controller of the transactionView called when a user want to see the details of the selected transaction on myTransactionsView.
@@ -19,6 +26,15 @@ public class TransactionController {
      */
     @FXML
     private Label transactionType, transactionDate, transactionAmount, splitParticipants, otherTransactionActor;
+
+    /**
+     * This method redirects to the myTransactionsView
+     * @throws IOException
+     */
+    public void goToMyTransactionsView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.myTransactionsView));
+        SplitPay.window.setScene(new Scene(root));
+    }
 
     /**
      * This method set all the transaction's details in the Labels

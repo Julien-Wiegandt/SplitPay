@@ -18,28 +18,17 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AddFriendController {
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
 
     @FXML
     private TextField credentials;
 
-    @FXML
-    private Button cancel;
-
-    @FXML
-    private Button confirm;
-
-
-
-    @FXML
-    void initialize() {
-
-
+    /**
+     * This method redirects to the friendView
+     * @throws IOException
+     */
+    public void goToFriendView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.friendView));
+        SplitPay.window.setScene(new Scene(root));
     }
 
     /**
