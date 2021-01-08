@@ -1,4 +1,4 @@
-package ui.controller.friend;
+package ui.controller.manageFriend;
 
 import core.facade.FriendFacade;
 import javafx.event.ActionEvent;

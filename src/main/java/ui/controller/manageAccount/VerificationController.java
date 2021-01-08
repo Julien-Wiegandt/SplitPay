@@ -1,4 +1,4 @@
-package ui.controller.manage;
+package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import core.models.User;
@@ -45,10 +45,9 @@ public class VerificationController {
     }
     /**
      * This method verify if the validation code is correct and update the user
-     * @param actionEvent
      * @throws IOException
      */
-    public void verifyCode(ActionEvent actionEvent) throws IOException {
+    public void verifyCode() throws IOException {
         System.out.println(code.getText());
         System.out.println(realCode);
         if (code.getText().equals(realCode)) {

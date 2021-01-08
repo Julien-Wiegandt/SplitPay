@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import javafx.event.ActionEvent;
@@ -38,20 +38,19 @@ public class SelectMethodController {
     }
 
     @FXML
-    void emailMethod(ActionEvent event) {
+    void emailMethod() {
 
     }
 
     @FXML
-    void smsMethod(ActionEvent event) {
+    void smsMethod() {
 
     }
     /**
      * This method redirects to the forgottenPasswordView
-     * @param actionEvent
      * @throws IOException
      */
-    public void goToVerificationView(ActionEvent actionEvent) throws IOException {
+    public void goToVerificationView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
@@ -59,11 +58,10 @@ public class SelectMethodController {
 
     /**
      * This method redirects to the homeView
-     * @param actionEvent
      * @throws IOException
      */
 
-    public void goToHomeView(ActionEvent actionEvent) throws IOException {
+    public void goToHomeView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
     }

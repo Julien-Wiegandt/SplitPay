@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageAccount.SelectMethodController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+            <center>
+                <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label alignment="CENTER" layoutX="49.0" layoutY="14.0" text="Select a verification method" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" AnchorPane.bottomAnchor="355.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <RadioButton fx:id="email" mnemonicParsing="false" text="email">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></RadioButton>
+                        <RadioButton fx:id="sms" mnemonicParsing="false" prefWidth="50.0" text="sms">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></RadioButton>
+                  <HBox>
+                     <children>
+                              <Button fx:id="cancel" mnemonicParsing="false" text="Cancel">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                              <Button fx:id="confirm" mnemonicParsing="false" onAction="#goToVerificationView" text="Select" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </HBox>
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>

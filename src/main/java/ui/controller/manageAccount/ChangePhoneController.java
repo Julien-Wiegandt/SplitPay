@@ -1,4 +1,4 @@
-package ui.controller.manage;
+package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import core.models.User;
@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
 import util.RegexPattern;
-import util.SplitUtilities;
 
 import java.io.IOException;
 
@@ -45,10 +44,9 @@ public class ChangePhoneController {
 
     /**
      * This method creates a tempUser with the new phone number and go to verificationView to validate.
-     * @param actionEvent
      * @throws IOException
      */
-    public void changePhone(ActionEvent actionEvent) throws IOException {
+    public void changePhone() throws IOException {
         if (RegexPattern.phonePattern.matcher(phone.getText()).find()) {
             User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
             tempUser.setPhone(phone.getText());

@@ -8,16 +8,16 @@ public class AuthPath {
     public static String forgottenPasswordView = "../../../view/authPath/forgottenPasswordView.fxml";
     public static String homeView = "view/authPath/homeView.fxml";
 
-    public static String selectMethodView = "view/authPath/ManageAccount/selectMethodView.fxml";
-    public static String verificationView = "view/authPath/ManageAccount/verificationView.fxml";
-    public static String addFriendView = "view/authPath/Friend/addFriendView.fxml";
-    public static String friendView = "view/authPath/Friend/friendView.fxml";
-    public static String notificationView = "view/authPath/Notification/notificationView.fxml";
-    public static String manageAccountView = "view/authPath/ManageAccount/manageAccountView.fxml";
-    public static String changeEmailView = "view/authPath/ManageAccount/changeEmailView.fxml";
-    public static String changePhoneView = "view/authPath/ManageAccount/changePhoneView.fxml";
-    public static String deleteAccountView ="view/authPath/ManageAccount/deleteAccountView.fxml";
-    public static String confirmCredentialsView = "view/authPath/ManageAccount/confirmCredentialsView.fxml";
-    public static String changePasswordView = "view/authPath/ManageAccount/changePasswordView.fxml";
+    public static String selectMethodView = "view/authPath/manageAccount/selectMethodView.fxml";
+    public static String verificationView = "view/authPath/manageAccount/verificationView.fxml";
+    public static String addFriendView = "view/authPath/manageFriend/addFriendView.fxml";
+    public static String friendView = "view/authPath/manageFriend/friendView.fxml";
+    public static String notificationView = "view/authPath/notification/notificationView.fxml";
+    public static String manageAccountView = "view/authPath/manageAccount/manageAccountView.fxml";
+    public static String changeEmailView = "view/authPath/manageAccount/changeEmailView.fxml";
+    public static String changePhoneView = "view/authPath/manageAccount/changePhoneView.fxml";
+    public static String deleteAccountView = "view/authPath/manageAccount/deleteAccountView.fxml";
+    public static String confirmCredentialsView = "view/authPath/manageAccount/confirmCredentialsView.fxml";
+    public static String changePasswordView = "view/authPath/manageAccount/changePasswordView.fxml";
 
 }

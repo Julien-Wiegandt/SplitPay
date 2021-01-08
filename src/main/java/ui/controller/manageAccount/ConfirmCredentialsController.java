@@ -1,4 +1,4 @@
-package ui.controller.manage;
+package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import core.models.User;
@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.SplitPay;
-import ui.controller.manage.VerificationController;
 import ui.path.AuthPath;
 import util.SplitUtilities;
 
@@ -55,7 +54,7 @@ public class ConfirmCredentialsController {
     }
 
 
-    public void goToVerificationView(ActionEvent actionEvent) throws IOException {
+    public void goToVerificationView() throws IOException {
         String code = SplitUtilities.generateCode();
         User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
 

@@ -1,4 +1,4 @@
-package ui.controller.manage;
+package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import core.models.User;
@@ -35,7 +35,7 @@ public class DeleteAccountController {
         System.out.println(realCode);
     }
 
-    public void deleteAccount(ActionEvent actionEvent) throws IOException {
+    public void deleteAccount() throws IOException {
         if (code.getText().equals(realCode)) {
             UserFacade.deleteAccount();
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.logInView));

@@ -1,4 +1,4 @@
-package ui.controller.manage;
+package ui.controller.manageAccount;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,10 +49,9 @@ public class ChangePasswordController {
     }
     /**
      * This method change the password
-     * @param actionEvent
      * @throws IOException
      */
-    public void changePassword(ActionEvent actionEvent) throws IOException {
+    public void changePassword() throws IOException {
 
         if (password1.getText().equals(password2.getText())) {
             String code = SplitUtilities.generateCode();

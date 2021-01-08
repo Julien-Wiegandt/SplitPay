@@ -1,4 +1,4 @@
-package ui.controller.manage;
+package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import core.models.User;
@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
 import util.RegexPattern;
-import util.SplitUtilities;
 
 import java.io.IOException;
 
@@ -46,10 +45,9 @@ public class ChangeEmailController {
 
     /**
      * This method changes the user's email
-     * @param actionEvent
      * @throws IOException
      */
-    public void changeEmail(ActionEvent actionEvent) throws IOException {
+    public void changeEmail() throws IOException {
         if (RegexPattern.emailPattern.matcher(email1.getText()).find() && RegexPattern.emailPattern.matcher(email2.getText()).find() ) {
             User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
             tempUser.setEmail(email1.getText());
