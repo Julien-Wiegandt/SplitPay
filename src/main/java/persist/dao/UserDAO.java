@@ -111,6 +111,8 @@ public abstract class UserDAO{
 
     public abstract User findUserById(int userId) throws SQLException;
 
+    public abstract NormalUser findNormalUserById(int userId) throws SQLException;
+
     public abstract StoreOwner findStoreOwnerById(int userId) throws SQLException;
 
 

@@ -1,5 +1,6 @@
 package ui.controller.manageGroup;
 
+import core.facade.FriendFacade;
 import core.facade.GroupFacade;
 import core.facade.UserFacade;
 import core.models.Group;
@@ -68,7 +69,7 @@ public class EditGroupController {
         label.setText(selectedItem.getLabel());
 
         // On instancie la collection de TOUS les amis
-        this.my_friends = UserFacade.getUserFacade().getFriends(Integer.parseInt(UserFacade.getUserFacade().getLoggedNormalUser().getId()));
+        this.my_friends = FriendFacade.getFriendFacade().getFriends();
 
         ObservableList<NormalUser> my_friends_items = FXCollections.observableArrayList();
 

@@ -47,10 +47,12 @@ public class ChooseRecoverAmountController {
     public void sendMoneyToBankAccount() throws IOException {
         this.allStyleSetDefault();
         if(RegexPattern.decimalPattern.matcher(amountInput.getText()).find() && UserFacade.getUserFacade().isEnoughtMoneyInBalance(Float.valueOf(amountInput.getText()))){
-            UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText())*(-1));
+
             if(UserFacade.getUserFacade().isNormalUser()){
+                UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText())*(-1));
                 TransactionFacade.getTransactionFacade().createUserToBankAccount(Float.valueOf(amountInput.getText()), new Date(), Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Integer.valueOf(bankAccount.getId()));
             }else{
+                UserFacade.getUserFacade().updateStoreOwnerBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText())*(-1));
                 TransactionFacade.getTransactionFacade().createStoreOwnerToBankAccount(Float.valueOf(amountInput.getText()), new Date(), Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Integer.valueOf(bankAccount.getId()));
             }
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));

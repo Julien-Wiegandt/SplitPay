@@ -122,11 +122,6 @@ public class UserFacade {
         return user;
     }
 
-    // à remplacer par FriendFacade.getFriends()
-    /*public Collection getFriends(int userId) {
-        return userDao.getFriends(userId);
-    }
-*/
     public Boolean isEnoughtMoneyInBalance(Float money){
         return money <= getUser().getBalance();
     }
@@ -176,8 +171,17 @@ public class UserFacade {
 
     }
 
-
-    public Collection getFriends(int parseInt) {
-        return userDao.getFriends(parseInt);
+    public NormalUser findNormalUserById(int id) throws SQLException {
+        return userDao.findNormalUserById(id);
     }
+
+    public StoreOwner findStoreOwnerById(int id) throws SQLException {
+        return userDao.findStoreOwnerById(id);
+    }
+
+    public void setLoggedUser(User user){
+        session.setLoggedUser(user);
+    }
+
+
 }

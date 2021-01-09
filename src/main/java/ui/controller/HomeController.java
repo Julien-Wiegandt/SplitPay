@@ -1,5 +1,6 @@
 package ui.controller;
 
+import core.auth.Session;
 import core.facade.UserFacade;
 import core.models.NormalUser;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import ui.path.UserNavigationPath;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class HomeController {
 
@@ -29,10 +31,22 @@ public class HomeController {
 
     @FXML
     private void initialize() {
-        balance.setText(UserFacade.getUserFacade().getLoggedUser().getBalance().toString()+"€");
-        if(UserFacade.getUserFacade().isStoreOwner()){
+        if(UserFacade.getUserFacade().isNormalUser()){
+            try {
+                UserFacade.getUserFacade().setLoggedUser(UserFacade.getUserFacade().findNormalUserById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId())));
+            }catch (SQLException throwables) {
+                System.out.println("Can't find the logged NormalUser in the db.");
+            }
+        }
+        else{
+            try {
+                UserFacade.getUserFacade().setLoggedUser(UserFacade.getUserFacade().findStoreOwnerById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId())));
+            }catch (SQLException throwables) {
+                System.out.println("Can't find the logged NormalUser in the db.");
+            }
             sendMoneyToFriendButton.setVisible(false);
         }
+        balance.setText(UserFacade.getUserFacade().getLoggedUser().getBalance().toString()+"€");
     }
 
     public void goToChooseFriendView(javafx.event.ActionEvent actionEvent) throws IOException {
