@@ -433,6 +433,39 @@ public class MySqlUserDAO extends UserDAO {
         return user;
     }
 
+    @Override
+    public ArrayList<StoreOwner> findAllStoreOwners() throws SQLException {
+        Statement stmt = null;
+        StoreOwner storeOwner;
+        ArrayList<StoreOwner> storeOwners = new ArrayList<>();
+        try {
+            stmt = ConnectionMySql.connection.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM StoreOwner");
+
+            while (rs.next()) {
+                String dbId = rs.getString("store_owner_pk");
+                String dbSiret = rs.getString("siret");
+                String dbPhone = rs.getString("phone");
+                String dbNickname = rs.getString("nickname");
+                Float dbBalance = rs.getFloat("balance");
+                String dbEmail = rs.getString("email");
+                String dbPassword = rs.getString("password");
+                String dbCompanyName = rs.getString("companyName");
+                String dbAddress = rs.getString("address");
+
+                storeOwner = new StoreOwner(dbId, dbEmail, dbPhone, dbSiret, dbPassword, dbNickname, dbBalance, dbCompanyName, dbAddress);
+                storeOwners.add(storeOwner);
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return storeOwners;
+    }
+
     //prendre en compte héritage
     @Override
     public void error() {

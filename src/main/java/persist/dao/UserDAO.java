@@ -113,5 +113,6 @@ public abstract class UserDAO{
 
     public abstract StoreOwner findStoreOwnerById(int userId) throws SQLException;
 
+    public abstract ArrayList<StoreOwner> findAllStoreOwners() throws SQLException;
 
 }

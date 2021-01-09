@@ -180,4 +180,9 @@ public class UserFacade {
     public Collection getFriends(int parseInt) {
         return userDao.getFriends(parseInt);
     }
+
+    public ArrayList<StoreOwner> getAllStoreOwners() throws SQLException {
+        return userDao.findAllStoreOwners();
+    }
+
 }

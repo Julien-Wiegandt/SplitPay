@@ -14,5 +14,5 @@ public class NormalUserNavigationPath {
     public static String editGroupView = "../../view/authPath/EditGroupView.fxml";
 
     public static String paymentSuccessView = "view/authPath/split/paymentSuccessView.fxml";
-    public static String freeSplitCreationView = "view/authPath/split/freeSplitCreationView.fxml";
+    public static String splitCreationView = "view/authPath/split/splitCreationView.fxml";
 }

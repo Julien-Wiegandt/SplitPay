@@ -71,7 +71,7 @@ public class SplitSectionController {
      * Method used to redirect the user into the split creation view
      */
     public void goToSplitCreationView(){
-        URL url = getClass().getClassLoader().getResource(NormalUserNavigationPath.freeSplitCreationView);
+        URL url = getClass().getClassLoader().getResource(NormalUserNavigationPath.splitCreationView);
 
         Parent root = null;
         try {
