@@ -36,28 +36,34 @@ public class ChangeEmailController {
      * @throws IOException
      */
     public void changeEmail() throws IOException {
-        if (RegexPattern.emailPattern.matcher(email1.getText()).find() && RegexPattern.emailPattern.matcher(email2.getText()).find() ) {
-            User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
+        allStyleSetDefault();
+        if (RegexPattern.emailPattern.matcher(email1.getText()).find() && RegexPattern.emailPattern.matcher(email2.getText()).find() && email1.getText().equals(email2.getText())) {
+            User tempUser = UserFacade.getUserFacade().getLoggedUser();
             tempUser.setEmail(email1.getText());
             VerificationController.setTempUser(tempUser);
-            /*
-            try {
-                Mail.sendEmail(email1.getText(),code);
-            } catch (MessagingException e) {
-                e.printStackTrace();
-            }
-            */
 
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
             SplitPay.window.setScene(new Scene(root));
         }
-        else {
-            email1.setStyle("-fx-text-box-border: red");
-            email2.setStyle("-fx-text-box-border: red");
+        else{
+            if(!RegexPattern.emailPattern.matcher(email1.getText()).find()){
+                email1.setStyle("-fx-text-box-border: red");
+            }
+            if(!RegexPattern.emailPattern.matcher(email2.getText()).find()){
+                email2.setStyle("-fx-text-box-border: red");
+            }
+            if(!email1.getText().equals(email2.getText())){
+                email2.setStyle("-fx-text-box-border: red");
+            }
         }
-
-
     }
 
+    /**
+     * This method is used to set all user's input error feedback styles to default.
+     */
+    private void allStyleSetDefault(){
+        email1.setStyle("-fx-text-box-border: black");
+        email2.setStyle("-fx-text-box-border: black");
+    }
 
 }

@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import main.SplitPay;
 import ui.path.AuthPath;
+import util.RegexPattern;
 import util.SplitUtilities;
 
 public class ChangePasswordController {
@@ -34,21 +35,15 @@ public class ChangePasswordController {
         SplitPay.window.setScene(new Scene(root));
     }
 
-    @FXML
-    void initialize() {
-        assert password1 != null : "fx:id=\"password1\" was not injected: check your FXML file 'changePasswordView.fxml'.";
-        assert password2 != null : "fx:id=\"password2\" was not injected: check your FXML file 'changePasswordView.fxml'.";
-    }
-
     /**
      * This method change the password
      * @throws IOException
      */
     public void changePassword() throws IOException {
-
-        if (password1.getText().equals(password2.getText())) {
+        allStyleSetDefault();
+        if (RegexPattern.passwordPattern.matcher(password1.getText()).find() && RegexPattern.passwordPattern.matcher(password2.getText()).find() && password1.getText().equals(password2.getText())) {
             String code = SplitUtilities.generateCode();
-            User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
+            User tempUser = UserFacade.getUserFacade().getLoggedUser();
             tempUser.setPassword(password1.getText());
             VerificationController.setTempUser(tempUser);
             System.out.println(code);
@@ -57,7 +52,24 @@ public class ChangePasswordController {
             SplitPay.window.setScene(new Scene(root));
         }
         else {
-            password2.setStyle("-fx-text-box-border: red");
+            if(!RegexPattern.passwordPattern.matcher(password1.getText()).find()){
+                password1.setStyle("-fx-text-box-border: red");
+            }
+            if(!RegexPattern.passwordPattern.matcher(password2.getText()).find()){
+                password2.setStyle("-fx-text-box-border: red");
+            }
+            if(!password1.getText().equals(password2.getText())){
+                password2.setStyle("-fx-text-box-border: red");
+            }
+
         }
+    }
+
+    /**
+     * This method is used to set all user's input error feedback styles to default.
+     */
+    private void allStyleSetDefault(){
+        password1.setStyle("-fx-text-box-border: black");
+        password2.setStyle("-fx-text-box-border: black");
     }
 }

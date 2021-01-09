@@ -56,10 +56,6 @@ public class VerificationController {
         }
     }
 
-    public User getTempUser() {
-        return tempUser;
-    }
-
 
     public static void setTempUser(User tempUser) {
         VerificationController.tempUser = tempUser;

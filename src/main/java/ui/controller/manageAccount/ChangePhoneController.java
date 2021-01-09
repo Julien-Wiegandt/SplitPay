@@ -21,7 +21,6 @@ public class ChangePhoneController {
     @FXML
     private TextField phone;
 
-
     /**
      * This method redirects to the selectMethodView
      * @throws IOException
@@ -36,8 +35,9 @@ public class ChangePhoneController {
      * @throws IOException
      */
     public void changePhone() throws IOException {
+        allStyleSetDefault();
         if (RegexPattern.phonePattern.matcher(phone.getText()).find()) {
-            User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
+            User tempUser = UserFacade.getUserFacade().getLoggedUser();
             tempUser.setPhone(phone.getText());
             VerificationController.setTempUser(tempUser);
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
@@ -47,6 +47,13 @@ public class ChangePhoneController {
         else {
             phone.setStyle("-fx-text-box-border: red");
         }
+    }
+
+    /**
+     * This method is used to set all user's input error feedback styles to default.
+     */
+    private void allStyleSetDefault(){
+        phone.setStyle("-fx-text-box-border: black");
     }
 
 }

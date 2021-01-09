@@ -31,12 +31,6 @@ public class SelectMethodController {
         SplitPay.window.setScene(new Scene(root));
     }
 
-    @FXML
-    void initialize() {
-        assert email != null : "fx:id=\"email\" was not injected: check your FXML file 'selectMethod.fxml'.";
-        assert sms != null : "fx:id=\"sms\" was not injected: check your FXML file 'selectMethod.fxml'.";
-    }
-
     /**
      * This method redirects to the forgottenPasswordView
      * @throws IOException

@@ -18,19 +18,7 @@ import java.io.IOException;
 public class ManageAccountController {
 
     @FXML
-    private Button changePhone;
-
-    @FXML
-    private Button changePassword;
-
-    @FXML
-    private Button changeEmail;
-
-    @FXML
     private Button confirmEmailPhone;
-
-    @FXML
-    private Button deleteAccount;
 
 
 

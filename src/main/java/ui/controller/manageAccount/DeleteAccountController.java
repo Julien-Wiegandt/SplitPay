@@ -39,10 +39,14 @@ public class DeleteAccountController {
     }
 
     public void deleteAccount() throws IOException {
+        allStyleSetDefault();
         if (code.getText().equals(realCode)) {
             UserFacade.deleteAccount();
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.logInView));
             SplitPay.window.setScene(new Scene(root));
+        }
+        else{
+            code.setStyle("-fx-text-box-border: red");
         }
     }
 
@@ -50,8 +54,14 @@ public class DeleteAccountController {
         return tempUser;
     }
 
-
     public static void setTempUser(User tempUser) {
         DeleteAccountController.tempUser = tempUser;
+    }
+
+    /**
+     * This method is used to set all user's input error feedback styles to default.
+     */
+    private void allStyleSetDefault(){
+        code.setStyle("-fx-text-box-border: black");
     }
 }

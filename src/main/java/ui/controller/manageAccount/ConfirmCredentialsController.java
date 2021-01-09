@@ -52,7 +52,7 @@ public class ConfirmCredentialsController {
 
     public void goToVerificationView() throws IOException {
         String code = SplitUtilities.generateCode();
-        User tempUser = UserFacade.getUserFacade().getLoggedNormalUser();
+        User tempUser = UserFacade.getUserFacade().getLoggedUser();
 
             /*
             try {
