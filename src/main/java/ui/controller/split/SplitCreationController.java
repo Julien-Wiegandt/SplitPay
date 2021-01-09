@@ -3,9 +3,11 @@ package ui.controller.split;
 import client.facade.SplitClientFacade;
 import core.facade.UserFacade;
 import core.models.StoreOwner;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import server.models.split.Split;
@@ -32,6 +34,9 @@ public class SplitCreationController {
     @FXML
     private TextField splitGoalAmount;
 
+    @FXML
+    private Label flashMessage;
+
 
     /**
      * utility method to fetch store owners in the database
@@ -54,11 +59,40 @@ public class SplitCreationController {
         listView.setItems(items);
     }
 
+    public void splitCreatedSuccess(String splitCode){
+        Platform.runLater(() -> {
+                    setFlashMessage("Split created, join with code : "+splitCode);
+                    clearInputs();
+                }
+        );
+    }
+
+    private void clearInputs(){
+        splitLabel.setText("");
+        splitGoalAmount.setText("");
+    }
+
     /**
-     * Harvest ui input and sends the data to the facade
+     * Sets flash message
+     * @param message
+     */
+    public void setFlashMessage(String message){
+        flashMessage.setText(message);
+    }
+
+    /**
+     * utility method to reset flash message
+     */
+    private void resetFlashMessage(){
+        flashMessage.setText("");
+    }
+
+    /**
+     * Harvests ui input and sends the data to the facade
      */
     public void createFreeSplit(){
-        double goalAmount = Double.parseDouble(splitGoalAmount.getText());
+    resetFlashMessage();
+    double goalAmount = Double.parseDouble(splitGoalAmount.getText());
         String label = splitLabel.getText();
         StoreOwner receiver = listView.getSelectionModel().getSelectedItem();
         try {
@@ -77,6 +111,7 @@ public class SplitCreationController {
     private void initialize() throws IOException {
         getStoreOwners();
         setStoreOwners();
+        SplitClientFacade.getInstance().setSplitCreationController(this);
     }
 
 }

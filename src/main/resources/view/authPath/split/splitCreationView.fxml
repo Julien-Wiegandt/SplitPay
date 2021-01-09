@@ -28,6 +28,7 @@
                      <content>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
+                              <Label fx:id="flashMessage"/>
                               <Label text="Create a split">
                                  <font>
                                     <Font size="18.0" />
@@ -54,14 +55,17 @@
                                     <Insets left="50.0" right="50.0" />
                                  </VBox.margin>
                               </ListView>
-                              <Button onAction="#createFreeSplit" mnemonicParsing="false" text="Create" />
+                              <Button mnemonicParsing="false" onAction="#createFreeSplit" text="Create" />
                            </children>
                         </VBox>
                      </content>
                 </Tab>
                 <Tab text="EqualSplit">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="119.0" layoutY="180.0" text="Coming soon..." />
+                           </children></AnchorPane>
                   </content>
                 </Tab>
               </tabs>

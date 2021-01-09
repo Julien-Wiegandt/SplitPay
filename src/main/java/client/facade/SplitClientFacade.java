@@ -8,10 +8,7 @@ import server.models.split.FreeSplit;
 import server.models.split.ItemSplit;
 import server.models.split.Split;
 import server.models.split.SplitMode;
-import ui.controller.split.ItemSplitSaloonController;
-import ui.controller.split.MySplitsController;
-import ui.controller.split.FreeSplitSaloonController;
-import ui.controller.split.SplitSectionController;
+import ui.controller.split.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -122,12 +119,20 @@ public class SplitClientFacade implements Observer
         this.itemSplitSaloonController=itemSplitSaloonController;
     }
 
+    public void setSplitCreationController(SplitCreationController splitCreationController){
+        this.splitCreationController=splitCreationController;
+    }
+
+
+
     /* References to controllers receiving server data ***************** */
 
     private MySplitsController mySplitsController;
     private FreeSplitSaloonController freeSplitSaloonController;
     private ItemSplitSaloonController itemSplitSaloonController;
     private SplitSectionController splitSectionController;
+
+    private SplitCreationController splitCreationController;
 
     /* Data temporally stored for controllers */
 
@@ -232,7 +237,8 @@ public class SplitClientFacade implements Observer
             case ClientServerProtocol.SPLIT_CREATED_RESPONSE:
                 try {
                     communicationService.closeConnection();
-                    System.out.println("Split created successfully");
+                    String splitCode = msgReceived.getArgument("splitCode");
+                    splitCreationController.splitCreatedSuccess(splitCode);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

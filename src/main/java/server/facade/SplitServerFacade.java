@@ -274,20 +274,16 @@ public class SplitServerFacade implements Observer {
                         = SplitMode.valueOf(splitModeString);
                 switch (splitMode){
                     case FREESPLIT:
-                        System.out.println("1");
                         int ownerId = Integer.parseInt(message.getArgument("ownerId"));
-                        System.out.println("1");
                         String ownerNickname = message.getArgument("ownerNickname");
-                        System.out.println("1");
                         Double goalAmount = Double.parseDouble(message.getArgument("goalAmount"));
-                        System.out.println("1");
                         String label = message.getArgument("label");
-                        System.out.println("1");
                         StoreOwner receiver = message.getStoreOwner();
-
-                        createFreeSplit(ownerId,ownerNickname,goalAmount,label,receiver);
+                        splitCode = createFreeSplit(ownerId,ownerNickname,goalAmount,label,receiver);
                         try {
-                            client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATED_RESPONSE,null,null,null));
+                            HashMap<String,String> arguments = new HashMap<>();
+                            arguments.put("splitCode",splitCode);
+                            client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATED_RESPONSE,arguments,null,null));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
