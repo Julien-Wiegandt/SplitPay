@@ -60,8 +60,12 @@ public class SplitCreationController {
     public void createFreeSplit(){
         double goalAmount = Double.parseDouble(splitGoalAmount.getText());
         String label = splitLabel.getText();
-        int receiver = Integer.parseInt(listView.getSelectionModel().getSelectedItem().getId());
-        facade.createFreeSplit(label,goalAmount,receiver);
+        StoreOwner receiver = listView.getSelectionModel().getSelectedItem();
+        try {
+            facade.createFreeSplit(label,goalAmount,receiver);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // TODO : implement

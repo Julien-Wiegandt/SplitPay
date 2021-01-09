@@ -274,13 +274,20 @@ public class SplitServerFacade implements Observer {
                         = SplitMode.valueOf(splitModeString);
                 switch (splitMode){
                     case FREESPLIT:
-                        int ownerId = Integer.getInteger(((SplitOriginatorMessage) msg).getArgument("ownerId"));
-                        String ownerNickname = ((SplitOriginatorMessage) msg).getArgument("ownerNickname");
-                        Double goalAmount = Double.parseDouble(((SplitOriginatorMessage) msg).getArgument("goalAmount"));
-                        String label = ((SplitOriginatorMessage) msg).getArgument("label");
-                        createFreeSplit(ownerId,ownerNickname,goalAmount,label,null);
+                        System.out.println("1");
+                        int ownerId = Integer.parseInt(message.getArgument("ownerId"));
+                        System.out.println("1");
+                        String ownerNickname = message.getArgument("ownerNickname");
+                        System.out.println("1");
+                        Double goalAmount = Double.parseDouble(message.getArgument("goalAmount"));
+                        System.out.println("1");
+                        String label = message.getArgument("label");
+                        System.out.println("1");
+                        StoreOwner receiver = message.getStoreOwner();
+
+                        createFreeSplit(ownerId,ownerNickname,goalAmount,label,receiver);
                         try {
-                            client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATED_RESPONSE,null,null));
+                            client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATED_RESPONSE,null,null,null));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -297,7 +304,7 @@ public class SplitServerFacade implements Observer {
                 userId = Integer.parseInt(message.getArguments().get("userId"));
                 HashMap<String, Split> userSplits = getUserSplits(userId);
                 try {
-                    client.sendToClient(new SplitOriginatorMessage(null, ClientServerProtocol.GET_SPLIT_REQUEST,null, userSplits));
+                    client.sendToClient(new SplitOriginatorMessage(null, ClientServerProtocol.GET_SPLIT_REQUEST,null, userSplits,null));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -311,7 +318,7 @@ public class SplitServerFacade implements Observer {
                     HashMap<String, Split> data = join(client,splitCode,userId,nickName);
                     try {
                         System.out.println("Success : Joined split");
-                        client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.JOINED_SPLIT,null,data));
+                        client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.JOINED_SPLIT,null,data,null));
                         sendToParticipants(splitCode,ClientServerProtocol.UPDATED_SPLIT_STATE);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -319,14 +326,14 @@ public class SplitServerFacade implements Observer {
                 } catch (SplitNotFoundException e) {
                     try {
                         System.out.println("Error : Split not found");
-                        client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_NOT_FOUND,null,null));
+                        client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_NOT_FOUND,null,null,null));
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
                 } catch (ParticipantAlreadyInException e) {
                     System.out.println("Error : Participant already in");
                     try {
-                        client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.PARTICIPANT_ALREADY_IN_SPLIT,null,null));
+                        client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.PARTICIPANT_ALREADY_IN_SPLIT,null,null,null));
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
@@ -353,7 +360,7 @@ public class SplitServerFacade implements Observer {
                     switchSplitParticipantReadyStatus(splitCode,userId);
                     HashMap<String, Split> data = getHashSplit(splitCode);
                     try {
-                        client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.UPDATED_SPLIT_STATE,null,data));
+                        client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.UPDATED_SPLIT_STATE,null,data,null));
                         sendToParticipants(splitCode,ClientServerProtocol.UPDATED_SPLIT_STATE);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -367,7 +374,7 @@ public class SplitServerFacade implements Observer {
                 splitCode = message.getArgument("splitCode");
                 try {
                     removeSplitParticipant(splitCode,userId);
-                    client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_SUCCESS,null,null));
+                    client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_SUCCESS,null,null,null));
                     sendToParticipants(splitCode,ClientServerProtocol.UPDATED_SPLIT_STATE);
                 } catch (SplitNotFoundException | ParticipantNotFoundException | IOException e) {
                     e.printStackTrace();
@@ -419,7 +426,7 @@ public class SplitServerFacade implements Observer {
         try {
             /* Create the message object */
             HashMap<String, Split> hashSplit = getHashSplit(splitCode);
-            SplitOriginatorMessage update = new SplitOriginatorMessage(null, protocol,null,hashSplit);
+            SplitOriginatorMessage update = new SplitOriginatorMessage(null, protocol,null,hashSplit,null);
 
             /* Get split participants */
             split = getSplitByCode(splitCode);

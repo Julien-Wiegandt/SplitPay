@@ -4,6 +4,7 @@
 
 package server.communication;
 
+import core.models.StoreOwner;
 import server.models.split.FreeSplit;
 import server.models.split.Split;
 
@@ -40,13 +41,19 @@ public class SplitOriginatorMessage implements Serializable
    */
   private HashMap<String, Split> splits;
 
+  /**
+   * Store owner object, often used during split creation
+   */
+  private StoreOwner storeOwner;
+
 // Constructor ***************************************************************
 
-  public SplitOriginatorMessage(ConnectionToClient originator, String message, HashMap<String, String> arguments, HashMap<String, Split> splits) {
+  public SplitOriginatorMessage(ConnectionToClient originator, String message, HashMap<String, String> arguments, HashMap<String, Split> splits, StoreOwner storeOwner) {
     this.originator = originator;
     this.message=message;
     this.arguments=arguments;
     this.splits = splits;
+    this.storeOwner=storeOwner;
   }
 
 // Accessor methods *********************************************************
@@ -93,6 +100,10 @@ public class SplitOriginatorMessage implements Serializable
     return this.arguments;
   }
 
+  public StoreOwner getStoreOwner(){
+    return storeOwner;
+  }
+
 
 
   public HashMap<String, Split> getSplits() {
@@ -106,6 +117,7 @@ public class SplitOriginatorMessage implements Serializable
             ", message=" + message +
             ", arguments=" + arguments +
             ", splits=" + splits +
+            ", storeOwner=" + storeOwner +
             '}';
   }
 }

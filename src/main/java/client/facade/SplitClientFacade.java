@@ -2,6 +2,7 @@ package client.facade;
 
 import client.communication.ObservableClient;
 import core.facade.UserFacade;
+import core.models.StoreOwner;
 import server.communication.SplitOriginatorMessage;
 import server.models.split.FreeSplit;
 import server.models.split.ItemSplit;
@@ -229,7 +230,12 @@ public class SplitClientFacade implements Observer
                 System.out.println("Split paid success");
                 break;
             case ClientServerProtocol.SPLIT_CREATED_RESPONSE:
-                System.out.println("Split created successfully");
+                try {
+                    communicationService.closeConnection();
+                    System.out.println("Split created successfully");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
 
         }
@@ -284,7 +290,7 @@ public class SplitClientFacade implements Observer
         arguments.put("nickName",nickName);
         arguments.put("splitCode",splitCode);
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.JOIN_SPLIT_ATTEMPT,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.JOIN_SPLIT_ATTEMPT,arguments,null,null);
 
         sendToServer(message);
         System.out.println("joinSplit message sent to server");
@@ -301,7 +307,7 @@ public class SplitClientFacade implements Observer
         arguments.put("splitCode",splitCode);
         arguments.put("itemId",Integer.toString(itemId));
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.PICK_ITEM_ATTEMPT,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.PICK_ITEM_ATTEMPT,arguments,null,null);
 
         sendToServer(message);
     }
@@ -316,7 +322,7 @@ public class SplitClientFacade implements Observer
         arguments.put("splitCode",splitCode);
         arguments.put("itemId",Integer.toString(itemId));
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.REMOVE_ITEM_ATTEMPT,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.REMOVE_ITEM_ATTEMPT,arguments,null,null);
 
         sendToServer(message);
     }
@@ -337,7 +343,7 @@ public class SplitClientFacade implements Observer
         arguments.put("splitCode",splitCode);
         arguments.put("newAmount",Double.toString(newAmount));
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.CHANGE_AMOUNT_REQUEST,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.CHANGE_AMOUNT_REQUEST,arguments,null,null);
         sendToServer(message);
 
     }
@@ -352,7 +358,7 @@ public class SplitClientFacade implements Observer
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("userId",UserFacade.getUserFacade().getLoggedUser().getId());
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.GET_SPLIT_REQUEST,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.GET_SPLIT_REQUEST,arguments,null,null);
 
         sendToServer(message);
     }
@@ -367,7 +373,7 @@ public class SplitClientFacade implements Observer
         arguments.put("userId",UserFacade.getUserFacade().getLoggedUser().getId());
         arguments.put("splitCode",splitCode);
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.CHANGE_READY_STATUS,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.CHANGE_READY_STATUS,arguments,null,null);
 
         sendToServer(message);
 
@@ -383,7 +389,7 @@ public class SplitClientFacade implements Observer
         arguments.put("userId",UserFacade.getUserFacade().getLoggedUser().getId());
         arguments.put("splitCode",splitCode);
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_REQUEST,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_REQUEST,arguments,null,null);
 
         sendToServer(message);
     }
@@ -397,16 +403,29 @@ public class SplitClientFacade implements Observer
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("splitCode",splitCode);
 
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_PAYMENT_REQUEST,arguments,null);
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_PAYMENT_REQUEST,arguments,null,null);
 
-        sendToServer(message);
     }
 
     /**
      * Method called by the client asking the server to create a free split
      */
-    public void createFreeSplit(String splitLabel, double goalAmount, int receiver){
-        System.out.println("Split creation request :"+splitLabel+" "+goalAmount+" "+receiver);
+    public void createFreeSplit(String splitLabel, double goalAmount, StoreOwner receiver) throws IOException {
+        communicationService.openConnection();
+
+        /* Creating request arguments */
+        HashMap<String,String> arguments = new HashMap<>();
+        arguments.put("label",splitLabel);
+        arguments.put("goalAmount",String.valueOf(goalAmount));
+        arguments.put("ownerId",UserFacade.getUserFacade().getLoggedUser().getId());
+        arguments.put("ownerNickname",UserFacade.getUserFacade().getLoggedUser().getNickname());
+        arguments.put("splitMode",SplitMode.FREESPLIT.toString());
+
+        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATION_REQUEST,arguments,null,receiver);
+
+        System.out.println("Message createFreeSplit: "+message);
+
+        sendToServer(message);
     }
 
     /**
