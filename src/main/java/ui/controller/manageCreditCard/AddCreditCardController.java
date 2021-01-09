@@ -41,7 +41,7 @@ public class AddCreditCardController {
         allStyleSetDefault();
 
         if(RegexPattern.numberPattern.matcher(number.getText()).find()
-                && RegexPattern.nameOwnerPattern.matcher(nameOwner.getText()).find()
+                && RegexPattern.namePattern.matcher(nameOwner.getText()).find()
                 && RegexPattern.datePattern.matcher(date.getText()).find()
                 && RegexPattern.cvvPattern.matcher(cvv.getText()).find()
                 ){
@@ -54,7 +54,7 @@ public class AddCreditCardController {
             if(!RegexPattern.numberPattern.matcher(number.getText()).find()){
                 number.setStyle("-fx-text-box-border: red");
             }
-            if(!RegexPattern.nameOwnerPattern.matcher(nameOwner.getText()).find()){
+            if(!RegexPattern.namePattern.matcher(nameOwner.getText()).find()){
                 nameOwner.setStyle("-fx-text-box-border: red");
             }
 

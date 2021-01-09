@@ -66,10 +66,10 @@ public class NormalUserSignUpController {
             if (!RegexPattern.emailPattern.matcher(credential.getText()).find() && !RegexPattern.phonePattern.matcher(credential.getText()).find()) {
                 credential.setStyle("-fx-text-box-border: red");
             }
-            if (!RegexPattern.textPattern.matcher(firstName.getText()).find()) {
+            if (!RegexPattern.namePattern.matcher(firstName.getText()).find()) {
                 firstName.setStyle("-fx-text-box-border: red");
             }
-            if (!RegexPattern.textPattern.matcher(lastName.getText()).find()) {
+            if (!RegexPattern.namePattern.matcher(lastName.getText()).find()) {
                 lastName.setStyle("-fx-text-box-border: red");
             }
             if (!RegexPattern.nicknamePattern.matcher(nickname.getText()).find()) {
