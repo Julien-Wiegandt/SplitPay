@@ -1,7 +1,6 @@
 package ui.controller.split;
 
 import client.facade.SplitClientFacade;
-import core.models.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -60,6 +59,24 @@ public class SplitSectionController {
         Parent root = null;
         try {
             // TODO : Handle resource path problem
+            root = FXMLLoader.load(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * Method used to redirect the user into the split creation view
+     */
+    public void goToSplitCreationView(){
+        URL url = getClass().getClassLoader().getResource(NormalUserNavigationPath.freeSplitCreationView);
+
+        Parent root = null;
+        try {
+            // TODO : Handle resource path problem
+            assert url != null;
             root = FXMLLoader.load(url);
         } catch (IOException e) {
             e.printStackTrace();
