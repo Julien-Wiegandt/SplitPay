@@ -15,7 +15,7 @@ public class NotificationController {
     @FXML
     void initialize() {
 
-        ObservableList<Notification> notifications = FXCollections.observableArrayList (NotificationFacade.getNotificationFacade().getNotifications());
+        ObservableList<Notification> notifications = FXCollections.observableArrayList(NotificationFacade.getNotificationFacade().getNotifications());
         myNotifications.setItems(notifications);
 
 

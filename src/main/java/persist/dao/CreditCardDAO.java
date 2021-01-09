@@ -2,7 +2,6 @@ package persist.dao;
 
 import core.models.CreditCard;
 
-
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Collection;

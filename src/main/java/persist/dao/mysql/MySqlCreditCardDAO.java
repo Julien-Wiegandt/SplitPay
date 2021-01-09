@@ -3,13 +3,11 @@ package persist.dao.mysql;
 
 import core.facade.UserFacade;
 import core.models.CreditCard;
-
 import persist.dao.CreditCardDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

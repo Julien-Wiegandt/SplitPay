@@ -4,8 +4,8 @@
 
 package server.communication;
 
-import java.util.*;
-import java.io.*;
+import java.io.IOException;
+import java.util.Observable;
 
 /**
  * This class acts as a subclass of <code>AbstractServer</code>
@@ -66,7 +66,7 @@ public class ObservableServer extends Observable
   /**
    * The service used to simulate multiple class inheritance.
    */
-  private AdaptableServer service;
+  private final AdaptableServer service;
 
 
   //Constructor *****************************************************

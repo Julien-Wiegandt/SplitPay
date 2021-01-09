@@ -4,7 +4,6 @@
 
 package server.communication;
 
-import server.models.split.FreeSplit;
 import server.models.split.Split;
 
 import java.io.Serializable;
@@ -28,17 +27,17 @@ public class SplitOriginatorMessage implements Serializable
   /**
    * The message describing the action wanted.
    */
-  private String message;
+  private final String message;
 
   /**
    * Contains arguments necessary for the operation
    */
-  private HashMap<String,String> arguments;
+  private final HashMap<String,String> arguments;
 
   /**
    * Split object, usually returned to clients to update their split state
    */
-  private HashMap<String, Split> splits;
+  private final HashMap<String, Split> splits;
 
 // Constructor ***************************************************************
 

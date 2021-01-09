@@ -10,8 +10,8 @@ import java.util.List;
 
 public class ItemSplit extends Split{
 
-    private List<Item> items = new ArrayList<>();
-    private HashMap<Integer,List<Item>> participantsCart = new HashMap<>();
+    private final List<Item> items = new ArrayList<>();
+    private final HashMap<Integer,List<Item>> participantsCart = new HashMap<>();
 
     /**
      * Overrides Split constructor and computes

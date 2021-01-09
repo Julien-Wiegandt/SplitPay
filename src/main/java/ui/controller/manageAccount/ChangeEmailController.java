@@ -2,12 +2,10 @@ package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import core.models.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
@@ -24,6 +22,7 @@ public class ChangeEmailController {
 
     /**
      * This method redirects to the selectMethodView
+     *
      * @throws IOException
      */
     public void goToManageAccountView() throws IOException {
@@ -33,6 +32,7 @@ public class ChangeEmailController {
 
     /**
      * This method changes the user's email
+     *
      * @throws IOException
      */
     public void changeEmail() throws IOException {
@@ -44,15 +44,14 @@ public class ChangeEmailController {
 
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
             SplitPay.window.setScene(new Scene(root));
-        }
-        else{
-            if(!RegexPattern.emailPattern.matcher(email1.getText()).find()){
+        } else {
+            if (!RegexPattern.emailPattern.matcher(email1.getText()).find()) {
                 email1.setStyle("-fx-text-box-border: red");
             }
-            if(!RegexPattern.emailPattern.matcher(email2.getText()).find()){
+            if (!RegexPattern.emailPattern.matcher(email2.getText()).find()) {
                 email2.setStyle("-fx-text-box-border: red");
             }
-            if(!email1.getText().equals(email2.getText())){
+            if (!email1.getText().equals(email2.getText())) {
                 email2.setStyle("-fx-text-box-border: red");
             }
         }
@@ -61,7 +60,7 @@ public class ChangeEmailController {
     /**
      * This method is used to set all user's input error feedback styles to default.
      */
-    private void allStyleSetDefault(){
+    private void allStyleSetDefault() {
         email1.setStyle("-fx-text-box-border: black");
         email2.setStyle("-fx-text-box-border: black");
     }

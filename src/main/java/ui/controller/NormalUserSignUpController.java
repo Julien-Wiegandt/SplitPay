@@ -1,9 +1,6 @@
 package ui.controller;
 
-import ui.path.AuthPath;
-import main.SplitPay;
 import core.facade.UserFacade;
-import util.RegexPattern;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
+import main.SplitPay;
+import ui.path.AuthPath;
+import util.RegexPattern;
 
 import java.io.IOException;
 
@@ -48,14 +47,14 @@ public class NormalUserSignUpController {
      */
     public void signUp() {
         allStyleSetDefault();
-        if(RegexPattern.emailPattern.matcher(credential.getText()).find()
+        if (RegexPattern.emailPattern.matcher(credential.getText()).find()
                 && RegexPattern.textPattern.matcher(firstName.getText()).find()
                 && RegexPattern.textPattern.matcher(lastName.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
-                && (password1.getText().equals(password2.getText()))){
+                && (password1.getText().equals(password2.getText()))) {
             UserFacade.getUserFacade().normalUserEmailSignUp(credential.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
-        }else if(RegexPattern.phonePattern.matcher(credential.getText()).find()
+        } else if (RegexPattern.phonePattern.matcher(credential.getText()).find()
                 && RegexPattern.textPattern.matcher(firstName.getText()).find()
                 && RegexPattern.textPattern.matcher(lastName.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
@@ -76,7 +75,7 @@ public class NormalUserSignUpController {
                 nickname.setStyle("-fx-text-box-border: red");
             }
             if (!RegexPattern.passwordPattern.matcher(password1.getText()).find()
-                || !(password1.getText().equals(password2.getText()))) {
+                    || !(password1.getText().equals(password2.getText()))) {
                 password1.setStyle("-fx-text-box-border: red");
                 password2.setStyle("-fx-text-box-border: red");
             }
@@ -86,6 +85,7 @@ public class NormalUserSignUpController {
     /**
      * This method load the storeOwnerSignUpView.
      * It is called by a button.
+     *
      * @throws IOException
      * @todo Handle the possible exceptions.
      */
@@ -97,6 +97,7 @@ public class NormalUserSignUpController {
     /**
      * This method load the logInView.
      * It is called by a button.
+     *
      * @throws IOException
      * @todo Handle the possible exceptions.
      */
@@ -108,7 +109,7 @@ public class NormalUserSignUpController {
     /**
      * This method is used to set all user's input error feedback styles to default.
      */
-    private void allStyleSetDefault(){
+    private void allStyleSetDefault() {
         credential.setStyle("-fx-text-box-border: black");
         credential.setStyle("-fx-text-box-border: black");
         firstName.setStyle("-fx-text-box-border: black");

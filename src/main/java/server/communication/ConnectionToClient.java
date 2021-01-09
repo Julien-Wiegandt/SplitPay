@@ -4,9 +4,13 @@
 
 package server.communication;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.SocketException;
+import java.util.HashMap;
 
 /**
 * An instance of this class is created by the server when a client
@@ -63,7 +67,7 @@ public class ConnectionToClient extends Thread
   /**
   * A reference to the Server that created this instance.
   */
-  private AbstractServer server;
+  private final AbstractServer server;
 
   /**
   * Sockets are used in the operating system as channels
@@ -95,7 +99,7 @@ public class ConnectionToClient extends Thread
    * information about each client. Used by the setInfo and getInfo
    * methods.
    */
-  private HashMap savedInfo = new HashMap(10);
+  private final HashMap savedInfo = new HashMap(10);
 
 
 // CONSTRUCTORS *****************************************************

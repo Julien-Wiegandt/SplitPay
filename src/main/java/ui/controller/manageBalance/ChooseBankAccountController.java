@@ -35,10 +35,11 @@ public class ChooseBankAccountController {
     /**
      * This method transfers the selected BankAccount in the ChooseRecoverAmountController and load the chooseRecoverAmountView.
      * It is called by a button.
+     *
      * @throws IOException
      */
     public void goToChooseRecoverAmountView() throws IOException {
-        if(listView.getSelectionModel().getSelectedItem() != null) {
+        if (listView.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(UserNavigationPath.chooseRecoverAmountView));
             Parent root = loader.load();
             ChooseRecoverAmountController chooseRecoverAmountController = loader.getController();
@@ -55,7 +56,7 @@ public class ChooseBankAccountController {
     private void initialize() {
         Collection<BankAccount> bankAccounts = BankAccountFacade.getInstance().getBankAccounts();
 
-        ObservableList<BankAccount> items = FXCollections.observableArrayList ();
+        ObservableList<BankAccount> items = FXCollections.observableArrayList();
 
         Iterator<BankAccount> iterator = bankAccounts.iterator();
         while (iterator.hasNext()) {

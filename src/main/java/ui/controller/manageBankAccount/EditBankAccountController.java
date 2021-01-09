@@ -1,16 +1,13 @@
 package ui.controller.manageBankAccount;
 
 import core.facade.BankAccountFacade;
-import core.facade.CreditCardFacade;
 import core.models.BankAccount;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import main.SplitPay;
-import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -32,7 +29,7 @@ public class EditBankAccountController {
 
     private String iban_bankAccount;
 
-    public void setBankAccount(BankAccount bankAccount){
+    public void setBankAccount(BankAccount bankAccount) {
 
         this.iban_bankAccount = bankAccount.getIban();
         label.setText(bankAccount.getLabel());

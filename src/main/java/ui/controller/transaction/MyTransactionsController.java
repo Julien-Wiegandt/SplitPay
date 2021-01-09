@@ -36,10 +36,12 @@ public class MyTransactionsController {
     /**
      * This method transfers the selected Transaction in the TransactionController and load the transactionView.
      * It is called by a button.
+     *
      * @throws IOException
      */
-    @FXML public void goToTransactionView() throws IOException {
-        if(listView.getSelectionModel().getSelectedItem() != null) {
+    @FXML
+    public void goToTransactionView() throws IOException {
+        if (listView.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(UserNavigationPath.transactionView));
             Parent root = loader.load();
             TransactionController transactionController = loader.getController();
@@ -56,9 +58,9 @@ public class MyTransactionsController {
     private void initialize() {
         Collection<Transaction> res = TransactionFacade.getTransactionFacade().getTransactions();
         ArrayList<Transaction> transactions = new ArrayList<Transaction>(res);
-        Collections.sort(transactions, Collections.<Transaction>reverseOrder());
+        Collections.sort(transactions, Collections.reverseOrder());
 
-        ObservableList<Transaction> items = FXCollections.observableArrayList ();
+        ObservableList<Transaction> items = FXCollections.observableArrayList();
 
         Iterator<Transaction> iterator = transactions.iterator();
         while (iterator.hasNext()) {

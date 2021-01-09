@@ -2,7 +2,6 @@ package ui.controller.split;
 
 import client.facade.SplitClientFacade;
 import core.facade.UserFacade;
-import core.models.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import main.SplitPay;
-import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -20,7 +18,7 @@ import java.net.URL;
 
 public class SplitSectionController {
 
-    private SplitClientFacade facade = SplitClientFacade.getInstance();;
+    private final SplitClientFacade facade = SplitClientFacade.getInstance();
 
     @FXML
     private AnchorPane splitSection;
@@ -34,14 +32,14 @@ public class SplitSectionController {
     /**
      * This methods sends the splitCode to the server to attempt joining a split
      */
-    public void joinSplit(){
+    public void joinSplit() {
         facade.joinSplit(splitCode.getText());
     }
 
     /**
      * Method used to store the joined split and redirecting the user to the saloon
      */
-    public void splitJoined(){
+    public void splitJoined() {
         Platform.runLater(() -> goToSplitSaloonView());
     }
 
@@ -51,7 +49,7 @@ public class SplitSectionController {
      */
     private void goToSplitSaloonView() {
         URL url;
-        switch(facade.getJoinedSplit().getSplitMode()){
+        switch (facade.getJoinedSplit().getSplitMode()) {
             case ITEMSPLIT:
                 url = getClass().getClassLoader().getResource(UserNavigationPath.itemSplitSaloonView);
                 break;
@@ -74,14 +72,14 @@ public class SplitSectionController {
     }
 
     @FXML
-    public void setFlashMessage(String flashMessage){
+    public void setFlashMessage(String flashMessage) {
         System.out.println("ok");
         Platform.runLater(() -> splitSectionFlashMessage.setText(flashMessage));
     }
 
     @FXML
     private void initialize() {
-        if(UserFacade.getUserFacade().isStoreOwner()) {
+        if (UserFacade.getUserFacade().isStoreOwner()) {
             splitSection.setVisible(false);
             splitSection.setManaged(false);
         }

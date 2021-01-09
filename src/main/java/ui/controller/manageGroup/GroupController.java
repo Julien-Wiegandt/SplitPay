@@ -4,7 +4,6 @@ import core.facade.GroupFacade;
 import core.models.Group;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import main.SplitPay;
-import ui.controller.manageGroup.EditGroupController;
 import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 
@@ -47,13 +45,12 @@ public class GroupController {
 
 
     /**
-
      * @throws IOException
      * @todo Handle the possible exceptions. (if the user click on empty field)
      */
     @FXML
-    public void goToEditGroupView()throws IOException {
-        if(listView.getSelectionModel().getSelectedItem() !=null) {
+    public void goToEditGroupView() throws IOException {
+        if (listView.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(NormalUserNavigationPath.editGroupView));
             Parent root = loader.load();
             EditGroupController editGroupController = loader.getController();

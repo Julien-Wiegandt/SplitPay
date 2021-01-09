@@ -20,20 +20,20 @@ public class NormalUser extends User {
         this.LastName = LastName;
     }
 
-    public NormalUser(){
+    public NormalUser() {
         super();
     }
 
-    public String getFirstName(){
+    public String getFirstName() {
         return this.firstName;
-    }
-
-    public String getLastName(){
-        return this.LastName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return this.LastName;
     }
 
     public void setLastName(String lastName) {
@@ -54,8 +54,8 @@ public class NormalUser extends User {
     }
 
 
-    public  String toString(){
-        return this.firstName+" "+this.LastName+" ("+ this.getNickname() +")";
+    public String toString() {
+        return this.firstName + " " + this.LastName + " (" + this.getNickname() + ")";
     }
 
 }

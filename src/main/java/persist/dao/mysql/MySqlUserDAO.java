@@ -1,21 +1,18 @@
 package persist.dao.mysql;
 
-import core.facade.BankAccountFacade;
-import core.facade.UserFacade;
-import core.models.*;
-import persist.dao.UserDAO;
-import persist.exception.login.PasswordLoginDAOException;
-import util.RegexPattern;
 import core.models.NormalUser;
 import core.models.StoreOwner;
 import core.models.User;
+import persist.dao.UserDAO;
+import persist.exception.login.PasswordLoginDAOException;
+import util.RegexPattern;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 /**
  *

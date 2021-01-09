@@ -1,6 +1,5 @@
 package core.models;
 
-import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -12,6 +11,10 @@ import java.util.Date;
  */
 public abstract class Transaction implements Comparable<Transaction> {
 
+    protected String name;
+    protected Float amount;
+    protected Date dateCreated;
+
     public Float getAmount() {
         return amount;
     }
@@ -20,7 +23,7 @@ public abstract class Transaction implements Comparable<Transaction> {
         this.amount = amount;
     }
 
-    public String toString(){
+    public String toString() {
         return this.getClass() + " " + this.getAmount() + " " + this.getDateCreated();
     }
 
@@ -40,18 +43,13 @@ public abstract class Transaction implements Comparable<Transaction> {
         this.name = name;
     }
 
-    protected String name;
-
-    protected Float amount;
-
-    protected Date dateCreated;
-
     /**
      * Compares two transactions by their creation date.
+     *
      * @param t1 Transaction with which we will make the comparison.
      * @return <0 if t1's DateCreated is bigger than this's DateCreated, 0 if equals, >0 if t1's DateCreated is smaller than this's DateCreated.
      */
-    public int compareTo(Transaction t1){
+    public int compareTo(Transaction t1) {
         return this.getDateCreated().compareTo(t1.getDateCreated());
     }
 }

@@ -2,12 +2,10 @@ package ui.controller.manageGroup;
 
 import core.facade.FriendFacade;
 import core.facade.GroupFacade;
-import core.facade.UserFacade;
 import core.models.Group;
 import core.models.NormalUser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +15,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import main.SplitPay;
 import ui.path.NormalUserNavigationPath;
-
 
 import java.io.IOException;
 import java.util.Collection;
@@ -31,11 +28,11 @@ public class EditGroupController {
     @FXML
     private ListView friends_in_group;
 
-    @FXML private ListView all_my_friends;
+    @FXML
+    private ListView all_my_friends;
 
     private String id_group;
     private String label_group;
-
 
 
     private NormalUser friend_in_group;
@@ -88,10 +85,10 @@ public class EditGroupController {
         SplitPay.window.setScene(new Scene(root));
     }
 
-    public void addFriend()throws IOException{
+    public void addFriend() throws IOException {
 
-        if((this.friend_in_all != null)){
-            if((!isInCollection(friend_in_all,friends_group))) {
+        if ((this.friend_in_all != null)) {
+            if ((!isInCollection(friend_in_all, friends_group))) {
                 GroupFacade.getInstance().addFriendToGroup(id_group, label_group, friend_in_all);
                 friend_in_all = null;
             }
@@ -102,8 +99,8 @@ public class EditGroupController {
 
     private boolean isInCollection(NormalUser friend, Collection collection) {
         boolean present = false;
-        for(Object user: collection){
-            if(((NormalUser) user).getId() == friend.getId()){
+        for (Object user : collection) {
+            if (((NormalUser) user).getId() == friend.getId()) {
                 present = true;
             }
         }
@@ -116,19 +113,19 @@ public class EditGroupController {
     }
 
     public void selectFriendInAll(MouseEvent mouseEvent) {
-        this.friend_in_all = (NormalUser)all_my_friends.getSelectionModel().getSelectedItem();
+        this.friend_in_all = (NormalUser) all_my_friends.getSelectionModel().getSelectedItem();
 
     }
 
-    public void selectFriendInGroup(MouseEvent mouseEvent){
-        this.friend_in_group = (NormalUser)friends_in_group.getSelectionModel().getSelectedItem();
+    public void selectFriendInGroup(MouseEvent mouseEvent) {
+        this.friend_in_group = (NormalUser) friends_in_group.getSelectionModel().getSelectedItem();
 
     }
 
     public void deleteFriendFromGroup() throws IOException {
 
-        if((this.friend_in_group != null) ) {
-            if((!isInCollection(friend_in_group, my_friends))) {
+        if ((this.friend_in_group != null)) {
+            if ((!isInCollection(friend_in_group, my_friends))) {
                 GroupFacade.getInstance().deleteFriendFromGroup(id_group, label_group, friend_in_group);
                 friend_in_group = null;
             }

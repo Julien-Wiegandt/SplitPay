@@ -2,7 +2,6 @@ package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import core.models.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,6 +24,7 @@ public class ConfirmCredentialsController {
 
     /**
      * This method redirects to the selectMethodView
+     *
      * @throws IOException
      */
     public void goToManageAccountView() throws IOException {
@@ -38,13 +38,10 @@ public class ConfirmCredentialsController {
 
             credentials.setText("Enter your email");
             change.setText("Verify email");
-        }
-
-        else if (UserFacade.getUserFacade().getLoggedUser().getPhone() == null &&  UserFacade.getUserFacade().getLoggedUser().getEmail() != null) {
+        } else if (UserFacade.getUserFacade().getLoggedUser().getPhone() == null && UserFacade.getUserFacade().getLoggedUser().getEmail() != null) {
             credentials.setText("Enter your phone number");
             change.setText("Verify phone");
-        }
-        else {
+        } else {
             credentials.setManaged(false);
         }
     }

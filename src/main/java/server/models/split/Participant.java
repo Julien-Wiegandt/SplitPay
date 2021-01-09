@@ -34,11 +34,11 @@ public class Participant implements Serializable {
         return id == that.id && Double.compare(that.amount, amount) == 0 && isReady == that.isReady && Objects.equals(nickname, that.nickname);
     }
 
-    private transient ConnectionToClient clientConnection;
+    private final transient ConnectionToClient clientConnection;
     private int id;
     private double amount;
     private boolean isReady;
-    private String nickname;
+    private final String nickname;
 
     public int getId() {
         return id;

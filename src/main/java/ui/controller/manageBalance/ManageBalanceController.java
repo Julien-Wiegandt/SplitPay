@@ -33,6 +33,7 @@ public class ManageBalanceController {
     /**
      * This method load the chooseCreditCardView.
      * It is called by a button.
+     *
      * @throws IOException
      */
     public void goToChooseCreditCardView() throws IOException {
@@ -43,6 +44,7 @@ public class ManageBalanceController {
     /**
      * This method load the chooseBankAccountView.
      * It is called by a button.
+     *
      * @throws IOException
      */
     public void goToChooseBankAccountView() throws IOException {
@@ -56,8 +58,8 @@ public class ManageBalanceController {
      */
     @FXML
     private void initialize() {
-        balanceAmount.setText(UserFacade.getUserFacade().getLoggedUser().getBalance().toString()+"€");
-        if(!UserFacade.getUserFacade().isNormalUser()) {
+        balanceAmount.setText(UserFacade.getUserFacade().getLoggedUser().getBalance().toString() + "€");
+        if (!UserFacade.getUserFacade().isNormalUser()) {
             refill.setVisible(false);
             refill.setManaged(false);
         }

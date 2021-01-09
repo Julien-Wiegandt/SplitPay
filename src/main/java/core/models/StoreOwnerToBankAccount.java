@@ -9,10 +9,14 @@ import java.util.Date;
  * @version 1.0
  * @since 2021-01-05
  */
-public class StoreOwnerToBankAccount extends Transaction{
+public class StoreOwnerToBankAccount extends Transaction {
+
+    private int sender_fk;
+    private int receiver_fk;
 
     /**
      * StoreOwnerToBankAccount's constructor.
+     *
      * @param amount
      * @param dateCreated
      * @param sender_fk
@@ -44,14 +48,11 @@ public class StoreOwnerToBankAccount extends Transaction{
 
     /**
      * Represents the transaction.
+     *
      * @return the String representation of the transaction.
      */
-    public String toString(){
+    public String toString() {
         return "To BankAccount " + this.getReceiver_fk() + ": -" + this.getAmount() + "€ on " + this.getDateCreated().toString();
     }
-
-    private int sender_fk;
-
-    private int receiver_fk;
 
 }

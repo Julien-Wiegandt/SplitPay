@@ -1,10 +1,6 @@
 package persist;
 
-import persist.dao.BankAccountDAO;
-import persist.dao.CreditCardDAO;
-import persist.dao.GroupDAO;
-import persist.dao.TransactionDAO;
-import persist.dao.UserDAO;
+import persist.dao.*;
 import persist.dao.mysql.MySqlFriendDAO;
 import persist.dao.mysql.MySqlNotificationDAO;
 

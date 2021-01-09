@@ -2,12 +2,10 @@ package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import core.models.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
@@ -16,15 +14,14 @@ import util.SplitUtilities;
 import java.io.IOException;
 
 public class DeleteAccountController {
+    private static User tempUser;
     @FXML
     private TextField code;
-
-    private static User tempUser;
-
     private String realCode;
 
     /**
      * This method redirects to the selectMethodView
+     *
      * @throws IOException
      */
     public void goToManageAccountView() throws IOException {
@@ -44,8 +41,7 @@ public class DeleteAccountController {
             UserFacade.deleteAccount();
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.logInView));
             SplitPay.window.setScene(new Scene(root));
-        }
-        else{
+        } else {
             code.setStyle("-fx-text-box-border: red");
         }
     }
@@ -61,7 +57,7 @@ public class DeleteAccountController {
     /**
      * This method is used to set all user's input error feedback styles to default.
      */
-    private void allStyleSetDefault(){
+    private void allStyleSetDefault() {
         code.setStyle("-fx-text-box-border: black");
     }
 }

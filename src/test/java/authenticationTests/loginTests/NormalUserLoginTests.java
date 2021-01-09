@@ -4,7 +4,7 @@ import core.facade.UserFacade;
 import org.junit.Test;
 
 public class NormalUserLoginTests {
-    private UserFacade user = UserFacade.getUserFacade();
+    private final UserFacade user = UserFacade.getUserFacade();
     @Test
     public void correctNormalUserEmailLogin() throws Exception{
         user.emailLogIn("test@test.com","splitpay");

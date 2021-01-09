@@ -4,7 +4,10 @@ import core.facade.UserFacade;
 import core.models.Notification;
 import persist.dao.NotificationDAO;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class MySqlNotificationDAO extends NotificationDAO {
@@ -74,5 +77,5 @@ public class MySqlNotificationDAO extends NotificationDAO {
             throwables.printStackTrace();
         }
 
-    };
+    }
 }

@@ -19,7 +19,7 @@ public interface TransactionDAO {
      * @param userId id of the user whose transactions are wanted.
      * @return user's Transactions.
      */
-    public Collection<Transaction> findAllTransactions(int userId);
+    Collection<Transaction> findAllTransactions(int userId);
 
     /**
      * This method creates a CreditCardToUserTransaction.
@@ -28,7 +28,7 @@ public interface TransactionDAO {
      * @param sender_fk
      * @param receiver_fk
      */
-    public void createCreditCardToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
+    void createCreditCardToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
 
     /**
      * This method creates a SplitTransaction.
@@ -38,7 +38,7 @@ public interface TransactionDAO {
      * @param receiver_fk
      * @param participants
      */
-    public void createSplitTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk, String participants);
+    void createSplitTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk, String participants);
 
     /**
      * This method creates a StoreOwnerToBankAccount.
@@ -47,7 +47,7 @@ public interface TransactionDAO {
      * @param sender_fk
      * @param receiver_fk
      */
-    public void createStoreOwnerToBankAccount(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
+    void createStoreOwnerToBankAccount(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
 
     /**
      * This method creates a UserToBankAccount.
@@ -56,7 +56,7 @@ public interface TransactionDAO {
      * @param sender_fk
      * @param receiver_fk
      */
-    public void createUserToBankAccount(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
+    void createUserToBankAccount(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
 
     /**
      * This method creates a UserToUserTransaction.
@@ -65,5 +65,5 @@ public interface TransactionDAO {
      * @param sender_fk
      * @param receiver_fk
      */
-    public void createUserToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
+    void createUserToUserTransaction(Float amount, Date dateCreated, int sender_fk, int receiver_fk);
 }

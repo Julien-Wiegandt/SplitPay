@@ -1,13 +1,14 @@
 package persist.dao.mysql;
 
-import core.facade.UserFacade;
 import core.models.NormalUser;
 import core.models.User;
 import persist.dao.FriendDAO;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MySqlFriendDAO extends FriendDAO {
 
@@ -87,8 +88,8 @@ public class MySqlFriendDAO extends FriendDAO {
             throwables.printStackTrace();
         }
 
-    };
+    }
 
 
-};
+}
 

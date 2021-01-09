@@ -3,13 +3,11 @@ package persist.dao.mysql;
 import core.facade.BankAccountFacade;
 import core.facade.UserFacade;
 import core.models.BankAccount;
-
 import persist.dao.BankAccountDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import java.util.ArrayList;
 import java.util.Collection;
 

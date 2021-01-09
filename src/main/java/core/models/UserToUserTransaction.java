@@ -11,10 +11,14 @@ import java.util.Date;
  * @version 1.0
  * @since 2021-01-05
  */
-public class UserToUserTransaction extends Transaction{
+public class UserToUserTransaction extends Transaction {
+
+    private int sender_fk;
+    private int receiver_fk;
 
     /**
      * UserToUserTransaction's constructor.
+     *
      * @param amount
      * @param dateCreated
      * @param sender_fk
@@ -46,18 +50,15 @@ public class UserToUserTransaction extends Transaction{
 
     /**
      * Represents the transaction.
+     *
      * @return the String representation of the transaction.
      */
-    public String toString(){
-        if(this.getSender_fk() == Integer.valueOf(UserFacade.getUserFacade().getLoggedUser().getId())){
+    public String toString() {
+        if (this.getSender_fk() == Integer.valueOf(UserFacade.getUserFacade().getLoggedUser().getId())) {
             return "To User " + this.getReceiver_fk() + ": -" + this.getAmount() + "€ on " + this.getDateCreated().toString();
-        }else{
+        } else {
             return "From User " + this.getSender_fk() + ": +" + this.getAmount() + "€ on " + this.getDateCreated().toString();
         }
     }
-
-    private int sender_fk;
-
-    private int receiver_fk;
 
 }

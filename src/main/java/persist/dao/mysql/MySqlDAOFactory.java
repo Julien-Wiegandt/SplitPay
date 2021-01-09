@@ -2,14 +2,8 @@ package persist.dao.mysql;
 
 
 import persist.DAOFactory;
-import persist.dao.BankAccountDAO;
 import persist.dao.CreditCardDAO;
 import persist.dao.GroupDAO;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import persist.dao.TransactionDAO;
 
 /**
  *

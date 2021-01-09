@@ -6,18 +6,16 @@ import server.communication.SplitOriginatorMessage;
 import server.models.split.FreeSplit;
 import server.models.split.ItemSplit;
 import server.models.split.Split;
-import server.models.split.SplitMode;
+import ui.controller.split.FreeSplitSaloonController;
 import ui.controller.split.ItemSplitSaloonController;
 import ui.controller.split.MySplitsController;
-import ui.controller.split.FreeSplitSaloonController;
 import ui.controller.split.SplitSectionController;
+import util.ClientServerProtocol;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
-
-import util.ClientServerProtocol;
 
 /**
  * This class is the facade linking the app to the server and

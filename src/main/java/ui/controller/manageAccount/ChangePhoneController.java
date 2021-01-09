@@ -2,13 +2,10 @@ package ui.controller.manageAccount;
 
 import core.facade.UserFacade;
 import core.models.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.AuthPath;
@@ -23,6 +20,7 @@ public class ChangePhoneController {
 
     /**
      * This method redirects to the selectMethodView
+     *
      * @throws IOException
      */
     public void goToManageAccountView() throws IOException {
@@ -32,6 +30,7 @@ public class ChangePhoneController {
 
     /**
      * This method creates a tempUser with the new phone number and go to verificationView to validate.
+     *
      * @throws IOException
      */
     public void changePhone() throws IOException {
@@ -43,8 +42,7 @@ public class ChangePhoneController {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
             SplitPay.window.setScene(new Scene(root));
 
-        }
-        else {
+        } else {
             phone.setStyle("-fx-text-box-border: red");
         }
     }
@@ -52,7 +50,7 @@ public class ChangePhoneController {
     /**
      * This method is used to set all user's input error feedback styles to default.
      */
-    private void allStyleSetDefault(){
+    private void allStyleSetDefault() {
         phone.setStyle("-fx-text-box-border: black");
     }
 

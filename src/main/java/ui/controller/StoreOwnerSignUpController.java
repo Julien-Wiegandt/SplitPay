@@ -8,9 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import main.SplitPay;
 import ui.path.AuthPath;
 import util.RegexPattern;
-import main.SplitPay;
+
 import java.io.IOException;
 
 /**
@@ -47,21 +48,21 @@ public class StoreOwnerSignUpController {
      */
     public void signUp() {
         allStyleSetDefault();
-        if(RegexPattern.emailPattern.matcher(credential.getText()).find()
+        if (RegexPattern.emailPattern.matcher(credential.getText()).find()
                 && RegexPattern.textPattern.matcher(companyName.getText()).find()
                 && RegexPattern.siretPattern.matcher(siret.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
-                && (password1.getText().equals(password2.getText()))){
+                && (password1.getText().equals(password2.getText()))) {
             UserFacade.getUserFacade().storeOwnerEmailSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
-        }else if(RegexPattern.phonePattern.matcher(credential.getText()).find()
+        } else if (RegexPattern.phonePattern.matcher(credential.getText()).find()
                 && RegexPattern.textPattern.matcher(companyName.getText()).find()
                 && RegexPattern.siretPattern.matcher(siret.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))) {
             UserFacade.getUserFacade().storeOwnerPhoneSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
-        }else {
+        } else {
             if (!RegexPattern.emailPattern.matcher(credential.getText()).find() && !RegexPattern.phonePattern.matcher(credential.getText()).find()) {
                 credential.setStyle("-fx-text-box-border: red");
             }
@@ -86,6 +87,7 @@ public class StoreOwnerSignUpController {
     /**
      * This method load the normalUserSignUpView.
      * It is called by a button.
+     *
      * @throws IOException
      * @todo Handle the possible exceptions.
      */
@@ -97,6 +99,7 @@ public class StoreOwnerSignUpController {
     /**
      * This method load the logInView.
      * It is called by a button.
+     *
      * @throws IOException
      * @todo Handle the possible exceptions.
      */
@@ -108,7 +111,7 @@ public class StoreOwnerSignUpController {
     /**
      * This method is used to set all user's input error feedback styles to default.
      */
-    private void allStyleSetDefault(){
+    private void allStyleSetDefault() {
         credential.setStyle("-fx-text-box-border: black");
         credential.setStyle("-fx-text-box-border: black");
         companyName.setStyle("-fx-text-box-border: black");

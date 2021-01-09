@@ -39,9 +39,10 @@ public class ChooseAmountController {
     /**
      * This method is used to set the selected friend in the chooseFriendView, called by the ChooseFriendController
      * when there is a selection.
+     *
      * @param friend The selected friend
      */
-    public void setFriend(NormalUser friend){
+    public void setFriend(NormalUser friend) {
         this.friend = friend;
     }
 
@@ -51,17 +52,18 @@ public class ChooseAmountController {
      * If the amount don't respect the decimalPattern regex or
      * if there is not enough money in the current user's balance,
      * then the amountInput TextField border is highlighted in red.
+     *
      * @throws IOException
      */
     public void sendMoneyToFriend() throws IOException {
         this.allStyleSetDefault();
-        if(RegexPattern.decimalPattern.matcher(amountInput.getText()).find() && UserFacade.getUserFacade().isEnoughtMoneyInBalance(Float.valueOf(amountInput.getText()))){
-            UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText())*(-1));
+        if (RegexPattern.decimalPattern.matcher(amountInput.getText()).find() && UserFacade.getUserFacade().isEnoughtMoneyInBalance(Float.valueOf(amountInput.getText()))) {
+            UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText()) * (-1));
             UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(friend.getId()), Float.valueOf(amountInput.getText()));
             TransactionFacade.getTransactionFacade().createUserToUserTransaction(Float.valueOf(amountInput.getText()), new Date(), Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Integer.valueOf(friend.getId()));
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
             SplitPay.window.setScene(new Scene(root));
-        }else{
+        } else {
             amountInput.setStyle("-fx-text-box-border: red");
         }
     }
@@ -69,7 +71,7 @@ public class ChooseAmountController {
     /**
      * This method is used to set all user's input error feedback styles to default.
      */
-    private void allStyleSetDefault(){
+    private void allStyleSetDefault() {
         amountInput.setStyle("-fx-text-box-border: black");
     }
 }

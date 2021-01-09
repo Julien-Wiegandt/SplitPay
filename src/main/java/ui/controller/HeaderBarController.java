@@ -6,13 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import main.SplitPay;
 import ui.path.AuthPath;
 import ui.path.UserNavigationPath;
-import ui.path.StoreOwnerNavigationPath;
-import javafx.scene.control.Label;
 
-import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 
 public class HeaderBarController {
@@ -22,6 +20,7 @@ public class HeaderBarController {
 
     /**
      * This method redirects to the myTransactionsView
+     *
      * @param actionEvent
      * @throws IOException
      */
@@ -32,6 +31,7 @@ public class HeaderBarController {
 
     /**
      * This method logs the current user out and redirects him to the login page
+     *
      * @param actionEvent
      * @throws IOException
      */
@@ -44,7 +44,7 @@ public class HeaderBarController {
     @FXML
     private void initialize() {
         String display;
-        if(UserFacade.getUserFacade().isStoreOwner()) {
+        if (UserFacade.getUserFacade().isStoreOwner()) {
             display = "Store owner : ";
         } else {
             display = "User : ";

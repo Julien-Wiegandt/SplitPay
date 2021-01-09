@@ -1,12 +1,9 @@
 package ui.controller.manageAccount;
 
-import core.facade.UserFacade;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import main.SplitPay;
 import ui.path.AuthPath;
@@ -24,6 +21,7 @@ public class SelectMethodController {
 
     /**
      * This method redirects to the selectMethodView
+     *
      * @throws IOException
      */
     public void goToManageAccountView() throws IOException {
@@ -33,6 +31,7 @@ public class SelectMethodController {
 
     /**
      * This method redirects to the forgottenPasswordView
+     *
      * @throws IOException
      */
     public void goToVerificationView() throws IOException {
@@ -42,6 +41,7 @@ public class SelectMethodController {
 
     /**
      * This method redirects to the homeView
+     *
      * @throws IOException
      */
     public void goToHomeView() throws IOException {

@@ -39,6 +39,7 @@ public class ChooseRefillAmountController {
     /**
      * This method is used to set the selected CreditCard in the chooseCreditCardView, called by the ChooseCreditCardtController
      * when there is a selection.
+     *
      * @param selectedItem The selected CreditCard.
      */
     public void setCreditCard(CreditCard selectedItem) {
@@ -51,16 +52,17 @@ public class ChooseRefillAmountController {
      * If the amount don't respect the decimalPattern regex or
      * if there is not enough money in the current user's CreditCard,
      * then the amountInput TextField border is highlighted in red.
+     *
      * @throws IOException
      */
     public void sendMoneyToBalance() throws IOException {
         this.allStyleSetDefault();
-        if(RegexPattern.decimalPattern.matcher(amountInput.getText()).find()){
+        if (RegexPattern.decimalPattern.matcher(amountInput.getText()).find()) {
             UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText()));
             TransactionFacade.getTransactionFacade().createCreditCardToUserTransaction(Float.valueOf(amountInput.getText()), new Date(), Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Integer.valueOf(creditCard.getDbId()));
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
             SplitPay.window.setScene(new Scene(root));
-        }else{
+        } else {
             amountInput.setStyle("-fx-text-box-border: red");
         }
     }
@@ -68,7 +70,7 @@ public class ChooseRefillAmountController {
     /**
      * This method is used to set all user's input error feedback styles to default.
      */
-    private void allStyleSetDefault(){
+    private void allStyleSetDefault() {
         amountInput.setStyle("-fx-text-box-border: black");
     }
 

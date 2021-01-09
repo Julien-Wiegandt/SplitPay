@@ -13,6 +13,7 @@ public class HomeButtonController {
 
     /**
      * This method redirects to the myTransactionsView
+     *
      * @param actionEvent
      * @throws IOException
      */

@@ -33,12 +33,13 @@ public class ChooseCreditCardController {
     private ListView listView;
 
     /**
-     This method transfers the selected CreditCard in the ChooseRefillAmountController and load the chooseRefillAmountView.
+     * This method transfers the selected CreditCard in the ChooseRefillAmountController and load the chooseRefillAmountView.
      * It is called by a button.
+     *
      * @throws IOException
      */
     public void goToChooseRefillAmountView() throws IOException {
-        if(listView.getSelectionModel().getSelectedItem() != null) {
+        if (listView.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(UserNavigationPath.chooseRefillAmountView));
             Parent root = loader.load();
             ChooseRefillAmountController chooseRefillAmountController = loader.getController();
@@ -56,7 +57,7 @@ public class ChooseCreditCardController {
     private void initialize() {
         Collection<CreditCard> creditCards = CreditCardFacade.getInstance().getCreditCards();
 
-        ObservableList<CreditCard> items = FXCollections.observableArrayList ();
+        ObservableList<CreditCard> items = FXCollections.observableArrayList();
 
         Iterator<CreditCard> iterator = creditCards.iterator();
         while (iterator.hasNext()) {

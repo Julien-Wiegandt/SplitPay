@@ -6,9 +6,7 @@ public class Group {
     private String id;
 
 
-
-
-    public Group(String id, String label){
+    public Group(String id, String label) {
         this.id = id;
         this.label = label;
 

@@ -29,6 +29,7 @@ public class TransactionController {
 
     /**
      * This method redirects to the myTransactionsView
+     *
      * @throws IOException
      */
     public void goToMyTransactionsView() throws IOException {
@@ -38,32 +39,33 @@ public class TransactionController {
 
     /**
      * This method set all the transaction's details in the Labels
+     *
      * @param transaction
      */
-    public void setTransaction(Transaction transaction){
-        if(transaction.getName().equals("UserToUserTransaction")){
+    public void setTransaction(Transaction transaction) {
+        if (transaction.getName().equals("UserToUserTransaction")) {
             UserToUserTransaction t = (UserToUserTransaction) transaction;
-            if(t.getSender_fk() == Integer.valueOf(UserFacade.getUserFacade().getLoggedUser().getId())) {
-                otherTransactionActor.setText("To : "+String.valueOf(t.getReceiver_fk()));
-            }else{
-                otherTransactionActor.setText("From : "+String.valueOf(t.getSender_fk()));
+            if (t.getSender_fk() == Integer.valueOf(UserFacade.getUserFacade().getLoggedUser().getId())) {
+                otherTransactionActor.setText("To : " + t.getReceiver_fk());
+            } else {
+                otherTransactionActor.setText("From : " + t.getSender_fk());
             }
-        }else if(transaction.getName().equals("UserToBankAccount")){
+        } else if (transaction.getName().equals("UserToBankAccount")) {
             UserToBankAccount t = (UserToBankAccount) transaction;
-            otherTransactionActor.setText("To : "+String.valueOf(t.getReceiver_fk()));
-        }else if(transaction.getName().equals("StoreOwnerToBankAccount")){
+            otherTransactionActor.setText("To : " + t.getReceiver_fk());
+        } else if (transaction.getName().equals("StoreOwnerToBankAccount")) {
             StoreOwnerToBankAccount t = (StoreOwnerToBankAccount) transaction;
-            otherTransactionActor.setText("To : "+String.valueOf(t.getReceiver_fk()));
-        }else if(transaction.getName().equals("SplitTransaction")){
+            otherTransactionActor.setText("To : " + t.getReceiver_fk());
+        } else if (transaction.getName().equals("SplitTransaction")) {
             SplitTransaction t = (SplitTransaction) transaction;
-            splitParticipants.setText("Participants : "+t.getParticipants());
-            otherTransactionActor.setText("To : "+String.valueOf(t.getReceiver_fk()));
-        }else if(transaction.getName().equals("BankAccountToUserTransaction")){
+            splitParticipants.setText("Participants : " + t.getParticipants());
+            otherTransactionActor.setText("To : " + t.getReceiver_fk());
+        } else if (transaction.getName().equals("BankAccountToUserTransaction")) {
             CreditCardToUserTransaction t = (CreditCardToUserTransaction) transaction;
-            otherTransactionActor.setText("From : "+String.valueOf(t.getReceiver_fk()));
+            otherTransactionActor.setText("From : " + t.getReceiver_fk());
         }
         transactionType.setText(transaction.getName());
         transactionDate.setText(transaction.getDateCreated().toString());
-        transactionAmount.setText(String.valueOf(transaction.getAmount()+"€"));
+        transactionAmount.setText(transaction.getAmount() + "€");
     }
 }

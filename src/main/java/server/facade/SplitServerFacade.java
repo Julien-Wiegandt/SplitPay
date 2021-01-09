@@ -22,7 +22,7 @@ public class SplitServerFacade implements Observer {
      */
     final public static int DEFAULT_PORT = 5555;
 
-    private HashMap<String, Split> splits = new HashMap<>();
+    private final HashMap<String, Split> splits = new HashMap<>();
     private static SplitServerFacade instance = null;
 
     ObservableServer communicationService;

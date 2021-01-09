@@ -1,13 +1,14 @@
 package core.facade;
 
 import core.auth.Session;
-import core.models.*;
+import core.models.NormalUser;
+import core.models.StoreOwner;
+import core.models.User;
 import persist.DAOFactory;
 import persist.dao.UserDAO;
 import persist.dao.mysql.MySqlDAOFactory;
-import util.SplitUtilities;
+
 import java.sql.SQLException;
-import java.util.*;
 
 /**
  *
@@ -17,35 +18,56 @@ public class UserFacade {
     /**
      *
      */
-    private static UserFacade userFaçade;
-
+    private static final DAOFactory daoFactory = new MySqlDAOFactory();
     /**
      *
      */
-    private static DAOFactory daoFactory = new MySqlDAOFactory();
-
+    private static UserFacade userFaçade;
+    /**
+     *
+     */
+    private final UserDAO userDao;
+    /**
+     *
+     */
+    private final Session session;
     /**
      *
      */
     private User user;
 
     /**
-     *
+     * @return
      */
-    private UserDAO userDao;
+    private UserFacade() {
+        userDao = daoFactory.createUserDao();
+        session = new Session();
+    }
 
     /**
-     *
+     * @return
      */
-    private Session session;
+    public static UserFacade getUserFacade() {
+        if (userFaçade == null) {
+            userFaçade = new UserFacade();
+        }
+
+        return userFaçade;
+    }
+
+    public static void deleteAccount() {
+        User user = getUserFacade().getLoggedUser();
+        getUserFacade().userDao.delete(user);
+
+    }
 
     /**
      * @param credential
      * @param password
      * @return
      */
-    public void emailLogIn(String credential, String password) throws Exception{
-        user = userDao.emailLogIn(credential,password);
+    public void emailLogIn(String credential, String password) throws Exception {
+        user = userDao.emailLogIn(credential, password);
         session.setLoggedUser(user);
     }
 
@@ -55,92 +77,81 @@ public class UserFacade {
      * @return
      */
     public void phoneLogIn(String credential, String password) throws Exception {
-        user = userDao.phoneLogIn(credential,password);
+        user = userDao.phoneLogIn(credential, password);
         session.setLoggedUser(user);
     }
 
-    public void storeOwnerPhoneSignUp(String credential, String companyName, String nickname, String siret, String password){
+    public void storeOwnerPhoneSignUp(String credential, String companyName, String nickname, String siret, String password) {
         user = userDao.createStoreOwner(new StoreOwner(null, null, credential, siret, password, nickname, 0f, null, companyName));
     }
 
-    public void storeOwnerEmailSignUp(String credential, String companyName, String nickname, String siret, String password){
+    public void storeOwnerEmailSignUp(String credential, String companyName, String nickname, String siret, String password) {
         user = userDao.createStoreOwner(new StoreOwner(null, credential, null, siret, password, nickname, 0f, null, companyName));
     }
 
-    public void normalUserEmailSignUp(String credential, String firstName, String lastName, String nickname, String password){
+    public void normalUserEmailSignUp(String credential, String firstName, String lastName, String nickname, String password) {
         user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, credential, null, password, nickname, 0f));
     }
 
-    public void normalUserPhoneSignUp(String credential, String firstName, String lastName, String nickname, String password){
+    public void normalUserPhoneSignUp(String credential, String firstName, String lastName, String nickname, String password) {
         user = userDao.createNormalUser(new NormalUser(firstName, lastName, null, null, credential, password, nickname, 0f));
     }
 
-    public NormalUser getLoggedNormalUser(){
+    public NormalUser getLoggedNormalUser() {
         return session.getLoggedNormalUser();
     }
 
-    public StoreOwner getLoggedStoreOwner(){
+    public StoreOwner getLoggedStoreOwner() {
         return session.getLoggedStoreOwner();
     }
 
-    public boolean isStoreOwner() {return session.isStoreOwner();}
+    public boolean isStoreOwner() {
+        return session.isStoreOwner();
+    }
 
-    public boolean isNormalUser() {return session.isNormalUser();}
+    public boolean isNormalUser() {
+        return session.isNormalUser();
+    }
 
-    /** pre : a user must be logged in
+    /**
+     * pre : a user must be logged in
      * Returns the logged in user
      */
-    public User getLoggedUser(){
+    public User getLoggedUser() {
         return session.getLoggedUser();
     }
 
-    public void logout(){
+    public void setLoggedUser(User user) {
+        session.setLoggedUser(user);
+    }
+
+    public void logout() {
         session.logOut();
-    }
-
-
-    /**
-     * @return
-     */
-    public static UserFacade getUserFacade() {
-        if(userFaçade==null){
-            userFaçade=new UserFacade();
-        }
-
-        return userFaçade;
-    }
-
-    /**
-     * @return
-     */
-    private UserFacade() {
-        userDao=daoFactory.createUserDao();
-        session = new Session();
     }
 
     public User getUser() {
         return user;
     }
 
-    public Boolean isEnoughtMoneyInBalance(Float money){
+    public Boolean isEnoughtMoneyInBalance(Float money) {
         return money <= getUser().getBalance();
     }
 
     // TODO : refactor to updateNormalUserBalanceById
-    public void updateUserBalanceById(int userId, Float amount){
-            try {
-                User u = userDao.findUserById(userId);
-                u.setBalance(u.getBalance()+amount);
-                userDao.update(u);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+    public void updateUserBalanceById(int userId, Float amount) {
+        try {
+            User u = userDao.findUserById(userId);
+            u.setBalance(u.getBalance() + amount);
+            userDao.update(u);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
-    public void updateStoreOwnerBalanceById(int userId, Float amount){
+    public void updateStoreOwnerBalanceById(int userId, Float amount) {
         try {
             User u = userDao.findStoreOwnerById(userId);
-            u.setBalance(u.getBalance()+amount);
+            u.setBalance(u.getBalance() + amount);
             userDao.update(u);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -151,24 +162,17 @@ public class UserFacade {
      * Returns the user having this phone number
      * else throws exception
      */
-    public User findUserByPhone(String phone){
+    public User findUserByPhone(String phone) {
         return userDao.findUserByPhone(phone);
     }
-
 
     public User findUserByEmail(String email) throws SQLException {
         return userDao.findUserByEmail(email);
     }
 
-    public void updateUser(User user){
+    public void updateUser(User user) {
         this.user = user;
         userDao.update(user);
-    }
-
-    public static void deleteAccount(){
-        User user = getUserFacade().getLoggedUser();
-        getUserFacade().userDao.delete(user);
-
     }
 
     public NormalUser findNormalUserById(int id) throws SQLException {
@@ -177,10 +181,6 @@ public class UserFacade {
 
     public StoreOwner findStoreOwnerById(int id) throws SQLException {
         return userDao.findStoreOwnerById(id);
-    }
-
-    public void setLoggedUser(User user){
-        session.setLoggedUser(user);
     }
 
 

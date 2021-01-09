@@ -9,10 +9,15 @@ import java.util.Date;
  * @version 1.0
  * @since 2021-01-05
  */
-public class SplitTransaction extends Transaction{
+public class SplitTransaction extends Transaction {
 
-     /**
+    private int sender_fk;
+    private int receiver_fk;
+    private String participants;
+
+    /**
      * SplitTransaction's constructor.
+     *
      * @param amount
      * @param dateCreated
      * @param sender_fk
@@ -54,16 +59,11 @@ public class SplitTransaction extends Transaction{
 
     /**
      * Represents the transaction.
+     *
      * @return the String representation of the transaction.
      */
-    public String toString(){
+    public String toString() {
         return "To SplitPay: -" + this.getAmount() + "€ on " + this.getDateCreated().toString();
     }
-
-    private int sender_fk;
-
-    private int receiver_fk;
-
-    private String participants;
 
 }

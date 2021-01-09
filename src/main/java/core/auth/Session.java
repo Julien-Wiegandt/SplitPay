@@ -10,6 +10,7 @@ public class Session {
 
     /**
      * Returns the logged NormalUser if not logged returns null
+     *
      * @return
      */
     public NormalUser getLoggedNormalUser() {
@@ -18,6 +19,7 @@ public class Session {
 
     /**
      * Sets the logged NormalUser
+     *
      * @param loggedNormalUser
      */
     public void setLoggedNormalUser(NormalUser loggedNormalUser) {
@@ -26,6 +28,7 @@ public class Session {
 
     /**
      * Returns the logged StoreOwner if not logged returns null
+     *
      * @return
      */
     public StoreOwner getLoggedStoreOwner() {
@@ -34,6 +37,7 @@ public class Session {
 
     /**
      * Sets the logged StoreOwner
+     *
      * @param loggedStoreOwner
      */
     public void setLoggedStoreOwner(StoreOwner loggedStoreOwner) {
@@ -41,10 +45,33 @@ public class Session {
     }
 
     /**
+     * Returns true if the logged in user is a NormalUser
+     */
+    public boolean isNormalUser() {
+        return getLoggedNormalUser() != null;
+    }
+
+    /**
+     * Returns true if the logged in user is a StoreOwner
+     */
+    public boolean isStoreOwner() {
+        return getLoggedStoreOwner() != null;
+    }
+
+    /**
+     * pre : a user must be logged in
+     * Returns the logged in user
+     */
+    public User getLoggedUser() {
+        return isNormalUser() ? getLoggedNormalUser() : getLoggedStoreOwner();
+    }
+
+    /**
      * This method receives a User and checks what type of user it is, it then register the user in the right place of the Session class
+     *
      * @param user
      */
-    public void setLoggedUser(User user){
+    public void setLoggedUser(User user) {
         if (user instanceof NormalUser) {
             setLoggedNormalUser((NormalUser) user);
         } else {
@@ -53,30 +80,9 @@ public class Session {
     }
 
     /**
-     * Returns true if the logged in user is a NormalUser
-     */
-    public boolean isNormalUser(){
-        return getLoggedNormalUser()!=null;
-    }
-
-    /**
-     * Returns true if the logged in user is a StoreOwner
-     */
-    public boolean isStoreOwner(){
-        return getLoggedStoreOwner()!=null;
-    }
-
-    /** pre : a user must be logged in
-     * Returns the logged in user
-     */
-    public User getLoggedUser(){
-        return isNormalUser() ? getLoggedNormalUser() : getLoggedStoreOwner();
-    }
-
-    /**
      * Clear any logged in user
      */
-    public void logOut(){
+    public void logOut() {
         setLoggedStoreOwner(null);
         setLoggedNormalUser(null);
     }

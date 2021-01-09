@@ -4,7 +4,6 @@ import core.facade.CreditCardFacade;
 import core.models.CreditCard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +13,6 @@ import javafx.scene.control.ListView;
 import main.SplitPay;
 import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
-
 
 import java.io.IOException;
 import java.util.Collection;
@@ -45,12 +43,11 @@ public class CreditCardController {
 
 
     /**
-
      * @throws IOException
      * @todo Handle the possible exceptions. (if the user click on empty field)
      */
     public void goToCreditCardView() throws IOException {
-        if(listView.getSelectionModel().getSelectedItem() !=null) {
+        if (listView.getSelectionModel().getSelectedItem() != null) {
 
 
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(NormalUserNavigationPath.editCreditCardView));
@@ -70,7 +67,6 @@ public class CreditCardController {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
     }
-
 
 
 }

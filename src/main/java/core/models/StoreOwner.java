@@ -16,19 +16,6 @@ public class StoreOwner extends User implements Serializable {
      */
     private String siret;
     private String companyName;
-
-    public void setSiret(String siret) {
-        this.siret = siret;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     private String address;
 
     public StoreOwner(String id, String email, String phone, String siret, String password, String nickname, Float balance, String companyName, String address) {
@@ -38,20 +25,32 @@ public class StoreOwner extends User implements Serializable {
         this.address = address;
     }
 
-    public StoreOwner(){
+    public StoreOwner() {
         super();
     }
 
-    public String getSiret(){
+    public String getSiret() {
         return this.siret;
     }
 
-    public String getCompanyName(){
+    public void setSiret(String siret) {
+        this.siret = siret;
+    }
+
+    public String getCompanyName() {
         return this.companyName;
     }
 
-    public String getAddress(){
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getAddress() {
         return this.address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String toString() {

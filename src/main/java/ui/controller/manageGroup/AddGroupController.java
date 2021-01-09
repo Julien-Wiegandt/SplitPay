@@ -1,8 +1,6 @@
 package ui.controller.manageGroup;
 
-import core.facade.BankAccountFacade;
 import core.facade.GroupFacade;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import main.SplitPay;
 import ui.path.NormalUserNavigationPath;
-import ui.path.UserNavigationPath;
 import util.RegexPattern;
 
 import java.io.IOException;
@@ -22,9 +19,9 @@ public class AddGroupController {
 
     public void addGroup() {
         allStyleSetDefault();
-        if(RegexPattern.labelPattern.matcher(label.getText()).find()){
+        if (RegexPattern.labelPattern.matcher(label.getText()).find()) {
             GroupFacade.getInstance().addGroup(label.getText());
-        }else{
+        } else {
             label.setStyle("-fx-text-box-border: red");
         }
 

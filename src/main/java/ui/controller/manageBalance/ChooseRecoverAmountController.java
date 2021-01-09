@@ -42,22 +42,23 @@ public class ChooseRecoverAmountController {
      * If the amount don't respect the decimalPattern regex or
      * if there is not enough money in the current user's balance,
      * then the amountInput TextField border is highlighted in red.
+     *
      * @throws IOException
      */
     public void sendMoneyToBankAccount() throws IOException {
         this.allStyleSetDefault();
-        if(RegexPattern.decimalPattern.matcher(amountInput.getText()).find() && UserFacade.getUserFacade().isEnoughtMoneyInBalance(Float.valueOf(amountInput.getText()))){
+        if (RegexPattern.decimalPattern.matcher(amountInput.getText()).find() && UserFacade.getUserFacade().isEnoughtMoneyInBalance(Float.valueOf(amountInput.getText()))) {
 
-            if(UserFacade.getUserFacade().isNormalUser()){
-                UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText())*(-1));
+            if (UserFacade.getUserFacade().isNormalUser()) {
+                UserFacade.getUserFacade().updateUserBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText()) * (-1));
                 TransactionFacade.getTransactionFacade().createUserToBankAccount(Float.valueOf(amountInput.getText()), new Date(), Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Integer.valueOf(bankAccount.getId()));
-            }else{
-                UserFacade.getUserFacade().updateStoreOwnerBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText())*(-1));
+            } else {
+                UserFacade.getUserFacade().updateStoreOwnerBalanceById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Float.valueOf(amountInput.getText()) * (-1));
                 TransactionFacade.getTransactionFacade().createStoreOwnerToBankAccount(Float.valueOf(amountInput.getText()), new Date(), Integer.valueOf(UserFacade.getUserFacade().getUser().getId()), Integer.valueOf(bankAccount.getId()));
             }
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
             SplitPay.window.setScene(new Scene(root));
-        }else{
+        } else {
             amountInput.setStyle("-fx-text-box-border: red");
         }
     }
@@ -65,6 +66,7 @@ public class ChooseRecoverAmountController {
     /**
      * This method is used to set the selected BankAccount in the chooseBankAccountView, called by the ChooseBankAccountController
      * when there is a selection.
+     *
      * @param selectedItem The selected BankAccount.
      */
     public void setBankAccount(BankAccount selectedItem) {
@@ -74,7 +76,7 @@ public class ChooseRecoverAmountController {
     /**
      * This method is used to set all user's input error feedback styles to default.
      */
-    private void allStyleSetDefault(){
+    private void allStyleSetDefault() {
         amountInput.setStyle("-fx-text-box-border: black");
     }
 }

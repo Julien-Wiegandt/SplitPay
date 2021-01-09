@@ -6,9 +6,9 @@ package client.communication;
 
 import server.communication.SplitOriginatorMessage;
 
-import java.util.*;
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.util.Observable;
 
 /**
  * This class acts as a subclass of <code>AbstractClient</code>
@@ -39,7 +39,7 @@ public class ObservableClient extends Observable
   /**
    * The service instance used to simulate multiple class inheritance.
    */
-  private AdaptableClient service;
+  private final AdaptableClient service;
 
   //Constructor *****************************************************
 

@@ -9,10 +9,11 @@ import java.util.Date;
  * @version 1.0
  * @since 2021-01-05
  */
-public class CreditCardToUserTransaction extends Transaction{
+public class CreditCardToUserTransaction extends Transaction {
 
     /**
      * CreditCardToUserTransaction's constructor.
+     *
      * @param amount
      * @param dateCreated
      * @param sender_fk
@@ -44,9 +45,10 @@ public class CreditCardToUserTransaction extends Transaction{
 
     /**
      * Represents the transaction.
+     *
      * @return the String representation of the transaction.
      */
-    public String toString(){
+    public String toString() {
         return "From CreditCard " + this.getSender_fk() + ": +" + this.getAmount() + "€ on " + this.getDateCreated().toString();
     }
 

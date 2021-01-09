@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
 
-    private String label;
-    private double price;
+    private final String label;
+    private final double price;
     private boolean isPicked = false;
 
     public Item(String label, double price){

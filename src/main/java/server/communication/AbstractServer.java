@@ -4,8 +4,10 @@
 
 package server.communication;
 
-import java.net.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.InterruptedIOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
 * The <code> AbstractServer </code> class maintains a thread that waits
@@ -106,7 +108,7 @@ public abstract class AbstractServer implements Runnable
    * The thread group associated with client threads. Each member of the
    * thread group is a <code> ConnectionToClient </code>.
    */
-  private ThreadGroup clientThreadGroup;
+  private final ThreadGroup clientThreadGroup;
 
   /**
    * Indicates if the listening thread is ready to stop.  Set to

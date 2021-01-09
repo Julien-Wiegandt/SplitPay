@@ -1,9 +1,11 @@
 package persist.dao;
 
-import core.models.*;
+import core.models.NormalUser;
+import core.models.StoreOwner;
+import core.models.User;
 
 import java.sql.SQLException;
-import java.util.*;
+import java.util.Collection;
 
 /**
  *

@@ -1,7 +1,7 @@
 package core.models;
 
 public class BankAccount {
-    private String id;
+    private final String id;
     private String label;
     private String bic;
     private String ownerFirstName;
@@ -9,7 +9,7 @@ public class BankAccount {
     private String iban;
 
 
-    public BankAccount(String id,String label, String bic, String iban, String ownerFirstName, String ownerLastName){
+    public BankAccount(String id, String label, String bic, String iban, String ownerFirstName, String ownerLastName) {
         this.id = id;
         this.label = label;
         this.bic = bic;
@@ -63,7 +63,7 @@ public class BankAccount {
         return this.id;
     }
 
-    public String toString(){
-        return(this.label+ " bic: "+this.bic+" iban: "+this.iban);
+    public String toString() {
+        return (this.label + " bic: " + this.bic + " iban: " + this.iban);
     }
 }

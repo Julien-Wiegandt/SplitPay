@@ -1,12 +1,10 @@
 package core.facade;
 
-import core.models.BankAccount;
 import core.models.CreditCard;
 import persist.DAOFactory;
 import persist.dao.CreditCardDAO;
 import persist.dao.mysql.MySqlDAOFactory;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -14,33 +12,31 @@ import java.util.Date;
 public class CreditCardFacade {
 
 
-    private CreditCardDAO creditCardDAO;
-
+    private static final DAOFactory daoFactory = new MySqlDAOFactory();
     private static CreditCardFacade creditCardFacade = null;
+    private final CreditCardDAO creditCardDAO;
 
-    private static DAOFactory daoFactory = new MySqlDAOFactory();
 
+    private CreditCardFacade() {
 
-    public static CreditCardFacade getInstance(){
-        if(creditCardFacade==null){
+        this.creditCardDAO = daoFactory.createCreditCardDao();
+    }
+
+    public static CreditCardFacade getInstance() {
+        if (creditCardFacade == null) {
             creditCardFacade = new CreditCardFacade();
         }
         return creditCardFacade;
     }
 
-    private CreditCardFacade(){
-
-        this.creditCardDAO = daoFactory.createCreditCardDao();
-    }
-
-    public void createCreditCard(String number, String nameOwner, Date date, String cvv){
-        CreditCard creditCard = new CreditCard(null,number,nameOwner, date, cvv);
+    public void createCreditCard(String number, String nameOwner, Date date, String cvv) {
+        CreditCard creditCard = new CreditCard(null, number, nameOwner, date, cvv);
         this.creditCardDAO.createCreditCard(creditCard);
 
     }
 
-    public void deleteCreditCard(String number, String nameOwner, Date date, String cvv){
-        CreditCard creditCard = new CreditCard(null,number,nameOwner, date, cvv);
+    public void deleteCreditCard(String number, String nameOwner, Date date, String cvv) {
+        CreditCard creditCard = new CreditCard(null, number, nameOwner, date, cvv);
         this.creditCardDAO.deleteCreditCard(creditCard);
     }
 

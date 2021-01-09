@@ -1,10 +1,8 @@
 package persist.dao;
 
 import core.models.BankAccount;
-import core.models.CreditCard;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.Collection;
 
 public abstract class BankAccountDAO {

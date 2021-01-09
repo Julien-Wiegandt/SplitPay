@@ -1,42 +1,35 @@
 package core.facade;
 
 import core.models.BankAccount;
-
-
-
-import core.models.CreditCard;
 import persist.DAOFactory;
 import persist.dao.BankAccountDAO;
-import persist.dao.mysql.MySqlBankAccountDAO;
 import persist.dao.mysql.MySqlDAOFactory;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class BankAccountFacade {
 
-    private BankAccountDAO bankAccountDAO;
-
+    private static final DAOFactory daoFactory = new MySqlDAOFactory();
     private static BankAccountFacade bankAccountFacade = null;
-    private static DAOFactory daoFactory = new MySqlDAOFactory();
+    private final BankAccountDAO bankAccountDAO;
 
-    private BankAccountFacade(){
+    private BankAccountFacade() {
         this.bankAccountDAO = daoFactory.createBankAccountDAO();
     }
 
-    public static BankAccountFacade getInstance(){
+    public static BankAccountFacade getInstance() {
 
-        if(bankAccountFacade == null){
+        if (bankAccountFacade == null) {
             bankAccountFacade = new BankAccountFacade();
         }
         return bankAccountFacade;
     }
 
-    public void createBankAccount(String label, String bic,  String iban, String ownerFirstName, String ownerLastName){
-        this.bankAccountDAO.createBankAccount(new BankAccount(null,label,bic, iban, ownerFirstName, ownerLastName));
+    public void createBankAccount(String label, String bic, String iban, String ownerFirstName, String ownerLastName) {
+        this.bankAccountDAO.createBankAccount(new BankAccount(null, label, bic, iban, ownerFirstName, ownerLastName));
     }
 
-    public void deleteBankAccount(String iban){
+    public void deleteBankAccount(String iban) {
         this.bankAccountDAO.deleteBankAccount(iban);
     }
 
@@ -44,6 +37,7 @@ public class BankAccountFacade {
         return this.bankAccountDAO.getBankAccounts();
 
     }
+
     public BankAccount getBankAccountById(int bankAccountId) {
         return bankAccountDAO.getBankAccountById(bankAccountId);
     }

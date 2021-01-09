@@ -2,7 +2,6 @@ package util;
 
 // Install the Java helper library from twilio.com/docs/java/install
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 

@@ -11,6 +11,14 @@ public class CreditCard {
     private Date date;
     private String cvv;
 
+    public CreditCard(String dbId, String number, String nameOwner, Date date, String cvv) {
+        this.dbId = dbId;
+        this.number = number;
+        this.nameOwner = nameOwner;
+        this.date = date;
+        this.cvv = cvv;
+    }
+
     public String getDbId() {
         return dbId;
     }
@@ -23,6 +31,10 @@ public class CreditCard {
         return date;
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public String getCvv() {
         return cvv;
     }
@@ -30,11 +42,6 @@ public class CreditCard {
     public void setCvv(String cvv) {
         this.cvv = cvv;
     }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
 
     public String getNameOwner() {
         return nameOwner;
@@ -52,17 +59,8 @@ public class CreditCard {
         this.number = number;
     }
 
-    public CreditCard(String dbId, String number, String nameOwner, Date date, String cvv){
-        this.dbId = dbId;
-        this.number = number;
-        this.nameOwner = nameOwner;
-        this.date = date;
-        this.cvv = cvv;
-    }
-
-
-    public String toString(){
+    public String toString() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return("Number: "+this.number+" CVV: "+ this.cvv +" Date: "+dateFormat.format(this.date));
+        return ("Number: " + this.number + " CVV: " + this.cvv + " Date: " + dateFormat.format(this.date));
     }
 }

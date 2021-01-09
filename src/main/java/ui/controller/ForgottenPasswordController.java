@@ -1,13 +1,12 @@
 package ui.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import ui.path.AuthPath;
 import main.SplitPay;
+import ui.path.AuthPath;
 
 import java.io.IOException;
 
@@ -29,6 +28,7 @@ public class ForgottenPasswordController {
     /**
      * This method load the logInView.
      * It is called by a button.
+     *
      * @throws IOException
      * @todo Handle the possible exceptions.
      */
@@ -42,6 +42,7 @@ public class ForgottenPasswordController {
      * If the credential doesn't exist or
      * doesn't match any phone|email regex pattern,
      * then credential TextField border is highlighted in red.
+     *
      * @todo This method is TODO.
      */
     public void resetPassword() {
@@ -52,7 +53,7 @@ public class ForgottenPasswordController {
     /**
      * This method is used to set all user's input error feedback styles to default.
      */
-    private void allStyleSetDefault(){
+    private void allStyleSetDefault() {
         credential.setStyle("-fx-text-box-border: black");
     }
 }
