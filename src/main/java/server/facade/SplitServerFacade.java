@@ -268,26 +268,30 @@ public class SplitServerFacade implements Observer {
 
         switch (message.getMessage()){
             // TODO : test
-            case ClientServerProtocol.CREATION_REQUEST:
-                int ownerId = Integer.getInteger(((SplitOriginatorMessage) msg).getArgument("ownerId"));
-                String ownerNickname = ((SplitOriginatorMessage) msg).getArgument("ownerNickname");
-                Double goalAmount = Double.parseDouble(((SplitOriginatorMessage) msg).getArgument("goalAmount"));
-                String label = ((SplitOriginatorMessage) msg).getArgument("label");
-                String splitMode = ((SplitOriginatorMessage) msg).getArgument("splitMode");
-                splitCode = createFreeSplit(ownerId,ownerNickname,goalAmount,label,null);
-                try {
-                    HashMap<Integer, FreeSplit> split = new HashMap<>();
-                    //split.put(splitCode,getSplitByCode(splitCode));
-                    getSplitByCode(splitCode);
-                    // TODO : reimplement after changing type to string
-                } catch (SplitNotFoundException e) {
-                    e.printStackTrace();
+            case ClientServerProtocol.SPLIT_CREATION_REQUEST:
+                String splitModeString = ((SplitOriginatorMessage) msg).getArgument("splitMode");
+                SplitMode splitMode
+                        = SplitMode.valueOf(splitModeString);
+                switch (splitMode){
+                    case FREESPLIT:
+                        int ownerId = Integer.getInteger(((SplitOriginatorMessage) msg).getArgument("ownerId"));
+                        String ownerNickname = ((SplitOriginatorMessage) msg).getArgument("ownerNickname");
+                        Double goalAmount = Double.parseDouble(((SplitOriginatorMessage) msg).getArgument("goalAmount"));
+                        String label = ((SplitOriginatorMessage) msg).getArgument("label");
+                        createFreeSplit(ownerId,ownerNickname,goalAmount,label,null);
+                        try {
+                            client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATED_RESPONSE,null,null));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case ITEMSPLIT:
+                        break;
+                    case EQUALSPLIT:
+                        break;
+
                 }
-                try {
-                    client.sendToClient(new SplitOriginatorMessage(null, ClientServerProtocol.JOINED_SPLIT, null, null));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
                 break;
             case ClientServerProtocol.GET_SPLIT_REQUEST:
                 userId = Integer.parseInt(message.getArguments().get("userId"));

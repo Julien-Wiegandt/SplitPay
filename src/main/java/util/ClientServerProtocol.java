@@ -6,7 +6,12 @@ public class ClientServerProtocol {
     /**
      * The string sent to the observers when a client requests a split cretion.
      */
-    public static final String CREATION_REQUEST= "#OS:Creation Request";
+    public static final String SPLIT_CREATION_REQUEST = "#OS:Split Creation Request";
+
+    /**
+     * The string sent to the client when a split was created
+     */
+    public static final String SPLIT_CREATED_RESPONSE= "#OS:Split Created Response";
 
     /**
      * The string sent to the client when a has requested his splits.
