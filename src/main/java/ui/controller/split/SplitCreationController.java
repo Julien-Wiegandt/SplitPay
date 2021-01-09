@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class FreeSplitCreationController {
+public class SplitCreationController {
 
     private HashMap<String, Split> splits = null;
 
@@ -33,6 +33,10 @@ public class FreeSplitCreationController {
     private TextField splitGoalAmount;
 
 
+    /**
+     * utility method to fetch store owners in the database
+     * @throws IOException
+     */
     private void getStoreOwners() throws IOException {
         System.out.println("Get store owners");
         try {
@@ -48,6 +52,21 @@ public class FreeSplitCreationController {
         ObservableList<StoreOwner> items = FXCollections.observableArrayList ();
         items.setAll(storeOwnersAvailable);
         listView.setItems(items);
+    }
+
+    /**
+     * Harvest ui input and sends the data to the facade
+     */
+    public void createFreeSplit(){
+        double goalAmount = Double.parseDouble(splitGoalAmount.getText());
+        String label = splitLabel.getText();
+        int receiver = Integer.parseInt(listView.getSelectionModel().getSelectedItem().getId());
+        facade.createFreeSplit(label,goalAmount,receiver);
+    }
+
+    // TODO : implement
+    public void createEqualSplit(){
+
     }
 
     @FXML

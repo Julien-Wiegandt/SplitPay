@@ -228,6 +228,10 @@ public class SplitClientFacade implements Observer
                 }
                 System.out.println("Split paid success");
                 break;
+            case ClientServerProtocol.SPLIT_CREATED_RESPONSE:
+                System.out.println("Split created successfully");
+                break;
+
         }
 
     }
@@ -399,6 +403,13 @@ public class SplitClientFacade implements Observer
     }
 
     /**
+     * Method called by the client asking the server to create a free split
+     */
+    public void createFreeSplit(String splitLabel, double goalAmount, int receiver){
+        System.out.println("Split creation request :"+splitLabel+" "+goalAmount+" "+receiver);
+    }
+
+    /**
      * This method is called whenever the observed object is changed. An
      * application calls an {@code Observable} object's
      * {@code notifyObservers} method to have all the object's
@@ -412,7 +423,6 @@ public class SplitClientFacade implements Observer
         SplitOriginatorMessage msg = (SplitOriginatorMessage) arg;
         System.out.println("Client update : "+msg);
         String message = msg.getMessage();
-        // TODO : handle null problem
         if(message != null){
             if(CONNECTION_CLOSED.contentEquals(message)){
                 connectionClosed();
