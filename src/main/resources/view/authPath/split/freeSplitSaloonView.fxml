@@ -71,12 +71,12 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#isReadyHandler" prefHeight="40.0" prefWidth="70.0" text="Ready">
+                        <Button fx:id="ready" mnemonicParsing="false" onAction="#isReadyHandler" prefHeight="40.0" prefWidth="70.0" text="Ready">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="payButton" mnemonicParsing="false" onAction="#payButtonHandler" prefHeight="40.0" prefWidth="70.0" text="Pay !" />
+                        <Button mnemonicParsing="false" onAction="#moneyInputHandler" prefHeight="40.0" prefWidth="70.0" text="Validate" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -86,10 +86,7 @@
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Label>
-                  <Button layoutX="199.0" layoutY="223.0" mnemonicParsing="false" onAction="#moneyInputHandler" text="Validate">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin></Button>
+                  <Button fx:id="payButton" mnemonicParsing="false" onAction="#payButtonHandler" prefHeight="30.0" prefWidth="70.0" text="Pay !" />
                </children>
             </VBox>
          </center>

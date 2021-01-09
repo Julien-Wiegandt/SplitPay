@@ -138,10 +138,12 @@ public class MySqlGroupDAO extends GroupDAO {
 
             while (rs.next()) {
                 String dbId = rs.getString("normal_user_pk");
+                String dbLastName = rs.getString("lastName");
+                String dbNickname = rs.getString("nickname");
                 String dbEmail = rs.getString("email");
                 String dbFirstName = rs.getString("firstName");
 
-                normalUser = new NormalUser(dbFirstName,null,dbId,dbEmail,null,null,null,null);
+                normalUser = new NormalUser(dbFirstName,dbLastName,dbId,dbEmail,null,null,dbNickname,null);
 
                 ccs.add(normalUser);
             }

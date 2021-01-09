@@ -33,8 +33,6 @@ public class Group {
 
 
     public String toString() {
-        return "Group{" + "id="+ id+
-                "label='" + label + '\'' +
-                '}';
+        return this.getLabel();
     }
 }

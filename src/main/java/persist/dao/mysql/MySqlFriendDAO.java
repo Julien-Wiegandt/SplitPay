@@ -65,10 +65,9 @@ public class MySqlFriendDAO extends FriendDAO {
             throwables.printStackTrace();
         }
         try {
-            System.out.println("INSERT INTO Friends VALUES ('"+friend.getId()+"', '"+user.getId()+"')");
-            Integer rs = stmt.executeUpdate("INSERT INTO Friends VALUES ('"+friend.getId()+"', '"+user.getId()+"')");
+            stmt.executeUpdate("INSERT INTO Friends VALUES ('"+friend.getId()+"', '"+user.getId()+"')");
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println("Aucun ami trouvé.");
         }
     }
 

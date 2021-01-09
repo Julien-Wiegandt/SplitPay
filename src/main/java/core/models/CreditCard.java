@@ -63,6 +63,6 @@ public class CreditCard {
 
     public String toString(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return("id: "+ this.dbId + ",number: " + this.number + ", nameOwner: "+ this.nameOwner + ", date: " +dateFormat.format(this.date)+ ", cvv: "+ this.cvv );
+        return("Number: "+this.number+" CVV: "+ this.cvv +" Date: "+dateFormat.format(this.date));
     }
 }

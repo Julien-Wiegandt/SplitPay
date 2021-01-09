@@ -39,23 +39,20 @@ public class AddFriendController {
         try {
             if(RegexPattern.emailPattern.matcher(credentials.getText()).find()) {
                 FriendFacade.getFriendFacade().addFriendByEmail(credentials.getText());
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.friendView));
+                SplitPay.window.setScene(new Scene(root));
             }
             else if (RegexPattern.phonePattern.matcher(credentials.getText()).find()){
                 FriendFacade.getFriendFacade().addFriendByPhone(credentials.getText());
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.friendView));
+                SplitPay.window.setScene(new Scene(root));
             }
-            else {
+            else{
                 credentials.setStyle("-fx-text-box-border: red");
             }
         } catch (SQLException throwables) {
-            System.out.println("Vous avez déjà ajouter cet utilisateur comme ami");
-            throwables.printStackTrace();
-
+            credentials.setStyle("-fx-text-box-border: red");
         }
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.friendView));
-        SplitPay.window.setScene(new Scene(root));
-
-
-
     }
 
 }

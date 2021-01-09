@@ -17,12 +17,13 @@ public class Participant implements Serializable {
 
     @Override
     public String toString() {
-        return "Participant{" +
-                " id=" + id +
-                ", amount=" + amount +
-                ", isReady=" + isReady +
-                ", nickname=" + nickname +
-                '}';
+        String str = this.getNickname()+" put in "+this.getAmount()+"€ ";
+        if(this.isReady()){
+            str += "✅";
+        }else{
+            str += "❌";
+        }
+        return str;
     }
 
     @Override

@@ -10,6 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
 import main.SplitPay;
 import server.models.split.Participant;
 import server.models.split.FreeSplit;
@@ -18,6 +22,7 @@ import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 import util.RegexPattern;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class FreeSplitSaloonController {
@@ -63,6 +68,7 @@ public class FreeSplitSaloonController {
 
     @FXML
     public Button payButton;
+
 
     @FXML
     private void initialize() throws IOException {

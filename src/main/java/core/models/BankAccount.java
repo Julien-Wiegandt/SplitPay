@@ -64,6 +64,6 @@ public class BankAccount {
     }
 
     public String toString(){
-        return("new bank account: id: "+this.id+ " label: "+this.label+ " bic: "+this.bic+" iban: "+this.iban+" FirstName: "+this.ownerFirstName+ " LastName: "+ this.ownerLastName);
+        return(this.label+ " bic: "+this.bic+" iban: "+this.iban);
     }
 }
