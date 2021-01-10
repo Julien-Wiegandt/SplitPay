@@ -20,7 +20,7 @@ public class MySqlBillDAO implements BillDAO {
 
         ResultSet rs;
         try{
-            statement = ConnectionMySql.connection.prepareStatement("SELECT * FROM Bills WHERE store_owner_fk=?;");
+            statement = ConnectionMySql.connection.prepareStatement("SELECT * FROM Bill WHERE store_owner_fk=?;");
             statement.setInt(1, userId);
             rs = statement.executeQuery();
             while (rs.next()) {

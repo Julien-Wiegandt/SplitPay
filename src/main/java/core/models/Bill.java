@@ -16,6 +16,8 @@ public class Bill {
      * @param content "format : item1:price1/item1:price1/item1:price1"
      */
     public Bill(String label,String content){
+        this.label=label;
+        this.content=content;
         String[] parse1 = content.split("/");
         String[][] parse2;
         // TODO : parse
