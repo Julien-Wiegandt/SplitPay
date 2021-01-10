@@ -43,4 +43,6 @@ public abstract class DAOFactory {
     public abstract MySqlFriendDAO createFriendDao();
 
     public abstract MySqlNotificationDAO createNotificationDao();
+
+    public abstract BillDAO createBillDao();
 }

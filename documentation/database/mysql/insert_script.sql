@@ -33,3 +33,8 @@ INSERT INTO `UserToUserTransaction` (`amount`, `dateCreated`, `sender_fk`, `rece
 VALUES ('1.5', '2020-12-24 17:19:43', '1', '2'),
        ('3', '2020-12-24 17:19:43', '1', '3'),
        ('5', '2020-12-24 17:19:43', '4', '1');
+
+
+INSERT INTO `Bill` (`label`, `content`, `store_owner_fk`)
+VALUES ('bill1', 'margarita:4.99/coke:2/tiramisu:2.50/', '1'),
+VALUES ('bill2', 'coffee:2.00/vanilla ice-cream:3.99/pizza margarita:5.90/hot chocolate muffin:3.99/truffle pizza:18.99/vegetarian pizza:13.99/', '1');

@@ -28,7 +28,7 @@
             </VBox.margin>
          </Label>
 
-            <Button mnemonicParsing="false" text="Create split" />
+            <Button onAction="#goToSplitCreationView" mnemonicParsing="false" text="Create split" />
 
         </children>
     </VBox>

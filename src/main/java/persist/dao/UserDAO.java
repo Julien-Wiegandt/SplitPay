@@ -5,6 +5,7 @@ import core.models.StoreOwner;
 import core.models.User;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -117,5 +118,6 @@ public abstract class UserDAO{
 
     public abstract StoreOwner findStoreOwnerById(int userId) throws SQLException;
 
+    public abstract ArrayList<StoreOwner> findAllStoreOwners() throws SQLException;
 
 }

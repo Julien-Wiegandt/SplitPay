@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import main.SplitPay;
+import ui.path.NormalUserNavigationPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -63,6 +64,24 @@ public class SplitSectionController {
         Parent root = null;
         try {
             // TODO : Handle resource path problem
+            root = FXMLLoader.load(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    /**
+     * Method used to redirect the user into the split creation view
+     */
+    public void goToSplitCreationView(){
+        URL url = getClass().getClassLoader().getResource(NormalUserNavigationPath.splitCreationView);
+
+        Parent root = null;
+        try {
+            // TODO : Handle resource path problem
+            assert url != null;
             root = FXMLLoader.load(url);
         } catch (IOException e) {
             e.printStackTrace();

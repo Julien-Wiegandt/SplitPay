@@ -5,7 +5,7 @@
 package server.communication;
 
 import server.models.split.Split;
-
+import core.models.StoreOwner;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,25 +27,31 @@ public class SplitOriginatorMessage implements Serializable
   /**
    * The message describing the action wanted.
    */
-  private final String message;
+  private String message;
 
   /**
    * Contains arguments necessary for the operation
    */
-  private final HashMap<String,String> arguments;
+  private HashMap<String,String> arguments;
 
   /**
    * Split object, usually returned to clients to update their split state
    */
-  private final HashMap<String, Split> splits;
+  private HashMap<String, Split> splits;
+
+  /**
+   * Store owner object, often used during split creation
+   */
+  private StoreOwner storeOwner;
 
 // Constructor ***************************************************************
 
-  public SplitOriginatorMessage(ConnectionToClient originator, String message, HashMap<String, String> arguments, HashMap<String, Split> splits) {
+  public SplitOriginatorMessage(ConnectionToClient originator, String message, HashMap<String, String> arguments, HashMap<String, Split> splits, StoreOwner storeOwner) {
     this.originator = originator;
     this.message=message;
     this.arguments=arguments;
     this.splits = splits;
+    this.storeOwner=storeOwner;
   }
 
 // Accessor methods *********************************************************
@@ -92,6 +98,10 @@ public class SplitOriginatorMessage implements Serializable
     return this.arguments;
   }
 
+  public StoreOwner getStoreOwner(){
+    return storeOwner;
+  }
+
 
 
   public HashMap<String, Split> getSplits() {
@@ -105,6 +115,7 @@ public class SplitOriginatorMessage implements Serializable
             ", message=" + message +
             ", arguments=" + arguments +
             ", splits=" + splits +
+            ", storeOwner=" + storeOwner +
             '}';
   }
 }

@@ -2,8 +2,11 @@ package persist.dao.mysql;
 
 
 import persist.DAOFactory;
-import persist.dao.CreditCardDAO;
-import persist.dao.GroupDAO;
+import persist.dao.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -40,6 +43,11 @@ public class MySqlDAOFactory extends DAOFactory {
      */
     public MySqlNotificationDAO createNotificationDao() {
         return new MySqlNotificationDAO();
+    }
+
+    @Override
+    public BillDAO createBillDao() {
+        return new MySqlBillDAO();
     }
 
 
