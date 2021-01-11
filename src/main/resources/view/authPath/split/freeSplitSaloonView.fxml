@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.split.FreeSplitSaloonController">
    <children>
       <BorderPane prefHeight="15.0" prefWidth="320.0">
@@ -47,18 +48,16 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox>
-                     <children>
-                        <ListView fx:id="participants" prefHeight="135.0">
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin></ListView>
-                        <ProgressBar fx:id="progressBar" maxHeight="162.0" maxWidth="20.0" minHeight="162.0" minWidth="20.0" progress="0.0" />
-                     </children>
+                  <ProgressBar fx:id="progressBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="248.0" progress="0.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
-                  </HBox>
+                  </ProgressBar>
+                  <ListView fx:id="participants">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ListView>
                   <TextField fx:id="moneyInput" layoutX="14.0" layoutY="223.0" promptText="Enter amount">
                      <VBox.margin>
                         <Insets top="10.0" />
