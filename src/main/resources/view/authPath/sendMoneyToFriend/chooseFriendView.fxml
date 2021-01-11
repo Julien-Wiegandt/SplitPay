@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.sendMoneyToFriend.ChooseFriendController">
     <children>
@@ -13,10 +14,18 @@
             <center>
                 <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
                     <children>
+                  <Label text="Choose a Friend">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
                         <ListView fx:id="friendsList" onMouseClicked="#goToChooseAmountView" prefHeight="277.0" prefWidth="382.0">
                      <VBox.margin>
                         <Insets />
-                     </VBox.margin></ListView>
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding></ListView>
                     </children>
                 </VBox>
             </center>

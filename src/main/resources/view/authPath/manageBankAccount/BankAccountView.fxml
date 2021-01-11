@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageBankAccount.BankAccountController">
     <children>
@@ -13,7 +14,15 @@
             <center>
                 <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
                     <children>
-                        <ListView fx:id="listView" onMouseClicked="#goToEditBankAccountView" prefHeight="277.0" prefWidth="382.0" />
+                  <Label text="My Bank Accounts">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                        <ListView fx:id="listView" onMouseClicked="#goToEditBankAccountView" prefHeight="277.0" prefWidth="382.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></ListView>
                   <Button mnemonicParsing="false" onAction="#goToAddBankAccountView" text="Add Bank Account">
                      <VBox.margin>
                         <Insets top="20.0" />

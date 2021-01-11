@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.sendMoneyToFriend.ChooseAmountController">
     <children>
@@ -13,14 +14,17 @@
             <center>
                 <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
                  <children>
-                     <Label text="Amount">
+                     <Label text="Choose Amount">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
                      </Label>
-                     <TextField fx:id="amountInput">
+                     <TextField fx:id="amountInput" promptText="amount to send">
                          <VBox.margin>
-                             <Insets top="20.0" />
+                             <Insets top="10.0" />
                          </VBox.margin>
                      </TextField>
                      <Button mnemonicParsing="false" onAction="#sendMoneyToFriend" text="Send">

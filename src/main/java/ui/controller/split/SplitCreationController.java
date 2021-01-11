@@ -61,7 +61,8 @@ public class SplitCreationController {
 
     public void splitCreatedSuccess(String splitCode){
         Platform.runLater(() -> {
-                    setFlashMessage("Split created, join with code : "+splitCode);
+                    facade.joinSplit(splitCode);
+                    //setFlashMessage("Split created, join with code : "+splitCode);
                     clearInputs();
                 }
         );

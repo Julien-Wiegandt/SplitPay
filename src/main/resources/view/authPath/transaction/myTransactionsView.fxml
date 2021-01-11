@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.transaction.MyTransactionsController">
     <children>
         <BorderPane prefHeight="15.0" prefWidth="320.0">
@@ -12,7 +14,14 @@
             <center>
                 <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
                     <children>
-                        <ListView fx:id="listView" prefHeight="277.0" prefWidth="382.0" onMouseClicked="#goToTransactionView"/>
+                  <Label text="My Transactions">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                        <ListView fx:id="listView" onMouseClicked="#goToTransactionView" prefHeight="277.0" prefWidth="382.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></ListView>
                     </children>
                 </VBox>
             </center>

@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageCreditCard.AddCreditCardController">
    <children>
@@ -16,12 +17,15 @@
                   <Label layoutX="249.0" layoutY="38.0" text="Add Credit Card">
                      <VBox.margin>
                         <Insets top="10.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
                   <TextField fx:id="number" layoutX="85.0" layoutY="59.0" promptText="number">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin></TextField>
-                  <TextField fx:id="nameOwner" layoutX="85.0" layoutY="281.0" promptText="Name">
+                  <TextField fx:id="nameOwner" layoutX="85.0" layoutY="281.0" promptText="name">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></TextField>

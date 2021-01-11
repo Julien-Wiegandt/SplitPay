@@ -60,5 +60,4 @@ public class MySplitsController {
         SplitClientFacade.getInstance().setMySplitsController(this);
         getSplits();
     }
-
 }

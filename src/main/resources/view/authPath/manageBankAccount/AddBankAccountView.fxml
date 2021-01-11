@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageBankAccount.AddBankAccountController">
     <children>
@@ -13,24 +14,27 @@
             <center>
                 <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefWidth="320.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Label layoutX="249.0" layoutY="38.0" text="Add Credit Card" />
-                        <TextField fx:id="label" layoutX="85.0" layoutY="59.0" promptText="Label">
+                        <Label layoutX="249.0" layoutY="38.0" text="Add Bank Account">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                        <TextField fx:id="label" layoutX="85.0" layoutY="59.0" promptText="label">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin></TextField>
-                        <TextField fx:id="bic" layoutX="85.0" layoutY="281.0" promptText="Bic">
+                        <TextField fx:id="bic" layoutX="85.0" layoutY="281.0" promptText="bic">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></TextField>
-                        <TextField fx:id="iban" layoutX="85.0" layoutY="102.0" promptText="Iban">
+                        <TextField fx:id="iban" layoutX="85.0" layoutY="102.0" promptText="iban">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></TextField>
-                        <TextField fx:id="firstName" layoutX="85.0" layoutY="190.0" promptText="First Name">
+                        <TextField fx:id="firstName" layoutX="85.0" layoutY="190.0" promptText="first name">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></TextField>
-                        <TextField fx:id="lastName" layoutX="85.0" layoutY="190.0" promptText="Last Name">
+                        <TextField fx:id="lastName" layoutX="85.0" layoutY="190.0" promptText="last name">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></TextField>

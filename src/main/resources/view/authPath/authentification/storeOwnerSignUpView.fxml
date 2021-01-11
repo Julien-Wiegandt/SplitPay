@@ -3,14 +3,23 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.authentification.StoreOwnerSignUpController">
     <children>
         <BorderPane prefHeight="15.0" prefWidth="320.0">
         <center>
-        <VBox alignment="CENTER" fillWidth="false" minHeight="440.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" fillWidth="false" minHeight="500.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
             <children>
-                <CheckBox fx:id="isCompany" layoutX="98.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToNormalUserSignUpView" selected="true" text="You are a company" />
+                  <Label text="Sign Up">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                <CheckBox fx:id="isCompany" layoutX="98.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToNormalUserSignUpView" selected="true" text="You are a company">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></CheckBox>
                 <TextField fx:id="credential" layoutX="86.0" layoutY="52.0" promptText="email or phone">
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -50,7 +59,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                      <Button mnemonicParsing="false" onAction="#goToLogInView" text="Log in" />
+                      <Button mnemonicParsing="false" onAction="#goToLogInView" prefHeight="35.0" prefWidth="65.0" text="Log in" />
                      </children>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -59,9 +68,6 @@
             </children>
         </VBox>
         </center>
-            <bottom>
-                <fx:include source="../homeButtonView.fxml" />
-            </bottom>
         </BorderPane>
     </children>
 </VBox>
