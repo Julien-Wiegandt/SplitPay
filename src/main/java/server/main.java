@@ -38,7 +38,7 @@ public class main {
 
 
         System.out.println("Free split : " + facade.createFreeSplit(2,"User 2",32.2,"Pizza",storeOwner));
-        System.out.println("Item split : " + facade.createItemSplit(1,"testUser","Restaurant",items,storeOwner));
+        System.out.println("Item split : " + facade.createItemSplit("testUser",1,"Restaurant",items,storeOwner));
 
 
 

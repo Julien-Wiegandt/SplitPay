@@ -152,7 +152,7 @@ public class ObservableClient extends Observable
   protected void connectionClosed()
   {
     setChanged();
-    notifyObservers(new SplitOriginatorMessage(null,CONNECTION_CLOSED,null,null,null));
+    notifyObservers(new SplitOriginatorMessage(null,CONNECTION_CLOSED,null,null,null,null));
   }
 
   /**
@@ -165,7 +165,7 @@ public class ObservableClient extends Observable
   {
     setChanged();
     // TODO : Handle exception
-    notifyObservers(new SplitOriginatorMessage(null, exception.getMessage(), null,null,null));
+    notifyObservers(new SplitOriginatorMessage(null, exception.getMessage(), null,null,null,null));
   }
 
   /**
@@ -174,6 +174,6 @@ public class ObservableClient extends Observable
   protected void connectionEstablished()
   {
     setChanged();
-    notifyObservers(new SplitOriginatorMessage(null,CONNECTION_ESTABLISHED,null,null,null));
+    notifyObservers(new SplitOriginatorMessage(null,CONNECTION_ESTABLISHED,null,null,null,null));
   }
 }

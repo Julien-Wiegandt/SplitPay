@@ -2,10 +2,11 @@ package core.models;
 
 import server.models.split.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bill {
+public class Bill implements Serializable {
 
     private String label;
     private String content;
@@ -19,8 +20,12 @@ public class Bill {
         this.label=label;
         this.content=content;
         String[] parse1 = content.split("/");
-        String[][] parse2;
-        // TODO : parse
+        for (int i = 0; i < parse1.length; i++) {
+            String[] parsedEntry = parse1[i].split(":");
+            Item item = new Item(parsedEntry[0],Double.parseDouble(parsedEntry[1]));
+            items.add(item);
+        }
+
     }
 
     public String getContent() {
@@ -31,11 +36,16 @@ public class Bill {
         return label;
     }
 
+    public ArrayList<Item> getItems(){
+        return this.items;
+    }
+
     @Override
     public String toString() {
         return "Bill{" +
                 "label='" + label + '\'' +
                 ", content='" + content + '\'' +
+                ", items='" + items + '\'' +
                 '}';
     }
 }

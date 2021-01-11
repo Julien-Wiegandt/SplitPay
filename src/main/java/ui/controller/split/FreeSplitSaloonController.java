@@ -89,15 +89,15 @@ public class FreeSplitSaloonController {
             payButton.setDisable(!getJoinedSplit().isReadyForPayment());
 
             // The pay button is only accessible for the split owner
-            if (isParticipantOwner()) {
+            if (!isParticipantAdmin()) {
                 payButton.setVisible(false);
             }
         });
 
     }
 
-    private boolean isParticipantOwner() {
-        return getJoinedSplit().getOwnerId() == Integer.parseInt(UserFacade.getUserFacade().getLoggedUser().getId());
+    private boolean isParticipantAdmin() {
+        return getJoinedSplit().getSplitAdmin() == Integer.parseInt(UserFacade.getUserFacade().getLoggedUser().getId());
     }
 
     /**

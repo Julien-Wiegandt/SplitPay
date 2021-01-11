@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import main.SplitPay;
 import ui.path.NormalUserNavigationPath;
+import ui.path.StoreOwnerNavigationPath;
 import ui.path.UserNavigationPath;
 
 import java.io.IOException;
@@ -23,6 +24,9 @@ public class HomeController {
     @FXML
     private Button sendMoneyToFriendButton;
 
+    @FXML
+    private Button generateSplitButton;
+
 
     @FXML
     private void initialize() {
@@ -32,6 +36,7 @@ public class HomeController {
             } catch (SQLException throwables) {
                 System.out.println("Can't find the logged NormalUser in the db.");
             }
+            generateSplitButton.setVisible(false);
         } else {
             try {
                 UserFacade.getUserFacade().setLoggedUser(UserFacade.getUserFacade().findStoreOwnerById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId())));
@@ -50,6 +55,11 @@ public class HomeController {
 
     public void goToManageBalanceView(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.manageBalanceView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    public void goToGenerateSplitView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(StoreOwnerNavigationPath.generateSplitView));
         SplitPay.window.setScene(new Scene(root));
     }
 

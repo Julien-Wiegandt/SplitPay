@@ -4,6 +4,7 @@
 
 package server.communication;
 
+import core.models.Bill;
 import server.models.split.Split;
 import core.models.StoreOwner;
 import java.io.Serializable;
@@ -44,14 +45,20 @@ public class SplitOriginatorMessage implements Serializable
    */
   private StoreOwner storeOwner;
 
+  /**
+   * Store owner object, often used during split creation
+   */
+  private Bill bill;
+
 // Constructor ***************************************************************
 
-  public SplitOriginatorMessage(ConnectionToClient originator, String message, HashMap<String, String> arguments, HashMap<String, Split> splits, StoreOwner storeOwner) {
+  public SplitOriginatorMessage(ConnectionToClient originator, String message, HashMap<String, String> arguments, HashMap<String, Split> splits, StoreOwner storeOwner, Bill bill) {
     this.originator = originator;
     this.message=message;
     this.arguments=arguments;
     this.splits = splits;
     this.storeOwner=storeOwner;
+    this.bill=bill;
   }
 
 // Accessor methods *********************************************************
@@ -94,6 +101,7 @@ public class SplitOriginatorMessage implements Serializable
     return entry.getValue();
   }
 
+
   public HashMap<String,String> getArguments(){
     return this.arguments;
   }
@@ -106,6 +114,10 @@ public class SplitOriginatorMessage implements Serializable
 
   public HashMap<String, Split> getSplits() {
     return splits;
+  }
+
+  public Bill getBill(){
+    return this.bill;
   }
 
   @Override

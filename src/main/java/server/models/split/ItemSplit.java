@@ -12,6 +12,7 @@ public class ItemSplit extends Split{
 
     private final List<Item> items = new ArrayList<>();
     private final HashMap<Integer,List<Item>> participantsCart = new HashMap<>();
+    private boolean isOwned = false;
 
     /**
      * Overrides Split constructor and computes
@@ -32,6 +33,8 @@ public class ItemSplit extends Split{
         this.goalAmount=totalAmount;
         setSplitMode(SplitMode.ITEMSPLIT);
     }
+
+
 
     /**
      * TODO : javadoc
@@ -91,6 +94,7 @@ public class ItemSplit extends Split{
      * Removes a participant from the split
      * set the items he picked to available
      * deletes his cart
+     * sets another random participant to be the owner and if there is no one sets the split as not owned until someone joins
      * @param id
      * @throws ParticipantNotFoundException
      */
@@ -98,10 +102,19 @@ public class ItemSplit extends Split{
         super.removeParticipant(id);
         removeParticipantPickedItems(id);
         removeParticipantCart(id);
+        if(isParticipantAdmin(id)){
+            if(getParticipants().size()!=0){
+                setSplitAdmin(getParticipants().entrySet().stream().findFirst().get().getKey());
+                setOwned(true);
+            } else {
+                setOwned(false);
+            }
+        }
+
     }
 
     /**
-     * Same behavior as Split but adds an empty cart for the participant
+     * Same behavior as Split but adds an empty cart for the participant and first participant to join becomes the owner
      * @param client
      * @param id
      * @param nickname
@@ -111,6 +124,11 @@ public class ItemSplit extends Split{
     public void addParticipant(ConnectionToClient client, int id, String nickname) throws ParticipantAlreadyInException {
         super.addParticipant(client, id, nickname);
         participantsCart.put(id,new ArrayList<>());
+
+        if(!isOwned()){
+            setSplitAdmin(id);
+            setOwned(true);
+        }
     }
 
     /**
@@ -166,6 +184,18 @@ public class ItemSplit extends Split{
         return participantsCart;
     }
 
+    public boolean isOwned() {
+        return isOwned;
+    }
+
+    public void setOwned(boolean owned) {
+        isOwned = owned;
+    }
+
+    public boolean isParticipantAdmin(int id){
+        return id == getSplitAdmin();
+    }
+
     @Override
     public String toString() {
         return "Split{" +
@@ -175,6 +205,7 @@ public class ItemSplit extends Split{
                 ", goalAmount=" + goalAmount +
                 ", splitMode='" + splitMode + '\'' +
                 ", ownerId=" + ownerId +
+                ", splitAdmin=" + splitAdmin +
                 ", participants=" + participants +
                 ", items="+ items +
                 ", participantsCard="+ participantsCart +

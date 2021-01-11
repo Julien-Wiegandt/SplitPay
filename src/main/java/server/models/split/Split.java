@@ -35,6 +35,16 @@ public abstract class Split implements Serializable {
     protected int ownerId;
     protected String ownerNickName;
     protected double currentAmount = 0;
+    protected int splitAdmin = 0;
+
+    public int getSplitAdmin() {
+        return splitAdmin;
+    }
+
+    public void setSplitAdmin(int splitAdmin) {
+        this.splitAdmin = splitAdmin;
+    }
+
 
     protected HashMap<Integer,Participant> participants = new HashMap<>();
 
@@ -198,6 +208,7 @@ public abstract class Split implements Serializable {
                 ", goalAmount=" + goalAmount +
                 ", splitMode='" + splitMode + '\'' +
                 ", ownerId=" + ownerId +
+                ", splitAdmin=" + splitAdmin +
                 ", participants=" + participants +
                 '}';
     }
@@ -268,6 +279,10 @@ public abstract class Split implements Serializable {
 
     public StoreOwner getReceiver() {
         return receiver;
+    }
+
+    public boolean isParticipantOwner(int id){
+        return id==ownerId;
     }
 
     /**
