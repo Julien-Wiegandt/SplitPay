@@ -1,35 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.authentification.NormalUserSignUpController">
     <children>
-        <Pane prefHeight="67.0" prefWidth="320.0">
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+        <center>
+        <VBox alignment="CENTER" fillWidth="false" minHeight="440.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="118.0" layoutY="14.0" text="Sign Up">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Label>
-            </children>
-        </Pane>
-        <Pane prefHeight="395.0" prefWidth="320.0">
-            <children>
-                <TextField fx:id="credential" layoutX="85.0" layoutY="59.0" promptText="email or phone" />
-                <PasswordField fx:id="password2" layoutX="85.0" layoutY="281.0" promptText="password" />
-                <Button layoutX="128.0" layoutY="322.0" mnemonicParsing="false" onAction="#signUp" prefHeight="35.0" prefWidth="65.0" text="Sign Up" />
-                <TextField fx:id="firstName" layoutX="85.0" layoutY="102.0" promptText="first name" />
-                <PasswordField fx:id="password1" layoutX="86.0" layoutY="236.0" promptText="password" />
-                <TextField fx:id="nickname" layoutX="85.0" layoutY="190.0" promptText="nickname" />
                 <CheckBox fx:id="isCompany" layoutX="98.0" layoutY="19.0" mnemonicParsing="false" onAction="#goToStoreOwnerSignUpView" text="You are a company" />
-                <TextField fx:id="lastName" layoutX="85.0" layoutY="145.0" promptText="last name" />
-            </children></Pane>
-        <Pane prefHeight="51.0" prefWidth="320.0">
-            <children>
-                <Button layoutX="189.0" layoutY="11.0" mnemonicParsing="false" onAction="#goToLogInView" text="Log in" />
-                <Label layoutX="42.0" layoutY="15.0" text="Already have an account ?" />
-            </children></Pane>
+                <TextField fx:id="credential" layoutX="85.0" layoutY="59.0" promptText="email or phone">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></TextField>
+                <TextField fx:id="firstName" layoutX="85.0" layoutY="102.0" promptText="first name">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></TextField>
+                <TextField fx:id="lastName" layoutX="85.0" layoutY="145.0" promptText="last name">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></TextField>
+                <TextField fx:id="nickname" layoutX="85.0" layoutY="190.0" promptText="nickname">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></TextField>
+                <PasswordField fx:id="password1" layoutX="86.0" layoutY="236.0" promptText="password">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></PasswordField>
+                <PasswordField fx:id="password2" layoutX="85.0" layoutY="281.0" promptText="password">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></PasswordField>
+                <Button layoutX="128.0" layoutY="322.0" mnemonicParsing="false" onAction="#signUp" prefHeight="35.0" prefWidth="65.0" text="Sign Up">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></Button>
+                  <HBox alignment="CENTER">
+                     <children>
+                      <Label text="Already have an account ?">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </Label>
+                      <Button mnemonicParsing="false" onAction="#goToLogInView" text="Log in" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+            </children>
+        </VBox>
+        </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
     </children>
 </VBox>

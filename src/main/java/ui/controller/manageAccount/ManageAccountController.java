@@ -24,6 +24,7 @@ public class ManageAccountController {
         User user = UserFacade.getUserFacade().getLoggedUser();
         if (user.getPhone() != null && user.getEmail() != null) {
             confirmEmailPhone.setManaged(false);
+            confirmEmailPhone.setVisible(false);
         }
 
     }

@@ -27,7 +27,7 @@ public class StoreOwnerSignUpController {
      * The information entered by the user.
      */
     @FXML
-    private TextField credential, nickname, companyName, siret;
+    private TextField credential, nickname, companyName, siret, adress;
 
     /**
      * The password entered by the user.
@@ -52,17 +52,19 @@ public class StoreOwnerSignUpController {
                 && RegexPattern.namePattern.matcher(companyName.getText()).find()
                 && RegexPattern.siretPattern.matcher(siret.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
+                && RegexPattern.adressPattern.matcher(adress.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))) {
-            UserFacade.getUserFacade().storeOwnerEmailSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
+            UserFacade.getUserFacade().storeOwnerEmailSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), adress.getText(), password1.getText());
             goToLogInView();
         } else if (RegexPattern.phonePattern.matcher(credential.getText()).find()
                 && RegexPattern.namePattern.matcher(companyName.getText()).find()
                 && RegexPattern.siretPattern.matcher(siret.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
+                && RegexPattern.adressPattern.matcher(adress.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))) {
-            UserFacade.getUserFacade().storeOwnerPhoneSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
+            UserFacade.getUserFacade().storeOwnerPhoneSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), adress.getText(), password1.getText());
             goToLogInView();
         } else {
             if (!RegexPattern.emailPattern.matcher(credential.getText()).find() && !RegexPattern.phonePattern.matcher(credential.getText()).find()) {
@@ -73,6 +75,9 @@ public class StoreOwnerSignUpController {
             }
             if (!RegexPattern.nicknamePattern.matcher(nickname.getText()).find()) {
                 nickname.setStyle("-fx-text-box-border: red");
+            }
+            if (!RegexPattern.adressPattern.matcher(adress.getText()).find()) {
+                adress.setStyle("-fx-text-box-border: red");
             }
             if (!RegexPattern.siretPattern.matcher(siret.getText()).find()) {
                 siret.setStyle("-fx-text-box-border: red");
@@ -119,6 +124,7 @@ public class StoreOwnerSignUpController {
         companyName.setStyle("-fx-text-box-border: black");
         siret.setStyle("-fx-text-box-border: black");
         nickname.setStyle("-fx-text-box-border: black");
+        adress.setStyle("-fx-text-box-border: black");
         password1.setStyle("-fx-text-box-border: black");
         password2.setStyle("-fx-text-box-border: black");
     }
