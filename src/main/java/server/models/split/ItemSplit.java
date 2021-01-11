@@ -12,7 +12,7 @@ public class ItemSplit extends Split{
 
     private final List<Item> items = new ArrayList<>();
     private final HashMap<Integer,List<Item>> participantsCart = new HashMap<>();
-    private boolean isOwned = true;
+    private boolean isOwned = false;
 
     /**
      * Overrides Split constructor and computes
@@ -102,7 +102,7 @@ public class ItemSplit extends Split{
         super.removeParticipant(id);
         removeParticipantPickedItems(id);
         removeParticipantCart(id);
-        if(isParticipantOwner(id)){
+        if(isParticipantAdmin(id)){
             if(getParticipants().size()!=0){
                 setSplitAdmin(getParticipants().entrySet().stream().findFirst().get().getKey());
                 setOwned(true);
@@ -125,9 +125,9 @@ public class ItemSplit extends Split{
         super.addParticipant(client, id, nickname);
         participantsCart.put(id,new ArrayList<>());
 
-        if(isOwned()){
+        if(!isOwned()){
             setSplitAdmin(id);
-            setOwned(false);
+            setOwned(true);
         }
     }
 
@@ -190,6 +190,10 @@ public class ItemSplit extends Split{
 
     public void setOwned(boolean owned) {
         isOwned = owned;
+    }
+
+    public boolean isParticipantAdmin(int id){
+        return id == getSplitAdmin();
     }
 
     @Override
