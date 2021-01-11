@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import ui.path.AuthPath;
 
 import java.text.ParseException;
 
@@ -27,7 +28,7 @@ public class SplitPay extends Application {
         window.centerOnScreen();
 
         //LogIn
-        Parent logInRoot = FXMLLoader.load(getClass().getResource("../view/authPath/loginView.fxml"));
+        Parent logInRoot = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.logInView));
         Scene logInView = new Scene(logInRoot);
 
         window.setScene(logInView);

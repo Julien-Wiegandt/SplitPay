@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.authentification;
 
 import core.facade.UserFacade;
 import javafx.fxml.FXML;
@@ -45,7 +45,7 @@ public class NormalUserSignUpController {
      * If a entered information don't match the regex pattern,
      * then the TextFields border is highlighted in red.
      */
-    public void signUp() {
+    public void signUp() throws IOException {
         allStyleSetDefault();
         if (RegexPattern.emailPattern.matcher(credential.getText()).find()
                 && RegexPattern.textPattern.matcher(firstName.getText()).find()
@@ -54,6 +54,7 @@ public class NormalUserSignUpController {
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))) {
             UserFacade.getUserFacade().normalUserEmailSignUp(credential.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
+            goToLogInView();
         } else if (RegexPattern.phonePattern.matcher(credential.getText()).find()
                 && RegexPattern.textPattern.matcher(firstName.getText()).find()
                 && RegexPattern.textPattern.matcher(lastName.getText()).find()
@@ -61,6 +62,7 @@ public class NormalUserSignUpController {
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))) {
             UserFacade.getUserFacade().normalUserPhoneSignUp(credential.getText(), firstName.getText(), lastName.getText(), nickname.getText(), password1.getText());
+            goToLogInView();
         } else {
             if (!RegexPattern.emailPattern.matcher(credential.getText()).find() && !RegexPattern.phonePattern.matcher(credential.getText()).find()) {
                 credential.setStyle("-fx-text-box-border: red");
@@ -90,7 +92,7 @@ public class NormalUserSignUpController {
      * @todo Handle the possible exceptions.
      */
     public void goToStoreOwnerSignUpView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.storeOwnerSignUpView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.storeOwnerSignUpView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
@@ -102,7 +104,7 @@ public class NormalUserSignUpController {
      * @todo Handle the possible exceptions.
      */
     public void goToLogInView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.logInView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.logInView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 

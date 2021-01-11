@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.authentification;
 
 import core.facade.UserFacade;
 import javafx.fxml.FXML;
@@ -46,27 +46,29 @@ public class StoreOwnerSignUpController {
      * If a entered information don't match the regex pattern,
      * then the TextFields border is highlighted in red.
      */
-    public void signUp() {
+    public void signUp() throws IOException {
         allStyleSetDefault();
         if (RegexPattern.emailPattern.matcher(credential.getText()).find()
-                && RegexPattern.textPattern.matcher(companyName.getText()).find()
+                && RegexPattern.namePattern.matcher(companyName.getText()).find()
                 && RegexPattern.siretPattern.matcher(siret.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))) {
             UserFacade.getUserFacade().storeOwnerEmailSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
+            goToLogInView();
         } else if (RegexPattern.phonePattern.matcher(credential.getText()).find()
-                && RegexPattern.textPattern.matcher(companyName.getText()).find()
+                && RegexPattern.namePattern.matcher(companyName.getText()).find()
                 && RegexPattern.siretPattern.matcher(siret.getText()).find()
                 && RegexPattern.nicknamePattern.matcher(nickname.getText()).find()
                 && RegexPattern.passwordPattern.matcher(password1.getText()).find()
                 && (password1.getText().equals(password2.getText()))) {
             UserFacade.getUserFacade().storeOwnerPhoneSignUp(credential.getText(), companyName.getText(), nickname.getText(), siret.getText(), password1.getText());
+            goToLogInView();
         } else {
             if (!RegexPattern.emailPattern.matcher(credential.getText()).find() && !RegexPattern.phonePattern.matcher(credential.getText()).find()) {
                 credential.setStyle("-fx-text-box-border: red");
             }
-            if (!RegexPattern.textPattern.matcher(companyName.getText()).find()) {
+            if (!RegexPattern.namePattern.matcher(companyName.getText()).find()) {
                 companyName.setStyle("-fx-text-box-border: red");
             }
             if (!RegexPattern.nicknamePattern.matcher(nickname.getText()).find()) {
@@ -92,7 +94,7 @@ public class StoreOwnerSignUpController {
      * @todo Handle the possible exceptions.
      */
     public void goToNormalUserSignUpView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.normalUserSignUpView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.normalUserSignUpView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
@@ -104,7 +106,7 @@ public class StoreOwnerSignUpController {
      * @todo Handle the possible exceptions.
      */
     public void goToLogInView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.logInView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.logInView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 
@@ -120,5 +122,4 @@ public class StoreOwnerSignUpController {
         password1.setStyle("-fx-text-box-border: black");
         password2.setStyle("-fx-text-box-border: black");
     }
-
 }

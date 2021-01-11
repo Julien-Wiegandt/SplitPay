@@ -122,7 +122,7 @@ public class MenuController {
      */
     public void logout() throws IOException {
         UserFacade.getUserFacade().logout();
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.logInView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.logInView));
         SplitPay.window.setScene(new Scene(root));
     }
 }

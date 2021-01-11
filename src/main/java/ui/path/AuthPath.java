@@ -2,10 +2,10 @@ package ui.path;
 
 public class AuthPath {
 
-    public static String logInView = "../../view/authPath/logInView.fxml";
-    public static String normalUserSignUpView = "../../view/authPath/normalUserSignUpView.fxml";
-    public static String storeOwnerSignUpView = "../../view/authPath/storeOwnerSignUpView.fxml";
-    public static String forgottenPasswordView = "../../../view/authPath/forgottenPasswordView.fxml";
+    public static String logInView = "view/authPath/authentification/logInView.fxml";
+    public static String normalUserSignUpView = "view/authPath/authentification/normalUserSignUpView.fxml";
+    public static String storeOwnerSignUpView = "view/authPath/authentification/storeOwnerSignUpView.fxml";
+    public static String forgottenPasswordView = "view/authPath/authentification/forgottenPasswordView.fxml";
     public static String homeView = "view/authPath/homeView.fxml";
 
     public static String selectMethodView = "view/authPath/manageAccount/selectMethodView.fxml";

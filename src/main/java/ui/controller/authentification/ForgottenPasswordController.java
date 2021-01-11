@@ -1,4 +1,4 @@
-package ui.controller;
+package ui.controller.authentification;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +33,7 @@ public class ForgottenPasswordController {
      * @todo Handle the possible exceptions.
      */
     public void goToLogInView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(AuthPath.logInView));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.logInView));
         SplitPay.window.setScene(new Scene(root, 320, 500));
     }
 

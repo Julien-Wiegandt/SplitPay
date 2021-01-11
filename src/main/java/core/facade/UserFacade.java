@@ -84,11 +84,11 @@ public class UserFacade {
     }
 
     public void storeOwnerPhoneSignUp(String credential, String companyName, String nickname, String siret, String password) {
-        user = userDao.createStoreOwner(new StoreOwner(null, null, credential, siret, password, nickname, 0f, null, companyName));
+        user = userDao.createStoreOwner(new StoreOwner(null, null, credential, siret, password, nickname, 0f, companyName, null));
     }
 
     public void storeOwnerEmailSignUp(String credential, String companyName, String nickname, String siret, String password) {
-        user = userDao.createStoreOwner(new StoreOwner(null, credential, null, siret, password, nickname, 0f, null, companyName));
+        user = userDao.createStoreOwner(new StoreOwner(null, credential, null, siret, password, nickname, 0f, companyName, null));
     }
 
     public void normalUserEmailSignUp(String credential, String firstName, String lastName, String nickname, String password) {
