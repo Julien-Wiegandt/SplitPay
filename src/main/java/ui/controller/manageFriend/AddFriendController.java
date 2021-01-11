@@ -1,6 +1,7 @@
 package ui.controller.manageFriend;
 
 import core.facade.FriendFacade;
+import core.facade.UserFacade;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,12 +35,15 @@ public class AddFriendController {
      * @throws IOException
      */
     public void addFriend() throws IOException {
+        allStyleSetDefault();
         try {
-            if (RegexPattern.emailPattern.matcher(credentials.getText()).find()) {
+            if (RegexPattern.emailPattern.matcher(credentials.getText()).find()
+                && !UserFacade.getUserFacade().getUser().getEmail().equals(credentials.getText())) {
                 FriendFacade.getFriendFacade().addFriendByEmail(credentials.getText());
                 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.friendView));
                 SplitPay.window.setScene(new Scene(root));
-            } else if (RegexPattern.phonePattern.matcher(credentials.getText()).find()) {
+            } else if (RegexPattern.phonePattern.matcher(credentials.getText()).find()
+                && !UserFacade.getUserFacade().getUser().getPhone().equals(credentials.getText())) {
                 FriendFacade.getFriendFacade().addFriendByPhone(credentials.getText());
                 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.friendView));
                 SplitPay.window.setScene(new Scene(root));
@@ -49,6 +53,10 @@ public class AddFriendController {
         } catch (SQLException throwables) {
             credentials.setStyle("-fx-text-box-border: red");
         }
+    }
+
+    private void allStyleSetDefault() {
+        credentials.setStyle("-fx-text-box-border: black");
     }
 
 }
