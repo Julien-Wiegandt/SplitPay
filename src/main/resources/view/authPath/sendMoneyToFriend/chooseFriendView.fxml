@@ -21,11 +21,8 @@
                   </Label>
                         <ListView fx:id="friendsList" onMouseClicked="#goToChooseAmountView" prefHeight="277.0" prefWidth="382.0">
                      <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
                         <Insets top="10.0" />
-                     </padding></ListView>
+                     </VBox.margin></ListView>
                     </children>
                 </VBox>
             </center>
