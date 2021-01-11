@@ -2,10 +2,11 @@ package core.models;
 
 import server.models.split.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bill {
+public class Bill implements Serializable {
 
     private String label;
     private String content;

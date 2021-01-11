@@ -72,13 +72,12 @@ public class SplitServerFacade implements Observer {
 
     /**
      * Creates an item split and sets the owner
-     * @param ownerId the id of the split creator
      * @param ownerNickName the nickname of the split creator
      * @param label the title of the split
      */
-    public String createItemSplit(int ownerId, String ownerNickName, String label, Item[] items,StoreOwner receiver) {
+    public String createItemSplit(String ownerNickName, String label, Item[] items,StoreOwner receiver) {
         String splitCode = SplitUtilities.generateCode();
-        ItemSplit split = new ItemSplit(splitCode, ownerId,ownerNickName,label,items,receiver);
+        ItemSplit split = new ItemSplit(splitCode, ownerNickName,label,items,receiver);
         splits.put(split.getSplitCode(),split);
         return splitCode;
     }
@@ -284,23 +283,24 @@ public class SplitServerFacade implements Observer {
                         try {
                             HashMap<String,String> arguments = new HashMap<>();
                             arguments.put("splitCode",splitCode);
+                            arguments.put("splitMode", SplitMode.FREESPLIT.toString());
                             client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATED_RESPONSE,arguments,null,null,null));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         break;
                     case ITEMSPLIT:
-                        ownerId = Integer.parseInt(message.getArgument("ownerId"));
+                        System.out.println("here");
                         ownerNickname = message.getArgument("ownerNickname");
                         label = message.getArgument("label");
                         receiver = message.getStoreOwner();
                         //TODO
-//                        Item[] items = message.getBill();
-//                        splitCode = createItemSplit(ownerId,ownerNickname,label,items,receiver);
+                        Item[] items = message.getBill().getItems().toArray(new Item[0]);
+                        splitCode = createItemSplit(ownerNickname,label,items,receiver);
                         try {
                             HashMap<String,String> arguments = new HashMap<>();
-                            // TODO
-//                            arguments.put("splitCode",splitCode);
+                            arguments.put("splitCode",splitCode);
+                            arguments.put("splitMode", SplitMode.ITEMSPLIT.toString());
                             client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATED_RESPONSE,arguments,null,null,null));
                         } catch (IOException e) {
                             e.printStackTrace();

@@ -1,4 +1,5 @@
 package main;
+import core.models.Bill;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,8 @@ public class SplitPay extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
+        Bill bill = new Bill("Splitlabel","coffee:2.00/vanilla ice-cream:3.99/pizza margarita:5.90/hot chocolate muffin:3.99/truffle pizza:18.99/vegetarian pizza:13.99/");
+        System.out.println(bill.toString());
         window = stage;
 
         //Main app

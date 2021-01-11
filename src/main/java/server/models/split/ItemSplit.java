@@ -12,6 +12,7 @@ public class ItemSplit extends Split{
 
     private final List<Item> items = new ArrayList<>();
     private final HashMap<Integer,List<Item>> participantsCart = new HashMap<>();
+    private boolean isOwned = true;
 
     /**
      * Overrides Split constructor and computes
@@ -22,8 +23,8 @@ public class ItemSplit extends Split{
      * @param label
      * @param items
      */
-    public ItemSplit(String splitCode, int ownerId, String ownerNickName, String label, Item[] items, StoreOwner receiver){
-        super(splitCode,ownerId,ownerNickName,label,receiver);
+    public ItemSplit(String splitCode, String ownerNickName, String label, Item[] items, StoreOwner receiver){
+        super(splitCode,0,ownerNickName,label,receiver);
         double totalAmount = 0;
         for (int i = 0; i < items.length ; i++) {
             this.items.add(items[i]);
@@ -32,6 +33,8 @@ public class ItemSplit extends Split{
         this.goalAmount=totalAmount;
         setSplitMode(SplitMode.ITEMSPLIT);
     }
+
+
 
     /**
      * TODO : javadoc
@@ -91,6 +94,7 @@ public class ItemSplit extends Split{
      * Removes a participant from the split
      * set the items he picked to available
      * deletes his cart
+     * sets another random participant to be the owner and if there is no one sets the split as not owned until someone joins
      * @param id
      * @throws ParticipantNotFoundException
      */
@@ -98,10 +102,19 @@ public class ItemSplit extends Split{
         super.removeParticipant(id);
         removeParticipantPickedItems(id);
         removeParticipantCart(id);
+        if(isParticipantOwner(id)){
+            if(getParticipants().size()!=0){
+                setOwnerId(getParticipants().entrySet().stream().findFirst().get().getKey());
+                setOwned(true);
+            } else {
+                setOwned(false);
+            }
+        }
+
     }
 
     /**
-     * Same behavior as Split but adds an empty cart for the participant
+     * Same behavior as Split but adds an empty cart for the participant and first participant to join becomes the owner
      * @param client
      * @param id
      * @param nickname
@@ -111,6 +124,11 @@ public class ItemSplit extends Split{
     public void addParticipant(ConnectionToClient client, int id, String nickname) throws ParticipantAlreadyInException {
         super.addParticipant(client, id, nickname);
         participantsCart.put(id,new ArrayList<>());
+
+        if(isOwned()){
+            setOwnerId(id);
+            setOwned(false);
+        }
     }
 
     /**
@@ -164,6 +182,14 @@ public class ItemSplit extends Split{
 
     public HashMap<Integer, List<Item>> getParticipantsCart() {
         return participantsCart;
+    }
+
+    public boolean isOwned() {
+        return isOwned;
+    }
+
+    public void setOwned(boolean owned) {
+        isOwned = owned;
     }
 
     @Override

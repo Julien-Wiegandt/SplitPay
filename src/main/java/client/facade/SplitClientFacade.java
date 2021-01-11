@@ -236,11 +236,22 @@ public class SplitClientFacade implements Observer
                 System.out.println("Split paid success");
                 break;
             case ClientServerProtocol.SPLIT_CREATED_RESPONSE:
-                // TODO : switch
                 try {
                     communicationService.closeConnection();
                     String splitCode = msgReceived.getArgument("splitCode");
-                    splitCreationController.splitCreatedSuccess(splitCode);
+                    String splitModeString = msgReceived.getArgument("splitMode");
+                    SplitMode splitMode
+                            = SplitMode.valueOf(splitModeString);
+
+                    switch (splitMode){
+                        case FREESPLIT:
+                            splitCreationController.splitCreatedSuccess(splitCode);
+                            break;
+                        case ITEMSPLIT:
+                            System.out.println("dedede");
+                            generateSplitController.splitCreatedSuccess(splitCode);
+                            break;
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -444,7 +455,6 @@ public class SplitClientFacade implements Observer
         /* Creating request arguments */
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("label",splitLabel);
-        arguments.put("ownerId",UserFacade.getUserFacade().getLoggedUser().getId());
         arguments.put("ownerNickname",UserFacade.getUserFacade().getLoggedUser().getNickname());
         arguments.put("splitMode", SplitMode.ITEMSPLIT.toString());
         SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATION_REQUEST,arguments,null,receiver,bill);
@@ -453,10 +463,10 @@ public class SplitClientFacade implements Observer
 
         System.out.println("splitlabel :"+splitLabel);
         System.out.println("bill items :"+bill.getItems());
-//        communicationService.openConnection();
-//
-//
-//        sendToServer(message);
+        communicationService.openConnection();
+
+
+        sendToServer(message);
     }
 
     /**

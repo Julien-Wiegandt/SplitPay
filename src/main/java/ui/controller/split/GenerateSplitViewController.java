@@ -87,15 +87,11 @@ public class GenerateSplitViewController {
         String label = splitLabel.getText();
         Bill selectedBill = listView.getSelectionModel().getSelectedItem();
         try {
+            System.out.println("hek");
             facade.createItemSplit(label,selectedBill);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    // TODO : implement
-    public void createEqualSplit(){
-
     }
 
     @FXML

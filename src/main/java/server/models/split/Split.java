@@ -270,6 +270,10 @@ public abstract class Split implements Serializable {
         return receiver;
     }
 
+    public boolean isParticipantOwner(int id){
+        return id==ownerId;
+    }
+
     /**
      * True if a split is ready for payment (goal amount reached and every participant ready) else false
      * @return

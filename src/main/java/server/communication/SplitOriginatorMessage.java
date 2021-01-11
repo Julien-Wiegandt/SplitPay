@@ -101,6 +101,7 @@ public class SplitOriginatorMessage implements Serializable
     return entry.getValue();
   }
 
+
   public HashMap<String,String> getArguments(){
     return this.arguments;
   }
