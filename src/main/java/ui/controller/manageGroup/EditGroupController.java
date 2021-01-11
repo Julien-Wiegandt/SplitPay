@@ -44,6 +44,17 @@ public class EditGroupController {
 
     @FXML
     private void initialize() {
+        // On instancie la collection de TOUS les amis
+        this.my_friends = FriendFacade.getFriendFacade().getFriends();
+
+        ObservableList<NormalUser> my_friends_items = FXCollections.observableArrayList();
+
+        //On instancie la listView de Tous les amis
+        Iterator<NormalUser> iterator2 = this.my_friends.iterator();
+        while (iterator2.hasNext()) {
+            my_friends_items.add(iterator2.next());
+        }
+        this.all_my_friends.setItems(my_friends_items);
     }
 
     public void setGroup(Group selectedItem) {
@@ -64,18 +75,6 @@ public class EditGroupController {
 
         // On instancie le label
         label.setText(selectedItem.getLabel());
-
-        // On instancie la collection de TOUS les amis
-        this.my_friends = FriendFacade.getFriendFacade().getFriends();
-
-        ObservableList<NormalUser> my_friends_items = FXCollections.observableArrayList();
-
-        //On instancie la listView de Tous les amis
-        Iterator<NormalUser> iterator2 = this.my_friends.iterator();
-        while (iterator2.hasNext()) {
-            my_friends_items.add(iterator2.next());
-        }
-        this.all_my_friends.setItems(my_friends_items);
 
     }
 

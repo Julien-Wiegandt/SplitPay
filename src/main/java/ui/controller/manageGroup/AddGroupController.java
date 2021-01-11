@@ -17,10 +17,12 @@ public class AddGroupController {
     @FXML
     private TextField label;
 
-    public void addGroup() {
+    public void addGroup() throws IOException {
         allStyleSetDefault();
         if (RegexPattern.labelPattern.matcher(label.getText()).find()) {
             GroupFacade.getInstance().addGroup(label.getText());
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.groupView));
+            SplitPay.window.setScene(new Scene(root));
         } else {
             label.setStyle("-fx-text-box-border: red");
         }
