@@ -49,7 +49,7 @@ public class splitPaymentTest {
 
 
         splitCode = SplitUtilities.generateCode();
-        split = new ItemSplit(splitCode,participant1.getNickname(),"Bowlingstar Montpellier",items,storeOwner);
+        split = new ItemSplit(splitCode,participant1.getId(),participant1.getNickname(),"Bowlingstar Montpellier",items,storeOwner);
 
 
     }

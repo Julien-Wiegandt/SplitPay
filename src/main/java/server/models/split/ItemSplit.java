@@ -23,8 +23,8 @@ public class ItemSplit extends Split{
      * @param label
      * @param items
      */
-    public ItemSplit(String splitCode, String ownerNickName, String label, Item[] items, StoreOwner receiver){
-        super(splitCode,0,ownerNickName,label,receiver);
+    public ItemSplit(String splitCode, int ownerId, String ownerNickName, String label, Item[] items, StoreOwner receiver){
+        super(splitCode,ownerId,ownerNickName,label,receiver);
         double totalAmount = 0;
         for (int i = 0; i < items.length ; i++) {
             this.items.add(items[i]);
@@ -104,7 +104,7 @@ public class ItemSplit extends Split{
         removeParticipantCart(id);
         if(isParticipantOwner(id)){
             if(getParticipants().size()!=0){
-                setOwnerId(getParticipants().entrySet().stream().findFirst().get().getKey());
+                setSplitAdmin(getParticipants().entrySet().stream().findFirst().get().getKey());
                 setOwned(true);
             } else {
                 setOwned(false);
@@ -126,7 +126,7 @@ public class ItemSplit extends Split{
         participantsCart.put(id,new ArrayList<>());
 
         if(isOwned()){
-            setOwnerId(id);
+            setSplitAdmin(id);
             setOwned(false);
         }
     }
@@ -201,6 +201,7 @@ public class ItemSplit extends Split{
                 ", goalAmount=" + goalAmount +
                 ", splitMode='" + splitMode + '\'' +
                 ", ownerId=" + ownerId +
+                ", splitAdmin=" + splitAdmin +
                 ", participants=" + participants +
                 ", items="+ items +
                 ", participantsCard="+ participantsCart +

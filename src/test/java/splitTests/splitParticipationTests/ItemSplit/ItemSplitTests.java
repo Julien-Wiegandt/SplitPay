@@ -34,7 +34,7 @@ public class ItemSplitTests {
         items = new Item[]{pizza, drink, desert};
 
         splitCode = SplitUtilities.generateCode();
-        split = new ItemSplit(splitCode,participant1.getNickname(),"Bowlingstar Montpellier",items,null);
+        split = new ItemSplit(splitCode,participant1.getId(),participant1.getNickname(),"Bowlingstar Montpellier",items,null);
 
     }
 
@@ -56,16 +56,16 @@ public class ItemSplitTests {
     }
 
     @Test
-    public void addParticipant_FirstParticipantIsOwner_True() throws ParticipantAlreadyInException, ParticipantNotFoundException {
+    public void addParticipant_FirstParticipantIsAdmin_True() throws ParticipantAlreadyInException, ParticipantNotFoundException {
         split.addParticipant(null,participant1.getId(),participant1.getNickname());
-        Assert.assertEquals(participant1.getId(),split.getOwnerId(),0);
+        Assert.assertEquals(participant1.getId(),split.getSplitAdmin(),0);
     }
 
     @Test
-    public void addParticipant_SecondParticipantIsOwner_Flase() throws ParticipantAlreadyInException, ParticipantNotFoundException {
+    public void addParticipant_SecondParticipantIsAdmin_False() throws ParticipantAlreadyInException, ParticipantNotFoundException {
         split.addParticipant(null,participant1.getId(),participant1.getNickname());
         split.addParticipant(null,participant2.getId(),participant2.getNickname());
-        Assert.assertNotEquals(participant2.getId(),split.getOwnerId(),0);
+        Assert.assertNotEquals(participant2.getId(),split.getSplitAdmin(),0);
     }
 
     @Test
@@ -154,7 +154,7 @@ public class ItemSplitTests {
     }
 
     @Test
-    public void removeParticipant_NoOwner_False() throws ParticipantAlreadyInException, ParticipantNotFoundException, UnknownItemException, GoalAmountExceededException, ItemAlreadyPickedException {
+    public void removeParticipant_NoAdmin_False() throws ParticipantAlreadyInException, ParticipantNotFoundException, UnknownItemException, GoalAmountExceededException, ItemAlreadyPickedException {
         split.addParticipant(null,participant1.getId(),participant1.getNickname());
         split.pickItem(0,participant1.getId());
         split.removeParticipant(participant1.getId());
@@ -162,7 +162,7 @@ public class ItemSplitTests {
     }
 
     @Test
-    public void removeParticipant_IsStillOwnedByOther_True() throws ParticipantAlreadyInException, ParticipantNotFoundException, UnknownItemException, GoalAmountExceededException, ItemAlreadyPickedException {
+    public void removeParticipant_IsStillAdministratedByOther_True() throws ParticipantAlreadyInException, ParticipantNotFoundException, UnknownItemException, GoalAmountExceededException, ItemAlreadyPickedException {
         split.addParticipant(null,participant1.getId(),participant1.getNickname());
         split.addParticipant(null,participant2.getId(),participant2.getNickname());
         split.pickItem(0,participant1.getId());
@@ -171,12 +171,12 @@ public class ItemSplitTests {
     }
 
     @Test
-    public void removeParticipant_ChangeParticipant_Participant2Owner() throws ParticipantAlreadyInException, ParticipantNotFoundException, UnknownItemException, GoalAmountExceededException, ItemAlreadyPickedException {
+    public void removeParticipant_ChangeParticipant_Participant2Admin() throws ParticipantAlreadyInException, ParticipantNotFoundException, UnknownItemException, GoalAmountExceededException, ItemAlreadyPickedException {
         split.addParticipant(null,participant1.getId(),participant1.getNickname());
         split.addParticipant(null,participant2.getId(),participant2.getNickname());
         split.pickItem(0,participant1.getId());
         split.removeParticipant(participant1.getId());
-        Assert.assertEquals(participant2.getId(),split.getOwnerId());
+        Assert.assertEquals(participant2.getId(),split.getSplitAdmin());
     }
 
 

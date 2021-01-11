@@ -248,7 +248,6 @@ public class SplitClientFacade implements Observer
                             splitCreationController.splitCreatedSuccess(splitCode);
                             break;
                         case ITEMSPLIT:
-                            System.out.println("dedede");
                             generateSplitController.splitCreatedSuccess(splitCode);
                             break;
                     }
@@ -456,6 +455,7 @@ public class SplitClientFacade implements Observer
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("label",splitLabel);
         arguments.put("ownerNickname",UserFacade.getUserFacade().getLoggedUser().getNickname());
+        arguments.put("ownerId",UserFacade.getUserFacade().getLoggedUser().getId());
         arguments.put("splitMode", SplitMode.ITEMSPLIT.toString());
         SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_CREATION_REQUEST,arguments,null,receiver,bill);
 
