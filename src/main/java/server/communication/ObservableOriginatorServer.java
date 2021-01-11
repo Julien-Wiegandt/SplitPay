@@ -39,7 +39,7 @@ public class ObservableOriginatorServer extends ObservableServer
 
   /**
    * This method is used to handle messages coming from the client.
-   * Observers are notfied by receiveing an instance of OriginatorMessage
+   * Observers are notified by receiveing an instance of OriginatorMessage
    * that contains both the message received and a reference to the
    * client who sent the message.
    *

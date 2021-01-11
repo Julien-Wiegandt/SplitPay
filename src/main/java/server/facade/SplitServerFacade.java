@@ -90,9 +90,13 @@ public class SplitServerFacade implements Observer {
      * @exception SplitNotFoundException no corresponding split found for the splitcode
      * @exception ParticipantAlreadyInException participant already in
      */
-    public HashMap<String, Split> join(ConnectionToClient client, String splitCode, int participantId, String participantNickname) throws SplitNotFoundException, ParticipantAlreadyInException {
+    public HashMap<String, Split> join(ConnectionToClient client, String splitCode, int participantId, String participantNickname) throws SplitNotFoundException/*, ParticipantAlreadyInException*/ {
         Split split = getSplitByCode(splitCode);
-        split.addParticipant(client,participantId,participantNickname);
+        try {
+            split.addParticipant(client,participantId,participantNickname);
+        } catch (ParticipantAlreadyInException e) {
+            System.out.println("Le participant existe déja");
+        }
         HashMap<String, Split> data = new HashMap<>();
         data.put(splitCode,split);
         return data;
@@ -343,7 +347,8 @@ public class SplitServerFacade implements Observer {
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
-                } catch (ParticipantAlreadyInException e) {
+                }/*
+                catch (ParticipantAlreadyInException e) {
                     System.out.println("Error : Participant already in");
                     try {
                         client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.PARTICIPANT_ALREADY_IN_SPLIT,null,null,null,null));
@@ -351,7 +356,7 @@ public class SplitServerFacade implements Observer {
                         ioException.printStackTrace();
                     }
 
-                }
+                }*/
                 break;
             case ClientServerProtocol.CHANGE_AMOUNT_REQUEST:
                 System.out.println("Change amount request");
@@ -390,6 +395,13 @@ public class SplitServerFacade implements Observer {
                     client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_SUCCESS,null,null,null,null));
                     sendToParticipants(splitCode,ClientServerProtocol.UPDATED_SPLIT_STATE);
                 } catch (SplitNotFoundException | ParticipantNotFoundException | IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ClientServerProtocol.QUIT_SPLIT_VIEW_REQUEST:
+                try {
+                    client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_VIEW_REQUEST,null,null,null,null));
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;

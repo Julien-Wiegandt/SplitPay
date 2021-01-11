@@ -11,6 +11,7 @@ import server.exception.splitException.SplitNotReadyForPayment;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -71,8 +72,11 @@ public abstract class Split implements Serializable {
     public void addParticipant(ConnectionToClient client, int id, String nickname) throws ParticipantAlreadyInException {
         Participant participant = participants.get(id);
         if (participant == null){
+            System.out.println("addParticipant -> le participant est null.");
             this.participants.put(id,new Participant(client,id,nickname));
         } else {
+            participant.setClientConnection(client);
+            this.participants.replace(id,participant);
             throw new ParticipantAlreadyInException("Participant already in, can't add twice");
         }
     }
@@ -289,4 +293,5 @@ public abstract class Split implements Serializable {
     public boolean isReadyForPayment(){
         return isGoalAmountReached() && isEveryOneReady();
     }
+
 }

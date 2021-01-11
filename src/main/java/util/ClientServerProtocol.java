@@ -83,4 +83,8 @@ public class ClientServerProtocol {
      */
     public static final String SPLIT_PAID_RESPONSE= "#OS:Split Paid Response";
 
+    /**
+     * The string sent to the server when a participant tries to quit a split view without leaving the split.
+     */
+    public static final String QUIT_SPLIT_VIEW_REQUEST= "#OS:Quit Split View Request";
 }

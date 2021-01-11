@@ -1,5 +1,7 @@
 package ui.controller;
 
+import client.facade.SplitClientFacade;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,14 +13,34 @@ import java.io.IOException;
 
 public class HomeButtonController {
 
+    private final SplitClientFacade facade = SplitClientFacade.getInstance();
+
+    /**
+     * Handles participant quit button
+     */
+    public void quitHandler() {
+        facade.quitSplitView();
+    }
+
+    /**
+     * Method called when the participant successfully quit the split
+     */
+    public void splitQuit() {
+        Platform.runLater(() -> goToHomeView());
+    }
+
     /**
      * This method redirects to the myTransactionsView
      *
-     * @param actionEvent
      * @throws IOException
      */
-    public void goToHomeView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
+    public void goToHomeView() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         SplitPay.window.setScene(new Scene(root));
     }
 }

@@ -7,7 +7,11 @@ import java.util.Objects;
 
 public class Participant implements Serializable {
 
-    public Participant(ConnectionToClient clientConnection,int id,String nickname){
+    public void setClientConnection(ConnectionToClient clientConnection) {
+        this.clientConnection = clientConnection;
+    }
+
+    public Participant(ConnectionToClient clientConnection, int id, String nickname){
         this.clientConnection=clientConnection;
         this.amount=0;
         this.isReady=false;
@@ -34,7 +38,7 @@ public class Participant implements Serializable {
         return id == that.id && Double.compare(that.amount, amount) == 0 && isReady == that.isReady && Objects.equals(nickname, that.nickname);
     }
 
-    private final transient ConnectionToClient clientConnection;
+    private transient ConnectionToClient clientConnection;
     private int id;
     private double amount;
     private boolean isReady;

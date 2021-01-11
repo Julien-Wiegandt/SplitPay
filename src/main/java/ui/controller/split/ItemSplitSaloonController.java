@@ -122,7 +122,6 @@ public class ItemSplitSaloonController {
      */
     public void splitQuit() {
         Platform.runLater(() -> goToHomeView());
-
     }
 
     /**
@@ -143,6 +142,7 @@ public class ItemSplitSaloonController {
         Item itemclicked = (Item) splitItems.getSelectionModel().getSelectedItem();
         if (itemclicked.isPicked()) {
             if (getJoinedSplit().getParticipantCart(userId).contains(itemclicked)) {
+                System.out.println();
                 facade.removeItem(itemId, getJoinedSplit().getSplitCode());
             }
         } else {

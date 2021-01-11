@@ -121,9 +121,13 @@ public class ItemSplit extends Split{
      * @throws ParticipantAlreadyInException
      */
     @Override
-    public void addParticipant(ConnectionToClient client, int id, String nickname) throws ParticipantAlreadyInException {
-        super.addParticipant(client, id, nickname);
-        participantsCart.put(id,new ArrayList<>());
+    public void addParticipant(ConnectionToClient client, int id, String nickname) /*throws ParticipantAlreadyInException*/ {
+        try {
+            super.addParticipant(client, id, nickname);
+            participantsCart.put(id, new ArrayList<>());
+        }catch (ParticipantAlreadyInException e){
+            System.out.println("addParticipant -> Participant existe déjà, je ne lui cré pas de panier =).");
+        }
 
         if(!isOwned()){
             setSplitAdmin(id);

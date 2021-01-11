@@ -1,6 +1,8 @@
 package ui.controller.split;
 
 import client.facade.SplitClientFacade;
+import core.facade.UserFacade;
+import core.models.CreditCard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -41,6 +43,15 @@ public class MySplitsController {
             listView.setManaged(false);
         } else {
             noSplitsLabel.setManaged(false);
+        }
+    }
+
+    /**
+     * This methods sends the splitCode to the server to attempt joining a split
+     */
+    public void joinSplit() {
+        if(UserFacade.getUserFacade().isNormalUser()){
+            facade.joinSplit(((Split)listView.getSelectionModel().getSelectedItem()).getSplitCode());
         }
     }
 
