@@ -66,10 +66,9 @@ public class HomeController {
     /**
      * This method redirects to the myTransactionsView
      *
-     * @param actionEvent
      * @throws IOException
      */
-    public void goToHomeView(ActionEvent actionEvent) throws IOException {
+    public void goToHomeView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(UserNavigationPath.homeView));
         SplitPay.window.setScene(new Scene(root));
     }

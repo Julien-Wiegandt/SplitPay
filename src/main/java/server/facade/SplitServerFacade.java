@@ -398,13 +398,6 @@ public class SplitServerFacade implements Observer {
                     e.printStackTrace();
                 }
                 break;
-            case ClientServerProtocol.QUIT_SPLIT_VIEW_REQUEST:
-                try {
-                    client.sendToClient(new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_VIEW_REQUEST,null,null,null,null));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                break;
             case ClientServerProtocol.PICK_ITEM_ATTEMPT:
                 userId = Integer.parseInt(message.getArguments().get("userId"));
                 splitCode = message.getArgument("splitCode");

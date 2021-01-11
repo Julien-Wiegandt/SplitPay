@@ -1,6 +1,7 @@
 package ui.controller;
 
 import client.facade.SplitClientFacade;
+import core.facade.UserFacade;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,22 +13,6 @@ import ui.path.UserNavigationPath;
 import java.io.IOException;
 
 public class HomeButtonController {
-
-    private final SplitClientFacade facade = SplitClientFacade.getInstance();
-
-    /**
-     * Handles participant quit button
-     */
-    public void quitHandler() {
-        facade.quitSplitView();
-    }
-
-    /**
-     * Method called when the participant successfully quit the split
-     */
-    public void splitQuit() {
-        Platform.runLater(() -> goToHomeView());
-    }
 
     /**
      * This method redirects to the myTransactionsView

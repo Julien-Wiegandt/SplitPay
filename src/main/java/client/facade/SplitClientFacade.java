@@ -224,22 +224,6 @@ public class SplitClientFacade implements Observer
                         break;
                 }
                 break;
-            case ClientServerProtocol.QUIT_SPLIT_VIEW_REQUEST:
-                System.out.println("Split quit successfully");
-                try {
-                    communicationService.closeConnection();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                switch (getJoinedSplit().getSplitMode()){
-                    case FREESPLIT:
-                        freeSplitSaloonController.splitQuit();
-                        break;
-                    case ITEMSPLIT:
-                        itemSplitSaloonController.splitQuit();
-                        break;
-                }
-                break;
             case ClientServerProtocol.SPLIT_PAID_RESPONSE:
                 switch (getJoinedSplit().getSplitMode()){
                     case FREESPLIT:
@@ -411,18 +395,6 @@ public class SplitClientFacade implements Observer
 
         sendToServer(message);
 
-    }
-
-    /**
-     * Method asking the server to close the connection from a participant to a split (but not quit the split)
-     */
-    public void quitSplitView(){
-
-        HashMap<String,String> arguments = new HashMap<>();
-
-        SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.QUIT_SPLIT_VIEW_REQUEST,arguments,null,null,null);
-
-        sendToServer(message);
     }
 
     /**

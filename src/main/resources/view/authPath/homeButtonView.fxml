@@ -6,7 +6,7 @@
 
 <HBox alignment="CENTER" prefHeight="62.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HomeButtonController">
     <children>
-        <Button mnemonicParsing="false" onAction="#quitHandler" style="-fx-background-radius: 100;">
+        <Button mnemonicParsing="false" onAction="#goToHomeView" style="-fx-background-radius: 100;">
             <graphic>
                 <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
                     <image>
