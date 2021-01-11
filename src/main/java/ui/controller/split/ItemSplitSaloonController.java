@@ -105,6 +105,8 @@ public class ItemSplitSaloonController {
 
             // The pay button is only accessible for the split owner
             if (isParticipantOwner()) {
+                payButton.setVisible(true);
+            } else {
                 payButton.setVisible(false);
             }
         });
@@ -112,7 +114,7 @@ public class ItemSplitSaloonController {
     }
 
     private boolean isParticipantOwner() {
-        return getJoinedSplit().getOwnerId() == Integer.parseInt(UserFacade.getUserFacade().getLoggedUser().getId());
+        return getJoinedSplit().getSplitAdmin() == Integer.parseInt(UserFacade.getUserFacade().getLoggedUser().getId());
     }
 
     /**
