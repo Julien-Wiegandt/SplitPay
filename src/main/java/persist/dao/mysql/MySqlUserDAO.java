@@ -258,7 +258,7 @@ public class MySqlUserDAO extends UserDAO {
         }
         try {
             System.out.println("INSERT INTO NormalUser VALUES ('"+user.getEmail()+"', '"+user.getPhone()+"','"+user.getNickname()+"', '"+user.getPassword()+"', '"+0.0+"', '"+user.getFirstName()+"', '"+user.getLastName()+"')");
-            Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES ('"+user.getEmail()+"', '"+user.getPhone()+"','"+user.getNickname()+"', '"+user.getPassword()+"', '"+0.0+"', '"+user.getFirstName()+"', '"+user.getLastName()+"')");
+            Integer rs = stmt.executeUpdate("INSERT INTO NormalUser VALUES (NULL, '"+user.getEmail()+"', '"+user.getPhone()+"','"+user.getNickname()+"', '"+user.getPassword()+"', '"+0.0+"', '"+user.getFirstName()+"', '"+user.getLastName()+"')");
 //            MySqlDaoFactory.connection.commit();
             return user;
         } catch (SQLException throwables) {
@@ -277,7 +277,7 @@ public class MySqlUserDAO extends UserDAO {
             throwables.printStackTrace();
         }
         try {
-            Integer rs = stmt.executeUpdate("INSERT INTO StoreOwner VALUES (NULL, '"+user.getEmail()+"','"+user.getPhone()+"', '"+user.getNickname()+"', '"+user.getPassword()+"', '"+user.getBalance()+"', '"+user.getCompanyName()+"','"+user.getAddress()+"','"+user.getSiret()+")");
+            Integer rs = stmt.executeUpdate("INSERT INTO StoreOwner VALUES (NULL, '"+user.getEmail()+"','"+user.getPhone()+"', '"+user.getNickname()+"', '"+user.getPassword()+"', '"+user.getBalance()+"', '"+user.getCompanyName()+"','"+user.getAddress()+"','"+user.getSiret()+"')");
             System.out.println("good job");
 
             //            MySqlDaoFactory.connection.commit();
