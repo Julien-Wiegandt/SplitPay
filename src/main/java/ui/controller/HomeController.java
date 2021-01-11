@@ -22,10 +22,7 @@ public class HomeController {
     private Label balance;
 
     @FXML
-    private Button sendMoneyToFriendButton;
-
-    @FXML
-    private Button generateSplitButton;
+    private Button sendMoneyToFriendButton, recover, manageBalance, generateSplitButton;
 
 
     @FXML
@@ -37,6 +34,9 @@ public class HomeController {
                 System.out.println("Can't find the logged NormalUser in the db.");
             }
             generateSplitButton.setVisible(false);
+            generateSplitButton.setManaged(false);
+            recover.setVisible(false);
+            recover.setManaged(false);
         } else {
             try {
                 UserFacade.getUserFacade().setLoggedUser(UserFacade.getUserFacade().findStoreOwnerById(Integer.valueOf(UserFacade.getUserFacade().getUser().getId())));
@@ -44,6 +44,10 @@ public class HomeController {
                 System.out.println("Can't find the logged NormalUser in the db.");
             }
             sendMoneyToFriendButton.setVisible(false);
+            sendMoneyToFriendButton.setManaged(false);
+            manageBalance.setVisible(false);;
+            manageBalance.setManaged(false);
+
         }
         balance.setText(UserFacade.getUserFacade().getLoggedUser().getBalance().toString() + "€");
     }
@@ -60,6 +64,11 @@ public class HomeController {
 
     public void goToGenerateSplitView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(StoreOwnerNavigationPath.generateSplitView));
+        SplitPay.window.setScene(new Scene(root));
+    }
+
+    public void goToRecoverView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.chooseBankAccountView));
         SplitPay.window.setScene(new Scene(root));
     }
 

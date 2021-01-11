@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HomeController">
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HomeController">
    <children>
       <BorderPane prefHeight="15.0" prefWidth="320.0">
          <top>
@@ -29,18 +27,25 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToManageBalanceView" text="Manage balance">
+                  <Button fx:id="manageBalance" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToManageBalanceView" text="Manage balance">
                      <VBox.margin>
                         <Insets bottom="20.0" top="10.0" />
                      </VBox.margin>
                   </Button>
+                  <Button fx:id="recover" mnemonicParsing="false" onAction="#goToRecoverView" text="Recover">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></Button>
                   <fx:include source="splitSection.fxml" />
                   <Button fx:id="sendMoneyToFriendButton" mnemonicParsing="false" onAction="#goToChooseFriendView" text="Send money to friend">
                      <VBox.margin>
                         <Insets bottom="20.0" top="80.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="generateSplitButton" onAction="#goToGenerateSplitView" mnemonicParsing="false" text="Generate Split" />
+                  <Button fx:id="generateSplitButton" mnemonicParsing="false" onAction="#goToGenerateSplitView" text="Generate Split">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin></Button>
                </children>
                <BorderPane.margin>
                   <Insets top="5.0" />
