@@ -198,18 +198,7 @@ public class ItemSplit extends Split{
 
     @Override
     public String toString() {
-        return "Split{" +
-                " label='" + label + '\'' +
-                ", splitCode='" + splitCode + '\'' +
-                ", expired=" + expired +
-                ", goalAmount=" + goalAmount +
-                ", splitMode='" + splitMode + '\'' +
-                ", ownerId=" + ownerId +
-                ", splitAdmin=" + splitAdmin +
-                ", participants=" + participants +
-                ", items="+ items +
-                ", participantsCard="+ participantsCart +
-                '}';
+        return super.toString();
     }
 
 }

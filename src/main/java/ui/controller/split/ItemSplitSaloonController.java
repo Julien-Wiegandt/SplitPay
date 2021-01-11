@@ -179,7 +179,6 @@ public class ItemSplitSaloonController {
     private void goToHomeView() {
         Parent root = null;
         try {
-            // TODO : resource correctly
             root = FXMLLoader.load(getClass().getClassLoader().getResource(UserNavigationPath.homeView));
         } catch (IOException e) {
             e.printStackTrace();
@@ -193,7 +192,6 @@ public class ItemSplitSaloonController {
     private void goToPaymentSuccessView() {
         Parent root = null;
         try {
-            // TODO : Handle resource path problem
             root = FXMLLoader.load(getClass().getClassLoader().getResource(NormalUserNavigationPath.paymentSuccessView));
         } catch (IOException e) {
             e.printStackTrace();

@@ -201,16 +201,13 @@ public abstract class Split implements Serializable {
 
     @Override
     public String toString() {
-        return "Split{" +
-                " label='" + label + '\'' +
-                ", splitCode='" + splitCode + '\'' +
-                ", expired=" + expired +
-                ", goalAmount=" + goalAmount +
-                ", splitMode='" + splitMode + '\'' +
-                ", ownerId=" + ownerId +
-                ", splitAdmin=" + splitAdmin +
-                ", participants=" + participants +
-                '}';
+        String str = splitMode + " : " + label + " -> " + goalAmount + "€";
+        if(isExpired()){
+            str += " Expired";
+        }else{
+            str += " In progress";
+        }
+        return str;
     }
 
     @Override

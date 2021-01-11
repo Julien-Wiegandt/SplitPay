@@ -31,10 +31,12 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "label='" + label + '\'' +
-                ", price=" + price +
-                ", isPicked=" + isPicked +
-                '}';
+        String str = label + " : " + price;
+        if(isPicked()){
+            str += " \uD83D\uDE45\u200D♂️";
+        }else{
+            str += " \uD83D\uDE4B\u200D♂️";
+        }
+        return str;
     }
 }
