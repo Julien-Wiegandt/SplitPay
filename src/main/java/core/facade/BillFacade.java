@@ -5,6 +5,7 @@ import persist.DAOFactory;
 import persist.dao.BillDAO;
 import persist.dao.mysql.MySqlDAOFactory;
 
+import java.sql.SQLException;
 import java.util.Collection;
 
 public class BillFacade {
@@ -27,11 +28,11 @@ public class BillFacade {
         return instance;
     }
 
-    public Collection<Bill> getUserBills(int userId){
+    public Collection<Bill> getUserBills(int userId) throws SQLException {
         return dao.findAllUserBills(userId);
     }
 
-    public Collection<Bill> getLoggedUserBills(){
+    public Collection<Bill> getLoggedUserBills() throws SQLException {
         return dao.findAllUserBills(Integer.parseInt(UserFacade.getUserFacade().getLoggedUser().getId()));
     }
 }

@@ -66,7 +66,7 @@ public class ObservableOriginatorServer extends ObservableServer
   protected synchronized void clientConnected(ConnectionToClient client)
   {
     setChanged();
-    notifyObservers(new SplitOriginatorMessage(client, CLIENT_CONNECTED,null, null,null));
+    notifyObservers(new SplitOriginatorMessage(client, CLIENT_CONNECTED,null, null,null,null));
   }
 
   /**
@@ -81,7 +81,7 @@ public class ObservableOriginatorServer extends ObservableServer
   synchronized protected void clientDisconnected(ConnectionToClient client)
   {
     setChanged();
-    notifyObservers(new SplitOriginatorMessage(client, CLIENT_DISCONNECTED,null, null,null));
+    notifyObservers(new SplitOriginatorMessage(client, CLIENT_DISCONNECTED,null, null,null,null));
   }
 
 
@@ -103,7 +103,7 @@ public class ObservableOriginatorServer extends ObservableServer
     setChanged();
     notifyObservers(
       new SplitOriginatorMessage(client,
-        CLIENT_EXCEPTION + exception.getMessage(),null, null,null));
+        CLIENT_EXCEPTION + exception.getMessage(),null, null,null,null));
   }
 
   /**
@@ -122,7 +122,7 @@ public class ObservableOriginatorServer extends ObservableServer
     setChanged();
     notifyObservers(
       new SplitOriginatorMessage(null,
-        LISTENING_EXCEPTION + exception.getMessage(),null, null,null));
+        LISTENING_EXCEPTION + exception.getMessage(),null, null,null,null));
   }
 
   /**
@@ -135,7 +135,7 @@ public class ObservableOriginatorServer extends ObservableServer
   protected synchronized void serverStarted()
   {
     setChanged();
-    notifyObservers(new SplitOriginatorMessage(null, SERVER_STARTED,null, null,null));
+    notifyObservers(new SplitOriginatorMessage(null, SERVER_STARTED,null, null,null,null));
   }
 
   /**
@@ -148,7 +148,7 @@ public class ObservableOriginatorServer extends ObservableServer
   synchronized protected void serverStopped()
   {
     setChanged();
-    notifyObservers(new SplitOriginatorMessage(null, SERVER_STOPPED,null, null,null));
+    notifyObservers(new SplitOriginatorMessage(null, SERVER_STOPPED,null, null,null,null));
   }
 
   /**
@@ -161,6 +161,6 @@ public class ObservableOriginatorServer extends ObservableServer
   synchronized protected void serverClosed()
   {
     setChanged();
-    notifyObservers(new SplitOriginatorMessage(null, SERVER_CLOSED, null, null,null));
+    notifyObservers(new SplitOriginatorMessage(null, SERVER_CLOSED, null, null,null,null));
   }
 }
