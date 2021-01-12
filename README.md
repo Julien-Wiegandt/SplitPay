@@ -43,10 +43,10 @@ delarte34@hotmail.com, 0767342312, psd->delarte34
 bk@gmail.com, psd->splitpay
 
 ### Things to test
-# Freesplit saloon
+## Freesplit saloon
 You can create a split which is a saloon that can be joined with a code by normal users
 Try creating a saloon with a normal user and join with other users
-# Itemsplit saloon
+## Itemsplit saloon
 This saloon can be created by a store owner, it's generated from a bill
 The code is created and normal users can join, they can pick items in their cart and pay
 
