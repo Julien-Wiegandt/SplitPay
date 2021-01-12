@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageCreditCard.EditCreditCardController">
+   <children>
+      <BorderPane prefHeight="15.0" prefWidth="320.0">
+         <top>
+            <fx:include source="../menu.fxml" />
+         </top>
+         <center>
+            <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="number" layoutX="285.0" layoutY="74.0" text="Label" />
+                  <Label fx:id="nameOwner" layoutX=" 285.0" layoutY="136.0" text="Label">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#goToCreditCardView" text="Back">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin></Button>
+                        <Button mnemonicParsing="false" onAction="#deleteCreditCard" text="Delete" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <fx:include source="../homeButtonView.fxml" />
+         </bottom>
+      </BorderPane>
+   </children>
+</VBox>

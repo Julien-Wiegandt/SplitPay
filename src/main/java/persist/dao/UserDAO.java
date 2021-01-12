@@ -5,18 +5,15 @@ import core.models.StoreOwner;
 import core.models.User;
 
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
  */
 public abstract class UserDAO{
 
-    /**
-     * Default constructor
-     */
-    public UserDAO() {
-    }
+    public abstract Collection getFriends(int userid);
 
     /**
      * @param phone
@@ -47,22 +44,6 @@ public abstract class UserDAO{
 
      */
     public abstract User findUserByPhone(String phone) ;
-
-    /**
-     * @param id
-
-     */
-    public boolean generateValidationCode(int id) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @param id
-
-     */
-    public abstract User setValidationCode(int id);
-
 
 
     /**
@@ -129,5 +110,14 @@ public abstract class UserDAO{
      * @return
      */
     public abstract Collection<User> findAll();
+
+
+    public abstract User findUserById(int userId) throws SQLException;
+
+    public abstract NormalUser findNormalUserById(int userId) throws SQLException;
+
+    public abstract StoreOwner findStoreOwnerById(int userId) throws SQLException;
+
+    public abstract ArrayList<StoreOwner> findAllStoreOwners() throws SQLException;
 
 }

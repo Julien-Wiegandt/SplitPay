@@ -1,0 +1,28 @@
+@startuml
+
+autonumber
+
+activate AddCreditCardController
+
+
+-> AddCreditCardController : createCreditCard(number: String, nameOwner: String, date: Date, cvv: int)
+activate CreditCardFacade
+AddCreditCardController -> CreditCardFacade: createCreditCard(number:String, nameOwner:String, date:Date, cvv:int)
+
+activate CreditCardDAO
+CreditCardFacade -> CreditCardDAO : createCreditCard(creditCard:CreditCard): CreditCard
+
+alt credit card added
+
+CreditCardFacade <-  CreditCardDAO: CreditCardDAO
+CreditCardFacade -> CreditCardFacade: addCreditCard(creditCard: CreditCard)
+
+else credit card already exists
+
+CreditCardFacade <-  CreditCardDAO: error creditCard already exists
+AddCreditCardController <-  CreditCardFacade: error creditCard already exists
+
+
+end
+
+@enduml

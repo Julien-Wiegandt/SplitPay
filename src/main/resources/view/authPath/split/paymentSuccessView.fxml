@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+            <center>
+                <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                    <children>
+                    <Label>Payment success</Label>
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>

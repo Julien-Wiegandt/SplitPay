@@ -1,0 +1,64 @@
+@startuml manage_balance
+
+package controller <<Folder>> {
+  
+  class RefillMoneyInputController{
+    +refillBalance()
+  }
+  class PullOutMoneyInputController{
+    +pullOutMoney()
+  }
+}
+
+package facade <<Folder>> {
+  class TransactionFacade {
+    +getInstance() : TransactionFacade
+    +refillBalance(CreditCard creditcard, Float amount)
+    +pullOutMoneyFromAccount(BankAccount account, Float amount)
+  }
+  
+}
+
+package dao <<Folder>> {
+
+  abstract class DAOFactory {
+    #{static}connection : Connection
+    +createTransactionDao() : TransactionDao
+    +{static}getConnection() : Connection
+  }
+
+  package mysql <<Folder>> {
+    class MySqlDAOFactory {}
+    class MySqlTransactionDAO {}
+    
+    MySqlDAOFactory .down.> MySqlTransactionDAO : creates
+  }
+  
+  package postgres <<Folder>> {
+    class MyPostGresDAOFactory {}
+    class MyPostGresTransactionDAO {}
+    
+    MyPostGresDAOFactory .down.> MyPostGresTransactionDAO : creates
+  }
+  
+  
+  interface TransactionDAO {
+    +getConnection() : Connection
+    +createBankAccountToUserTransactiont(CreditCard creditCard, Float amount): Transaction
+    +createUserToBankAccountTransactiont(BankAccount account, Float amount): Transaction
+  }
+
+  DAOFactory <|-- MySqlDAOFactory
+  DAOFactory <|-- MyPostGresDAOFactory    
+  TransactionDAO <|.. MyPostGresTransactionDAO
+  TransactionDAO <|.. MySqlTransactionDAO
+
+}
+
+RefillMoneyInputController .down.> TransactionFacade
+PullOutMoneyInputController .down.> TransactionFacade
+
+TransactionFacade -down-> DAOFactory
+TransactionFacade -down-> TransactionDAO
+
+@enduml

@@ -1,0 +1,91 @@
+@startuml make_payment
+
+
+package view <<Folder>> {
+class AddCreditCardView {
+
+  }
+  class CreditCardView {
+  }
+}
+package controller <<Folder>> {
+
+
+  class AddCreditCardController {
+  number: TextField
+  nameOwner: TextField
+  date : TextField
+  cvv: TextField
+  }
+  class CreditCardController {
+  listCard: ListView
+
+    }
+
+}
+
+package facade <<Folder>> {
+  class CreditCardFacade {
+    +getInstance() : CreditCardFacade
+    +createCreditCard(number:String, nameOwner : String, date : Date, cvv : int): void
+    +deleteCreditCard( number: String): void
+  }
+
+  class NormalUserFacade {
+      +getInstance() : UserFacade
+         }
+
+  CreditCardFacade ..> NormalUserFacade : uses >
+}
+
+
+package dao <<Folder>> {
+  class DAOFactory {
+    #{static}connection : Connection
+    +createCreditCardDao() : CreditCardDao
+    +{static}getConnection() : Connection
+  }
+
+  package mysql <<Folder>> {
+    class MySqlDAOFactory {}
+
+    MySqlDAOFactory .> MySqlCreditCardDAO : creates
+  }
+
+  class CreditCardDAO {
+    +getConnection() : Connection
+    +createCreditCard(creditCard:CreditCard): void
+    +deleteCreditCard(creditCard:CreditCard): void
+  }
+
+
+
+  DAOFactory <|-- MySqlDAOFactory
+  CreditCardDAO <|-- MySqlCreditCardDAO
+
+
+}
+
+package model <<Folder>> {
+
+class CreditCard {
+    -number: String
+    -nameOwner : String
+    -date: Date
+    - cvv: int
+  }
+
+}
+AddCreditCardController .down.> CreditCardFacade
+CreditCardController .down.> CreditCardFacade
+CreditCardView .down. CreditCardController
+AddCreditCardView .down. AddCreditCardController
+CreditCardFacade -down-> CreditCardDAO
+
+
+
+
+
+CreditCardFacade .down.> DAOFactory
+
+@enduml

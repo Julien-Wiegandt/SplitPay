@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+
+activate AddGroupController
+
+
+ -> AddGroupController : addGroup(label: String)
+activate GroupFacade
+AddGroupController -> GroupFacade: addGroup(label:String)
+
+activate GroupDao
+GroupFacade -> GroupDao : addGroup(label:String)
+GroupFacade -> GroupFacade : addGroup(label:String)
+AddGroupController -> GroupFacade : addFriendToGroup(label: String, friends: List<User>)
+GroupFacade -> GroupDao : addFriendToGroup(label: String, friend:User)
+
+
+@enduml

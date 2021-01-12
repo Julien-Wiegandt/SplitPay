@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageAccount.ChangeEmailController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+             <center>
+                    <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                        <children>
+                            <Label text="Change Email" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                            <Label text="Enter email :">
+                         <VBox.margin>
+                            <Insets top="20.0" />
+                         </VBox.margin></Label>
+                            <TextField fx:id="email1">
+                         <VBox.margin>
+                            <Insets top="5.0" />
+                         </VBox.margin></TextField>
+                            <Label text="Confirm email:">
+                         <VBox.margin>
+                            <Insets top="10.0" />
+                         </VBox.margin></Label>
+                            <TextField fx:id="email2">
+                         <VBox.margin>
+                            <Insets top="5.0" />
+                         </VBox.margin></TextField>
+                      <HBox>
+                         <children>
+                                  <Button fx:id="cancel" mnemonicParsing="false" onAction="#goToManageAccountView" text="Cancel">
+                               <HBox.margin>
+                                  <Insets right="20.0" />
+                               </HBox.margin>
+                            </Button>
+                                  <Button fx:id="confirm" mnemonicParsing="false" onAction="#changeEmail" text="Change">
+                            </Button>
+                         </children>
+                         <VBox.margin>
+                            <Insets top="40.0" />
+                         </VBox.margin>
+                      </HBox>
+                        </children>
+                    </VBox>
+             </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageAccount.ManageAccountController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+        <top>
+            <fx:include source="../menu.fxml" />
+        </top>
+        <center>
+        <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+            <children>
+                  <Label text="My Account">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                <Button fx:id="changePhone" mnemonicParsing="false" onAction="#goToChangePhoneView" text="Change Phone Number">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></Button>
+                <Button fx:id="changePassword" mnemonicParsing="false" onAction="#goToChangePasswordView" prefHeight="25.0" prefWidth="141.0" text="Change Password">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
+                <Button fx:id="changeEmail" mnemonicParsing="false" onAction="#goToChangeEmailView" prefHeight="25.0" prefWidth="141.0" text="Change Email">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
+                <Button fx:id="confirmEmailPhone" mnemonicParsing="false" onAction="#goToConfirmCredentialsView" prefHeight="25.0" prefWidth="141.0" text="Confirm Email/Phone">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
+                <Button fx:id="deleteAccount" mnemonicParsing="false" onAction="#goToDeleteAccountView" prefHeight="25.0" prefWidth="141.0" text="Delete account">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
+            </children>
+        </VBox>
+        </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>

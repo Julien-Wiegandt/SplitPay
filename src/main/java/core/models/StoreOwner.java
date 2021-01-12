@@ -1,6 +1,8 @@
 package core.models;
 
-public class StoreOwner extends User {
+import java.io.Serializable;
+
+public class StoreOwner extends User implements Serializable {
 
     /**
      * Default constructor
@@ -16,23 +18,39 @@ public class StoreOwner extends User {
     private String companyName;
     private String address;
 
-    public StoreOwner(String id, String email, String phone, String siret, String password, String nickname, Float balance, String validationCode, String companyName, String address) {
-        super(id, email, phone, password, nickname, balance, validationCode);
+    public StoreOwner(String id, String email, String phone, String siret, String password, String nickname, Float balance, String companyName, String address) {
+        super(id, email, phone, password, nickname, balance);
         this.siret = siret;
         this.companyName = companyName;
         this.address = address;
     }
 
-    public String getSiret(){
+    public StoreOwner() {
+        super();
+    }
+
+    public String getSiret() {
         return this.siret;
     }
 
-    public String getCompanyName(){
+    public void setSiret(String siret) {
+        this.siret = siret;
+    }
+
+    public String getCompanyName() {
         return this.companyName;
     }
 
-    public String getAddress(){
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getAddress() {
         return this.address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String toString() {
@@ -43,7 +61,6 @@ public class StoreOwner extends User {
                 ", nickname='" + this.getNickname() + '\'' +
                 ", password='" + this.getPassword() + '\'' +
                 ", balance=" + this.getBalance() +
-                ", validationCode='" + this.getValidationCode() + '\'' +
                 ", companyName='" + this.getCompanyName() + '\'' +
                 ", address='" + this.getAddress() + '\'' +
                 '}';

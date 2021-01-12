@@ -1,0 +1,18 @@
+@startuml
+
+autonumber
+
+[-> SplitController : paySplit()
+
+SplitController -> SplitFacade: paySplit(int)
+
+SplitFacade -> TODO_SERVER : paySplit(int)
+TODO_SERVER -> SplitFacade  : Split
+
+loop for participant in participants
+
+SplitFacade -> TransactionFacade : paySplit(int,int,Float)
+
+end
+
+@enduml

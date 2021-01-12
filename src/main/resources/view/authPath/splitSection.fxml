@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="splitSection" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.split.SplitSectionController">
+    <VBox alignment="CENTER" prefWidth="320.0">
+        <children>
+            <Label alignment="CENTER" text="Enter split code">
+                <VBox.margin>
+                    <Insets bottom="5.0" />
+                </VBox.margin>
+            </Label>
+            <TextField fx:id="splitCode" promptText="Code">
+                <VBox.margin>
+                    <Insets bottom="5.0" left="100.0" right="100.0" />
+                </VBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#joinSplit" text="Join">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+         <Label fx:id="splitSectionFlashMessage" text="Split section flash message">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin>
+         </Label>
+
+            <Button onAction="#goToSplitCreationView" mnemonicParsing="false" text="Create split" />
+
+        </children>
+    </VBox>
+</AnchorPane>

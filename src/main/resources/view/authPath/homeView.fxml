@@ -1,24 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.HomeController">
-    <children>
-        <Pane prefHeight="67.0" prefWidth="320.0">
-            <children>
-                <Label layoutX="128.0" layoutY="14.0" text="Home">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Label>
-            </children>
-        </Pane>
-        <Pane prefHeight="395.0" prefWidth="320.0">
-         <children>
-            <Label fx:id="tempLabel" layoutX="129.0" layoutY="146.0" text="Hello " textAlignment="CENTER" />
-         </children></Pane>
-        <Pane prefHeight="51.0" prefWidth="320.0" />
-    </children>
+   <children>
+      <BorderPane prefHeight="15.0" prefWidth="320.0">
+         <top>
+            <fx:include source="menu.fxml" />
+         </top>
+         <center>
+            <VBox alignment="CENTER" minHeight="410.0" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="31.0" prefWidth="546.0" text="Balance">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="balance" alignment="CENTER" prefHeight="17.0" prefWidth="532.0" text="0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="manageBalance" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToManageBalanceView" text="Manage balance">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="recover" mnemonicParsing="false" onAction="#goToRecoverView" text="Recover">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></Button>
+                  <fx:include source="splitSection.fxml" />
+                  <Button fx:id="sendMoneyToFriendButton" mnemonicParsing="false" onAction="#goToChooseFriendView" text="Send money to friend">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="80.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="generateSplitButton" mnemonicParsing="false" onAction="#goToGenerateSplitView" text="Generate Split">
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin></Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="5.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <bottom>
+            <fx:include source="homeButtonView.fxml" />
+         </bottom>
+      </BorderPane>
+   </children>
 </VBox>

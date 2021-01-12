@@ -4,7 +4,7 @@ import core.facade.UserFacade;
 import org.junit.Test;
 
 public class StoreOwnerLoginTests {
-    private UserFacade user = UserFacade.getUserFacade();
+    private final UserFacade user = UserFacade.getUserFacade();
     @Test
     public void correctStoreOwnerEmailLogin() throws Exception{
         user.emailLogIn("delarte34@hotmail.com","delarte34");

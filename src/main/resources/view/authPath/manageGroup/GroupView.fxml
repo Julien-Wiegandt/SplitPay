@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageGroup.GroupController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+            <center>
+                <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                <children>
+                  <Label text="My Groups">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                    <ListView fx:id="listView" onMouseClicked="#goToEditGroupView" prefHeight="284.0" prefWidth="548.0" BorderPane.alignment="CENTER">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></ListView>
+                    <Button mnemonicParsing="false" onAction="#goToAddGroupView" text="Add Group" BorderPane.alignment="CENTER">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
+                </children>
+                </VBox>
+            </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>

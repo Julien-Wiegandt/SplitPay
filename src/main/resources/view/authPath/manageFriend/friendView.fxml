@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.manageFriend.FriendController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+            <center>
+                <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="195.0" text="My Friends" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                        <ListView fx:id="myFriends" layoutY="75.0" prefHeight="226.0" prefWidth="430.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></ListView>
+                        <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteFriend" text="Delete Friend">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                        <Button fx:id="addFriend" mnemonicParsing="false" onAction="#goToAddFriendView" prefWidth="87.0" text="Add Friend">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Button>
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>

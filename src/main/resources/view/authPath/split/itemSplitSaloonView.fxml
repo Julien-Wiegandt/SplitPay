@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.split.ItemSplitSaloonController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+            <center>
+                <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                    <children>
+                  <HBox>
+                     <children>
+                        <VBox>
+                           <children>
+                                    <Label fx:id="splitMode" text="Split splitmode" />
+                                    <Label fx:id="splitCode" text="Split splitcode">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin></Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin>
+                        </VBox>
+                              <Label fx:id="splitLabel" text="Split label">
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin></Label>
+                        <VBox>
+                           <children>
+                                    <Label fx:id="goalAmount" text="Split goal amount" />
+                                    <Label fx:id="currentAmount" text="Current amount">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin></Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                        <ProgressBar fx:id="progressBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="248.0" progress="0.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </ProgressBar>
+                  <HBox>
+                     <children>
+                              <ListView fx:id="participants">
+                           <HBox.margin>
+                              <Insets right="2.0" />
+                           </HBox.margin></ListView>
+                              <ListView fx:id="participantsCart">
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin></ListView>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                        <ListView fx:id="splitItems" layoutX="38.0" layoutY="159.0" onMouseClicked="#pickItem">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></ListView>
+                        <Label fx:id="flashMessage" alignment="CENTER" layoutX="11.0" layoutY="256.0" text="flash message">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                              <Button mnemonicParsing="false" onAction="#quitHandler" prefHeight="40.0" prefWidth="70.0" text="Quit">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                              <Button mnemonicParsing="false" onAction="#isReadyHandler" prefHeight="40.0" prefWidth="70.0" text="Ready">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                              <Button fx:id="payButton" mnemonicParsing="false" onAction="#payButtonHandler" prefHeight="40.0" prefWidth="70.0" text="Pay !" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>

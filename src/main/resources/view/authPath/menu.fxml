@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.MenuController">
+   <MenuBar prefHeight="25.0" prefWidth="273.0" BorderPane.alignment="CENTER">
+      <menus>
+         <Menu mnemonicParsing="false" text="SplitPay">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#goToMySplitsView" text="My Splits" />
+               <MenuItem mnemonicParsing="false" onAction="#goToMyTransactionsView" text="My Transactions" />
+            </items>
+         </Menu>
+         <Menu fx:id="social" mnemonicParsing="false" text="Social">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#goToFriendView" text="Friends" />
+               <MenuItem mnemonicParsing="false" onAction="#goToGroupView" text="Groups" />
+               <MenuItem mnemonicParsing="false" onAction="#goToNotificationView" text="Notifications" />
+            </items>
+         </Menu>
+         <Menu mnemonicParsing="false" text="Account">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#goToManageAccountView" text="Personal Information" />
+               <MenuItem fx:id="creditCard" mnemonicParsing="false" onAction="#goToCreditCardView" text="Credit Cards" />
+               <MenuItem mnemonicParsing="false" onAction="#goToBankAccountView" text="Bank Accounts" />
+               <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+            </items>
+         </Menu>
+      </menus>
+   </MenuBar>
+</VBox>

@@ -1,0 +1,28 @@
+@startuml
+
+autonumber
+
+
+[-> TransactionController : getTransactions()
+
+TransactionController -> TransactionFacade: getTransactions()
+
+TransactionFacade -> DAOFactory: createTransactionDAO()
+DAOFactory -> TransactionDAO : creates
+
+activate TransactionDAO
+
+TransactionDAO -> DAOFactory : TransactionDAO
+DAOFactory -> TransactionFacade : TransactionDAO
+TransactionFacade -> TransactionDAO : findAllTransactions(int)
+
+alt success
+TransactionDAO -> TransactionController : Transaction[]
+else internal error
+TransactionDAO -> TransactionController : internal error
+end
+
+deactivate TransactionDAO
+
+
+@enduml

@@ -1,2 +1,5 @@
-.idea
-target
+#.idea
+.idea/
+
+#folder generated after run
+target/

@@ -1,0 +1,167 @@
+@startuml
+
+package controller{
+    class ManagePersonnalAccountController{
+        -allStyleSetDefault(): void
+        +goToHomeView(actionEvent:ActionEvent): void
+        +goToChangeEmailView(actionEvent:ActionEvent): void
+        +goToChangePhoneView(actionEvent:ActionEvent): void
+        +goToChangePasswordView(actionEvent:ActionEvent): void
+        +goToChooseValidationMethodView(actionEvent:ActionEvent): void
+        +initialize(): void
+    }
+    class ChangeEmailController{
+        -email1: TextField
+        -email2: TextField
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
+        +goToValidationView(actionEvent:ActionEvent): void
+    }
+    class ChangePasswordController{
+        -password1: TextField
+        -password2: TextField
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
+        +goToChooseValidationMethodView(actionEvent:ActionEvent): void
+    }
+    class ChangePhoneController{
+        -phone1: TextField
+        -phone2: TextField
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
+        +goToValidationView(actionEvent:ActionEvent): void
+    }
+    class ValidationController{
+        {static} ~tempUser: User
+        -validationCode: TextField
+        +confirmChanges(actionEvent:ActionEvent): void
+        -generateValidationCode(): void
+        -sendValidationCode(): void
+        -updateUser(UserTemp): void
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
+    }
+    class ChooseValidationMethodController{
+        -phone: RadioButton
+        -email: RadioButton
+        +goToManagePersonnalAccountView(actionEvent:ActionEvent): void
+        +goToValidationView(actionEvent:ActionEvent): void
+        -getVerifiedPhone(): String
+        -getVerifiedEmail(): String
+    }
+}
+
+abstract class Application
+package main{
+    class SplitPay{
+        {static} +window: Stage
+        +start(stage:Stage): void
+        {static} +main(String[]:args): void
+    }
+}
+
+package core{
+    package model{
+        abstract class User{
+            -id: String
+            -email: String
+            -phone: String
+            -nickname: String
+            -password: String
+            -balance: Double
+        }
+        class NormalUser{
+            -firstName: String
+            -lastName: String
+        }
+        class StoreOwner{
+            -companyName: String
+            -address: String
+            -siret: String
+        }
+    }
+    package facade{
+        class UserFacade{
+            -user: UserFaçade
+            -UserFaçade(): UserFaçade
+            +getUserFaçade(): UserFaçade
+            +deleteAccount(): void
+            +getVerifiedEmail(): String
+            +getVerifiedPhone(): String
+            +updateUser(User): void
+        }
+        class NormalUserFacade{
+            -user: NormalUserFacade
+            -NormalUserFacade(): NormalUserFacade
+            +getNormalUserFacade(): NormalUserFacade
+        }
+        class StoreOwnerFacade{
+            -user: StoreOwnerFacade
+            -StoreOwnerFacade(): StoreOwnerFacade
+            +getStoreOwnerFacade(): StoreOwnerFacade
+        }
+    }
+}
+
+package persist{
+    abstract class DAOFactory{
+        #connection: Connection
+        {static} +getConnection(): Connection
+        +createUserDAO(): UserDAO
+        -DAOFactory(): DAOFactory
+    }
+    package dao{
+        package mysql{
+            class MySqlUserDAO{
+                -MySqlUserDAO(): MySqlUserDAO
+            }
+            class MySqlDAOFactory{
+                +createUserDAO(): MySqlUserDAO
+            }
+        }
+        interface UserDAO{
+            +getConnection(): UserDAO
+            +findUserByEmail(email:String): User
+            +findUserByPhone(phone:String): User
+            +getFriends(): Collection<User>
+            +addFriend(user:User): void
+        }
+        package postgres{
+            class PostGresUserDAO{
+                -PostGresUserDAO(): PostGresUserDAO
+            }
+            class PostGresDAOFactory{
+                +createUserDAO(): PostGresUserDAO
+            }
+        }
+    }
+}
+
+Application <|-- SplitPay
+
+ManagePersonnalAccountController .up.> SplitPay : use
+ChangeEmailController .up.> SplitPay : use
+ChangePasswordController .up.> SplitPay : use
+ChangePhoneController .up.> SplitPay : use
+ValidationController .up.> SplitPay : use
+ChooseValidationMethodController .up.> SplitPay : use
+
+ManagePersonnalAccountController .up.> UserFacade : use
+ValidationController ..> UserFacade : use
+ChooseValidationMethodController ..> UserFacade : use
+
+User <|-- NormalUser
+User <|-- StoreOwner
+
+NormalUserFacade ..> NormalUser : creates
+StoreOwnerFacade ..> StoreOwner : creates
+UserFacade <|-- NormalUserFacade
+UserFacade <|-- StoreOwnerFacade
+
+
+UserDAO <|.. MySqlUserDAO
+UserDAO <|.. PostGresUserDAO
+DAOFactory <|-down- MySqlDAOFactory
+DAOFactory <|-down- PostGresDAOFactory
+MySqlDAOFactory .down.> MySqlUserDAO : creates
+PostGresDAOFactory .down.> PostGresUserDAO : creates
+UserFacade -up> "1" DAOFactory
+UserFacade -up> "1" UserDAO
+
+@enduml

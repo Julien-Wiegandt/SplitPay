@@ -1,0 +1,38 @@
+@startuml
+
+actor User
+Participant SplitPay
+Participant UserFacade
+Participant DaoFactory
+Participant DriverManager
+Participant Connection
+Participant MySqlUserDao
+Participant LoginView
+Participant LoginController
+Participant Statement
+Database DB
+
+SplitPay -> UserFacade : getUserFacade()
+
+alt UserFacade==null
+    UserFacade -> DaoFactory: creates
+    DaoFactory -> DaoFactory: getConnection()
+    alt connection==null
+        DaoFactory -> DriverManager : getConnection(String url,String user, String password)
+        DriverManager -> Connection : creates()
+    else
+        DaoFactory <- DaoFactory: returns connection
+    end
+    UserFacade -> DaoFactory : createUserDao()
+    DaoFactory -> MySqlUserDao: creates
+    UserFacade <- DaoFactory : returns dao
+        UserFacade -> SplitPay: returns UserFacade
+else UserFacade already initialized
+    UserFacade -> SplitPay: returns UserFacade
+end
+
+SplitPay -> LoginView : Loads view
+
+User <- LoginView : Displays login view
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+
+autonumber
+
+activate AddBankAccountController
+
+
+-> AddBankAccountController : addBankAccount(label: String, nameOwner: String, bic: String, iban: String)
+activate BankAccountFacade
+AddBankAccountController -> BankAccountFacade: createBankAccount(label:String, nameOwner:String, bic:String, iban:String)
+
+activate BankAccountDao
+alt bankAccount created
+BankAccountFacade -> BankAccountDao : createBankAccount(bankAccount:BankAccount): BankAccount
+BankAccountFacade <-  : BankAccount
+
+BankAccountFacade -> BankAccountFacade: addBankAccount(bankAccount)
+
+
+else bank account already already exists
+BankAccountFacade <-  : error bank account exists
+AddBankAccountController <-  BankAccountFacade: error bank account exists
+
+
+
+
+
+end
+
+
+@enduml

@@ -1,0 +1,182 @@
+@startuml domain_analysis
+
+abstract class Transaction {
+  - amount : Double
+  - dateCreated : Date
+}
+
+class SplitTransaction{
+  - sender : BankAccount
+  - receiver : User
+}
+
+class UserToUserTransaction {
+  - sender : User
+  - receiver : User
+}
+
+
+class UserToBankAccount {
+  - sender : User
+  - receiver : BankAccount
+}
+
+class BankAccountToUserTransaction{
+  - sender : BankAccount
+  - receiver : User
+}
+
+abstract class User {
+  - email : String
+  - phone : String
+  - nickname : String
+  - password : String
+  - balance : Double
+  + isLogged() : Boolean
+  + loginEmail(String email,String password) : User
+  + loginPhone(String phone,String password) : User
+  + createBankAccount(String label, String bic, String iban, String ownerFirstName, String ownerLastName) : void
+  + deleteBankAccount(BankAccount bankAccount) : void
+  + deleteSplit(Split split) : void
+  + logout() : void
+  + withdraw(Double amount, BankAccount bankAccount) : void
+  + createUserToBankAccountTransaction(Double amount, User sender, BankAccount receiver) : void
+  + createSplitTransaction(Double amount, User receiver, Split split) : void
+  + checkBalance(Double amount) : Boolean
+}
+
+
+class BankAccount {
+  - label : String
+  - bic : String
+  - iban : String
+  - ownerFirstName : String
+  - ownerLastName : String
+}
+
+class Split {
+  - label : String
+  - splitcode : String
+  - goalAmount : Double
+  - splitMode : String
+  - expired : Boolean
+  - notifyUser(User user, Notification notification) : void
+  - isEveryoneReady() : Boolean
+  - isGoalAmountReached() : Boolean
+  - isReadyForPayment() : Boolean
+  + validatePayment() : void
+  + notifyAll(Notification notification) : void
+}
+
+
+class Participant {
+  - amount : Double
+  - isReady : Boolean
+  + isReady() : Boolean
+  + changeReadyStatus() : void
+  + changeAmount(Double newAmount) : void
+  + pickItem(Item item) : void
+  + cancel() : void
+}
+
+class ItemSplit {
+  - items : Collection<Item>
+  + isItemPicked(Item item) : Boolean
+  + assignItemToParticipant(Item item, Participant participant) : Boolean
+  + generateItemsFromBill() : void
+}
+
+class Bill {
+  - label : String
+  + getAmount() : Double
+  + generateItems(File bill) : Collection<Item>
+}
+
+class Item {
+  - label : String
+  - amount : Double
+}
+
+class Notification {
+  - label : String
+  - message : String
+}
+
+class SplitNotification {
+  + joinSplit() : void
+}
+
+class Group {
+  - label : String
+  + addFriend(User friend) : void
+  + deleteFriend(User friend) : void
+  + setLabel(String newName) : void
+}
+
+class CreditCard {
+  - number : String
+  - ownerName : String
+  - date : String
+  - cvv : String
+}
+
+class NormalUser {
+  - firstName: String
+  - lastName: String
+  + joinSplit(Split split) : void
+  + createCreditCard(String number, String ownerName, String date, String cvv) : void
+  + createCreditCard(String number, String ownerName, String date, String cvv) : void
+  + deleteCreditCard(CreditCard card) : void
+  + createSplit(String label, Double goalAmount, String mode, StoreOwner receiver) : void
+  + createGroup(String label, Collection<User> friends) : void
+  + deleteGroup(Group group) : void
+  + addFriend(String credential) : void
+  + deleteFriend(User friend) : void
+  + sendMoneyToFriend(Double amount, User receiver) : void
+  + addNotification(Notification notification) : void
+  + deleteNotification(Notification notification) : void
+  + createBankAccountToUserTransaction(Double amount, BankAccount sender,User receiver) : void
+  + createUserToUserTransaction(Double amount,User sender,User receiver) : void
+}
+
+class StoreOwner {
+  - companyName : String
+  - address : String
+  + createItemSplit(Bill bill) : void
+}
+
+User <|-- NormalUser
+User <|-- StoreOwner
+
+Split <|-- ItemSplit
+
+User *-- "*" Transaction
+User *-up- "*" BankAccount
+User *-- "*" Split : owns
+
+NormalUser *-- "*" Notification
+NormalUser -> "*" NormalUser : friend
+NormalUser *-down- "*" CreditCard
+NormalUser *--* Split
+(NormalUser, Split) .. Participant
+
+SplitTransaction - "1" Split
+
+SplitTransaction -up-|> Transaction
+UserToUserTransaction -up-|> Transaction
+UserToBankAccount -up-|> Transaction
+BankAccountToUserTransaction -up-|> Transaction
+
+
+
+Bill o-- Item
+ItemSplit -left-> "1" Bill
+Notification <|-- SplitNotification
+SplitNotification --> "1" Split
+
+
+NormalUser *-- "*" Group : owns
+Group -- "*" NormalUser : contains
+StoreOwner *-- "*" Bill
+
+@enduml

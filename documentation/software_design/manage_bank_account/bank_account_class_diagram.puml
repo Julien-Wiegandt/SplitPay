@@ -1,0 +1,89 @@
+@startuml make_payment
+
+
+package view <<Folder>> {
+class AddBankAccountView {
+
+  }
+  class BankAccountView {
+  }
+}
+package controller <<Folder>> {
+
+
+  class AddBankAccountController {
+  label: TextField
+  bic: TextField
+  iban : TextField
+  nameOwner: TextField
+  }
+  class BankAccountController {
+
+    }
+
+}
+
+package facade <<Folder>> {
+  class BankAccountFacade {
+    +getInstance() : BankAccountFacadeFacade
+    +createBankAccount(label:String,bic:String,iban:String,nameOwner:String): void
+    +deleteBankAccount(iban:String): void
+  }
+
+  class UserFacade {
+      +getInstance() : UserFacade
+         }
+
+  BankAccountFacade ..> UserFacade : uses >
+}
+
+
+package dao <<Folder>> {
+  class DAOFactory {
+    #{static}connection : Connection
+    +createBankAccountDao() : BankAccountDao
+    +{static}getConnection() : Connection
+  }
+
+  package mysql <<Folder>> {
+    class MySqlDAOFactory {}
+
+    MySqlDAOFactory .> MySqlBankAccountDAO : creates
+  }
+
+  class BankAccountDAO {
+    +getConnection() : Connection
+    +createBankAccount(bankAccount:BankAccount): void
+    +deleteBankAccount(bankAccount:BankAccount): void
+  }
+
+
+
+  DAOFactory <|-- MySqlDAOFactory
+  BankAccountDAO <|-- MySqlBankAccountDAO
+
+
+}
+
+package model <<Folder>> {
+
+class BankAccount {
+    -label: String
+    -bic: String
+    -nameOwner: String
+  }
+
+}
+AddBankAccountController .down.> BankAccountFacade
+BankAccountController .down.> BankAccountFacade
+BankAccountView .down. BankAccountController
+AddBankAccountView .down. AddBankAccountController
+BankAccountFacade -down-> BankAccountDAO
+
+
+
+
+
+BankAccountFacade .down.> DAOFactory
+
+@enduml

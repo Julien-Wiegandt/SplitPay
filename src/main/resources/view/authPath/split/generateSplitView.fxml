@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="500.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.split.GenerateSplitViewController">
+    <children>
+        <BorderPane prefHeight="15.0" prefWidth="320.0">
+            <top>
+                <fx:include source="../menu.fxml" />
+            </top>
+            <center>
+                <VBox alignment="CENTER" fillWidth="false" minHeight="410.0" prefHeight="340.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label fx:id="flashMessage" />
+                        <Label text="Generate a split">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label text="Split label">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin></Label>
+                        <TextField fx:id="splitLabel" prefHeight="27.0" prefWidth="260.0" promptText="Bowling payment">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <VBox.margin>
+                                <Insets left="100.0" right="100.0" top="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <Label text="Choose bill">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                        <ListView fx:id="listView" prefHeight="118.0" prefWidth="320.0">
+                            <VBox.margin>
+                                <Insets left="50.0" right="50.0" top="5.0" />
+                            </VBox.margin>
+                        </ListView>
+                        <Button mnemonicParsing="false" onAction="#generateItemSplit" text="Generate">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <fx:include source="../homeButtonView.fxml" />
+            </bottom>
+        </BorderPane>
+    </children>
+</VBox>
