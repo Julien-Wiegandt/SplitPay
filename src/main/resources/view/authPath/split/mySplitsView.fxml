@@ -22,7 +22,7 @@
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></ListView>
-                        <Label fx:id="noSplitsLabel" alignment="CENTER" prefHeight="17.0" prefWidth="529.0" text="You have no splits for the moment..." />
+                        <Label fx:id="noSplitsLabel" alignment="CENTER" prefHeight="17.0" prefWidth="529.0" text="" />
                     </children>
                 </VBox>
             </center>
