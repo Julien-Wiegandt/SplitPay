@@ -23,9 +23,9 @@ public class Participant implements Serializable {
     public String toString() {
         String str = this.getNickname()+" put in "+this.getAmount()+"€ ";
         if(this.isReady()){
-            str += "✅";
+            str += "\u2714";
         }else{
-            str += "❌";
+            str += "\u274c";
         }
         return str;
     }
