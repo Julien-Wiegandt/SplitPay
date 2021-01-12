@@ -33,9 +33,9 @@ public class Item implements Serializable {
     public String toString() {
         String str = label + " : " + price;
         if(isPicked()){
-            str += " \uD83D\uDE45\u200D♂️";
+            str += "\u270A";
         }else{
-            str += " \uD83D\uDE4B\u200D♂️";
+            str += "\u270B";
         }
         return str;
     }

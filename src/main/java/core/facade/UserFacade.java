@@ -23,7 +23,7 @@ public class UserFacade {
     /**
      *
      */
-    private static UserFacade userFaçade;
+    private static UserFacade userFacade;
 
     /**
      *
@@ -50,11 +50,11 @@ public class UserFacade {
      * @return
      */
     public static UserFacade getUserFacade() {
-        if (userFaçade == null) {
-            userFaçade = new UserFacade();
+        if (userFacade == null) {
+            userFacade = new UserFacade();
         }
 
-        return userFaçade;
+        return userFacade;
     }
 
     public static void deleteAccount() {

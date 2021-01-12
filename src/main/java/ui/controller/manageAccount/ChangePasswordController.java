@@ -46,7 +46,7 @@ public class ChangePasswordController {
             VerificationController.setTempUser(tempUser);
             System.out.println(code);
 
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.selectMethodView));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(AuthPath.verificationView));
             SplitPay.window.setScene(new Scene(root));
         } else {
             if (!RegexPattern.passwordPattern.matcher(password1.getText()).find()) {
