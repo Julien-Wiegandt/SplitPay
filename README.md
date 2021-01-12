@@ -2,7 +2,7 @@
 Full java project
 
 
-##How to run and try the SplitPay App
+## How to run and try the SplitPay App
 ### Get the SplitPay project
 Open your command line terminal and enter the following command :
 > git clone https://github.com/AyoubMoujane/SplitPay.git
