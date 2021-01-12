@@ -15,6 +15,10 @@ And change the Project SDK to corretto-1.8 version 1.8.0_275
 
 Make shure that the maven project load correctly (load dependencies)
 
+Go in the maven section on the top right of the screen >split-pay>Lifecycle>compile
+
+The project is compiled you can now work on it
+
 ### Run the Split Server
 Go to src>main>java>server>main.java
 Run the main method
