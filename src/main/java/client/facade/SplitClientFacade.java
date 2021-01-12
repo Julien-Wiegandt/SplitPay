@@ -225,6 +225,7 @@ public class SplitClientFacade implements Observer
                 }
                 break;
             case ClientServerProtocol.SPLIT_PAID_RESPONSE:
+                System.out.println("Split paid");
                 switch (getJoinedSplit().getSplitMode()){
                     case FREESPLIT:
                         freeSplitSaloonController.splitPaid();
@@ -416,12 +417,16 @@ public class SplitClientFacade implements Observer
      * Method asking the server to pay the split
      * @param splitCode
      */
-    public void paySplit(String splitCode){
+    public void paySplit(String splitCode) throws IOException {
         /* Creating request arguments */
         HashMap<String,String> arguments = new HashMap<>();
         arguments.put("splitCode",splitCode);
 
         SplitOriginatorMessage message = new SplitOriginatorMessage(null,ClientServerProtocol.SPLIT_PAYMENT_REQUEST,arguments,null,null,null);
+
+        communicationService.openConnection();
+        sendToServer(message);
+
 
     }
 

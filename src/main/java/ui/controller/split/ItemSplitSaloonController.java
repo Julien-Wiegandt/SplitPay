@@ -161,7 +161,11 @@ public class ItemSplitSaloonController {
      * Handles owner pay request
      */
     public void payButtonHandler() {
-        facade.paySplit(getJoinedSplit().getSplitCode());
+        try {
+            facade.paySplit(getJoinedSplit().getSplitCode());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
