@@ -3,3 +3,6 @@
 
 #folder generated after run
 target/
+
+#file containing credentials
+src/main/resources/config.properties
